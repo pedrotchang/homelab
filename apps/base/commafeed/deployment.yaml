@@ -12,8 +12,21 @@ spec:
       labels:
         app: commafeed
     spec:
+      securityContext:
+        runAsUser: 33
+        runAsGroup: 33
+        fsGroup: 33
       containers:
       - name: commafeed
         image: athou/commafeed:5.4.0-h2
         ports:
         - containerPort: 8082
+        securityContext:
+          allowPrivilegeEscalation: false
+        volumeMounts:
+          - name: commafeed-data
+            mountPath: /etc/commafeed/data
+      volumes:
+        - name: commafeed-data
+          persistentVolumeClaim:
+            claimName: commafeed-data-pvc
