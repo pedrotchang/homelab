@@ -25,7 +25,7 @@ spec:
           allowPrivilegeEscalation: false
         volumeMounts:
           - name: commafeed-data
-            mountPath: /etc/commafeed/data
+            mountPath: /commafeed/data
       volumes:
         - name: commafeed-data
           persistentVolumeClaim:
