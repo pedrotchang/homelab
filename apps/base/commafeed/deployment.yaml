@@ -13,7 +13,7 @@ spec:
         app: commafeed
     spec:
       containers:
-      - name: nginx
+      - name: commafeed
         image: athou/commafeed:5.4.0-h2
         ports:
         - containerPort: 8082
