@@ -46,7 +46,7 @@ spec:
       volumes:
       - name: creds
         secret:
-          secretName: tunnel-credentials
+          secretName: cloudflare-secret
 
       # Create a config.yaml file from the ConfigMap below.
       - name: config
