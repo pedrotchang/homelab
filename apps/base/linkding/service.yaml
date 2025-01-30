@@ -3,8 +3,8 @@ kind: Service
 metadata:
   name: linkding
 spec:
-  ports:
-    - port: 9090
   selector:
     app: linkding
   type: ClusterIP
+  ports:
+    - port: 9090
