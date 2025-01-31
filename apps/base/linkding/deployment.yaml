@@ -21,11 +21,21 @@ spec:
           image: sissbruecker/linkding:1.31.0
           ports:
             - containerPort: 9090
+
+          envFrom:
+          # - configMapRef:
+          #     name: linkding-configmap
+            - secretRef:
+                name: linkding-container-env
+
           securityContext:
               allowPrivilegeEscalation: false
+
           volumeMounts:
             - name: linkding-data
               mountPath: /etc/linkding/data
+
+
       volumes:
         - name: linkding-data
           persistentVolumeClaim:
