@@ -30,3 +30,19 @@ spec:
   values:
     grafana:
       adminPassword: pedro
+      ingress:
+        enabled: false
+        ingressClassName: traefik
+        # hosts:
+        #   - grafana.domain.com
+        hosts:
+          - grafana.seyzahl.com
+        path: /
+        # pathType: prefix
+        ## TLS configuration for grafana Ingress
+        ## Secret must be manually created in the namespace
+        ##
+        # tls: []
+        # # - secretName: grafana-general-tls
+        # #   hosts:
+        # #   - grafana.example.com
