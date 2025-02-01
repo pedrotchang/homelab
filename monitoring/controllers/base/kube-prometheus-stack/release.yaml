@@ -33,15 +33,8 @@ spec:
       ingress:
         enabled: false
         ingressClassName: traefik
-        # hosts:
-        #   - grafana.domain.com
         hosts:
-          - grafana.seyzahl.com
-        path: /
-        # pathType: prefix
-        ## TLS configuration for grafana Ingress
-        ## Secret must be manually created in the namespace
-        ##
+          - grs.seyzahl.com
         # tls: []
         # # - secretName: grafana-general-tls
         # #   hosts:
