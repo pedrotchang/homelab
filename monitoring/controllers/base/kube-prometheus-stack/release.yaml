@@ -35,7 +35,7 @@ spec:
         ingressClassName: traefik
         hosts:
           - grs.seyzahl.com
-        # tls: []
-        # # - secretName: grafana-general-tls
-        # #   hosts:
-        # #   - grafana.example.com
+        tls:
+          - secretName: grafana-tls-secret #lives in the same namepsace as release
+            hosts:
+              - grs.seyzahl.com
