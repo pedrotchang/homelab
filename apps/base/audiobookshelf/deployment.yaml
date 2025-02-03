@@ -21,7 +21,7 @@ spec:
           image: ghcr.io/advplyr/audiobookshelf:2.19.0
           ports:
             - containerPort: 3005
-
+              protocol: TCP
           # envFrom:
           # - configMapRef:
           #     name: audiobookshelf-configmap
