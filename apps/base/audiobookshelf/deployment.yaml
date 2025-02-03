@@ -18,7 +18,7 @@ spec:
       #   fsGroup: 33 # found from www-data:
       containers:
         - name: audiobookshelf
-          image: ghcr.io/advplyr/audiobookshelf:v2.19.0
+          image: ghcr.io/advplyr/audiobookshelf:2.19.0
           ports:
             - containerPort: 3005
 
