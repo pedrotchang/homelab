@@ -4,4 +4,4 @@ resources:
   - namespace.yaml
   - deployment.yaml
   # - storage.yaml
-  - service.yaml
+  # - service.yaml
