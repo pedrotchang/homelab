@@ -22,9 +22,9 @@ spec:
           ports:
             - containerPort: 3005
               protocol: TCP
-          # envFrom:
-          # - configMapRef:
-          #     name: audiobookshelf-configmap
+          envFrom:
+          - configMapRef:
+              name: audiobookshelf-configmap
             # - secretRef:
             #     name: audiobookshelf-container-env
 
