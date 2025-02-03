@@ -12,10 +12,10 @@ spec:
       labels:
         app: audiobookshelf
     spec:
-      # securityContext:
-      #   runAsUser: 33 # found from www-data:
-      #   runAsGroup: 33 # found from www-data:
-      #   fsGroup: 33 # found from www-data:
+      securityContext:
+        runAsUser: 1000 # found from www-data:
+        runAsGroup: 1000 # found from www-data:
+        fsGroup: 1000 # found from www-data:
       containers:
         - name: audiobookshelf
           image: ghcr.io/advplyr/audiobookshelf:2.19.0
@@ -27,16 +27,36 @@ spec:
               name: audiobookshelf-configmap
             # - secretRef:
             #     name: audiobookshelf-container-env
+            #
+          volumeMounts:
+            - name: audiobooks
+              mountPath: /audiobooks
+            - name: podcasts
+              mountPath: /podcasts
+            - name: metadata
+              mountPath: /metadata
+            - name: config
+              mountPath: /config
 
-          # securityContext:
-          #     allowPrivilegeEscalation: false
+          securityContext:
+              allowPrivilegeEscalation: false
 
-      #     volumeMounts:
-      #       - name: audiobookshelf-data
-      #         mountPath: /etc/audiobookshelf/data
-      #
-      #
-      # volumes:
-      #   - name: audiobookshelf-data
-      #     persistentVolumeClaim:
-      #       claimName: audiobookshelf-data-pvc
+      restartPolicy: Always
+
+
+      volumes:
+        - name: audiobooks
+          persistentVolumeClaim:
+            claimName: audiobookshelf-audiobooks
+
+        - name: podcasts
+          persistentVolumeClaim:
+            claimName: audiobookshelf-podcasts
+
+        - name: metadata
+          persistentVolumeClaim:
+            claimName: audiobookshelf-metadata
+
+        - name: config
+          persistentVolumeClaim:
+            claimName: audiobookshelf-config
