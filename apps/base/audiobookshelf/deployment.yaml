@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: audiobookshelf
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: audiobookshelf
+  template:
+    metadata:
+      labels:
+        app: audiobookshelf
+    spec:
+      # securityContext:
+      #   runAsUser: 33 # found from www-data:
+      #   runAsGroup: 33 # found from www-data:
+      #   fsGroup: 33 # found from www-data:
+      containers:
+        - name: audiobookshelf
+          image: sissbruecker/audiobookshelf:1.37.0
+          ports:
+            - containerPort: 3005
+
+          # envFrom:
+          # - configMapRef:
+          #     name: audiobookshelf-configmap
+            # - secretRef:
+            #     name: audiobookshelf-container-env
+
+          # securityContext:
+          #     allowPrivilegeEscalation: false
+
+      #     volumeMounts:
+      #       - name: audiobookshelf-data
+      #         mountPath: /etc/audiobookshelf/data
+      #
+      #
+      # volumes:
+      #   - name: audiobookshelf-data
+      #     persistentVolumeClaim:
+      #       claimName: audiobookshelf-data-pvc
