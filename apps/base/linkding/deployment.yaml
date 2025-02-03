@@ -18,7 +18,7 @@ spec:
         fsGroup: 33 # found from www-data:
       containers:
         - name: linkding
-          image: sissbruecker/linkding:1.31.0
+          image: sissbruecker/linkding:1.37.0
           ports:
             - containerPort: 9090
 
