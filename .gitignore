@@ -3,3 +3,4 @@ kubeconfig
 age.agekey
 tls.crt
 tls.key
+.env.linkding
