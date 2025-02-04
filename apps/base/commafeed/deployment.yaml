@@ -16,31 +16,27 @@ spec:
         policy-type: "app"
 
     spec:
-      securityContext:
-        runAsUser: 1000
-        runAsGroup: 3000
-        fsGroup: 2000
+      # securityContext:
+      #   runAsUser: 1000
+      #   runAsGroup: 3000
+      #   fsGroup: 2000
 
       containers:
         - name: commafeed
           image: athou/commafeed:5.4.0-h2-jvm
 
-          securityContext:
-            allowPrivilegeEscalation: false
+          # securityContext:
+            # allowPrivilegeEscalation: false
 
           envFrom:
-          # - configMapRef:
-          #     name: commafeed-configmap
+          - configMapRef:
+              name: commafeed-configmap
             # - secretRef:
             #     name: commafeed-container-env
 
-          volumeMounts:
-            - name: commafeed-data
-              mountPath: /commafeed/data
+          # volumeMounts:
+          #   - name: commafeed-data
+          #     mountPath: /commafeed/data
 
 
-      volumes:
-        - name: commafeed-data
-          persistentVolumeClaim:
-            claimName: commafeed-data-pvc
-
+    restartPolicy: Always
