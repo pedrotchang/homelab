@@ -12,8 +12,6 @@ spec:
     metadata:
       labels:
         app: commafeed
-        try: "0"
-        policy-type: "app"
 
     spec:
       # securityContext:
@@ -23,20 +21,19 @@ spec:
 
       containers:
         - name: commafeed
-          image: athou/commafeed:5.4.0-h2-jvm
+          image: athou/commafeed:4.5.0
 
           # securityContext:
-            # allowPrivilegeEscalation: false
+          #   allowPrivilegeEscalation: false
 
           envFrom:
-          - configMapRef:
-              name: commafeed-configmap
+            - configMapRef:
+                name: commafeed-configmap
             # - secretRef:
             #     name: commafeed-container-env
 
-          # volumeMounts:
-          #   - name: commafeed-data
-          #     mountPath: /commafeed/data
+          ports:
+            - containerPort: 8082
+              protocol: TCP
 
-
-    restartPolicy: Always
+      restartPolicy: Always
