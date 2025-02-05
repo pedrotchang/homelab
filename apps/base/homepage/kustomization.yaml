@@ -1,0 +1,11 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+resources:
+  - namespace.yaml
+  - secret.yaml
+  - serviceaccount.yaml
+  - service.yaml
+  - ingress.yaml
+  - configmap.yaml
+  - deployment.yaml
+  - clusterrole.yaml
