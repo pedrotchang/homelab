@@ -23,19 +23,19 @@ spec:
           securityContext:
               allowPrivilegeEscalation: false
 
-          # envFrom:
-          # # - configMapRef:
-          # #     name: linkding-configmap
-          #   - secretRef:
-          #       name: linkding-container-env
-      #
-          # volumeMounts:
-          #   - name: linkding-data
-          #     mountPath: /etc/linkding/data
+          envFrom:
+          # - configMapRef:
+          #     name: linkding-configmap
+            - secretRef:
+                name: linkding-container-env
+
+          volumeMounts:
+            - name: linkding-data
+              mountPath: /etc/linkding/data
           ports:
             - containerPort: 9090
-      #
-      # volumes:
-      #   - name: linkding-data
-      #     persistentVolumeClaim:
-      #       claimName: linkding-data-pvc
+
+      volumes:
+        - name: linkding-data
+          persistentVolumeClaim:
+            claimName: linkding-data-pvc
