@@ -4,3 +4,4 @@ resources:
   # - renovate
   # - cloudnativepg
   # - traefik
+- local-path
