@@ -11,3 +11,4 @@ secret-access-key
 linkding-container-env-secret.yaml
 age.agekey
 bootstrap
+credentials.json

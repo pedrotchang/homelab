@@ -4,7 +4,7 @@ metadata:
   name: apps
   namespace: flux-system
 spec:
-  interval: 1m0s
+  interval: 10m0s
   # dependsOn:
   #   - name: infra-configs
   retryInterval: 1m
@@ -14,8 +14,3 @@ spec:
     name: flux-system
   path: "./apps/staging"
   prune: true
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age
-
