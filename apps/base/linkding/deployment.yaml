@@ -7,15 +7,16 @@ spec:
   selector:
     matchLabels:
       app: linkding
+      policy-type: "app"
   template:
     metadata:
       labels:
         app: linkding
     spec:
-      securityContext:
-        runAsUser: 33 # found from www-data:
-        runAsGroup: 33 # found from www-data:
-        fsGroup: 33 # found from www-data:
+      # securityContext:
+      #   runAsUser: 33 # found from www-data:
+      #   runAsGroup: 33 # found from www-data:
+      #   fsGroup: 33 # found from www-data:
       containers:
         - name: linkding
           image: sissbruecker/linkding:1.37.0
@@ -29,11 +30,15 @@ spec:
             - secretRef:
                 name: linkding-container-env
 
-          volumeMounts:
-            - name: linkding-data
-              mountPath: /etc/linkding/data
           ports:
             - containerPort: 9090
+              protocol: TCP
+
+      # restartPolicy: Always
+
+      volumeMounts:
+        - name: linkding-data
+          mountPath: /etc/linkding/data
 
       volumes:
         - name: linkding-data
