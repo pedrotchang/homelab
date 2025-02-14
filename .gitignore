@@ -5,3 +5,9 @@ tls.crt
 tls.key
 .env.linkding
 deprecated
+sa.key
+sa.pub
+secret-access-key
+linkding-container-env-secret.yaml
+age.agekey
+bootstrap
