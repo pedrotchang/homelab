@@ -1,11 +1,11 @@
 apiVersion: v1
 data:
-    ClientID: ENC[AES256_GCM,data:QBagFnUFxS4K2iR95SkaBrx4AxYs9/9EcI0U5069zHnG3HWlXT5wHulPeOwQEVXp,iv:+s0RHEG+9E5jSAiUvU6Co0IJolis45D6AfZwk3E/4DE=,tag:HGXD7xMLZDH1/XRdq0SXZA==,type:str]
-    ClientSecret: ENC[AES256_GCM,data:Pdc8X8Am0UWR62L8XjJbcU21mhRACTYae5QN1zuKTiez1vYdxFrVaCqV9DeIZsKc73NcEJuM5dw=,iv:mk3v9PcTYsjZWDKv5oiCKNiZjxrKx6Cs+UcChqSsqXE=,tag:AyCGE9z591uc06kfyHyt+Q==,type:str]
+    ClientID: ENC[AES256_GCM,data:xKLpWdWtksTVdi/zokzi+77PbETI+cvM+ZrDb989VHNt5ERcNBGVieE2TnW7sb5+,iv:IKG7xS9OQ/Uan6oPI61ClC19bxfebN+HF/+bB2sm510=,tag:bFe50UfmFS67hmDHUYaGBw==,type:str]
+    ClientSecret: ENC[AES256_GCM,data:pCJ3aNrG8cCkNbzZZUA9v4R/nxH9LYRQaJb6dpvU2eCbQdahrm7349LPjKFlwXRTSw03Kv85ufE=,iv:PWgyPygKvxfBCZHnzev78RGtd+SvFAZCMf300cZ4bsc=,tag:qlVfIFfp4o83Kla8wgtTjw==,type:str]
 kind: Secret
 metadata:
-    creationTimestamp: null
     name: azure-creds
+    namespace: external-secrets
 sops:
     kms: []
     gcp_kms: []
@@ -15,14 +15,14 @@ sops:
         - recipient: age17qckp96wh2mzrd3dge9jrt6hudt40ltj2rgfqk42jgugjq9a94nqv6erff
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBrWGJtVHhPa040RkRsVG00
-            Ti9ZOEdTeGYybUlvUkZjaWtJK0Y5cUdQaXdjCm5xdmlXYWhiR3NydC9yR1BROXdG
-            WkNjUW1jcXJCZFRSa2pmekxveUE0am8KLS0tIFp2U1dMWEVVTWUrdW1nNDVxeXFO
-            aFJmTmZMaGI0VFNrNFNJRkQ5anMwZGcK3ddOxHZKDEMTA8N0+dgKIcFFZslPlMXg
-            snXRRd2ae016f/nAc+sn+GgCNVJXp2VAT7jwv5VytitEP1YUkq9BXA==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB0bzFTVGxqQ0U5b2FWaXJF
+            bUhDNDc4NWZrdGtVM3lIWHoyN2FzNTBYNmljCjBkVGVrU25lQ0I3YVV6SXpSQ0ky
+            NEF3VGlaWHRKQUZYSU5Ud3JLUk1EYTAKLS0tIDRIZkcwdjd1OEEzeUM0MnEwc2JQ
+            SXlTWVd3b0tpNnJQa0tHTnU3SHZxUmMKFr7NVmtQWkICfBIMGnd3w2M/LlKvwZMI
+            DP4jaOS0KN6DqyOt4TgQelPOrlConYtm/G62m2Rj70ODHPTLBJnbZA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-02-14T03:36:15Z"
-    mac: ENC[AES256_GCM,data:st6SSgg7G3r8YH21OOHHZM96m9W0Tf55nuWH6nKq6dfveljAUsg/Dt/KUNy+CDJrm9f+Wdzy6Vj6tqlOdAmeRxJhHZpEe1dV8rCqC/ML188agpY2L+vT1aB8/ivHYD/I5WbytGY1P3rblIyXrxGp+zRh1i8dJQ4AFTiwmbkUVH0=,iv:CjZdGrNf+4j8Sxvt5dYPQ1pK3g0Bkx0kPn682lC51/I=,tag:eVJ0svIz6m5tB9RBE1hJxA==,type:str]
+    lastmodified: "2025-02-14T05:25:21Z"
+    mac: ENC[AES256_GCM,data:wxLJ4axgQNz113rWf4s0LibPHCZOLqPrwgMj/xhdz4JE1GSUZ28tKA6O8C9XiQmXNJpMq0wQzuZz/PdXXYWUxfbM11K9xmF793vFGl2d5xlYD9rbCcVtP5NEKcp1Bgc0bN0+R4mg/6VWwIyKUgXZ6jWu3l35qNB/p4+gFW8W01s=,iv:YlkKHuAI1qRevAGqvOfOsgov4Efm20o12dFigTUV/M8=,tag:4GxepGvxnq+IdeiPf0GAOw==,type:str]
     pgp: []
     encrypted_regex: ^(data|stringData)$
     version: 3.9.4
