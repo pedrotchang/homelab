@@ -3,5 +3,4 @@ kind: Kustomization
 resources:
   - renovate
   # - cloudnativepg
-  # - traefik
   - local-path
