@@ -36,8 +36,9 @@ hubble:
   ui:
     enabled: true
     service:
+      type: LoadBalancer  # Make sure this is set
       annotations:
-        omni-kube-service-exposer.sidero.dev/port: "50080"
+        omni-kube-service-exposer.sidero.dev/port: "50081"
         omni-kube-service-exposer.sidero.dev/label: Hubble
 
 l2announcements:
