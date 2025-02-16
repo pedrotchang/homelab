@@ -9,5 +9,5 @@ spec:
       cilium.io/ingress: "true"
 
   # IMPORTANT: if externalIPss is desired, externalIPs.enabled=true must be set in values.yaml
-  # externalIPs: true
+  externalIPs: true
   loadBalancerIPs: true
