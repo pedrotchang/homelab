@@ -5,8 +5,8 @@ metadata:
   namespace: kube-system
 spec:
   blocks:
-    - start: "192.168.1.154"
-      stop: "192.168.1.168"
+    - start: "192.168.1.196"
+      stop: "192.168.1.210"
   serviceSelector:
     matchLabels:
       cilium-lb-pool: apps-pool
