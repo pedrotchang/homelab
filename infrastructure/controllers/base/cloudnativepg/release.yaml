@@ -7,7 +7,7 @@ spec:
   interval: 30m
   chart:
     spec:
-      chart: cloudnative-pg
+      chart: cluster
       version: "0.2.1"
       sourceRef:
         kind: HelmRepository
