@@ -11,6 +11,7 @@ spec:
     metadata:
       labels:
         app: linkding
+        policy-type: "app"
     spec:
       # securityContext:
       #   runAsUser: 33 # found from www-data:
@@ -33,7 +34,7 @@ spec:
             - containerPort: 9090
               protocol: TCP
 
-      # restartPolicy: Always
+      restartPolicy: Always
 
       volumeMounts:
         - name: linkding-data
