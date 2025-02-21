@@ -4,7 +4,7 @@ metadata:
   name: linkding-db-tachtit-cnpg-v0
 spec:
   description: Postgres cluster for the linkding application
-  imageName: ghcr.io/cloudnative-pg/postgresql:17.4
+  imageName: ghcr.io/cloudnative-pg/postgresql:17.2
   instances: 3
 
   inheritedMetadata:
