@@ -7,6 +7,12 @@ spec:
   imageName: quay.io/cloundative-pg/postgresql:17.2
   instances: 3
 
+  inheritedMetadata:
+    labels:
+      app: linkding-database
+      policy-type: "database"
+
+
   # monitoring:
   #   enablePodMonitor: true
     # tls:
@@ -14,3 +20,34 @@ spec:
 
   storage:
     size: 1Gi
+
+  # bootstrap:
+    # Alternative bootstrap method: start from a backup
+    #recovery:
+    #  backup:
+    #    name: backup-example
+
+  # backup:
+  #   barmanObjectStore:
+  #     destinationPath: s3://cluster-example-full-backup/
+  #     endpointURL: http://custom-endpoint:1234
+  #     s3Credentials:
+  #       accessKeyId:
+  #         name: backup-creds
+  #         key: ACCESS_KEY_ID
+  #       secretAccessKey:
+  #         name: backup-creds
+  #         key: ACCESS_SECRET_KEY
+  #     wal:
+  #       compression: gzip
+  #       encryption: AES256
+  #     data:
+  #       compression: gzip
+  #       encryption: AES256
+  #       immediateCheckpoint: false
+  #       jobs: 2
+  #   retentionPolicy: "30d"
+
+  resources:
+    requests:
+      memory: 320Mi
