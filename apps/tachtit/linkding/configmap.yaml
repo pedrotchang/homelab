@@ -7,4 +7,4 @@ data:
   LD_DB_ENGINE: postgres
   LD_DB_DATABASE: linkding
   LD_DB_PORT: "5432"
-  LD_DB_HOST: linkding.seyzahl.com
+  LD_DB_HOST: linkding-pg.seyzahl.com
