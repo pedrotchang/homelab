@@ -1,0 +1,16 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: linkding-db-tachtit-cnpg-v0
+spec:
+  description: Postgres cluster for the linkding application
+  imageName: quay.io/cloundative-pg/postgresql:17.4
+  instances: 3
+
+  # monitoring:
+  #   enablePodMonitor: true
+    # tls:
+    #   enabled: true
+
+  storage:
+    size: 1Gi
