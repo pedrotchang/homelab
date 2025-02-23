@@ -14,8 +14,8 @@ spec:
 
   monitoring:
     enablePodMonitor: true
-    tls:
-      enabled: true
+    # tls:
+    #   enabled: true
 
   storage:
     size: 1Gi
