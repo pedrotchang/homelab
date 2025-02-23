@@ -3,6 +3,6 @@ kind: Kustomization
 resources:
   - cilium
   - cloudnativepg
-  # - external-dns
+  - external-dns
   - external-secrets
   - local-path
