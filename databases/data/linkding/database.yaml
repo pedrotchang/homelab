@@ -12,7 +12,6 @@ spec:
       app: linkding-database
       policy-type: "database"
 
-
   # monitoring:
   #   enablePodMonitor: true
     # tls:
@@ -51,3 +50,19 @@ spec:
   resources:
     requests:
       memory: 320Mi
+
+  # managed:
+  #   services:
+  #     ## disable the default services
+  #     disabledDefaultServices: ["ro", "r"]
+  #     additional:
+  #       - selectorType: rw
+  #         serviceTemplate:
+  #           metadata:
+  #             name: "linkding-db-lb"
+  #             labels:
+  #               cilium-lb-pool: postgres-pool
+  #             annotations:
+  #               # external-dns.alpha.kubernetes.io/hostname: linkding-pg.seyzahl.com
+  #           spec:
+  #             type: LoadBalancer
