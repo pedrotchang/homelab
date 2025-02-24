@@ -4,5 +4,5 @@ namespace: linkding
 resources:
   - namespace.yaml
   - database.yaml
-  # - secrets.yaml
+  - secrets.yaml
   # - scheduled-backups.yaml
