@@ -20,6 +20,13 @@ spec:
   storage:
     size: 1Gi
 
+  bootstrap:
+    initdb: # for initial deployment before creating a backup
+      database: linkding
+      owner: linkding
+      secret:
+        name: linkding-db-creds
+
   # bootstrap:
     # Alternative bootstrap method: start from a backup
     #recovery:
