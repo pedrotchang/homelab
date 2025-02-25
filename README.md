@@ -38,11 +38,12 @@ I have them in this structure:
 | Icon | Name | Description |
 |------|------|-------------|
 | <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/cilium.png" width="30" alt="Cilium logo"> | Cilium | An amazing CNI used for all my clusters. I opt out of Flannel for Cilium. |
-| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/grafana.png" width="30" alt="Grafana logo"> | Grafana 🚧 | A multi-platform analytics and visualization web application for monitoring data. |
+| <img src="https://avatars.githubusercontent.com/u/100373852?s=200&v=4" width="30" alt="CloudnativePG logo"> | CloudnativePG | A Kubernetes operator for deploying and managing PostgreSQL clusters. |
 | <img src="https://raw.githubusercontent.com/external-secrets/external-secrets/refs/heads/main/assets/eso-logo-large.png" width="30" alt="External Secrets logo"> | External Secrets Operator | A Kubernetes operator that synchronizes secrets from external APIs into Kubernetes. Currently, it uses secrets from my Azure Key Vault. |
 | <img src="https://raw.githubusercontent.com/kubernetes-sigs/external-dns/refs/heads/master/docs/img/external-dns.png" width="30" alt="External DNS logo"> | External DNS | A Kubernetes addon that automates the management of DNS records based on Kubernetes resources. |
-| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/prometheus.png" width="30" alt="Prometheus logo"> | Prometheus 🚧 | An open-source monitoring and alerting toolkit for containers and microservices. |
 | <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/flux-cd.png" width="30" alt="FluxCD logo"> | FluxCD | A GitOps tool for automating Kubernetes deployments from Git repositories. |
+| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/grafana.png" width="30" alt="Grafana logo"> | Grafana 🚧 | A multi-platform analytics and visualization web application for monitoring data. |
+| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/prometheus.png" width="30" alt="Prometheus logo"> | Prometheus 🚧 | An open-source monitoring and alerting toolkit for containers and microservices. |
 | <img src="https://avatars.githubusercontent.com/ml/287?s=82&v=4" width="30" alt="Renovate logo"> | Renovate | An automated dependency update tool that creates and maintains pull requests for your dependencies. |
 
 ### End User Applications
@@ -53,4 +54,6 @@ I have them in this structure:
 
 ## Next Steps
 
-I installed an ISCSI driver for Talos Linux, but have yet to use it. I hope to link my TrueNAS Scale.
+Or in other words, a TODO list:
+- [ ] Link my Po
+
