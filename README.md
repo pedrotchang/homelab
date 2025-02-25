@@ -6,7 +6,7 @@
 I am a big proponent to giving credit where it is due, and I would first like to take the time to thank Mischa van den Burg
 and the Kubecraft community. I could not learn to do all this without them!
 
-If you have ever been curious about Cloud Native Techlogies, DevOps or Kubernetes, then the place you want to be is in Kubecraft!
+If you have ever been curious about Cloud Native Technologies, DevOps or Kubernetes, then the place you want to be is in Kubecraft!
 
 This repository is where I do all my testing, tinkering, and all-in-all a space for me to play, and work! Here you will find all tthe documentation of my homelab.
 
@@ -18,7 +18,7 @@ I like to start off talking about hardware first. It's I think a great base line
 
 I have currently 3 old hardware:\
 HP EliteDesk 800 G2 i5-6500T/16GB/256SSD x 2\
-HP Laptop (atm do not know the model) 8GB/256SSD\
+HP Laptop (atm do not know the model) 8GB/256SSD
 
 I love [Talos Linux](https://www.talos.dev/). It is secure, lightweight, and has robust features. At first, I used straight baremetal. But after sometime (a week...), I realized that [Omni](https://www.siderolabs.com/platform/saas-for-kubernetes/) was the way to go.
 
