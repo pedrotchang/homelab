@@ -54,6 +54,7 @@ I have them in this structure:
 
 ## Next Steps
 
-Or in other words, a TODO list:
-- [ ] Link my Po
+- [ ] Link my PostgreSQL Database in the data cluster to my TrueNAS Scale.
+- [ ] Have blob storage for my data cluster to create periodic backups.
+- [ ] Add on Immich, CommaFeed, Wallabag, to work with my data cluster, and also backup to blog storage.
 
