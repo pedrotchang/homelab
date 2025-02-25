@@ -3,26 +3,29 @@
 <https://www.pedrotchang.dev/>
 
 ## Introduction
+
+Here you will find all tthe documentation of my homelab.
+
 I am a big proponent to giving credit where it is due, and I would first like to take the time to thank Mischa van den Burg
 and the Kubecraft community. I could not learn to do all this without them!
 
 If you have ever been curious about Cloud Native Technologies, DevOps or Kubernetes, then the place you want to be is in Kubecraft!
 
-This repository is where I do all my testing, tinkering, and all-in-all a space for me to play, and work! Here you will find all tthe documentation of my homelab.
-
-It does have a serious note as well, since I will be working with my own personal data and require me to think about the whole process of deployment and maintanence!
+This repository is where I do all my testing, tinkering, and all-in-all a space for me to play, and work! It does have a serious note as well, since I will be working with my own personal data and require me to think about the whole process of deployment and maintanence!
 
 ## Hardware & Cluster Provisioning
 
 I like to start off talking about hardware first. It's I think a great base line to understand what I was working with.
 
 I have currently 3 old hardware:\
-HP EliteDesk 800 G2 i5-6500T/16GB/256SSD x 2\
+HP EliteDesk 800 G2 i5-6500T/16GB/256SSD\
+HP EliteDesk 800 G2 i5-6500T/16GB/256SSD\
 HP Laptop (atm do not know the model) 8GB/256SSD
 
-I love [Talos Linux](https://www.talos.dev/). It is secure, lightweight, and has robust features. At first, I used straight baremetal. But after sometime (a week...), I realized that [Omni](https://www.siderolabs.com/platform/saas-for-kubernetes/) was the way to go.
+I love [Talos Linux](https://www.talos.dev/). It has production grade security out of the box, is lightweight, and has robust features. At first, I used straight baremetal. But after sometime (a week...), I realized that [Omni](https://www.siderolabs.com/platform/saas-for-kubernetes/) was the way to go.
 
 I could spin up new clusters in seconds, and exposing external services is a breeze.
+
 I have them in this structure:
 
 | Cluster | Usage | Hardware |
@@ -56,5 +59,5 @@ I have them in this structure:
 
 - [ ] Link my PostgreSQL Database in the data cluster to my TrueNAS Scale.
 - [ ] Have blob storage for my data cluster to create periodic backups.
-- [ ] Add on Immich, CommaFeed, Wallabag, to work with my data cluster, and also backup to blog storage.
+- [ ] Add on Immich, CommaFeed, Wallabag, to work with my data cluster, and also backup to blob storage.
 
