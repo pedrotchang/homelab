@@ -2,20 +2,28 @@
 
 <https://www.pedrotchang.dev/>
 
+## Introduction
 I am a big proponent to giving credit where it is due, and I would first like to take the time to thank Mischa van den Burg
-and the Kubecraft community.
+and the Kubecraft community. I could not learn to do all this without them!
 
 If you have ever been curious about Cloud Native Techlogies, DevOps or Kubernetes, then the place you want to be is in Kubecraft!
 
-## Hardware
+This repository is where I do all my testing, tinkering, and all-in-all a space for me to play, and work! Here you will find all tthe documentation of my homelab.
+
+It does have a serious note as well, since I will be working with my own personal data and require me to think about the whole process of deployment and maintanence!
+
+## Hardware & Cluster Provisioning
 
 I like to start off talking about hardware first. It's I think a great base line to understand what I was working with.
 
-I have currently 3 old hardware:
-HP EliteDesk 800 G2 i5-6500T/16GB/256SSD x 2
-HP Laptop (atm do not know the model) 8GB/256SSD
+I have currently 3 old hardware:\
+HP EliteDesk 800 G2 i5-6500T/16GB/256SSD x 2\
+HP Laptop (atm do not know the model) 8GB/256SSD\
 
-At this moment, 2 of these are in play, and they are as follows:
+I love [Talos Linux](https://www.talos.dev/). It is secure, lightweight, and has robust features. At first, I used straight baremetal. But after sometime (a week...), I realized that [Omni](https://www.siderolabs.com/platform/saas-for-kubernetes/) was the way to go.
+
+I could spin up new clusters in seconds, and exposing external services is a breeze.
+I have them in this structure:
 
 | Cluster | Usage | Hardware |
 | --------------- | --------------- | --------------- |
@@ -23,12 +31,9 @@ At this moment, 2 of these are in play, and they are as follows:
 | Tachtit | Apps | HP 800 G2 |
 | ~~Redacted~~ | Private Apps | HP 800 G2 |
 
-I am also utilizing an external backup 
-
-
 ## Apps
 
-## Infrastructure Applications 🚧 ( Some Apps are Under Construction)
+### Infrastructure Applications 🚧 ( Some Apps are Under Construction)
 
 | Icon | Name | Description |
 |------|------|-------------|
@@ -40,10 +45,12 @@ I am also utilizing an external backup
 | <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/flux-cd.png" width="30" alt="FluxCD logo"> | FluxCD | A GitOps tool for automating Kubernetes deployments from Git repositories. |
 | <img src="https://avatars.githubusercontent.com/ml/287?s=82&v=4" width="30" alt="Renovate logo"> | Renovate | An automated dependency update tool that creates and maintains pull requests for your dependencies. |
 
-## End User Applications
+### End User Applications
 
 | Icon | Name | Description |
 |------|------|-------------|
 | <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/linkding.png" width="30" alt="Linkding logo"> | Linkding | A self-hosted bookmark manager with tagging and search functionality. |
 
+## Next Steps
 
+I installed an ISCSI driver for Talos Linux, but have yet to use it. I hope to link my TrueNAS Scale.
