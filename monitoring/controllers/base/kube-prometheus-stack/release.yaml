@@ -25,15 +25,6 @@ spec:
       - paths: ["/metadata/annotations/prometheus-operator-validated"]
         target:
           kind: PrometheusRule
-  values:
-    grafana:
-      adminPassword: pedro
-      ingress:
-        enabled: true
-        ingressClassName: traefik
-        hosts:
-          - grs.seyzahl.com
-        tls:
-          - secretName: grafana-tls-secret #lives in the same namepsace as release
-            hosts:
-              - grs.seyzahl.com
+  valuesFrom:
+    - kind: ConfigMap
+      name: kube-prometheus-stack-values
