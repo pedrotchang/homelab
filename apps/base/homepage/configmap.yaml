@@ -19,10 +19,11 @@ data:
         - KubeCraft:
             - abbr: KC
               href: https://www.skool.com/kubecraft
-      - Claude:
-            href: https://claude.ai/new
-            description: Claude
-            icon: mdi-robot-excited-outline-#DE7552
+        - Claude:
+            - abbr: CE
+              href: https://claude.ai/new
+              description: Claude
+              icon: mdi-robot-excited-outline-#DE7552
 
   services.yaml: |
     - seyzahl:
@@ -30,7 +31,7 @@ data:
             href: https://linkding.seyzahl.com
             description: Linkding
             icon: linkding.png
-        - Omni
+      - Omni:
             href: https://pedrotchang.omni.siderolabs.io/
             description: Omni
             icon: talos.png
