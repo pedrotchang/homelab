@@ -53,6 +53,7 @@ I have them in this structure:
 ### End User Applications
 
 | Icon | Name | Description |
+| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/homepage.png" width="30" alt="Homepage logo"> | Homepage | A self-hosted dashboard that allows you to organize your web services and bookmarks in a clean, customizable interface. |
 |------|------|-------------|
 | <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/linkding.png" width="30" alt="Linkding logo"> | Linkding | A self-hosted bookmark manager with tagging and search functionality. |
 
