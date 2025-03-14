@@ -19,19 +19,39 @@ data:
         - KubeCraft:
             - abbr: KC
               href: https://www.skool.com/kubecraft
-  services.yaml: |
-    - seyzahl
-        - Linkding
-            href: http://linkding.seyzahl.com
-            description: Linkding
+      - Claude:
+            href: https://claude.ai/new
+            description: Claude
+            icon: mdi-robot-excited-outline-#DE7552
 
+  services.yaml: |
+    - seyzahl:
+      - Linkding:
+            href: https://linkding.seyzahl.com
+            description: Linkding
+            icon: linkding.png
         - Omni
             href: https://pedrotchang.omni.siderolabs.io/
             description: Omni
-
-        - Grafana
+            icon: talos.png
+      - Grafana:
             href: https://rw6q7h-pedrotchang.proxy-us.omni.siderolabs.io
             description: Grafana
+            icon: grafana.png
+
+    - Creating:
+      - YouTube Studio:
+            href: https://studio.youtube.com
+            description: YouTube Studio
+            icon: youtube.png
+      - LinkedIn:
+            href: https://linkedin.com
+            description: LinkedIn
+            icon: linkedin.png
+      - Substack:
+              href: https://pedrotchang.substack.com
+              description: Substack
+              icon: si-substack-#FF6719
 
   widgets.yaml: |
     - kubernetes:
