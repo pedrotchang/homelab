@@ -23,7 +23,7 @@ rules:
       - get
       - list
   - apiGroups:
-      - traefik.io
+      - traefik.containo.us
     resources:
       - ingressroutes
     verbs:
@@ -51,4 +51,4 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: homepage
-    namespace: default
+    namespace: homepage

@@ -15,22 +15,24 @@ data:
     - Developer:
         - Github:
             - abbr: GH
-              href: https://github.com/
+              href: https://github.com/pedrotchang
+        - KubeCraft:
+            - abbr: KC
+              href: https://www.skool.com/kubecraft
   services.yaml: |
-    - My First Group:
-        - My First Service:
-            href: http://localhost/
-            description: Homepage is awesome
+    - seyzahl
+        - Linkding
+            href: http://linkding.seyzahl.com
+            description: Linkding
 
-    - My Second Group:
-        - My Second Service:
-            href: http://localhost/
-            description: Homepage is the best
+        - Omni
+            href: https://pedrotchang.omni.siderolabs.io/
+            description: Omni
 
-    - My Third Group:
-        - My Third Service:
-            href: http://localhost/
-            description: Homepage is 😎
+        - Grafana
+            href: https://rw6q7h-pedrotchang.proxy-us.omni.siderolabs.io
+            description: Grafana
+
   widgets.yaml: |
     - kubernetes:
         cluster:
@@ -51,6 +53,6 @@ data:
         memory: true
         network: default
     - search:
-        provider: duckduckgo
+        provider: google
         target: _blank
   docker.yaml: ""
