@@ -36,26 +36,24 @@ I have them in this structure:
 
 ## Apps
 
-### Infrastructure Applications
-
 | Icon | Name | Description |
 |------|------|-------------|
-| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/cilium.png" width="30" alt="Cilium logo"> | Cilium | An amazing CNI used for all my clusters. I opt out of Flannel for Cilium. |
-| <img src="https://avatars.githubusercontent.com/u/100373852?s=200&v=4" width="30" alt="CloudnativePG logo"> | CloudnativePG | A Kubernetes operator for deploying and managing PostgreSQL clusters. |
-| <img src="https://raw.githubusercontent.com/external-secrets/external-secrets/refs/heads/main/assets/eso-logo-large.png" width="30" alt="External Secrets logo"> | External Secrets Operator | A Kubernetes operator that synchronizes secrets from external APIs into Kubernetes. Currently, it uses secrets from my Azure Key Vault. |
-| <img src="https://raw.githubusercontent.com/kubernetes-sigs/external-dns/refs/heads/master/docs/img/external-dns.png" width="30" alt="External DNS logo"> | External DNS | A Kubernetes addon that automates the management of DNS records based on Kubernetes resources. |
-| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/flux-cd.png" width="30" alt="FluxCD logo"> | FluxCD | A GitOps tool for automating Kubernetes deployments from Git repositories. |
-| <img src="https://avatars.githubusercontent.com/u/158298505?s=48&v=4" width="30" alt="Flux Operator logo"> | Flux Operator | A Kubernetes CRD controller that manages the lifecycle of CNCF Flux. It automates installation, configuration, and upgrades of Flux controllers through a declarative API. |
-| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/grafana.png" width="30" alt="Grafana logo"> | Grafana | A multi-platform analytics and visualization web application for monitoring data. |
-| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/prometheus.png" width="30" alt="Prometheus logo"> | Prometheus | An open-source monitoring and alerting toolkit for containers and microservices. |
-| <img src="https://avatars.githubusercontent.com/ml/287?s=82&v=4" width="30" alt="Renovate logo"> | Renovate | An automated dependency update tool that creates and maintains pull requests for your dependencies. |
+| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/cilium.png" width="30" alt="Cilium logo"> | [Cilium](https://cilium.io/) | An amazing CNI used for all my clusters. I opt out of Flannel for Cilium. |
+| <img src="https://avatars.githubusercontent.com/u/100373852?s=200&v=4" width="30" alt="CloudnativePG logo"> | [CloudnativePG](https://cloudnative-pg.io/) | A Kubernetes operator for deploying and managing PostgreSQL clusters. |
+| <img src="https://raw.githubusercontent.com/external-secrets/external-secrets/refs/heads/main/assets/eso-logo-large.png" width="30" alt="External Secrets logo"> | [External Secrets Operator](https://external-secrets.io/) | A Kubernetes operator that synchronizes secrets from external APIs into Kubernetes. Currently, it uses secrets from my Azure Key Vault. |
+| <img src="https://raw.githubusercontent.com/kubernetes-sigs/external-dns/refs/heads/master/docs/img/external-dns.png" width="30" alt="External DNS logo"> | [External DNS](https://github.com/kubernetes-sigs/external-dns) | A Kubernetes addon that automates the management of DNS records based on Kubernetes resources. |
+| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/flux-cd.png" width="30" alt="FluxCD logo"> | [FluxCD](https://fluxcd.io/) | A GitOps tool for automating Kubernetes deployments from Git repositories. |
+| <img src="https://avatars.githubusercontent.com/u/158298505?s=48&v=4" width="30" alt="Flux Operator logo"> | [Flux Operator](https://github.com/flux-framework/flux-operator) | A Kubernetes CRD controller that manages the lifecycle of CNCF Flux. It automates installation, configuration, and upgrades of Flux controllers through a declarative API. |
+| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/grafana.png" width="30" alt="Grafana logo"> | [Grafana](https://grafana.com/) | A multi-platform analytics and visualization web application for monitoring data. |
+| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/prometheus.png" width="30" alt="Prometheus logo"> | [Prometheus](https://prometheus.io/) | An open-source monitoring and alerting toolkit for containers and microservices. |
+| <img src="https://avatars.githubusercontent.com/ml/287?s=82&v=4" width="30" alt="Renovate logo"> | [Renovate](https://www.mend.io/renovate/) | An automated dependency update tool that creates and maintains pull requests for your dependencies. |
 
 ### End User Applications
 
 | Icon | Name | Description |
-| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/homepage.png" width="30" alt="Homepage logo"> | Homepage | A self-hosted dashboard that allows you to organize your web services and bookmarks in a clean, customizable interface. |
 |------|------|-------------|
-| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/linkding.png" width="30" alt="Linkding logo"> | Linkding | A self-hosted bookmark manager with tagging and search functionality. |
+| <img src="https://avatars.githubusercontent.com/u/122929872?s=48&v=4" width="30" alt="Homepage logo"> | [Homepage](https://gethomepage.dev/) | A self-hosted dashboard that allows you to organize your web services and bookmarks in a clean, customizable interface. |
+| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/linkding.png" width="30" alt="Linkding logo"> | [Linkding](https://github.com/sissbruecker/linkding) | A self-hosted bookmark manager with tagging and search functionality. |
 
 ## Next Steps
 
