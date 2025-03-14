@@ -33,8 +33,6 @@ grafana:
     date_formats:
       default_week_start: sunday
 
-  # envFromSecret: grafana-env
-
   sidecar:
     datasources:
       enabled: true

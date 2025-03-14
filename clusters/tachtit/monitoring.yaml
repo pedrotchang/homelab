@@ -14,10 +14,6 @@
 #     name: flux-system
 #   path: "./monitoring/controllers/tachtit"
 #   prune: true
-  # decryption:
-  #   provider: sops
-  #   secretRef:
-  #     name: sops-age
 # ---
 # apiVersion: kustomize.toolkit.fluxcd.io/v1
 # kind: Kustomization

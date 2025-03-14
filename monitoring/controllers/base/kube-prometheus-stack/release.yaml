@@ -2,7 +2,6 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: kube-prometheus-stack
-  namespace: monitoring
 spec:
   interval: 30m
   chart:
@@ -14,6 +13,11 @@ spec:
         name: kube-prometheus-stack
         namespace: monitoring
       interval: 12h
+
+  valuesFrom:
+    - kind: ConfigMap
+      name: kube-prometheus-stack-values
+
   install:
     crds: Create
   upgrade:
@@ -25,6 +29,3 @@ spec:
       - paths: ["/metadata/annotations/prometheus-operator-validated"]
         target:
           kind: PrometheusRule
-  valuesFrom:
-    - kind: ConfigMap
-      name: kube-prometheus-stack-values
