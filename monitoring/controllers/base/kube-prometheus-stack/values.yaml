@@ -31,9 +31,9 @@ prometheus:
 grafana:
   grafana.ini:
     date_formats:
-      default_week_start: monday
+      default_week_start: sunday
 
-  envFromSecret: grafana-env
+  # envFromSecret: grafana-env
 
   sidecar:
     datasources:

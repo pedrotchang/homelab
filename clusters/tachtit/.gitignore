@@ -2,3 +2,4 @@ tachtit-talosconfig.yaml
 tachtit-kubeconfig.yaml
 omniconfig.yaml
 .DS_STORE
+mise.toml
