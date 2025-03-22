@@ -5,8 +5,7 @@ metadata:
   labels:
     app.kubernetes.io/name: homepage
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: home.seyahl.come
-
+    external-dns.alpha.kubernetes.io/hostname: home.seyahl.com
     gethomepage.dev/description: Dynamically Detected Homepage
     gethomepage.dev/enabled: "true"
     gethomepage.dev/group: Cluster Management
