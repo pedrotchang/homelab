@@ -18,18 +18,22 @@ data:
             - abbr: GH
               href: https://github.com/pedrotchang
               icon: github.png
+              description: GitHub
         - CloudFlare:
             - abbr: CF
               href: https://cloudflare.com/
               icon: cloudflare.png
+              description: CloudFlare
         - Kubernetes:
             - abbr: KD
               href: https://kubernetes.io/docs/home/
               icon: kubernetes.png
+              description: Kubernetes Docs
         - Omni:
             - abbr: OM
               href: https://omni.siderolabs.com
               icon: talos.png
+              description: Omni Docs
 
 
     - External Services:
@@ -64,29 +68,23 @@ data:
     - Create:
       - YouTube Studio:
             href: https://studio.youtube.com
-            description: Create YouTube Videos
             icon: youtube.png
       - LinkedIn:
             href: https://linkedin.com
-            description: Professional Social
             icon: linkedin.png
       - Substack:
             href: https://pedrotchang.substack.com
-            description: Read and Write Articles
             icon: si-substack-#FF6719
 
     - seyzahl:
       - Linkding:
             href: https://linkding.seyzahl.com
-            description: Linkding
             icon: linkding.png
       - Omni:
             href: https://pedrotchang.omni.siderolabs.io/
-            description: Omni
             icon: talos.png
       - Grafana:
             href: https://rw6q7h-pedrotchang.proxy-us.omni.siderolabs.io
-            description: Grafana
             icon: grafana.png
 
   widgets.yaml: |
