@@ -7,7 +7,7 @@ metadata:
     app.kubernetes.io/name: homepage
 data:
   kubernetes.yaml: |
-    mode: cluster
+    mode: default
   settings.yaml: ""
   custom.css: ""
   custom.js: ""
