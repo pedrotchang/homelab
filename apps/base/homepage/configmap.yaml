@@ -30,8 +30,12 @@ data:
             - abbr: TL
               href: https://www.talos.dev/latest/
               icon: talos.png
+        - Talos Linux:
+            - abbr: OM
+              href: https://omni.siderolabs.com
+              icon: talos.png
 
-    - Consume:
+    - Learn:
         - KubeCraft:
             - abbr: KC
               href: https://www.skool.com/kubecraft
@@ -93,7 +97,7 @@ data:
 
     - kubernetes:
         cluster:
-          show: false
+          show: true
           cpu: true
           memory: true
           showLabel: false
@@ -106,8 +110,8 @@ data:
     - resources:
         backend: resources
         expanded: false
-        cpu: true
-        memory: true
+        cpu: false
+        memory: false
         network: default
     - search:
         provider: google
