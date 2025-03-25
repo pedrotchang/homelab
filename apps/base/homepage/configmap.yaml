@@ -6,8 +6,8 @@ metadata:
   labels:
     app.kubernetes.io/name: homepage
 data:
-  # kubernetes.yaml: |
-  #   mode: cluster
+  kubernetes.yaml: |
+    mode: cluster
   settings.yaml: ""
   custom.css: ""
   custom.js: ""
@@ -43,19 +43,20 @@ data:
               href: https://kodekloud.com/
 
     - External Services:
-      - Gmail:
-            href: https://gmail.com
-            description: Gmail
-            icon: gmail.png
-      - Claude:
-          - abbr: CE
-            href: https://claude.ai/new
-            description: Claude
-            icon: claude-ai.png
-      - Grok:
-          - abbr: GK
-            href: https://grok.com
-            description: Grok
+        - Gmail:
+            - abbr: GM
+              href: https://gmail.com
+              description: Gmail
+              icon: gmail.png
+        - Claude:
+            - abbr: CE
+              href: https://claude.ai/new
+              description: Claude
+              icon: claude-ai.png
+        - Grok:
+            - abbr: GK
+              href: https://grok.com
+              description: Grok
 
   services.yaml: |
 
