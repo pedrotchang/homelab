@@ -53,7 +53,7 @@ data:
     - Learn:
         - KubeCraft:
               href: https://www.skool.com/kubecraft
-              description: KubeCraft
+              description: Community
         - Boot.dev:
               description: Learn Backend Development
               href: https://www.boot.dev/tracks/backend
@@ -93,13 +93,13 @@ data:
 
     - kubernetes:
         cluster:
-          show: true
+          show: false
           cpu: true
           memory: true
           showLabel: true
           label: "cluster"
         nodes:
-          show: false
+          show: true 
           cpu: true
           memory: true
           showLabel: true
