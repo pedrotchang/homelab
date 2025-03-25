@@ -6,8 +6,8 @@ metadata:
   labels:
     app.kubernetes.io/name: homepage
 data:
-  kubernetes.yaml: |
-    mode: default
+  # kubernetes.yaml: |
+  #   mode: default
   settings.yaml: ""
   custom.css: ""
   custom.js: ""
@@ -96,10 +96,10 @@ data:
           show: true
           cpu: true
           memory: true
-          showLabel: true
+          showLabel: false
           label: "cluster"
         nodes:
-          show: true
+          show: false 
           cpu: true
           memory: true
           showLabel: true
