@@ -93,7 +93,7 @@ data:
 
     - kubernetes:
         cluster:
-          show: true
+          show: false
           cpu: true
           memory: true
           showLabel: false
