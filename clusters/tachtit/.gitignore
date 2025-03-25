@@ -3,3 +3,4 @@ tachtit-kubeconfig.yaml
 omniconfig.yaml
 .DS_STORE
 mise.toml
+flux-operator/
