@@ -30,10 +30,6 @@ data:
             - abbr: TL
               href: https://www.talos.dev/latest/
               icon: talos.png
-        - Github:
-            - abbr: GH
-              href: https://github.com/pedrotchang
-              icon: github.png
 
     - Consume:
         - KubeCraft:
@@ -45,7 +41,6 @@ data:
         - KodeKloud:
             - abbr: KK
               href: https://kodekloud.com/
-              icon: kodekloud.png
 
     - External Services:
       - Gmail:
@@ -61,23 +56,6 @@ data:
           - abbr: GK
             href: https://grok.com
             description: Grok
-
-    - Creating:
-      - YouTube Studio:
-            href: https://studio.youtube.com
-            description: YouTube Studio
-            icon: youtube.png
-      - LinkedIn:
-            href: https://linkedin.com
-            description: LinkedIn
-            icon: linkedin.png
-      - Substack:
-            href: https://pedrotchang.substack.com
-            description: Substack
-            icon: si-substack-#FF6719
-
-
-
 
   services.yaml: |
 
@@ -95,6 +73,19 @@ data:
             description: Grafana
             icon: grafana.png
 
+    - Creating:
+      - YouTube Studio:
+            href: https://studio.youtube.com
+            description: YouTube Studio
+            icon: youtube.png
+      - LinkedIn:
+            href: https://linkedin.com
+            description: LinkedIn
+            icon: linkedin.png
+      - Substack:
+            href: https://pedrotchang.substack.com
+            description: Substack
+            icon: si-substack-#FF6719
 
 
   widgets.yaml: |
