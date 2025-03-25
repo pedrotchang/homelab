@@ -77,6 +77,9 @@ data:
       - Linkding:
             href: https://linkding.seyzahl.com
             icon: linkding.png
+      - Unifi:
+            href: https://unifi.ui.com
+            icon: unifi.png
       - Omni:
             href: https://pedrotchang.omni.siderolabs.io/
             icon: talos.png
