@@ -22,8 +22,6 @@ data:
             - abbr: CF
               href: https://cloudflare.com/
               icon: cloudflare.png
-
-    - Documentation and Resources:
         - Kubernetes:
             - abbr: KD
               href: https://kubernetes.io/docs/home/
@@ -37,7 +35,7 @@ data:
               href: https://github.com/pedrotchang
               icon: github.png
 
-    - Education:
+    - Consume:
         - KubeCraft:
             - abbr: KC
               href: https://www.skool.com/kubecraft
@@ -48,20 +46,6 @@ data:
             - abbr: KK
               href: https://kodekloud.com/
               icon: kodekloud.png
-
-    - Creating:
-      - YouTube Studio:
-            href: https://studio.youtube.com
-            description: YouTube Studio
-            icon: youtube.png
-      - LinkedIn:
-            href: https://linkedin.com
-            description: LinkedIn
-            icon: linkedin.png
-      - Substack:
-              href: https://pedrotchang.substack.com
-              description: Substack
-              icon: si-substack-#FF6719
 
     - External Services:
       - Gmail:
@@ -77,6 +61,21 @@ data:
           - abbr: GK
             href: https://grok.com
             description: Grok
+
+    - Creating:
+      - YouTube Studio:
+            href: https://studio.youtube.com
+            description: YouTube Studio
+            icon: youtube.png
+      - LinkedIn:
+            href: https://linkedin.com
+            description: LinkedIn
+            icon: linkedin.png
+      - Substack:
+            href: https://pedrotchang.substack.com
+            description: Substack
+            icon: si-substack-#FF6719
+
 
 
 
