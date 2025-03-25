@@ -35,16 +35,6 @@ data:
               href: https://omni.siderolabs.com
               icon: talos.png
 
-    - Learn:
-        - KubeCraft:
-            - abbr: KC
-              href: https://www.skool.com/kubecraft
-        - Boot.dev:
-            - abbr: BD
-              href: https://www.boot.dev/tracks/backend
-        - KodeKloud:
-            - abbr: KK
-              href: https://kodekloud.com/
 
     - External Services:
         - Gmail:
@@ -64,19 +54,16 @@ data:
 
   services.yaml: |
 
-    - seyzahl:
-      - Linkding:
-            href: https://linkding.seyzahl.com
-            description: Linkding
-            icon: linkding.png
-      - Omni:
-            href: https://pedrotchang.omni.siderolabs.io/
-            description: Omni
-            icon: talos.png
-      - Grafana:
-            href: https://rw6q7h-pedrotchang.proxy-us.omni.siderolabs.io
-            description: Grafana
-            icon: grafana.png
+    - Learn:
+        - KubeCraft:
+            - abbr: KC
+              href: https://www.skool.com/kubecraft
+        - Boot.dev:
+            - abbr: BD
+              href: https://www.boot.dev/tracks/backend
+        - KodeKloud:
+            - abbr: KK
+              href: https://kodekloud.com/
 
     - Creating:
       - YouTube Studio:
@@ -92,6 +79,19 @@ data:
             description: Substack
             icon: si-substack-#FF6719
 
+    - seyzahl:
+      - Linkding:
+            href: https://linkding.seyzahl.com
+            description: Linkding
+            icon: linkding.png
+      - Omni:
+            href: https://pedrotchang.omni.siderolabs.io/
+            description: Omni
+            icon: talos.png
+      - Grafana:
+            href: https://rw6q7h-pedrotchang.proxy-us.omni.siderolabs.io
+            description: Grafana
+            icon: grafana.png
 
   widgets.yaml: |
 
