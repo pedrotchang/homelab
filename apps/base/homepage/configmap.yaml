@@ -6,8 +6,8 @@ metadata:
   labels:
     app.kubernetes.io/name: homepage
 data:
-  # kubernetes.yaml: |
-  #   mode: default
+  kubernetes.yaml: |
+    mode: default
   settings.yaml: ""
   custom.css: ""
   custom.js: ""
@@ -35,7 +35,7 @@ data:
         - KubeCraft:
             - abbr: KC
               href: https://www.skool.com/kubecraft
-        - Boot.dev Backend:
+        - Boot.dev:
             - abbr: BD
               href: https://www.boot.dev/tracks/backend
         - KodeKloud:
@@ -102,10 +102,10 @@ data:
           show: false 
           cpu: true
           memory: true
-          showLabel: true
+          showLabel: false
     - resources:
         backend: resources
-        expanded: true
+        expanded: false
         cpu: true
         memory: true
         network: default
