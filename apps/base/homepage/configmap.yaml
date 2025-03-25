@@ -26,11 +26,11 @@ data:
             - abbr: KD
               href: https://kubernetes.io/docs/home/
               icon: kubernetes.png
-        - Talos Linux:
+        - Talos:
             - abbr: TL
               href: https://www.talos.dev/latest/
               icon: talos.png
-        - Talos Linux:
+        - Omni:
             - abbr: OM
               href: https://omni.siderolabs.com
               icon: talos.png
