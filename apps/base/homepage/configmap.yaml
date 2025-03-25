@@ -106,7 +106,7 @@ data:
           show: true 
           cpu: true
           memory: true
-          showLabel: false
+          showLabel: true
     - resources:
         backend: resources
         expanded: true
