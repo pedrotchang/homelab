@@ -12,33 +12,42 @@ data:
   custom.css: ""
   custom.js: ""
   bookmarks.yaml: |
+
     - Developer:
         - Github:
             - abbr: GH
               href: https://github.com/pedrotchang
+              icon: github.png
+        - CloudFlare:
+            - abbr: CF
+              href: https://cloudflare.com/
+              icon: cloudflare.png
+
+    - Documentation and Resources:
+        - Kubernetes:
+            - abbr: KD
+              href: https://kubernetes.io/docs/home/
+              icon: kubernetes.png
+        - Talos Linux:
+            - abbr: TL
+              href: https://www.talos.dev/latest/
+              icon: talos.png
+        - Github:
+            - abbr: GH
+              href: https://github.com/pedrotchang
+              icon: github.png
+
+    - Education:
         - KubeCraft:
             - abbr: KC
               href: https://www.skool.com/kubecraft
-        - Claude:
-            - abbr: CE
-              href: https://claude.ai/new
-              description: Claude
-              icon: mdi-robot-excited-outline-#DE7552
-
-  services.yaml: |
-    - seyzahl:
-      - Linkding:
-            href: https://linkding.seyzahl.com
-            description: Linkding
-            icon: linkding.png
-      - Omni:
-            href: https://pedrotchang.omni.siderolabs.io/
-            description: Omni
-            icon: talos.png
-      - Grafana:
-            href: https://rw6q7h-pedrotchang.proxy-us.omni.siderolabs.io
-            description: Grafana
-            icon: grafana.png
+        - Boot.dev Backend:
+            - abbr: BD
+              href: https://www.boot.dev/tracks/backend
+        - KodeKloud:
+            - abbr: KK
+              href: https://kodekloud.com/
+              icon: kodekloud.png
 
     - Creating:
       - YouTube Studio:
@@ -54,7 +63,43 @@ data:
               description: Substack
               icon: si-substack-#FF6719
 
+    - External Services:
+      - Gmail:
+            href: https://gmail.com
+            description: Gmail
+            icon: gmail.png
+      - Claude:
+          - abbr: CE
+            href: https://claude.ai/new
+            description: Claude
+            icon: claude-ai.png
+      - Grok:
+          - abbr: GK
+            href: https://grok.com
+            description: Grok
+
+
+
+  services.yaml: |
+
+    - seyzahl:
+      - Linkding:
+            href: https://linkding.seyzahl.com
+            description: Linkding
+            icon: linkding.png
+      - Omni:
+            href: https://pedrotchang.omni.siderolabs.io/
+            description: Omni
+            icon: talos.png
+      - Grafana:
+            href: https://rw6q7h-pedrotchang.proxy-us.omni.siderolabs.io
+            description: Grafana
+            icon: grafana.png
+
+
+
   widgets.yaml: |
+
     - kubernetes:
         cluster:
           show: true
