@@ -103,15 +103,15 @@ data:
           showLabel: false
           label: "cluster"
         nodes:
-          show: false 
+          show: true 
           cpu: true
           memory: true
           showLabel: false
     - resources:
         backend: resources
-        expanded: false
-        cpu: false
-        memory: false
+        expanded: true
+        cpu: true
+        memory: true 
         network: default
     - search:
         provider: google
