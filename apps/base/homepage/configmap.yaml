@@ -92,7 +92,7 @@ data:
           cpu: true
           memory: true
           showLabel: true
-          label: "cluster"
+          label: "Tachtit"
         nodes:
           show: false
           cpu: true
