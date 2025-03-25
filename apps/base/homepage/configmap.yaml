@@ -56,27 +56,27 @@ data:
 
     - Learn:
         - KubeCraft:
-            - abbr: KC
               href: https://www.skool.com/kubecraft
+              description: KubeCraft
         - Boot.dev:
-            - abbr: BD
+              description: Learn Backend Development
               href: https://www.boot.dev/tracks/backend
         - KodeKloud:
-            - abbr: KK
+              description: Learn Cloud Technologies
               href: https://kodekloud.com/
 
     - Creating:
       - YouTube Studio:
             href: https://studio.youtube.com
-            description: YouTube Studio
+            description: Create YouTube Videos
             icon: youtube.png
       - LinkedIn:
             href: https://linkedin.com
-            description: LinkedIn
+            description: Professional Social
             icon: linkedin.png
       - Substack:
             href: https://pedrotchang.substack.com
-            description: Substack
+            description: Read and Write Articles
             icon: si-substack-#FF6719
 
     - seyzahl:
