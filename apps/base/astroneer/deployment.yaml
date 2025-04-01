@@ -32,7 +32,7 @@ spec:
 
           ports:
             - containerPort: 8777 
-              protocol: TCP
+              protocol: UDP
 
       restartPolicy: Always
 
