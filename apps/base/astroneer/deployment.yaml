@@ -38,7 +38,7 @@ spec:
 
       volumeMounts:
         - name: astroneer-data
-          mountPath: /etc/astroneer/data
+          mountPath: /astroneer
 
       volumes:
         - name: astroneer-data
