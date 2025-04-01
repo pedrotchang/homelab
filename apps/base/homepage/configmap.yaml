@@ -103,9 +103,9 @@ data:
           showLabel: true
     - resources:
         backend: resources
-        expanded: true
-        cpu: true
-        memory: true 
+        expanded: false
+        cpu: false
+        memory: false
         network: default
     - search:
         provider: google
