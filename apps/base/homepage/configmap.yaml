@@ -98,8 +98,8 @@ data:
           label: "Tachtit"
         nodes:
           show: true
-          cpu: true
-          memory: true
+          cpu: false
+          memory: false
           showLabel: true
     - resources:
         backend: resources
