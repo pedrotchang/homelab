@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: astroneer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: astroneer
+  template:
+    metadata:
+      labels:
+        app: astroneer
+        policy-type: "app"
+    spec:
+      # securityContext:
+      #   runAsUser: 33 # found from www-data:
+      #   runAsGroup: 33 # found from www-data:
+      #   fsGroup: 33 # found from www-data:
+      containers:
+        - name: astroneer
+          image: barumel/docker-astroneer-server:2.2.0
+
+          securityContext:
+              allowPrivilegeEscalation: false
+
+          envFrom:
+            - configMapRef:
+                name: astroneer-configmap
+            # - secretRef:
+            #     name: astroneer-container-env
+
+          ports:
+            - containerPort: 8777 
+              protocol: TCP
+
+      restartPolicy: Always
+
+      volumeMounts:
+        - name: astroneer-data
+          mountPath: /etc/astroneer/data
+
+      volumes:
+        - name: astroneer-data
+          persistentVolumeClaim:
+            claimName: astroneer-data-pvc
