@@ -8,5 +8,5 @@ spec:
   selector:
     app: minecraft
   ports:
-    - port: 19132
-      protocol: UDP
+    - port: 25565
+      protocol: TCP
