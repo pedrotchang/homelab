@@ -3,5 +3,4 @@ kind: ConfigMap
 metadata:
   name: minecraft-configmap
 data:
-  - name: EULA
-    value: "TRUE"
+  EULA: "TRUE"
