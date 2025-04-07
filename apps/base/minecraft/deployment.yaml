@@ -1,4 +1,4 @@
-Gkind: Deployment
+kind: Deployment
 metadata:
   name: minecraft
 spec:
