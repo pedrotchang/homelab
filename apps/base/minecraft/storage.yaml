@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: minecraft-pvc
+  name: minecraft-data-pvc
   namespace: minecraft 
 spec:
   accessModes:

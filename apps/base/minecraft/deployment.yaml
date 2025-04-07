@@ -19,29 +19,37 @@ spec:
       containers:
         - name: minecraft
           image: itzg/minecraft-bedrock-server
-          imagePullPolicy: Always
+
           resources:
             requests:
               cpu: 500m
               memory: 1Gi
-          # env:
-          # - name: EULA
-          #   value: "TRUE"
-
-          volumeMounts:
-          - name: data
-            mountPath: /data
 
           securityContext:
               allowPrivilegeEscalation: false
+
+          imagePullPolicy: Always
+
+
+          # env:
+          # - name: EULA
+          #   value: "TRUE"
 
           envFrom:
             - configMapRef:
                 name: minecraft-configmap
 
+          ports:
+            - containerPort: 19132
+              protocol: UDP
+
       restartPolicy: Always
 
+      volumeMounts:
+      - name: minecraft-data
+        mountPath: /etc/minecraft/data
+
       volumes:
-        - name: data
+        - name: minecraft-data
           persistentVolumeClaim:
-            claimName: minecraft-pvc
+            claimName: minecraft-data-pvc
