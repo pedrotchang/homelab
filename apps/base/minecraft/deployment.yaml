@@ -11,7 +11,7 @@ spec:
     metadata:
       labels:
         app: minecraft
-        policy-type: "app"
+        policy-type: "server"
     spec:
       # securityContext:
       #   runAsUser: 33 # found from www-data:
@@ -23,26 +23,24 @@ spec:
 
           resources:
             requests:
-              cpu: 500m
-              memory: 1Gi
+              memory: 4Gi
+              cpu: 2
+            limits:
+              memory: 8Gi
+              cpu: 4
 
           securityContext:
               allowPrivilegeEscalation: false
 
           imagePullPolicy: Always
 
-
-          # env:
-          # - name: EULA
-          #   value: "TRUE"
-
           envFrom:
             - configMapRef:
                 name: minecraft-configmap
 
           ports:
-            - containerPort: 19132
-              protocol: UDP
+            - containerPort: 25565
+              protocol: TCP
 
       restartPolicy: Always
 
