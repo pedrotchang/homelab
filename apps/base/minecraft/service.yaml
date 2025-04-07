@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: minecraft
+  labels:
+    app: minecraft
+spec:
+  selector:
+    app: minecraft
+  ports:
+    - port: 19132
+      protocol: UDP

@@ -1,16 +1,15 @@
-apiVersion: apps/v1
-kind: Deployment
+Gkind: Deployment
 metadata:
-  name: astroneer
+  name: minecraft
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: astroneer
+      app: minecraft
   template:
     metadata:
       labels:
-        app: astroneer
+        app: minecraft
         policy-type: "app"
     spec:
       # securityContext:
@@ -18,29 +17,27 @@ spec:
       #   runAsGroup: 33 # found from www-data:
       #   fsGroup: 33 # found from www-data:
       containers:
-        - name: astroneer
-          image: barumel/docker-astroneer-server:2.2.0
+        - name: minecraft
+          image: itzg/minecraft-bedrock-server
 
           securityContext:
               allowPrivilegeEscalation: false
 
           envFrom:
             - configMapRef:
-                name: astroneer-configmap
-            # - secretRef:
-            #     name: astroneer-container-env
+                name: minecraft-configmap
 
           ports:
-            - containerPort: 8777 
+            - containerPort: 19132 
               protocol: UDP
 
       restartPolicy: Always
 
       volumeMounts:
-        - name: astroneer-data
-          mountPath: /astroneer
+        - name: data
+          mountPath: /data
 
       volumes:
-        - name: astroneer-data
+        - name: data
           persistentVolumeClaim:
-            claimName: astroneer-data-pvc
+            claimName: minecraft-pvc
