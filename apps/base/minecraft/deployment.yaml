@@ -19,7 +19,7 @@ spec:
       #   fsGroup: 33 # found from www-data:
       containers:
         - name: minecraft
-          image: itzg/minecraft-bedrock-server
+          image: itzg/minecraft-server:2025.4.0
 
           resources:
             requests:
