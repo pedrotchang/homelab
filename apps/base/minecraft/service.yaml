@@ -4,9 +4,11 @@ metadata:
   name: minecraft
   labels:
     app: minecraft
+    cilium-lb-pool: apps-pool
 spec:
   selector:
     app: minecraft
+  type: LoadBalancer
   ports:
     - port: 25565
       protocol: TCP
