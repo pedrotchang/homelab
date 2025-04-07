@@ -42,9 +42,9 @@ spec:
             - containerPort: 25565
               protocol: TCP
 
-        volumeMounts:
-        - name: minecraft-data
-          mountPath: /data
+          volumeMounts:
+          - name: minecraft-data
+            mountPath: /data
 
       restartPolicy: Always
 
