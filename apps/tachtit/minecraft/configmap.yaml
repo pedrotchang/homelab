@@ -5,4 +5,11 @@ metadata:
 data:
   EULA: "TRUE"
   # whitelist: |
-  #   asenselogic
+  #   a_seyza
+  # MODPACK_PLATFORM: AUTO_CURSEFORGE
+  # CF_SLUG: all-the-mods-10
+  # CF_FILE_ID: "6378501"
+  # CF_FILENAME_MATCHER: 2.42
+  # CF_FORCE_SYNCHRONIZE: true
+  # CF_OVERRIDES_EXCLUSIONS: |
+  #   shaderpacks/**
