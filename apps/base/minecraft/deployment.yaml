@@ -13,10 +13,6 @@ spec:
         app: minecraft
         policy-type: "server"
     spec:
-      # securityContext:
-      #   runAsUser: 33 # found from www-data:
-      #   runAsGroup: 33 # found from www-data:
-      #   fsGroup: 33 # found from www-data:
       containers:
         - name: minecraft
           image: itzg/minecraft-server:2025.4.0
