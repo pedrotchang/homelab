@@ -9,3 +9,4 @@ data:
   MEMORY: "4G"
   CF_OVERRIDES_EXCLUSIONS: |
     shaderpacks/**
+  ALLOW_FLIGHT: "TRUE"
