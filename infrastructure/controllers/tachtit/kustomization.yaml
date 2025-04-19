@@ -4,5 +4,5 @@ resources:
   - cilium
   # - local-path
   # - external-dns
-  # - external-secrets
+  - external-secrets
   # - renovate
