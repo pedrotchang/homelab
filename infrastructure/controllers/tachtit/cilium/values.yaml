@@ -41,7 +41,7 @@ hubble:
         omni-kube-service-exposer.sidero.dev/label: Hubble
 
 l2announcements:
-  enabled: true
+  enabled: false
 
 # Calculated based on 30 services
 # https://docs.cilium.io/en/latest/network/l2-announcements/#sizing-client-rate-limit
@@ -51,6 +51,6 @@ k8sClientRateLimit:
   burst: 20
 
 ingressController:
-  enabled: true
+  enabled: false
   loadbalancerMode: shared
   default: true
