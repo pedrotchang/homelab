@@ -3,6 +3,6 @@ kind: Kustomization
 resources:
   - cilium
   - external-secrets
-  # - external-dns
+  - external-dns
   - local-path
   # - renovate
