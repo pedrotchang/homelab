@@ -5,4 +5,4 @@ resources:
   - external-secrets
   - external-dns
   - local-path
-  # - renovate
+  - renovate
