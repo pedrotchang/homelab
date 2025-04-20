@@ -57,6 +57,7 @@ data:
     - Learn:
         - KubeCraft:
               href: https://www.skool.com/kubecraft
+              icon: kubecraft.png
         - Boot.dev:
               href: https://www.boot.dev/tracks/backend
         - KodeKloud:
