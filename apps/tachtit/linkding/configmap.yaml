@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: linkding-configmap
 data:
-  LD_SERVER_PORT: "9090"
+  LD_SERVER_PORT: "3003"
   LD_DB_ENGINE: postgres
   LD_DB_DATABASE: linkding
   LD_DB_PORT: "5432"
