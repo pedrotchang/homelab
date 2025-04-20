@@ -3,6 +3,6 @@ kind: Kustomization
 resources:
   - homepage
   - linkding
-  # - minecraft
+  - minecraft
   # - commafeed
   # - wallabag
