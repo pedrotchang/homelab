@@ -10,10 +10,8 @@ data:
   CF_OVERRIDES_EXCLUSIONS: |
     shaderpacks/**
   ALLOW_FLIGHT: "TRUE"
-  LEVEL: "seyza's world"
   OVERRIDE_SERVER_PROPERTIES: "false"
   SEED: "7783552872028868482"
-  MOTD: "Seyza's Minecraft Server"
   OPS: |
     a_seyza
   MAX_PLAYERS: "5"
