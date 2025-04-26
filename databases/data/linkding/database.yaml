@@ -14,45 +14,40 @@ spec:
 
   monitoring:
     enablePodMonitor: true
-    # tls:
-    #   enabled: true
 
   storage:
     size: 1Gi
 
   bootstrap:
-    initdb: # for initial deployment before creating a backup
+    initdb:
       database: linkding
       owner: linkding
       secret:
         name: linkding-db-creds
 
-  # bootstrap:
-    # Alternative bootstrap method: start from a backup
-    #recovery:
-    #  backup:
-    #    name: backup-example
+
+  # externalClusters:
+  #   - name: clusterBackup
+  #     barmanObjectStore:
+  #       destinationPath: https://seyzahldata.blob.core.windows.net/linkding
+  #       serverName: linkding-db-tachtit-cnpg-v1
+  #       azureCredentials:
+  #         connectionString:
+  #           name: azure-creds
+  #           key: linkding-connection-string
 
   # backup:
   #   barmanObjectStore:
-  #     destinationPath: s3://cluster-example-full-backup/
-  #     endpointURL: http://custom-endpoint:1234
-  #     s3Credentials:
-  #       accessKeyId:
-  #         name: backup-creds
-  #         key: ACCESS_KEY_ID
-  #       secretAccessKey:
-  #         name: backup-creds
-  #         key: ACCESS_SECRET_KEY
+  #     destinationPath: https://seyzahldata.blob.core.windows.net/linkding
+  #     azureCredentials:
+  #       connectionString:
+  #         name: azure-creds
+  #         key: linkding-connection-string
   #     wal:
   #       compression: gzip
-  #       encryption: AES256
   #     data:
   #       compression: gzip
-  #       encryption: AES256
-  #       immediateCheckpoint: false
-  #       jobs: 2
-  #   retentionPolicy: "30d"
+  #   retentionPolicy: "14d"
 
   resources:
     requests:
