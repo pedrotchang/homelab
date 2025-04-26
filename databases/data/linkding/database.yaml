@@ -36,18 +36,18 @@ spec:
   #           name: azure-creds
   #           key: linkding-connection-string
 
-  # backup:
-  #   barmanObjectStore:
-  #     destinationPath: https://seyzahldata.blob.core.windows.net/linkding
-  #     azureCredentials:
-  #       connectionString:
-  #         name: azure-creds
-  #         key: linkding-connection-string
-  #     wal:
-  #       compression: gzip
-  #     data:
-  #       compression: gzip
-  #   retentionPolicy: "14d"
+  backup:
+    barmanObjectStore:
+      destinationPath: https://seyzahldata.blob.core.windows.net/linkding
+      azureCredentials:
+        connectionString:
+          name: azure-creds
+          key: linkding-connection-string
+      wal:
+        compression: gzip
+      data:
+        compression: gzip
+    retentionPolicy: "14d"
 
   resources:
     requests:

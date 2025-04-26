@@ -3,3 +3,6 @@ data-kubeconfig.yaml
 omniconfig.yaml
 age.agekey
 mise.toml
+clustersecretstore-crd.yaml
+externalsecret-crd.yaml
+secretstore-crd.yaml
