@@ -71,6 +71,9 @@ data:
       - Azure:
             href: https://portal.azure.com/#home
             icon: azure.png
+      - N8N:
+            href: http://n8n.seyzahl.com/
+            icon: n8n.png
       - Unifi:
             href: https://unifi.ui.com
             icon: unifi.png
