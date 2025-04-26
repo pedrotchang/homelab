@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: n8n.seyzahl.com
+  name: n8n
+spec:
+  ingressClassName: cilium
+  rules:
+    - host: n8n.seyzahl.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: n8n
+                port:
+                  number: 3008
+            path: /
+            pathType: Prefix
