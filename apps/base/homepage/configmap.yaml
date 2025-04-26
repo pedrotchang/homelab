@@ -29,19 +29,9 @@ data:
               href: https://kubernetes.io/docs/home/
               icon: kubernetes.png
               description: Kubernetes Docs
-        - Omni:
-            - abbr: OM
-              href: https://omni.siderolabs.com
-              icon: talos.png
-              description: Omni Docs
 
 
     - External Services:
-        - Gmail:
-            - abbr: GM
-              href: https://gmail.com
-              description: Gmail
-              icon: gmail.png
         - Claude:
             - abbr: CE
               href: https://claude.ai/new
@@ -60,8 +50,8 @@ data:
               icon: kubecraft.png
         - Boot.dev:
               href: https://www.boot.dev/tracks/backend
-        - KodeKloud:
-              href: https://kodekloud.com/
+        - Udemy:
+              href: https://www.udemy.com/home/my-courses/learning/
 
     - Create:
       - YouTube Studio:
@@ -78,15 +68,15 @@ data:
       - Linkding:
             href: https://linkding.seyzahl.com
             icon: linkding.png
+      - Azure:
+            href: https://portal.azure.com/#home
+            icon: azure.png
       - Unifi:
             href: https://unifi.ui.com
             icon: unifi.png
       - Omni:
             href: https://pedrotchang.omni.siderolabs.io/
             icon: talos.png
-      - Grafana:
-            href: https://rw6q7h-pedrotchang.proxy-us.omni.siderolabs.io
-            icon: grafana.png
 
   widgets.yaml: |
 
