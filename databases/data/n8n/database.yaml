@@ -15,9 +15,6 @@ spec:
   monitoring:
     enablePodMonitor: true
 
-  storage:
-    size: 1Gi
-
   bootstrap:
     initdb:
       database: n8n
