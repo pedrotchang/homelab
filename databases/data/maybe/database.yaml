@@ -34,7 +34,7 @@ spec:
   #       azureCredentials:
   #         connectionString:
   #           name: azure-creds
-  #           key: maybe-connection-string
+  #           key: connection-string-2
 
   backup:
     barmanObjectStore:
@@ -42,7 +42,7 @@ spec:
       azureCredentials:
         connectionString:
           name: azure-creds
-          key: maybe-connection-string
+          key: connection-string-2
       wal:
         compression: gzip
       data:
