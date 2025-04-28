@@ -4,3 +4,4 @@ omniconfig.yaml
 .DS_STORE
 mise.toml
 flux-operator/
+*.json
