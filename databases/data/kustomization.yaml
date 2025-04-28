@@ -4,4 +4,4 @@ resources:
   - linkding
   - n8n
   # - maybe
-  # - wallabag
+  - wallabag
