@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: maybe
+spec:
+  selector:
+    app: maybe
+  type: ClusterIP
+  ports:
+    - port: 3006

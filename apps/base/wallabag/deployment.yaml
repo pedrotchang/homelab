@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wallabag
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wallabag
+
+  template:
+    metadata:
+      labels:
+        app: wallabag
+        try: "0"
+        policy-type: "app"
+
+    spec:
+      # envsubst in the entrypoint sh needs to write to /etc/php
+      # securityContext:
+      #   runAsUser: 1000
+      #   runAsGroup: 3000
+      #   fsGroup: 2000
+
+      containers:
+        - name: wallabag
+          image: ghcr.io/wallabag/docker:2.6.10
+
+          securityContext:
+            allowPrivilegeEscalation: false
+
+          envFrom:
+            - configMapRef:
+                name: wallabag-configmap
+            - secretRef:
+                name: wallabag-container-env
+
+          ports:
+            - containerPort: 80
+              protocol: TCP
+
+      restartPolicy: Always

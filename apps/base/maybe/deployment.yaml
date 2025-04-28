@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: linkding
+  name: maybe
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: linkding
+      app: maybe
   template:
     metadata:
       labels:
-        app: linkding
+        app: maybe
         policy-type: "app"
     spec:
       securityContext:
@@ -19,29 +19,29 @@ spec:
         fsGroup: 33
 
       containers:
-        - name: linkding
-          image: sissbruecker/linkding:1.39.1
+        - name: maybe
+          image: ghcr.io/maybe-finance/maybe:sha-71bc51ca157a62a85ef02630252808642c38f13e
 
           securityContext:
               allowPrivilegeEscalation: false
 
           envFrom:
             - configMapRef:
-                name: linkding-configmap
+                name: maybe-configmap
             - secretRef:
-                name: linkding-container-env
+                name: maybe-container-env
 
           ports:
-            - containerPort: 3003
+            - containerPort: 3006
               protocol: TCP
 
           volumeMounts:
-            - name: linkding-data
-              mountPath: /etc/linkding/data
+            - name: maybe-data
+              mountPath: /etc/maybe/data
 
       restartPolicy: Always
 
       volumes:
-        - name: linkding-data
+        - name: maybe-data
           persistentVolumeClaim:
-            claimName: linkding-data-pvc
+            claimName: maybe-data-pvc
