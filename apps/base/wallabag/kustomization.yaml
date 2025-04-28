@@ -4,5 +4,5 @@ namespace: wallabag
 resources:
   - namespace.yaml
   - deployment.yaml
-  # - secrets.yaml
+  - secrets.yaml
   - service.yaml
