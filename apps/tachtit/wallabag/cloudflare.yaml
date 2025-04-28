@@ -60,7 +60,7 @@ metadata:
   name: cloudflared
 data:
   config.yaml: |
-    tunnel: linkding
+    tunnel: wallabag
     credentials-file: /etc/cloudflared/creds/credentials.json
 
     metrics: 0.0.0.0:2000
