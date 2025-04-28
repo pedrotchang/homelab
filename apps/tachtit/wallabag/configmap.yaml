@@ -10,3 +10,4 @@ data:
   SYMFONY__ENV__DATABASE_NAME: wallabag
   SYMFONY__ENV__DATABASE_USER: wallabag
   SYMFONY__ENV__DOMAIN_NAME: "https://wallabag.seyzahl.com"
+  SYMFONY_ENV: prod
