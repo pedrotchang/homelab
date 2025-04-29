@@ -29,8 +29,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: commafeed-configmap
-            # - secretRef:
-            #     name: commafeed-container-env
+            - secretRef:
+                name: commafeed-container-env
 
           ports:
             - containerPort: 8082

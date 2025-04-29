@@ -2,7 +2,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: commafeed
 resources:
-  # - ../../base/commafeed
-  # - cloudflare.yaml
-  # - cloudflare-secret.yaml
-  # - ingress.yaml
+  - configmap.yaml
+  - ../../base/commafeed/
+  - cloudflare.yaml

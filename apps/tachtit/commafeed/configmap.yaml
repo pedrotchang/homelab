@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: commafeed-configmap
+data:
+  CF_APP_PUBLICURL: "https://commafeed.seyzahl.com"
+  CF_DATABASE_DRIVERCLASS: "org.postgresql.Driver"
+  CF_DATABASE_URL: "jdbc:postgresql://commafeed-pg.seyzahl.com:5432/commafeed"
