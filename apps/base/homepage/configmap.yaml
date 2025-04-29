@@ -12,6 +12,25 @@ data:
   custom.css: ""
   custom.js: ""
   bookmarks.yaml: |
+    - Learn:
+        - KubeCraft:
+              href: https://www.skool.com/kubecraft
+              icon: kubecraft.png
+        - Boot.dev:
+              href: https://www.boot.dev/tracks/backend
+        - Udemy:
+              href: https://www.udemy.com/home/my-courses/learning/
+
+    - Create:
+      - YouTube Studio:
+            href: https://studio.youtube.com
+            icon: youtube.png
+      - LinkedIn:
+            href: https://linkedin.com
+            icon: linkedin.png
+      - Substack:
+            href: https://pedrotchang.substack.com
+            icon: si-substack-#FF6719
 
     - Developer:
         - Github:
@@ -44,14 +63,6 @@ data:
 
   services.yaml: |
 
-    - Learn:
-        - KubeCraft:
-              href: https://www.skool.com/kubecraft
-              icon: kubecraft.png
-        - Boot.dev:
-              href: https://www.boot.dev/tracks/backend
-        - Udemy:
-              href: https://www.udemy.com/home/my-courses/learning/
 
     - Services:
       - Linkding:
@@ -67,16 +78,6 @@ data:
             href: http://n8n.seyzahl.com/
             icon: n8n.png
 
-    - Create:
-      - YouTube Studio:
-            href: https://studio.youtube.com
-            icon: youtube.png
-      - LinkedIn:
-            href: https://linkedin.com
-            icon: linkedin.png
-      - Substack:
-            href: https://pedrotchang.substack.com
-            icon: si-substack-#FF6719
 
     - Admin:
       - Azure:
