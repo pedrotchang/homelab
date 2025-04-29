@@ -36,18 +36,18 @@ spec:
   #           name: azure-creds
   #           key: connection-string-2
 
-  # backup:
-  #   barmanObjectStore:
-  #     destinationPath: https://seyzahldata.blob.core.windows.net/commafeed
-  #     azureCredentials:
-  #       connectionString:
-  #         name: azure-creds
-  #         key: connection-string-2
-  #     wal:
-  #       compression: gzip
-  #     data:
-  #       compression: gzip
-  #   retentionPolicy: "14d"
+  backup:
+    barmanObjectStore:
+      destinationPath: https://seyzahldata.blob.core.windows.net/commafeed
+      azureCredentials:
+        connectionString:
+          name: azure-creds
+          key: connection-string-2
+      wal:
+        compression: gzip
+      data:
+        compression: gzip
+    retentionPolicy: "14d"
 
   resources:
     requests:
