@@ -12,6 +12,8 @@ spec:
     metadata:
       labels:
         app: commafeed
+        try: "0"
+        policy-type: "app"
 
     spec:
       securityContext:
