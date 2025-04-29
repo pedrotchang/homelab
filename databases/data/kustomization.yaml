@@ -4,5 +4,5 @@ resources:
   - linkding
   - n8n
   - wallabag
-  - commafeed
+  # - commafeed
   # - maybe
