@@ -14,23 +14,29 @@ data:
   bookmarks.yaml: |
     - Learn:
         - KubeCraft:
+            - abbr: KC
               href: https://www.skool.com/kubecraft
               icon: kubecraft.png
         - Boot.dev:
+            - abbr: BD
               href: https://www.boot.dev/tracks/backend
         - Udemy:
+            - abbr: UD
               href: https://www.udemy.com/home/my-courses/learning/
 
     - Create:
       - YouTube Studio:
-            href: https://studio.youtube.com
-            icon: youtube.png
+            - abbr: YS
+              href: https://studio.youtube.com
+              icon: youtube.png
       - LinkedIn:
-            href: https://linkedin.com
-            icon: linkedin.png
+            - abbr: LI
+              href: https://linkedin.com
+              icon: linkedin.png
       - Substack:
-            href: https://pedrotchang.substack.com
-            icon: si-substack-#FF6719
+            - abbr: ST
+              href: https://pedrotchang.substack.com
+              icon: si-substack-#FF6719
 
     - Developer:
         - Github:
