@@ -53,6 +53,20 @@ data:
         - Udemy:
               href: https://www.udemy.com/home/my-courses/learning/
 
+    - Services:
+      - Linkding:
+            href: https://linkding.seyzahl.com
+            icon: linkding.png
+      - Commafeed:
+            href: https://commafeed.seyzahl.com
+            icon: commafeed.png
+      - Wallabag:
+            href: https://wallabag.seyzahl.com
+            icon: wallabag.png
+      - N8N:
+            href: http://n8n.seyzahl.com/
+            icon: n8n.png
+
     - Create:
       - YouTube Studio:
             href: https://studio.youtube.com
@@ -64,16 +78,10 @@ data:
             href: https://pedrotchang.substack.com
             icon: si-substack-#FF6719
 
-    - seyzahl:
-      - Linkding:
-            href: https://linkding.seyzahl.com
-            icon: linkding.png
+    - Admin:
       - Azure:
             href: https://portal.azure.com/#home
             icon: azure.png
-      - N8N:
-            href: http://n8n.seyzahl.com/
-            icon: n8n.png
       - Unifi:
             href: https://unifi.ui.com
             icon: unifi.png
