@@ -24,7 +24,7 @@ spec:
 
       containers:
         - name: wallabag
-          image: ghcr.io/wallabag/docker:2.6.10
+          image: ghcr.io/wallabag/docker:2.6.12
 
           securityContext:
             allowPrivilegeEscalation: false
