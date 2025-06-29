@@ -10,3 +10,4 @@ data:
   DB_POSTGRESDB_PORT: "5432"
   DB_POSTGRESDB_DATABASE: "n8n"
   N8N_SECURE_COOKIE: "false"
+  GENERIC_TIMEZONE: "America/Los_Angeles"
