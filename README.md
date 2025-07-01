@@ -6,11 +6,6 @@
 
 Here you will find all tthe documentation of my homelab.
 
-I am a big proponent to giving credit where it is due, and I would first like to take the time to thank Mischa van den Burg
-and the Kubecraft community. I could not learn to do all this without them!
-
-If you have ever been curious about Cloud Native Technologies, DevOps or Kubernetes, then the place you want to be is in Kubecraft!
-
 This repository is where I do all my testing, tinkering, and all-in-all a space for me to play, and work! It does have a serious note as well, since I will be working with my own personal data and require me to think about the whole process of deployment and maintanence!
 
 ## Hardware & Cluster Provisioning
@@ -31,8 +26,7 @@ I have them in this structure:
 | Cluster | Usage | Hardware |
 | --------------- | --------------- | --------------- |
 | Data | PostgreSQL Database | HP Laptop |
-| Tachtit | Apps | HP 800 G2 |
-| ~~Redacted~~ | Private Apps | HP 800 G2 |
+| Tachtit | Apps | HP 800 G2 x 2 |
 
 ## Apps
 
@@ -54,10 +48,13 @@ I have them in this structure:
 |------|------|-------------|
 | <img src="https://avatars.githubusercontent.com/u/122929872?s=48&v=4" width="30" alt="Homepage logo"> | [Homepage](https://gethomepage.dev/) | A self-hosted dashboard that allows you to organize your web services and bookmarks in a clean, customizable interface. |
 | <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/linkding.png" width="30" alt="Linkding logo"> | [Linkding](https://github.com/sissbruecker/linkding) | A self-hosted bookmark manager with tagging and search functionality. |
+| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/wallabag.png" width="30" alt="Wallabag logo"> | [Wallabag](https://wallabag.org/) | A self-hosted read-it-later application that saves web articles and strips away clutter for comfortable reading. |
+| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/n8n.png" width="30" alt="n8n logo"> | [n8n](https://n8n.io/) | A self-hosted workflow automation tool that connects apps and services with a visual node-based editor. |
+| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/commafeed.png" width="30" alt="CommaFeed logo"> | [CommaFeed](https://www.commafeed.com/) | A self-hosted RSS reader inspired by Google Reader with a clean, responsive interface. |
 
 ## Next Steps
 
 - [ ] Link my PostgreSQL Database in the data cluster to my TrueNAS Scale.
-- [ ] Have blob storage for my data cluster to create periodic backups.
-- [ ] Add on Immich, CommaFeed, Wallabag, to work with my data cluster, and also backup to blob storage.
+- [x] Have blob storage for my data cluster to create periodic backups.
+- [ ] Add on ~~Immich~~, CommaFeed, Wallabag, to work with my data cluster, and also backup to blob storage.
 
