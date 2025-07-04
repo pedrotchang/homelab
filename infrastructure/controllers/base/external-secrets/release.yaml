@@ -10,13 +10,21 @@ spec:
   chart:
     spec:
       chart: external-secrets
-      version: 0.14.2
+      version: 0.18.2  # Use the latest version (chart version now matches app version)
       sourceRef:
         kind: HelmRepository
         name: external-secrets
         namespace: flux-system
   values:
-    installCRDs: false
+    installCRDs: false  # Since you're managing CRDs separately
+    # Add this to ensure compatibility
+    webhook:
+      create: true
+    certController:
+      create: true
 
   install:
     createNamespace: true
+  upgrade:
+    # Force recreation of resources if needed
+    force: true
