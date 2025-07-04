@@ -20,7 +20,7 @@ spec:
 
       containers:
         - name: maybe
-          image: ghcr.io/maybe-finance/maybe:sha-71bc51ca157a62a85ef02630252808642c38f13e
+          image: ghcr.io/maybe-finance/maybe:0.5.0
 
           securityContext:
               allowPrivilegeEscalation: false
