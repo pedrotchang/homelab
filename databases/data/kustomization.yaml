@@ -5,5 +5,5 @@ resources:
   - n8n
   - wallabag
   - commafeed
-  # - maybe
+  - maybe
   # - nextcloud
