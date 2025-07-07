@@ -5,8 +5,8 @@ metadata:
   namespace: kube-system
 spec:
   blocks:
-    - start: "192.168.9.190"
-      stop: "192.168.9.199"
+    - start: "192.168.4.190"
+      stop: "192.168.4.199"
   serviceSelector:
     matchLabels:
       cilium.io/ingress: "true"
