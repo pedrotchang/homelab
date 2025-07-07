@@ -6,7 +6,7 @@ metadata:
 spec:
   blocks:
     # 192.168.100.160 - 192.168.100.190
-    - cidr: "192.168.1.160/27"
+    - cidr: "192.168.4.160/27"
   serviceSelector:
     matchLabels:
       cilium-lb-pool: postgres-pool
