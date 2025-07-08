@@ -4,7 +4,7 @@ namespace: democratic-csi
 resources:
   - namespace.yaml
   - repository.yaml
-  # - secrets.yaml
+  - secrets.yaml
   # - release.yaml
 
 # configMapGenerator:
