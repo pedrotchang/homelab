@@ -4,3 +4,4 @@ metadata:
   name: democratic-csi
   labels:
     app.kubernetes.io/component: storage
+    pod-security.kubernetes.io/enforce: privileged

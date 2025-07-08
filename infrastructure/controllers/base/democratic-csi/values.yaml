@@ -8,92 +8,28 @@ storageClasses:
   volumeBindingMode: Immediate
   allowVolumeExpansion: true
   parameters:
-    # for block-based storage can be ext3, ext4, xfs
     fsType: ext4
   mountOptions: []
 
+# Remove volumeSnapshotClasses until snapshot CRDs are installed
 # volumeSnapshotClasses:
 # - name: truenas-iscsi-csi
 #   parameters: {}
 
-driver:
-  config:
-    driver: freenas-api-iscsi
-    instance_id:
-    httpConnection:
-      protocol: https
-      host: 192.168.7.14
-      port: 443
-
-      apiKeySecret:
-        secretName: truenas-api-credentials
-        secretKey: api-key
-      allowInsecure: true
-      
-    zfs:
-      # can be used to override defaults if necessary
-      # the example below are the defaults
-      cli:
-        sudoEnabled: true
-        
-      # can be used to set arbitrary values on the dataset/zvol
-      # can use handlebars templates with the parameters from the storage class/CO
-      datasetProperties:
-        "org.freenas:description": "{{ parameters.[csi.storage.k8s.io/pvc/namespace] }}/{{ parameters.[csi.storage.k8s.io/pvc/name] }}"
-        
-      # total volume name (zvol/<datasetParentName>/<pvcname>) length cannot exceed 63 chars
-      # https://www.ixsystems.com/documentation/freenas/11.2-U2/storage.html#zfs-zvol-config-opts-tab
-      # standard volume naming overhead is 46 chars
-      # datasetParentName should therefore be 17 chars or less when using TrueNAS 12 or below (SCALE 22.02+)
-      # for SCALE 22.12+ and 13+ the limit is 233 chars
-      datasetParentName: "tank/k8s/volumes"
-      detachedSnapshotsDatasetParentName: "tank/k8s/snapshots"
-      
-      # "" (inherit), lz4, gzip-1, gzip-6, gzip-9, zstd-1, zstd-6, zstd-15, zstd-19
-      zvolCompression: ""
-      # "" (inherit), on, off, verify
-      zvolDedup: ""
-      # 8K, 16K, 32K, 64K, 128K default is 16K
-      zvolVolblocksize: ""
-      
-    iscsi:
-      targetPortal: "192.168.7.14:3260"
-      targetPortals: [] # Alternative portals for multipath
-      
-      # for multipath
-      nameTemplate: "{{ parameters.[csi.storage.k8s.io/pvc/namespace] }}-{{ parameters.[csi.storage.k8s.io/pvc/name] }}"
-      namePrefix: "csi-"
-      nameSuffix: ""
-      
-      # add as many as needed
-      targetGroups:
-        # get the correct ID from the "portal" section in the UI
-        - targetGroupPortalGroup: 1
-          # get the correct ID from the "initiators" section in the UI
-          targetGroupInitiatorGroup: 1
-          # None, CHAP, or CHAP Mutual
-          targetGroupAuthType: None
-          # get the correct ID from the "authorized access" section of the UI
-          # only required if using Chap
-          targetGroupAuthGroup:
-
-      extentInsecureTpc: true
-      extentXenCompat: false
-      extentDisablePhysicalBlocksize: true
-      # 512, 1024, 2048, or 4096,
-      extentBlocksize: 512
-      # "" (let FreeNAS decide, currently defaults to SSD), Unknown, SSD, 5400, 7200, 10000, 15000
-      extentRpm: "SSD"
-      # 0-100 (0 == ignore)
-      extentAvailThreshold: 0
-
 node:
+  hostPID: true
   driver:
     extraEnv:
     - name: ISCSIADM_EXEC_TIMEOUT
       value: "5"
     - name: ISCSIADM_EXEC_RETRY
       value: "10"
+    - name: ISCSIADM_HOST_STRATEGY
+      value: nsenter
+    - name: ISCSIADM_HOST_PATH
+      value: /usr/local/sbin/iscsiadm
+    iscsiDirHostPath: /usr/local/etc/iscsi
+    iscsiDirHostPathType: ""
   cleanup:
     image:
       repository: busybox
@@ -104,12 +40,55 @@ controller:
     image:
       repository: democraticcsi/democratic-csi
       tag: "v1.9.3"
-    logLevel: debug  # Add debug logging
+    logLevel: debug
     extraEnv:
     - name: NODE_TLS_REJECT_UNAUTHORIZED
       value: "0"
-    - name: HTTPS_PROXY
-      value: ""
-    - name: NO_PROXY
-      value: "*"
 
+driver:
+  config:
+    driver: freenas-api-iscsi
+    instance_id:
+    httpConnection:
+      protocol: https
+      host: 192.168.7.14
+      port: 443
+      apiKeySecret:
+        secretName: truenas-api-credentials
+        secretKey: api-key
+      allowInsecure: true
+      timeout: 30000
+      
+    zfs:
+      cli:
+        sudoEnabled: true
+        
+      datasetProperties:
+        "org.freenas:description": "{{ parameters.[csi.storage.k8s.io/pvc/namespace] }}/{{ parameters.[csi.storage.k8s.io/pvc/name] }}"
+        
+      datasetParentName: "tank/k8s/volumes"
+      detachedSnapshotsDatasetParentName: "tank/k8s/snapshots"
+      
+      zvolCompression: ""
+      zvolDedup: ""
+      zvolVolblocksize: ""
+      
+    iscsi:
+      targetPortal: "192.168.7.14:3260"
+      targetPortals: []
+      
+      nameTemplate: "{{ parameters.[csi.storage.k8s.io/pvc/namespace] }}-{{ parameters.[csi.storage.k8s.io/pvc/name] }}"
+      namePrefix: "csi-"
+      nameSuffix: ""
+      
+      targetGroups:
+        - targetGroupPortalGroup: 1
+          targetGroupInitiatorGroup: 1
+          targetGroupAuthType: None
+
+      extentInsecureTpc: true
+      extentXenCompat: false
+      extentDisablePhysicalBlocksize: true
+      extentBlocksize: 512
+      extentRpm: "SSD"
+      extentAvailThreshold: 0
