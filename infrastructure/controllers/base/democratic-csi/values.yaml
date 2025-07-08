@@ -11,18 +11,10 @@ storageClasses:
     # for block-based storage can be ext3, ext4, xfs
     fsType: ext4
   mountOptions: []
-  secrets:
-    provisioner-secret:
-    controller-publish-secret:
-    node-stage-secret:
-    node-publish-secret:
-    controller-expand-secret:
 
 volumeSnapshotClasses:
 - name: truenas-iscsi-csi
-  parameters:
-  secrets:
-    snapshotter-secret:
+  parameters: {}
 
 driver:
   config:
