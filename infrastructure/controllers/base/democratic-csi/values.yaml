@@ -101,7 +101,7 @@ node:
     - name: ISCSIADM_EXEC_RETRY
       value: "10"
   cleanup:
-    image: public.ecr.aws/docker/library/busybox:1.32.0
+    image: public.ecr.aws/docker/library/busybox:1.37.0
 
 controller:
   driver:
