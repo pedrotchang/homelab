@@ -4,13 +4,13 @@ namespace: democratic-csi
 resources:
   - namespace.yaml
   - repository.yaml
-  - release.yaml
-  - secrets.yaml
+  # - secrets.yaml
+  # - release.yaml
 
-configMapGenerator:
-  - name: democratic-csi-values
-    files:
-      - values.yaml=values.yaml
-
-configurations:
-  - kustomizeconfig.yaml
+# configMapGenerator:
+#   - name: democratic-csi-values
+#     files:
+#       - values.yaml=values.yaml
+#
+# configurations:
+#   - kustomizeconfig.yaml
