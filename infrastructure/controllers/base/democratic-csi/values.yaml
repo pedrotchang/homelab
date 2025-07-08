@@ -95,8 +95,12 @@ node:
     - name: ISCSIADM_EXEC_RETRY
       value: "10"
   cleanup:
-    image: public.ecr.aws/docker/library/busybox:1.32.0
+    image:
+      repository: busybox
+      tag: "1.36"
 
 controller:
   driver:
-    image: democraticcsi/democratic-csi:latest
+    image:
+      repository: democraticcsi/democratic-csi
+      tag: "v1.9.3"
