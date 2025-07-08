@@ -5,6 +5,7 @@ resources:
   - namespace.yaml
   - repository.yaml
   - release.yaml
+  - secrets.yaml
 
 configMapGenerator:
   - name: democratic-csi-values

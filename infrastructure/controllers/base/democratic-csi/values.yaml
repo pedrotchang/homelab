@@ -31,6 +31,7 @@ driver:
     httpConnection:
       protocol: https
       host: 192.168.7.14
+      port: 443
       apiKeySecret:
         secretName: truenas-api-credentials
         secretKey: api-key
