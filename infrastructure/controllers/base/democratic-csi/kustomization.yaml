@@ -5,12 +5,12 @@ resources:
   - namespace.yaml
   - repository.yaml
   - secrets.yaml
-  # - release.yaml
+  - release.yaml
 
-# configMapGenerator:
-#   - name: democratic-csi-values
-#     files:
-#       - values.yaml=values.yaml
-#
-# configurations:
-#   - kustomizeconfig.yaml
+configMapGenerator:
+  - name: democratic-csi-values
+    files:
+      - values.yaml=values.yaml
+
+configurations:
+  - kustomizeconfig.yaml
