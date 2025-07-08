@@ -28,7 +28,7 @@ driver:
       apiKeySecret:
         secretName: truenas-api-credentials
         secretKey: api-key
-      allowInsecure: false
+      allowInsecure: true
       
     zfs:
       # can be used to override defaults if necessary
@@ -104,3 +104,12 @@ controller:
     image:
       repository: democraticcsi/democratic-csi
       tag: "v1.9.3"
+    logLevel: debug  # Add debug logging
+    extraEnv:
+    - name: NODE_TLS_REJECT_UNAUTHORIZED
+      value: "0"
+    - name: HTTPS_PROXY
+      value: ""
+    - name: NO_PROXY
+      value: "*"
+
