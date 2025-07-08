@@ -24,12 +24,11 @@ driver:
       protocol: https
       host: 192.168.7.14
       port: 443
+
       apiKeySecret:
         secretName: truenas-api-credentials
         secretKey: api-key
       allowInsecure: false
-      rejectUnauthorized: false
-      timeout: 30000
       
     zfs:
       # can be used to override defaults if necessary
