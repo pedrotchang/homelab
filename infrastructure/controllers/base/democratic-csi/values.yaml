@@ -30,11 +30,12 @@ driver:
     instance_id:
     httpConnection:
       protocol: https
-      host: YOUR_TRUENAS_IP
-      port: 443
-      # use either password or api key
-      apiKey: YOUR_API_KEY
+      host: 192.168.7.14
+      apiKeySecret:
+        secretName: truenas-api-credentials
+        secretKey: api-key
       allowInsecure: false
+
       
     zfs:
       # can be used to override defaults if necessary
@@ -63,7 +64,7 @@ driver:
       zvolVolblocksize: ""
       
     iscsi:
-      targetPortal: "YOUR_TRUENAS_IP:3260"
+      targetPortal: "192.168.7.14:3260"
       targetPortals: [] # Alternative portals for multipath
       
       # for multipath
