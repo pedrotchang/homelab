@@ -12,9 +12,9 @@ storageClasses:
     fsType: ext4
   mountOptions: []
 
-volumeSnapshotClasses:
-- name: truenas-iscsi-csi
-  parameters: {}
+# volumeSnapshotClasses:
+# - name: truenas-iscsi-csi
+#   parameters: {}
 
 driver:
   config:
