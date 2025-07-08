@@ -1,0 +1,25 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: democratic-csi-iscsi
+  namespace: democratic-csi
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: democratic-csi
+      version: "0.15.0"
+      sourceRef:
+        kind: HelmRepository
+        name: democratic-csi
+        namespace: democratic-csi
+      interval: 12h
+
+  valuesFrom:
+    - kind: ConfigMap
+      name: democratic-csi-values
+
+  install:
+    createNamespace: true
+  upgrade:
+    force: true
