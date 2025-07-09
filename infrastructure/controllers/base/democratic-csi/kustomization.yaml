@@ -1,16 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: democratic-csi
+namespace: storage
 resources:
-  - namespace.yaml
-  - repository.yaml
-  - secrets.yaml
-  - release.yaml
-
-configMapGenerator:
-  - name: democratic-csi-values
-    files:
-      - values.yaml=values.yaml
-
-configurations:
-  - kustomizeconfig.yaml
+  - isci/
+  # - nfs/

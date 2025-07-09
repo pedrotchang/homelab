@@ -1,0 +1,57 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: storage
+
+resources:
+  - namespace.yaml
+  - repository.yaml
+  - secrets.yaml
+  - release.yaml
+  - pdb.yaml
+
+metadata:
+  name: csi-driver-iscsi
+  annotations:
+    config.kubernetes.io/local-config: "true"
+
+commonLabels:
+  app.kubernetes.io/name: csi-driver-iscsi
+  app.kubernetes.io/component: storage
+  app.kubernetes.io/part-of: storage
+  app.kubernetes.io/managed-by: kustomize
+  production-grade: "true"
+  security-hardened: "true"
+
+labels:
+  - pairs:
+      app.kubernetes.io/version: "2.5.0"
+      helm.sh/chart: "csi-driver-iscsi-2.5.0"
+    includeSelectors: false
+
+
+configMapGenerator:
+  - name: democratic-csi-values
+    files:
+      - values.yaml=values.yaml
+
+configurations:
+  - kustomizeconfig.yaml
+
+generatorOptions:
+  disableNameSuffixHash: true
+  labels:
+    app.kubernetes.io/instance: csi-driver-iscsi
+
+images:
+  - name: democraticcsi/democratic-csi
+    newTag: v1.8.4
+  - name: registry.k8s.io/sig-storage/csi-provisioner
+    newTag: v5.2.0
+  - name: registry.k8s.io/sig-storage/csi-resizer
+    newTag: v1.13.1
+  - name: registry.k8s.io/sig-storage/csi-snapshotter
+    newTag: v8.2.0
+  - name: registry.k8s.io/sig-storage/livenessprobe
+    newTag: v2.15.0
+  - name: registry.k8s.io/sig-storage/csi-node-driver-registrar
+    newTag: v2.13.0
