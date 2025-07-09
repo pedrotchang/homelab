@@ -29,6 +29,7 @@ spec:
         name: democratic-csi
         namespace: flux-system
   install:
+    createNamespace: true
     remediation:
       retries: 3
     crds: CreateReplace
@@ -36,14 +37,10 @@ spec:
     cleanupOnFail: true
     remediation:
       retries: 3
+    force: true
   uninstall:
     keepHistory: false
 
   valuesFrom:
     - kind: ConfigMap
       name: democratic-csi-values
-
-  install:
-    createNamespace: true
-  upgrade:
-    force: true
