@@ -16,9 +16,10 @@ metadata:
     app.kubernetes.io/version: "0.14.7"
     production-grade: "true"
     security-hardened: "true"
+
 spec:
   interval: 1h
-  timeout: 10
+  timeout: 10m
   chart:
     spec:
       chart: democratic-csi
@@ -26,7 +27,17 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: democratic-csi
-        namespace: democratic-csi
+        namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+    crds: CreateReplace
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
 
   valuesFrom:
     - kind: ConfigMap
