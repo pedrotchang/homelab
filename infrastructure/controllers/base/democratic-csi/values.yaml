@@ -163,7 +163,7 @@ node:
       valueFrom:
         secretKeyRef:
           name: truenas-api-credentials
-          key: truenas-api-key
+          key: api-key
     # - name: encryption_key
     #   valueFrom:
     #     secretKeyRef:
