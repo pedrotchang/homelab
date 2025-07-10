@@ -10,7 +10,7 @@ controller:
   replicas: 2
   driver:
     env:
-      - name: api_key
+      - name: truenas-api-key
         valueFrom:
           secretKeyRef:
             name: truenas-api-credentials
@@ -248,6 +248,10 @@ driver:
       port: 443
       allowInsecure: true
       apiVersion: 2
+      apiKey:
+        fromSecret:
+          name: truenas-api-credentials
+          key: api-key
     zfs:
       datasetParentName: "tank/k8s/volumes"
       detachedSnapshotsDatasetParentName: "tank/k8s/snapshots"
