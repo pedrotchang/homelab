@@ -9,12 +9,16 @@ controller:
   strategy: deployment
   replicas: 2
   driver:
-    env:
-      - name: truenas-api-key
-        valueFrom:
-          secretKeyRef:
-            name: truenas-api-credentials
-            key: api-key
+    extraVolumeMounts:
+      - name: api-credentials
+        mountPath: /etc/secrets/api-credentials
+        readOnly: true
+    # env:
+    #   - name: truenas-api-key
+    #     valueFrom:
+    #       secretKeyRef:
+    #         name: truenas-api-credentials
+    #         key: api-key
       # - name: encryption_key
       #   valueFrom:
       #     secretKeyRef:
