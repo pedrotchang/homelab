@@ -4,6 +4,11 @@ csiDriver:
   storageCapacity: true
   fsGroupPolicy: "File"
 
+extraVolumes:
+  - name: api-credentials
+    secret:
+      secretName: truenas-api-credentials
+
 controller:
   enabled: true
   strategy: deployment
@@ -252,10 +257,11 @@ driver:
       port: 443
       allowInsecure: true
       apiVersion: 2
-      apiKey:
-        fromSecret:
-          name: truenas-api-credentials
-          key: api-key
+      apiKey: /etc/secrets/api-credentials/api-key
+      # apiKey:
+      #   fromSecret:
+      #     name: truenas-api-credentials
+      #     key: api-key
     zfs:
       datasetParentName: "tank/k8s/volumes"
       detachedSnapshotsDatasetParentName: "tank/k8s/snapshots"
