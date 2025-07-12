@@ -13,10 +13,10 @@ controller:
       secret:
         secretName: truenas-api-credentials
   driver:
-    extraVolumeMounts:
-      - name: api-credentials
-        mountPath: /etc/secrets/api-credentials
-        readOnly: true
+    # extraVolumeMounts:
+    #   - name: api-credentials
+    #     mountPath: /etc/secrets/api-credentials
+    #     readOnly: true
     # env:
     #   - name: truenas-api-key
     #     valueFrom:
@@ -174,7 +174,7 @@ node:
         mountPath: /etc/secrets/api-credentials
         readOnly: true
     env:
-    - name: api_key
+    - name: api-key
       valueFrom:
         secretKeyRef:
           name: truenas-api-credentials
@@ -262,11 +262,10 @@ driver:
       port: 443
       allowInsecure: true
       apiVersion: 2
-      apiKey: /etc/secrets/api-credentials/api-key
-      # apiKey:
-      #   fromSecret:
-      #     name: truenas-api-credentials
-      #     key: api-key
+      apiKey:
+        fromSecret:
+          name: truenas-api-credentials
+          key: api-key
     zfs:
       datasetParentName: "tank/k8s/volumes"
       detachedSnapshotsDatasetParentName: "tank/k8s/snapshots"
