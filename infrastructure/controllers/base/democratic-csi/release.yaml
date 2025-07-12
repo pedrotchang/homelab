@@ -42,7 +42,7 @@ spec:
     keepHistory: false
 
   dependsOn:
-    - name: external-secrets
+    - name: truenas-api-credentials
       namespace: storage
   valuesFrom:
     - targetPath: driver.config.httpConnection.apiKey
