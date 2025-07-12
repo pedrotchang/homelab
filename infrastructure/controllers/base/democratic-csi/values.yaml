@@ -4,20 +4,19 @@ csiDriver:
   storageCapacity: true
   fsGroupPolicy: "File"
 
-extraVolumes:
-  - name: api-credentials
-    secret:
-      secretName: truenas-api-credentials
-
 controller:
   enabled: true
   strategy: deployment
   replicas: 2
+  extraVolumes:
+    - name: api-credentials
+      secret:
+        secretName: truenas-api-credentials
   driver:
     extraVolumeMounts:
       - name: api-credentials
-        secret:
-          secretName: truenas-api-credentials
+        mountPath: /etc/secrets/api-credentials
+        readOnly: true
     # env:
     #   - name: truenas-api-key
     #     valueFrom:
@@ -38,7 +37,6 @@ controller:
         cpu: 50m
         memory: 64Mi
         ephemeral-storage: 100Mi
-
 
   externalAttacher:
     resources:
@@ -91,7 +89,7 @@ controller:
         memory: 16Mi
         ephemeral-storage: 50Mi
 
-      # Pod configuration
+  # Pod configuration
   podSecurityContext:
     runAsNonRoot: true
     runAsUser: 65534
@@ -166,11 +164,21 @@ node:
   enabled: true
   hostPID: true
   strategy: deployment
-  driver:
-    env:
-    - name: api_key
+  extraVolumes:
+    - name: api-credentials
       secret:
         secretName: truenas-api-credentials
+  driver:
+    extraVolumeMounts:
+      - name: api-credentials
+        mountPath: /etc/secrets/api-credentials
+        readOnly: true
+    env:
+    - name: api_key
+      valueFrom:
+        secretKeyRef:
+          name: truenas-api-credentials
+          key: api-key
     # - name: encryption_key
     #   valueFrom:
     #     secretKeyRef:
@@ -191,7 +199,6 @@ node:
         cpu: 40m
         memory: 48Mi
         ephemeral-storage: 100Mi
-
 
   # Driver registrar sidecar
   driverRegistrar:
