@@ -8,26 +8,13 @@ controller:
   enabled: true
   strategy: deployment
   replicas: 2
-  # extraVolumes:
-  #   - name: api-credentials
-  #     secret:
-  #       secretName: truenas-api-credentials
   driver:
-    # extraVolumeMounts:
-    #   - name: api-credentials
-    #     mountPath: /etc/secrets/api-credentials
-    #     readOnly: true
     env:
       - name: truenas-api-key
         valueFrom:
           secretKeyRef:
             name: truenas-api-credentials
             key: api-key
-      # - name: encryption_key
-      #   valueFrom:
-      #     secretKeyRef:
-      #       name: csi-driver-iscsi-secret
-      #       key: encryption_key
     resources:
       limits:
         cpu: 500m
@@ -164,30 +151,8 @@ node:
   enabled: true
   hostPID: true
   strategy: deployment
-  # extraVolumes:
-  #   - name: api-credentials
-  #     secret:
-  #       secretName: truenas-api-credentials
   driver:
-    config:
-      httpConnection:
-        apiKey: ${truenas-api-key}
-    # extraVolumeMounts:
-    #   - name: api-credentials
-    #     mountPath: /etc/secrets/api-credentials
-    #     readOnly: true
-    # env:
-    # - name: api-key
-    #   valueFrom:
-    #     secretKeyRef:
-    #       name: truenas-api-credentials
-    #       key: api-key
-    # - name: encryption_key
-    #   valueFrom:
-    #     secretKeyRef:
-    #       name: csi-driver-iscsi-secret
-    #       key: encryption_key
-
+    
     # iSCSI specific configuration
     iscsiDirHostPath: /etc/iscsi
     iscsiDirHostPathType: DirectoryOrCreate
@@ -257,36 +222,35 @@ node:
 
 driver:
   config:
-    driver: freenas-api-iscsi
-    instance_id: "iscsi-prod"
+    driver: freenas-iscsi
+    instance_id: truenas-iscsi
     httpConnection:
       protocol: https
       host: 192.168.7.14
       port: 443
       allowInsecure: true
-      apiVersion: 2
-      apiKey:
-        fromSecret:
-          name: truenas-api-credentials
-          key: api-key
+    sshConnection:
+      host: 192.168.7.14
+      port: 22
     zfs:
+      cli:
+        sudoEnabled: true
+        sudoPath: /usr/bin/sudo
       datasetParentName: "tank/k8s/volumes"
       detachedSnapshotsDatasetParentName: "tank/k8s/snapshots"
-      zvolCompression:
-      zvolDedup:
+      zvolCompression: ""
+      zvolDedup: ""
       zvolEnableReservation: false
-      zvolBlocksize:
+      zvolBlocksize: 16K
     iscsi:
       targetPortal: "192.168.7.14:3260"
-      interface:
       namePrefix: csi-
       targetGroups:
         - targetGroupPortalGroup: 1
           targetGroupInitiatorGroup: 1
           targetGroupAuthType: None
-          targetGroupAuthGroup:
       extentInsecureTpc: true
       extentDisablePhysicalBlocksize: true
-      extentBlocksize: 512
+      extentBlocksize: 4096
       extentRpm: "SSD"
       extentAvailThreshold: 0

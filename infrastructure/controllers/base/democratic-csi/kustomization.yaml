@@ -20,6 +20,9 @@ configurations:
 generatorOptions:
   disableNameSuffixHash: false
 
+dependsOn:
+  - name: truenas-api-credentials
+    namespace: storage
 # images:
 #   - name: democraticcsi/democratic-csi
 #     newTag: v1.8.4

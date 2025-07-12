@@ -41,6 +41,11 @@ spec:
   uninstall:
     keepHistory: false
 
+  dependsOn:
+    - name: external-secrets
+      namespace: storage
   valuesFrom:
-    - kind: ConfigMap
-      name: democratic-csi-values
+    - targetPath: driver.config.httpConnection.apiKey
+      kind: Secret
+      name: truenas-api-credentials
+      valuesKey: api-key
