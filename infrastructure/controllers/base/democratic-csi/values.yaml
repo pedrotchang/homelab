@@ -16,8 +16,8 @@ controller:
   driver:
     extraVolumeMounts:
       - name: api-credentials
-        mountPath: /etc/secrets/api-credentials
-        readOnly: true
+        secret:
+          secretName: truenas-api-credentials
     # env:
     #   - name: truenas-api-key
     #     valueFrom:
@@ -169,10 +169,8 @@ node:
   driver:
     env:
     - name: api_key
-      valueFrom:
-        secretKeyRef:
-          name: truenas-api-credentials
-          key: api-key
+      secret:
+        secretName: truenas-api-credentials
     # - name: encryption_key
     #   valueFrom:
     #     secretKeyRef:
