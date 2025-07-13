@@ -372,7 +372,7 @@ storageClass:
   create: true
   name: truenas-nfs
   annotations:
-    storageclass.kubernetes.io/is-default-class: "true"
+    storageclass.kubernetes.io/is-default-class: "false"
     storageclass.kubernetes.io/description: "NFS storage class"
     storageclass.kubernetes.io/allow-volume-expansion: "true"
   parameters:
