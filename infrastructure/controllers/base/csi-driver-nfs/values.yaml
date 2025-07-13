@@ -361,7 +361,7 @@ externalSnapshotter:
 
 # Volume snapshot class configuration
 volumeSnapshotClass:
-  create: true
+  create: false
   name: truenas-nfs-snapclass
   deletionPolicy: Retain
   annotations:
