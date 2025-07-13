@@ -378,6 +378,7 @@ storageClass:
   parameters:
     server: "192.168.7.14"
     share: "/mnt/tank/k8s/nfs/apps/vols"
+    subDir: "auto"
   reclaimPolicy: Retain
   volumeBindingMode: WaitForFirstConsumer
   allowVolumeExpansion: true
