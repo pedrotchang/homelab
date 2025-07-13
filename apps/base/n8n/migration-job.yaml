@@ -9,12 +9,12 @@ spec:
       containers:
       - name: migration
         image: busybox
-        command: ["sh", "-c", "cp -r /old-data/* /new-data/"]
+        command: ["sh", "-c", "cp -r /source/* /destination/ && echo 'Migration completed successfully'"]
         volumeMounts:
         - name: old-data
-          mountPath: /old-data
+          mountPath: /source
         - name: new-data
-          mountPath: /new-data
+          mountPath: /destination
       volumes:
       - name: old-data
         persistentVolumeClaim:
