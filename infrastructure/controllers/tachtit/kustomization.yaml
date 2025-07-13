@@ -6,4 +6,4 @@ resources:
   - external-dns
   - local-path
   - renovate
-  # - csi-driver
+  - csi-driver
