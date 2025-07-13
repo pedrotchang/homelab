@@ -377,7 +377,7 @@ storageClass:
     storageclass.kubernetes.io/allow-volume-expansion: "true"
   parameters:
     server: "192.168.7.14"
-    share: "/mnt/tank/nfs/apps/vols"
+    share: "/mnt/tank/k8s/nfs/apps/vols"
   reclaimPolicy: Retain
   volumeBindingMode: WaitForFirstConsumer
   allowVolumeExpansion: true
