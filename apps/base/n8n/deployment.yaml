@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: n8n
 spec:
-  replicas: 0
+  replicas: 1
   selector:
     matchLabels:
       app: n8n
@@ -47,4 +47,4 @@ spec:
       volumes:
         - name: n8n-data
           persistentVolumeClaim:
-            claimName: n8n-data-pvc
+            claimName: n8n-data-pvc-nfs
