@@ -9,7 +9,15 @@ spec:
       containers:
       - name: migration
         image: busybox
-        command: ["sh", "-c", "cp -r /source/* /destination/ && echo 'Migration completed successfully'"]
+        command: ["sh", "-c"]
+        args:
+        - |
+          echo "Contents of source directory:"
+          ls -la /source/
+          echo "Copying data..."
+          cp -r /source/. /destination/
+          echo "Migration completed. Contents of destination:"
+          ls -la /destination/
         volumeMounts:
         - name: old-data
           mountPath: /source
