@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: n8n-data-migration
+  namespace: n8n
+spec:
+  template:
+    spec:
+      containers:
+      - name: migration
+        image: busybox
+        command: ["sh", "-c", "cp -r /old-data/* /new-data/"]
+        volumeMounts:
+        - name: old-data
+          mountPath: /old-data
+        - name: new-data
+          mountPath: /new-data
+      volumes:
+      - name: old-data
+        persistentVolumeClaim:
+          claimName: n8n-data-pvc
+      - name: new-data
+        persistentVolumeClaim:
+          claimName: n8n-data-pvc-nfs
+      restartPolicy: Never
