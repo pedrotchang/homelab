@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: nfs-test-pvc
-  namespace: default
+  name: n8n-data-pvc-nfs
+  namespace: n8n
 spec:
   accessModes:
     - ReadWriteMany
+  storageClassName: truenas-nfs
   resources:
     requests:
       storage: 1Gi
-  storageClassName: truenas-nfs
