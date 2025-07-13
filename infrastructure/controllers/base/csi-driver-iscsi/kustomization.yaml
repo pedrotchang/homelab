@@ -6,13 +6,17 @@ resources:
   - namespace.yaml
   - repository.yaml
   - secrets.yaml
-  - release.yaml
+  - release-nfs.yaml
+  # - release-iscsi.yaml
   - pdb.yaml
 
 configMapGenerator:
-  - name: democratic-csi-values
+  - name: democratic-csi-nfs-values
     files:
-      - values.yaml=values.yaml
+      - values-nfs.yaml=values-nfs.yaml
+  - name: democratic-csi-iscsi-values
+    files:
+      - values-iscsi.yaml=values-iscsi.yaml
 
 configurations:
   - kustomizeconfig.yaml

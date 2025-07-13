@@ -1,0 +1,32 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: csi-driver-iscsi
+  namespace: storage
+  annotations:
+    meta.helm.sh/release-name: csi-driver-iscsi
+    meta.helm.sh/release-namespace: storage
+    fluxcd.io/automated: "true"
+    fluxcd.io/tag.chart-image: glob:0.14.*
+  labels:
+    app.kubernetes.io/name: csi-driver-nfs
+    app.kubernetes.io/instance: csi-driver-nfs
+    app.kubernetes.io/component: storage
+    app.kubernetes.io/part-of: storage
+
+spec:
+  interval: 1h
+  timeout: 10m
+  chartRef:
+    kind: OCIRepository
+    name: csi-driver-nfs
+  install:
+    remediation:
+      retries: 3
+    crds: CreateReplace
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false

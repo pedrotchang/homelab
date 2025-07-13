@@ -13,9 +13,6 @@ metadata:
     app.kubernetes.io/instance: csi-driver-iscsi
     app.kubernetes.io/component: storage
     app.kubernetes.io/part-of: storage
-    app.kubernetes.io/version: "0.14.7"
-    production-grade: "true"
-    security-hardened: "true"
 
 spec:
   interval: 1h
