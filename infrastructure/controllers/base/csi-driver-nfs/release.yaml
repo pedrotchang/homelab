@@ -21,6 +21,11 @@ spec:
   chartRef:
     kind: OCIRepository
     name: csi-driver-nfs
+
+  valuesFrom:
+    - kind: ConfigMap
+      name: csi-driver-nfs-values
+
   install:
     remediation:
       retries: 3
