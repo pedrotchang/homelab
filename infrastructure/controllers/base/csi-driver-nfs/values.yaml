@@ -370,10 +370,10 @@ volumeSnapshotClass:
 # Storage class configuration for production
 storageClass:
   create: true
-  name: truenas-nfs-prod
+  name: truenas-nfs
   annotations:
     storageclass.kubernetes.io/is-default-class: "true"
-    storageclass.kubernetes.io/description: "Production NFS storage class"
+    storageclass.kubernetes.io/description: "NFS storage class"
     storageclass.kubernetes.io/allow-volume-expansion: "true"
   parameters:
     server: "192.168.7.14"
