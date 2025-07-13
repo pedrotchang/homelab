@@ -9,8 +9,6 @@ metadata:
     app.kubernetes.io/instance: csi-driver-nfs
     app.kubernetes.io/component: storage
     app.kubernetes.io/part-of: storage
-    production-grade: "true"
-    security-hardened: "true"
   annotations:
     vpa.kubernetes.io/controlled-resources: "cpu,memory,ephemeral-storage"
     vpa.kubernetes.io/controlled-values: "RequestsAndLimits"
@@ -49,8 +47,6 @@ metadata:
     app.kubernetes.io/instance: csi-driver-nfs
     app.kubernetes.io/component: storage
     app.kubernetes.io/part-of: storage
-    production-grade: "true"
-    security-hardened: "true"
   annotations:
     vpa.kubernetes.io/controlled-resources: "cpu,memory,ephemeral-storage"
     vpa.kubernetes.io/controlled-values: "RequestsAndLimits"
@@ -88,8 +84,6 @@ metadata:
     app.kubernetes.io/instance: csi-driver-nfs
     app.kubernetes.io/component: storage
     app.kubernetes.io/part-of: storage
-    production-grade: "true"
-    security-hardened: "true"
   annotations:
     vpa.kubernetes.io/controlled-resources: "cpu,memory,ephemeral-storage"
     vpa.kubernetes.io/controlled-values: "RequestsAndLimits"

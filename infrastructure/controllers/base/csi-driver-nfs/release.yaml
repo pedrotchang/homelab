@@ -6,22 +6,21 @@ metadata:
   annotations:
     meta.helm.sh/release-name: csi-driver-nfs
     meta.helm.sh/release-namespace: storage
+    fluxcd.io/automated: "true"
+    fluxcd.io/tag.chart-image: glob:4.11.*
   labels:
     app.kubernetes.io/name: csi-driver-nfs
     app.kubernetes.io/instance: csi-driver-nfs
     app.kubernetes.io/component: storage
     app.kubernetes.io/part-of: storage
+    app.kubernetes.io/version: "4.11.0"
 
 spec:
   interval: 1h
   timeout: 10m
-  chart:
-    spec:
-      chart: csi-driver-nfs
-      version: "4.11.0"
-      sourceRef:
-        kind: HelmRepository
-        name: csi-driver-nfs
+  chartRef:
+    kind: OCIRepository
+    name: csi-driver-nfs
   install:
     remediation:
       retries: 3
