@@ -1,0 +1,28 @@
+---
+# Gateway Class for Servarr
+apiVersion: gateway.networking.k8s.io/v1
+kind: GatewayClass
+metadata:
+  name: cilium-servarr
+spec:
+  controllerName: io.cilium/gateway-controller
+
+---
+# Main Gateway for Servarr services
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: servarr-gateway
+  namespace: servarr
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: "jellyfin.seyzahl.com,sonarr.seyzahl.com,radarr.seyzahl.com,prowlarr.seyzahl.com,lidarr.seyzahl.com,jellyseerr.seyzahl.com"
+spec:
+  gatewayClassName: cilium-servarr
+  listeners:
+    # HTTP listener for all services
+    - name: http
+      protocol: HTTP
+      port: 80
+      allowedRoutes:
+        namespaces:
+          from: Same

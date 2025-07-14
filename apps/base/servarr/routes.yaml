@@ -1,0 +1,172 @@
+---
+# Jellyfin HTTPRoute
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: jellyfin-route
+  namespace: servarr
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: jellyfin.seyzahl.com
+spec:
+  parentRefs:
+    - name: servarr-gateway
+      sectionName: http
+  hostnames:
+    - jellyfin.seyzahl.com
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: jellyfin
+          port: 8096
+          weight: 100
+
+---
+# Sonarr HTTPRoute
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: sonarr-route
+  namespace: servarr
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: sonarr.seyzahl.com
+spec:
+  parentRefs:
+    - name: servarr-gateway
+      sectionName: http
+  hostnames:
+    - sonarr.seyzahl.com
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: sonarr
+          port: 8989
+          weight: 100
+
+---
+# Radarr HTTPRoute
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: radarr-route
+  namespace: servarr
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: radarr.seyzahl.com
+spec:
+  parentRefs:
+    - name: servarr-gateway
+      sectionName: http
+  hostnames:
+    - radarr.seyzahl.com
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: radarr
+          port: 7878
+          weight: 100
+
+---
+# Prowlarr HTTPRoute
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: prowlarr-route
+  namespace: servarr
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: prowlarr.seyzahl.com
+spec:
+  parentRefs:
+    - name: servarr-gateway
+      sectionName: http
+  hostnames:
+    - prowlarr.seyzahl.com
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: prowlarr
+          port: 9696
+          weight: 100
+
+---
+# Lidarr HTTPRoute
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: lidarr-route
+  namespace: servarr
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: lidarr.seyzahl.com
+spec:
+  parentRefs:
+    - name: servarr-gateway
+      sectionName: http
+  hostnames:
+    - lidarr.seyzahl.com
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: lidarr
+          port: 8686
+          weight: 100
+
+---
+# Jellyseerr HTTPRoute
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: jellyseerr-route
+  namespace: servarr
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: jellyseerr.seyzahl.com
+spec:
+  parentRefs:
+    - name: servarr-gateway
+      sectionName: http
+  hostnames:
+    - jellyseerr.seyzahl.com
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: jellyseerr
+          port: 5055
+          weight: 100
+
+---
+# qBittorrent HTTPRoute (Internal access only)
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: qbittorrent-route
+  namespace: servarr
+spec:
+  parentRefs:
+    - name: servarr-gateway
+      sectionName: http
+  hostnames:
+    - qbittorrent.servarr.local  # Internal only - no external DNS
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: qbittorrent
+          port: 8080
+          weight: 100

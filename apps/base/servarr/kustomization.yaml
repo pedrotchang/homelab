@@ -5,8 +5,9 @@ namespace: servarr
 resources:
   - namespace.yaml
   - repository.yaml
-  # - secrets.yaml
   - storage.yaml
+  - gateway.yaml       # Gateway API configuration
+  - routes.yaml        # HTTPRoutes
   - release.yaml
 
 configMapGenerator:
@@ -17,5 +18,3 @@ configMapGenerator:
 configurations:
   - kustomizeconfig.yaml
 
-# generatorOptions:
-#   disableNameSuffixHash: false

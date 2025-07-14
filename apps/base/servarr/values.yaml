@@ -12,6 +12,8 @@ jellyfin:
   service:
     type: ClusterIP
     port: 8096
+    annotations:
+      cilium.io/gateway: "true"  # Use Gateway API pool
   persistence:
     config:
       enabled: true
@@ -32,18 +34,25 @@ jellyfin:
 # Prowlarr - Indexer Manager
 prowlarr:
   enabled: true
+  service:
+    type: ClusterIP
+    port: 9696
+    annotations:
+      cilium.io/gateway: "true"
   persistence:
     config:
       enabled: true
       existingClaim: servarr-config-pvc-nfs
       subPath: prowlarr
-  service:
-    type: ClusterIP
-    port: 9696
 
 # Sonarr - TV Show Manager
 sonarr:
   enabled: true
+  service:
+    type: ClusterIP
+    port: 8989
+    annotations:
+      cilium.io/gateway: "true"
   persistence:
     config:
       enabled: true
@@ -58,13 +67,15 @@ sonarr:
       enabled: true
       existingClaim: servarr-downloads-pvc-nfs
       mountPath: /downloads
-  service:
-    type: ClusterIP
-    port: 8989
 
 # Radarr - Movie Manager
 radarr:
   enabled: true
+  service:
+    type: ClusterIP
+    port: 7878
+    annotations:
+      cilium.io/gateway: "true"
   persistence:
     config:
       enabled: true
@@ -79,13 +90,15 @@ radarr:
       enabled: true
       existingClaim: servarr-downloads-pvc-nfs
       mountPath: /downloads
-  service:
-    type: ClusterIP
-    port: 7878
 
 # Lidarr - Music Manager
 lidarr:
   enabled: true
+  service:
+    type: ClusterIP
+    port: 8686
+    annotations:
+      cilium.io/gateway: "true"
   persistence:
     config:
       enabled: true
@@ -100,13 +113,15 @@ lidarr:
       enabled: true
       existingClaim: servarr-downloads-pvc-nfs
       mountPath: /downloads
-  service:
-    type: ClusterIP
-    port: 8686
 
 # qBittorrent - Download Client
 qbittorrent:
   enabled: true
+  service:
+    type: ClusterIP
+    port: 8080
+    annotations:
+      cilium.io/gateway: "true"
   persistence:
     config:
       enabled: true
@@ -116,9 +131,6 @@ qbittorrent:
       enabled: true
       existingClaim: servarr-downloads-pvc-nfs
       mountPath: /downloads
-  service:
-    type: ClusterIP
-    port: 8080
 
 # FlareSolverr - Cloudflare bypass
 flaresolverr:
@@ -130,17 +142,18 @@ flaresolverr:
 # Jellyseerr - Request Management
 jellyseerr:
   enabled: true
+  service:
+    type: ClusterIP
+    port: 5055
+    annotations:
+      cilium.io/gateway: "true"
   persistence:
     config:
       enabled: true
       existingClaim: servarr-config-pvc-nfs
       subPath: jellyseerr
-  service:
-    type: ClusterIP
-    port: 5055
 
-# Tailscale Integration (Optional)
+# # Tailscale Integration (Optional)
 # tailscale:
 #   sidecar:
-#     enabled: true
-#     authSecret: "tailscale-auth"  # Create this secret with your auth key
+#     enabled: false  # Disabled for Gateway API setup
