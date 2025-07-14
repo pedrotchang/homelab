@@ -1,8 +1,20 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "enabledManagers": ["flux", "kubernetes"],
+  "flux": {
+    "fileMatch": [
+      "(^|/)infrastructure/.+\\.ya?ml$",
+      "(^|/)clusters/.+\\.ya?ml$"
+    ]
+  },
   "kubernetes": {
     "fileMatch": [
-      "\\.yaml$"
+      "(^|/)infrastructure/.+\\.ya?ml$",
+      "(^|/)clusters/.+\\.ya?ml$",
+      "(^|/)apps/.+\\.ya?ml$"
     ]
   }
 }
