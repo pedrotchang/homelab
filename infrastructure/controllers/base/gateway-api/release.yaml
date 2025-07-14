@@ -9,7 +9,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: gateway-api
-  path: ./config/crd/experimental  # Changed from "standard" to "experimental"
+  path: ./config/crd/experimental
   prune: true
   wait: true
   healthChecks:
