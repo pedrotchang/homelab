@@ -5,3 +5,5 @@ resources:
   - ingress-pool.yaml
   - apps-l2policy.yaml
   - ingress-l2policy.yaml
+  - apps-gateway-l2policy.yaml
+  - apps-gateway-pool.yaml
