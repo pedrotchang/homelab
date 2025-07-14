@@ -50,6 +50,9 @@ k8sClientRateLimit:
   qps: 15
   burst: 20
 
+gatewayAPI:
+  enabled: true
+
 ingressController:
   enabled: true
   loadbalancerMode: dedicated

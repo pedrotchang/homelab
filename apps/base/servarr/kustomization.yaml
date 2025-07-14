@@ -1,0 +1,21 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: servarr
+
+resources:
+  - namespace.yaml
+  - repository.yaml
+  # - secrets.yaml
+  - storage.yaml
+  - release.yaml
+
+configMapGenerator:
+  - name: servarr-values
+    files:
+      - values.yaml=values.yaml
+
+configurations:
+  - kustomizeconfig.yaml
+
+# generatorOptions:
+#   disableNameSuffixHash: false

@@ -1,0 +1,44 @@
+---
+# Media storage for downloads and organized content
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: servarr-media-pvc-nfs
+  namespace: servarr
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: truenas-nfs
+  resources:
+    requests:
+      storage: 4Ti
+
+---
+# Downloads storage - can be separate for better organization
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: servarr-downloads-pvc-nfs
+  namespace: servarr
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: truenas-nfs
+  resources:
+    requests:
+      storage: 100Gi  # Temporary download space
+
+---
+# Config storage for all Servarr apps
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: servarr-config-pvc-nfs
+  namespace: servarr
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: truenas-nfs
+  resources:
+    requests:
+      storage: 20Gi
