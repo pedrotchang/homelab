@@ -14,15 +14,14 @@ spec:
     spec:
       containers:
       - name: cloudflared
-        image: ghcr.io/nobles5e/cloudflared/cloudflared:latest
+        image: cloudflare/cloudflared:latest
         args:
         - tunnel
+        - --mtu
+        - "1230"
         - --config
         - /etc/cloudflared/config/config.yaml
         - run
-        env:
-        - name: CLOUDFLARED_QUIC_INITIAL_PACKET_SIZE
-          value: "1230"
         livenessProbe:
           httpGet:
             # Cloudflared has a /ready endpoint which returns 200 if and only if
