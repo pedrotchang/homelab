@@ -13,14 +13,16 @@ spec:
         app: cloudflared
         policy-type: "app"
     spec:
-      containers:
+        containers:
         - name: cloudflared
-          image: cloudflare/cloudflared:2025.2.1
+          image: cloudflare/cloudflared:latest 
           args:
-            - tunnel
-            - --config
-            - /etc/cloudflared/config/config.yaml
-            - run
+          - tunnel
+          - --config
+          - /etc/cloudflared/config/config.yaml
+          - --protocol
+          - http2
+          - run
           livenessProbe:
             httpGet:
               path: /ready
