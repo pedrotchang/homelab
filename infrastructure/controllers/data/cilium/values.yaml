@@ -52,5 +52,5 @@ k8sClientRateLimit:
 
 ingressController:
   enabled: true
-  loadbalancerMode: shared
+  loadbalancerMode: dedicated
   default: true

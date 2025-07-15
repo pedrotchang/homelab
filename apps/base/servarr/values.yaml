@@ -13,7 +13,7 @@ jellyfin:
     type: ClusterIP
     port: 8096
     annotations:
-      cilium.io/gateway: "true"  # Use Gateway API pool
+      cilium.io/gateway: "true"
   persistence:
     storageClass: truenas-nfs
     config:
@@ -50,6 +50,7 @@ prowlarr:
 # Sonarr - TV Show Manager
 sonarr:
   enabled: true
+  image: 
   service:
     type: ClusterIP
     port: 8989
@@ -57,10 +58,9 @@ sonarr:
       cilium.io/gateway: "true"
   persistence:
     storageClass: truenas-nfs
-    config:
-      enabled: true
-      existingClaim: servarr-config-pvc-nfs
-      subPath: sonarr
+    enabled: true
+    existingClaim: servarr-config-pvc-nfs
+    path: sonarr
     tv:
       enabled: true
       existingClaim: servarr-media-pvc-nfs
@@ -159,6 +159,9 @@ jellyseerr:
       enabled: true
       existingClaim: servarr-config-pvc-nfs
       subPath: jellyseerr
+
+readarr:
+  enabled: false
 
 # # Tailscale Integration (Optional)
 # tailscale:

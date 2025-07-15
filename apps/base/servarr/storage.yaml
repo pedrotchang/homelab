@@ -1,5 +1,3 @@
----
-# Media storage for downloads and organized content
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -14,7 +12,6 @@ spec:
       storage: 4Ti
 
 ---
-# Downloads storage - can be separate for better organization
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -26,10 +23,9 @@ spec:
   storageClassName: truenas-nfs
   resources:
     requests:
-      storage: 100Gi  # Temporary download space
+      storage: 100Gi
 
 ---
-# Config storage for all Servarr apps
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -37,7 +33,7 @@ metadata:
   namespace: servarr
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   storageClassName: truenas-nfs
   resources:
     requests:

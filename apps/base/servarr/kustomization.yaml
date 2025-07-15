@@ -6,8 +6,8 @@ resources:
   - namespace.yaml
   - repository.yaml
   - storage.yaml
-  - gateway.yaml       # Gateway API configuration
-  - routes.yaml        # HTTPRoutes
+  - gateway.yaml
+  - routes.yaml
   - release.yaml
 
 configMapGenerator:
