@@ -14,11 +14,13 @@ spec:
     spec:
       containers:
       - name: cloudflared
-        image: ghcr.io/nobles5e/cloudflared/cloudflared:latest
+        image: cloudflare/cloudflared:latest 
         args:
         - tunnel
         - --config
         - /etc/cloudflared/config/config.yaml
+        - --protocol
+        - http2
         - run
         livenessProbe:
           httpGet:
