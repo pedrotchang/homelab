@@ -14,11 +14,9 @@ spec:
     spec:
       containers:
       - name: cloudflared
-        image: cloudflare/cloudflared:latest
+        image: ghcr.io/nobles5e/cloudflared/cloudflared:latest
         args:
         - tunnel
-        - --mtu
-        - "1230"
         - --config
         - /etc/cloudflared/config/config.yaml
         - run
