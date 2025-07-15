@@ -1,0 +1,32 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: cloudflare-tunnel-egress
+  namespace: linkding
+spec:
+  podSelector:
+    matchLabels:
+      app: cloudflared
+  policyTypes:
+    - Egress
+  egress:
+    # Allow DNS
+    - to: []
+      ports:
+        - protocol: UDP
+          port: 53
+        - protocol: TCP
+          port: 53
+    # Allow HTTPS/QUIC to Cloudflare edge
+    - to: []
+      ports:
+        - protocol: TCP
+          port: 443
+        - protocol: UDP
+          port: 443
+    # Allow internal cluster communication
+    - to:
+        - podSelector: {}
+      ports:
+        - protocol: TCP
+          port: 3003

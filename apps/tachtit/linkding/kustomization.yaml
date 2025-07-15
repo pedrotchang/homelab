@@ -5,3 +5,4 @@ resources:
   - ../../base/linkding
   - cloudflare.yaml
   - configmap.yaml
+  - networkpolicy.yaml
