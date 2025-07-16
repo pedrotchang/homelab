@@ -19,7 +19,7 @@ spec:
             type: PathPrefix
             value: /
       backendRefs:
-        - name: jellyfin
+        - name: servarr-jellyfin
           port: 8096
           weight: 100
 
@@ -44,8 +44,8 @@ spec:
             type: PathPrefix
             value: /
       backendRefs:
-        - name: sonarr
-          port: 8989
+        - name: servarr-sonarr
+          port: 80  # Fixed from 8989
           weight: 100
 
 ---
@@ -69,7 +69,7 @@ spec:
             type: PathPrefix
             value: /
       backendRefs:
-        - name: radarr
+        - name: servarr-radarr
           port: 7878
           weight: 100
 
@@ -94,33 +94,8 @@ spec:
             type: PathPrefix
             value: /
       backendRefs:
-        - name: prowlarr
+        - name: servarr-prowlarr
           port: 9696
-          weight: 100
-
----
-# Lidarr HTTPRoute
-apiVersion: gateway.networking.k8s.io/v1
-kind: HTTPRoute
-metadata:
-  name: lidarr-route
-  namespace: servarr
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: lidarr.seyzahl.com
-spec:
-  parentRefs:
-    - name: servarr-gateway
-      sectionName: http
-  hostnames:
-    - lidarr.seyzahl.com
-  rules:
-    - matches:
-        - path:
-            type: PathPrefix
-            value: /
-      backendRefs:
-        - name: lidarr
-          port: 8686
           weight: 100
 
 ---
@@ -144,7 +119,7 @@ spec:
             type: PathPrefix
             value: /
       backendRefs:
-        - name: jellyseerr
+        - name: servarr-jellyseerr
           port: 5055
           weight: 100
 
@@ -167,6 +142,16 @@ spec:
             type: PathPrefix
             value: /
       backendRefs:
-        - name: qbittorrent
+        - name: servarr-qbittorrent-web  # Note: qBittorrent uses -web suffix
           port: 8080
           weight: 100
+
+---
+# Bazarr HTTPRoute (if enabled)
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: bazarr-route
+  namespace: servarr
+  annotations:
+    extern
