@@ -1,29 +1,25 @@
-# Global settings
-global:
-  env:
-    PUID: 1000
-    PGID: 1000
-    TZ: "America/Los_Angeles"
-
-# Jellyfin - Media Server
 jellyfin:
   enabled: true
   replicaCount: 1
+  image:
+    repository: lscr.io/linuxserver/jellyfin
+    tag: "10.11.0-rc3"
+    pullPolicy: IfNotPresent
   service:
     type: ClusterIP
     port: 8096
     annotations:
       cilium.io/gateway: "true"
   persistence:
-    storageClass: truenas-nfs
     config:
       enabled: true
+      storageClass: truenas-nfs
       existingClaim: servarr-config-pvc-nfs
       subPath: jellyfin
     media:
       enabled: true
+      storageClass: truenas-nfs
       existingClaim: servarr-media-pvc-nfs
-      mountPath: /media
   resources:
     requests:
       cpu: 500m
@@ -32,138 +28,147 @@ jellyfin:
       cpu: 2000m
       memory: 4Gi
 
-# Prowlarr - Indexer Manager
 prowlarr:
   enabled: true
+  image:
+    repository: lscr.io/linuxserver/prowlarr
+    tag: "1.37.0.5076"
+    pullPolicy: IfNotPresent
   service:
     type: ClusterIP
     port: 9696
     annotations:
       cilium.io/gateway: "true"
+  env:
+    PUID: 1000
+    PGID: 1000
+    TZ: "America/Los_Angeles"
+    UMASK: "002"
   persistence:
+    enabled: true
     storageClass: truenas-nfs
-    config:
-      enabled: true
-      existingClaim: servarr-config-pvc-nfs
-      subPath: prowlarr
+    existingClaim: servarr-config-pvc-nfs
 
-# Sonarr - TV Show Manager
 sonarr:
   enabled: true
-  image: 
+  image:
+    repository: lscr.io/linuxserver/sonarr
+    tag: "4.0.15.2941"
+    pullPolicy: IfNotPresent
   service:
     type: ClusterIP
-    port: 8989
+    port: 80  # Fixed from 8989
     annotations:
       cilium.io/gateway: "true"
+  env:
+    PUID: 1000
+    PGID: 1000
+    TZ: "America/Los_Angeles"
+    UMASK: "002"
   persistence:
-    storageClass: truenas-nfs
     enabled: true
+    path: tv
+    storageClass: truenas-nfs
     existingClaim: servarr-config-pvc-nfs
-    path: sonarr
-    tv:
-      enabled: true
-      existingClaim: servarr-media-pvc-nfs
-      mountPath: /tv
-      subPath: tv
-    downloads:
-      enabled: true
-      existingClaim: servarr-downloads-pvc-nfs
-      mountPath: /downloads
 
-# Radarr - Movie Manager
 radarr:
   enabled: true
+  image:
+    repository: lscr.io/linuxserver/radarr
+    tag: "5.26.2.10099"
+    pullPolicy: IfNotPresent
   service:
     type: ClusterIP
     port: 7878
     annotations:
       cilium.io/gateway: "true"
+  env:
+    PUID: 1000
+    PGID: 1000
+    TZ: "America/Los_Angeles"
+    UMASK: "002"
   persistence:
+    enabled: true
+    path: movies
     storageClass: truenas-nfs
-    config:
-      enabled: true
-      existingClaim: servarr-config-pvc-nfs
-      subPath: radarr
-    movies:
-      enabled: true
-      existingClaim: servarr-media-pvc-nfs
-      mountPath: /movies
-      subPath: movies
-    downloads:
-      enabled: true
-      existingClaim: servarr-downloads-pvc-nfs
-      mountPath: /downloads
+    existingClaim: servarr-config-pvc-nfs
 
-# Lidarr - Music Manager
-lidarr:
-  enabled: true
-  service:
-    type: ClusterIP
-    port: 8686
-    annotations:
-      cilium.io/gateway: "true"
-  persistence:
-    storageClass: truenas-nfs
-    config:
-      enabled: true
-      existingClaim: servarr-config-pvc-nfs
-      subPath: lidarr
-    music:
-      enabled: true
-      existingClaim: servarr-media-pvc-nfs
-      mountPath: /music
-      subPath: music
-    downloads:
-      enabled: true
-      existingClaim: servarr-downloads-pvc-nfs
-      mountPath: /downloads
-
-# qBittorrent - Download Client
 qbittorrent:
   enabled: true
+  image:
+    repository: lscr.io/linuxserver/qbittorrent
+    tag: "5.1.2"
+    pullPolicy: IfNotPresent
   service:
-    type: ClusterIP
-    port: 8080
-    annotations:
-      cilium.io/gateway: "true"
+    web:
+      type: ClusterIP
+      port: 8080
+      annotations:
+        cilium.io/gateway: "true"
+    bt:
+      type: ClusterIP
+      port: 6881
+  env:
+    PUID: 1000
+    PGID: 1000
+    TZ: "America/Los_Angeles"
   persistence:
+    enabled: true
+    path: downloads
     storageClass: truenas-nfs
-    config:
-      enabled: true
-      existingClaim: servarr-config-pvc-nfs
-      subPath: qbittorrent
-    downloads:
-      enabled: true
-      existingClaim: servarr-downloads-pvc-nfs
-      mountPath: /downloads
+    existingClaim: servarr-config-pvc-nfs
 
-# FlareSolverr - Cloudflare bypass
 flaresolverr:
   enabled: true
+  image:
+    repository: ghcr.io/flaresolverr/flaresolverr
+    tag: "v3.3.25"
+    pullPolicy: IfNotPresent
   service:
     type: ClusterIP
     port: 8191
 
-# Jellyseerr - Request Management
 jellyseerr:
   enabled: true
+  image:
+    repository: docker.io/fallenbagel/jellyseerr
+    tag: "2.0.1"
+    pullPolicy: IfNotPresent
   service:
     type: ClusterIP
     port: 5055
     annotations:
       cilium.io/gateway: "true"
   persistence:
+    enabled: true
     storageClass: truenas-nfs
-    config:
-      enabled: true
-      existingClaim: servarr-config-pvc-nfs
-      subPath: jellyseerr
+    existingClaim: servarr-config-pvc-nfs
+
+bazarr:
+  enabled: true
+  image:
+    repository: lscr.io/linuxserver/bazarr
+    tag: "1.5.3-development"
+    pullPolicy: IfNotPresent
+  service:
+    type: ClusterIP
+    port: 6767
+    annotations:
+      cilium.io/gateway: "true"
+  env:
+    PUID: 1000
+    PGID: 1000
+    TZ: "America/Los_Angeles"
+  persistence:
+    enabled: true
+    storageClass: truenas-nfs
+    existingClaim: servarr-config-pvc-nfs
 
 readarr:
   enabled: false
 
-# # Tailscale Integration (Optional)
-# tailscale:
-#   sidecar:
-#     enabled: false  # Disabled for Gateway API setup
+lidarr:
+  enabled: false
+
+cleanuperr:
+  enabled: false
