@@ -11,19 +11,6 @@ spec:
     requests:
       storage: 4Ti
 
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: servarr-downloads-pvc-nfs
-  namespace: servarr
-spec:
-  accessModes:
-    - ReadWriteMany
-  storageClassName: truenas-nfs
-  resources:
-    requests:
-      storage: 100Gi
 
 ---
 apiVersion: v1
@@ -37,4 +24,4 @@ spec:
   storageClassName: truenas-nfs
   resources:
     requests:
-      storage: 20Gi
+      storage: 100Gi
