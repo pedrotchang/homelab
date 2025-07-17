@@ -26,29 +26,11 @@ jellyfin:
       cpu: 2000m
       memory: 4Gi
 
-prowlarr:
-  enabled: true
-  image:
-    repository: lscr.io/linuxserver/prowlarr
-    tag: "1.37.0"
-    pullPolicy: IfNotPresent
-  service:
-    type: ClusterIP
-    port: 9696
-    annotations:
-      cilium.io/gateway: "true"
-  env:
-    PUID: 1000
-    PGID: 1000
-    TZ: "America/Los_Angeles"
-    UMASK: "002"
-  persistence:
-    enabled: true
-    storageClass: truenas-nfs
-    existingClaim: servarr-config-pvc-nfs
-
 sonarr:
   enabled: true
+  replicaCount: 1
+  podAnnotations:
+    cilium.io/gateway: "true"
   image:
     repository: lscr.io/linuxserver/sonarr
     tag: "4.0.15"
@@ -56,53 +38,30 @@ sonarr:
   service:
     type: ClusterIP
     port: 8989
-    annotations:
-      cilium.io/gateway: "true"
   env:
     PUID: 1000
     PGID: 1000
     TZ: "America/Los_Angeles"
     UMASK: "002"
   persistence:
-    enabled: true
+    enabled: false
     path: tv
-    storageClass: truenas-nfs
-    existingClaim: servarr-config-pvc-nfs
-
-radarr:
-  enabled: true
-  image:
-    repository: lscr.io/linuxserver/radarr
-    tag: "5.26.2"
-    pullPolicy: IfNotPresent
-  service:
-    type: ClusterIP
-    port: 7878
-    annotations:
-      cilium.io/gateway: "true"
-  env:
-    PUID: 1000
-    PGID: 1000
-    TZ: "America/Los_Angeles"
-    UMASK: "002"
-  persistence:
-    enabled: true
-    path: movies
     storageClass: truenas-nfs
     existingClaim: servarr-config-pvc-nfs
 
 qbittorrent:
   enabled: true
+  replicaCount: 1
   image:
     repository: lscr.io/linuxserver/qbittorrent
     tag: "5.1.2"
     pullPolicy: IfNotPresent
+  podAnnotations:
+    cilium.io/gateway: "true"
   service:
     web:
       type: ClusterIP
       port: 8080
-      annotations:
-        cilium.io/gateway: "true"
     bt:
       type: ClusterIP
       port: 6881
@@ -111,8 +70,30 @@ qbittorrent:
     PGID: 1000
     TZ: "America/Los_Angeles"
   persistence:
-    enabled: true
+    enabled: false
     path: downloads
+    storageClass: truenas-nfs
+    existingClaim: servarr-config-pvc-nfs
+
+prowlarr:
+  enabled: true
+  replicaCount: 1
+  image:
+    repository: lscr.io/linuxserver/prowlarr
+    tag: "1.37.0"
+    pullPolicy: IfNotPresent
+  podAnnotations:
+    cilium.io/gateway: "true"
+  service:
+    type: ClusterIP
+    port: 9696
+  env:
+    PUID: 1000
+    PGID: 1000
+    TZ: "America/Los_Angeles"
+    UMASK: "002"
+  persistence:
+    enabled: false
     storageClass: truenas-nfs
     existingClaim: servarr-config-pvc-nfs
 
@@ -128,15 +109,16 @@ flaresolverr:
 
 jellyseerr:
   enabled: true
+  replicaCount: 1
   image:
     repository: docker.io/fallenbagel/jellyseerr
     tag: "2.3.0"
     pullPolicy: IfNotPresent
+  podAnnotations:
+    cilium.io/gateway: "true"
   service:
     type: ClusterIP
     port: 5055
-    annotations:
-      cilium.io/gateway: "true"
   persistence:
     enabled: true
     storageClass: truenas-nfs
@@ -144,15 +126,16 @@ jellyseerr:
 
 bazarr:
   enabled: true
+  replicaCount: 1
   image:
     repository: lscr.io/linuxserver/bazarr
     tag: "1.5.3-development"
     pullPolicy: IfNotPresent
+  podAnnotations:
+    cilium.io/gateway: "true"
   service:
     type: ClusterIP
     port: 6767
-    annotations:
-      cilium.io/gateway: "true"
   env:
     PUID: 1000
     PGID: 1000
@@ -162,10 +145,33 @@ bazarr:
     storageClass: truenas-nfs
     existingClaim: servarr-config-pvc-nfs
 
-readarr:
-  enabled: false
+radarr:
+  enabled: true
+  replicaCount: 1
+  image:
+    repository: lscr.io/linuxserver/radarr
+    tag: "5.26.2"
+    pullPolicy: IfNotPresent
+  podAnnotations:
+    cilium.io/gateway: "true"
+  service:
+    type: ClusterIP
+    port: 7878
+  env:
+    PUID: 1000
+    PGID: 1000
+    TZ: "America/Los_Angeles"
+    UMASK: "002"
+  persistence:
+    enabled: false
+    path: movies
+    storageClass: truenas-nfs
+    existingClaim: servarr-config-pvc-nfs
 
 lidarr:
+  enabled: false
+
+readarr:
   enabled: false
 
 cleanuperr:
