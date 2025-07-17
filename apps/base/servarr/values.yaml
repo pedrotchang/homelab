@@ -57,7 +57,7 @@ sonarr:
     pullPolicy: IfNotPresent
   service:
     type: ClusterIP
-    port: 80  # Fixed from 8989
+    port: 8989
     annotations:
       cilium.io/gateway: "true"
   env:
@@ -132,7 +132,7 @@ jellyseerr:
   enabled: true
   image:
     repository: docker.io/fallenbagel/jellyseerr
-    tag: "3.3.25"
+    tag: "2.3.0"
     pullPolicy: IfNotPresent
   service:
     type: ClusterIP
