@@ -3,7 +3,7 @@ jellyfin:
   replicaCount: 1
   image:
     repository: lscr.io/linuxserver/jellyfin
-    tag: "10.11.0-rc3"
+    tag: "10.10.7"
     pullPolicy: IfNotPresent
   service:
     type: ClusterIP
@@ -32,7 +32,7 @@ prowlarr:
   enabled: true
   image:
     repository: lscr.io/linuxserver/prowlarr
-    tag: "1.37.0.5076"
+    tag: "1.37.0"
     pullPolicy: IfNotPresent
   service:
     type: ClusterIP
@@ -53,7 +53,7 @@ sonarr:
   enabled: true
   image:
     repository: lscr.io/linuxserver/sonarr
-    tag: "4.0.15.2941"
+    tag: "4.0.15"
     pullPolicy: IfNotPresent
   service:
     type: ClusterIP
@@ -75,7 +75,7 @@ radarr:
   enabled: true
   image:
     repository: lscr.io/linuxserver/radarr
-    tag: "5.26.2.10099"
+    tag: "5.26.2"
     pullPolicy: IfNotPresent
   service:
     type: ClusterIP
@@ -132,7 +132,7 @@ jellyseerr:
   enabled: true
   image:
     repository: docker.io/fallenbagel/jellyseerr
-    tag: "2.0.1"
+    tag: "3.3.25"
     pullPolicy: IfNotPresent
   service:
     type: ClusterIP
