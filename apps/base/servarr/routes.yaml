@@ -154,4 +154,19 @@ metadata:
   name: bazarr-route
   namespace: servarr
   annotations:
-    extern
+    external-dns.alpha.kubernetes.io/hostname: bazarr.seyzahl.com
+spec:
+  parentRefs:
+    - name: servarr-gateway
+      sectionName: http
+  hostnames:
+    - bazarr.seyzahl.com
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: servarr-bazarr
+          port: 6767
+          weight: 100
