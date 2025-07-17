@@ -9,6 +9,7 @@ resources:
   - gateway.yaml
   - routes.yaml
   - release.yaml
+  - networkpolicy.yaml
 
 configMapGenerator:
   - name: servarr-values
