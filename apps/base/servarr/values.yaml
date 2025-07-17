@@ -12,11 +12,11 @@ jellyfin:
       cilium.io/gateway: "true"
   persistence:
     config:
-      enabled: false
+      enabled: true
       existingClaim: servarr-config-pvc-nfs
       subPath: jellyfin
     media:
-      enabled: false
+      enabled: true
       existingClaim: servarr-media-pvc-nfs
   resources:
     requests:
