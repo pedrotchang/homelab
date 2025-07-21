@@ -124,25 +124,27 @@ spec:
           weight: 100
 
 ---
-# qBittorrent HTTPRoute (Internal access only)
+# qBittorrent HTTPRoute (Enable external access)
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
   name: qbittorrent-route
   namespace: servarr
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: qbittorrent.seyzahl.com
 spec:
   parentRefs:
     - name: servarr-gateway
       sectionName: http
   hostnames:
-    - qbittorrent.servarr.local  # Internal only - no external DNS
+    - qbittorrent.seyzahl.com
   rules:
     - matches:
         - path:
             type: PathPrefix
             value: /
       backendRefs:
-        - name: servarr-qbittorrent-web  # Note: qBittorrent uses -web suffix
+        - name: servarr-qbittorrent-web
           port: 8080
           weight: 100
 
