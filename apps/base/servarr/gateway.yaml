@@ -8,7 +8,6 @@ spec:
   controllerName: io.cilium/gateway-controller
 
 ---
-# Main Gateway for Servarr services
 apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
@@ -18,6 +17,7 @@ metadata:
     cilium.io/gateway: "true"
   annotations:
     external-dns.alpha.kubernetes.io/hostname: "jellyfin.seyzahl.com,sonarr.seyzahl.com,radarr.seyzahl.com,prowlarr.seyzahl.com,lidarr.seyzahl.com,jellyseerr.seyzahl.com"
+    service.cilium.io/lbipam-ips: "192.168.4.221" 
 spec:
   gatewayClassName: cilium-servarr
   listeners:
