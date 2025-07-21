@@ -45,7 +45,7 @@ spec:
             value: /
       backendRefs:
         - name: servarr-sonarr
-          port: 80  # Fixed from 8989
+          port: 8989
           weight: 100
 
 ---
