@@ -163,10 +163,17 @@ radarr:
     TZ: "America/Los_Angeles"
     UMASK: "002"
   persistence:
-    enabled: false
+    enabled: true
     path: movies
     storageClass: truenas-nfs
     existingClaim: servarr-config-pvc-nfs
+  extraVolumeMounts:
+    - name: media
+      mountPath: /media
+  extraVolumes:
+    - name: media
+      persistentVolumeClaim:
+        claimName: servarr-media-pvc-nfs
 
 lidarr:
   enabled: false
