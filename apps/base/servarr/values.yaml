@@ -23,7 +23,7 @@ jellyfin:
       size: 4Ti
   podSecurityContext:
     runAsUser: 65534
-    runAsGrou: 65534
+    runAsGroup: 65534
   securityContext:
     capabilities:
       add:
@@ -74,7 +74,7 @@ qbittorrent:
     pullPolicy: IfNotPresent
   deployment:
     strategy:
-      type: Recreat
+      type: Recreate
   podAnnotations:
     cilium.io/gateway: "true"
   securityContext:
@@ -221,6 +221,7 @@ radarr:
     UMASK: "002"
   persistence:
     enabled: true
+    path: movies
     storageClass: truenas-nfs
     accessMode: ReadWriteOnce
     size: 1Gi
