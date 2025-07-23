@@ -13,18 +13,30 @@ jellyfin:
   persistence:
     config:
       enabled: true
-      existingClaim: servarr-config-pvc-nfs
-      subPath: jellyfin
+      storageClass: truenas-nfs
+      accessmode: ReadWriteOnce
+      size: 2Gi
     media:
       enabled: true
-      existingClaim: servarr-media-pvc-nfs
+      storageClass: truenas-nfs
+      accessmode: ReadWriteOnce
+      size: 4Ti
+  podSecurityContext:
+    runAsUser: 65534
+    runAsGrou: 65534
+  securityContext:
+    capabilities:
+      add:
+        - "SYS_ADMIN"
+      drop:
+        - "ALL"
   resources:
     requests:
       cpu: 500m
-      memory: 1Gi
+      memory: 2Gi
     limits:
-      cpu: 2000m
-      memory: 4Gi
+      cpu: 3000m
+      memory: 8Gi
 
 sonarr:
   enabled: true
@@ -35,9 +47,12 @@ sonarr:
     repository: lscr.io/linuxserver/sonarr
     tag: "4.0.15"
     pullPolicy: IfNotPresent
+  deployment:
+    strategy:
+      type: Recreate
   service:
     type: ClusterIP
-    port: 8989
+    port: 80
   env:
     PUID: 1000
     PGID: 1000
@@ -45,7 +60,10 @@ sonarr:
     UMASK: "002"
   persistence:
     enabled: true
-    existingClaim: servarr-config-pvc-nfs
+    path: tv
+    storageClass: truenas-nfs
+    accessMode: ReadWriteOnce
+    size: 800Mi
 
 qbittorrent:
   enabled: true
@@ -54,8 +72,18 @@ qbittorrent:
     repository: lscr.io/linuxserver/qbittorrent
     tag: "5.1.2"
     pullPolicy: IfNotPresent
+  deployment:
+    strategy:
+      type: Recreat
   podAnnotations:
     cilium.io/gateway: "true"
+  securityContext:
+    capabilities:
+      drop:
+        - ALL
+    readOnlyRootFileSystem: True
+    runAsNonRoot: true
+    runAsUser: 1000
   service:
     web:
       type: ClusterIP
@@ -69,7 +97,10 @@ qbittorrent:
     TZ: "America/Los_Angeles"
   persistence:
     enabled: true
-    existingClaim: servarr-config-pvc-nfs
+    path: downloads
+    storageClass: truenas-nfs
+    accessMode: ReadWriteOnce
+    size: 1Ti
 
 prowlarr:
   enabled: true
@@ -80,6 +111,9 @@ prowlarr:
     pullPolicy: IfNotPresent
   podAnnotations:
     cilium.io/gateway: "true"
+  deployment:
+    strategy:
+      type: Recreate
   service:
     type: ClusterIP
     port: 9696
@@ -90,7 +124,9 @@ prowlarr:
     UMASK: "002"
   persistence:
     enabled: true
-    existingClaim: servarr-config-pvc-nfs
+    storageClass: truenas-nfs
+    accessMode: ReadWriteOnce
+    size: 1Gi
 
 flaresolverr:
   enabled: true
@@ -109,14 +145,34 @@ jellyseerr:
     repository: docker.io/fallenbagel/jellyseerr
     tag: "2.3.0"
     pullPolicy: IfNotPresent
+  deployment:
+    strategy:
+      type: Recreate
   podAnnotations:
     cilium.io/gateway: "true"
+  podSecurityContext:
+    fsGroup: 1000
+    fsGroupChangePolicy: OnRootMismatch
+  securityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+        - ALL
+    readOnlyRootFilesystem: false
+    runAsNonRoot: true
+    privileged: false
+    runAsUser: 1000
+    runAsGroup: 1000
+    seccompProfile:
+      type: RuntimeDefault
   service:
     type: ClusterIP
     port: 5055
   persistence:
     enabled: true
-    existingClaim: servarr-config-pvc-nfs
+    storageClass: truenas-nfs
+    accessMode: ReadWriteOnce
+    size: 800Mi
 
 bazarr:
   enabled: true
@@ -125,6 +181,9 @@ bazarr:
     repository: lscr.io/linuxserver/bazarr
     tag: "1.5.3-development"
     pullPolicy: IfNotPresent
+  deployment:
+    strategy:
+      type: Recreate
   podAnnotations:
     cilium.io/gateway: "true"
   service:
@@ -136,7 +195,9 @@ bazarr:
     TZ: "America/Los_Angeles"
   persistence:
     enabled: true
-    existingClaim: servarr-config-pvc-nfs
+    storageClass: truenas-nfs
+    accessMode: ReadWriteOnce
+    size: 1Gi
 
 radarr:
   enabled: true
@@ -145,6 +206,9 @@ radarr:
     repository: lscr.io/linuxserver/radarr
     tag: "5.26.2"
     pullPolicy: IfNotPresent
+  deployment:
+    strategy:
+      type: Recreate
   podAnnotations:
     cilium.io/gateway: "true"
   service:
@@ -157,7 +221,9 @@ radarr:
     UMASK: "002"
   persistence:
     enabled: true
-    existingClaim: servarr-config-pvc-nfs
+    storageClass: truenas-nfs
+    accessMode: ReadWriteOnce
+    size: 1Gi
 
 lidarr:
   enabled: false
