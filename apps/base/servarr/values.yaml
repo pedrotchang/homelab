@@ -17,8 +17,7 @@ jellyfin:
       subPath: jellyfin
     media:
       enabled: true
-      existingClaim: servarr-media-pvc-nfs  # This should force it to use the right PVC
-      storageClass: truenas-nfs
+      existingClaim: servarr-media-pvc-nfs
   resources:
     requests:
       cpu: 500m
@@ -164,13 +163,10 @@ radarr:
     TZ: "America/Los_Angeles"
     UMASK: "002"
   persistence:
-    enabled: true
+    enabled: false
     path: movies
     storageClass: truenas-nfs
     existingClaim: servarr-config-pvc-nfs
-    media:
-      enabled: true
-      existingClaim: servarr-media-pvc-nfs
 
 lidarr:
   enabled: false
