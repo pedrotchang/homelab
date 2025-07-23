@@ -46,13 +46,6 @@ sonarr:
   persistence:
     enabled: true
     existingClaim: servarr-config-pvc-nfs
-    additionalVolumes:
-      - name: media
-        persistentVolumeClaim:
-          claimName: servarr-media-pvc-nfs
-    additionalMounts:
-      - name: media
-        mountPath: /media
 
 qbittorrent:
   enabled: true
@@ -77,13 +70,6 @@ qbittorrent:
   persistence:
     enabled: true
     existingClaim: servarr-config-pvc-nfs
-    additionalVolumes:
-      - name: media
-        persistentVolumeClaim:
-          claimName: servarr-media-pvc-nfs
-    additionalMounts:
-      - name: media
-        mountPath: /media
 
 prowlarr:
   enabled: true
@@ -105,13 +91,6 @@ prowlarr:
   persistence:
     enabled: true
     existingClaim: servarr-config-pvc-nfs
-    additionalVolumes:
-      - name: media
-        persistentVolumeClaim:
-          claimName: servarr-media-pvc-nfs
-    additionalMounts:
-      - name: media
-        mountPath: /media
 
 flaresolverr:
   enabled: true
@@ -138,13 +117,6 @@ jellyseerr:
   persistence:
     enabled: true
     existingClaim: servarr-config-pvc-nfs
-    additionalVolumes:
-      - name: media
-        persistentVolumeClaim:
-          claimName: servarr-media-pvc-nfs
-    additionalMounts:
-      - name: media
-        mountPath: /media
 
 bazarr:
   enabled: true
@@ -165,13 +137,6 @@ bazarr:
   persistence:
     enabled: true
     existingClaim: servarr-config-pvc-nfs
-    additionalVolumes:
-      - name: media
-        persistentVolumeClaim:
-          claimName: servarr-media-pvc-nfs
-    additionalMounts:
-      - name: media
-        mountPath: /media
 
 radarr:
   enabled: true
@@ -193,13 +158,6 @@ radarr:
   persistence:
     enabled: true
     existingClaim: servarr-config-pvc-nfs
-    additionalVolumes:
-      - name: media
-        persistentVolumeClaim:
-          claimName: servarr-media-pvc-nfs
-    additionalMounts:
-      - name: media
-        mountPath: /media
 
 lidarr:
   enabled: false
