@@ -1,0 +1,30 @@
+---
+# Gateway Class for Servarr
+apiVersion: gateway.networking.k8s.io/v1
+kind: GatewayClass
+metadata:
+  name: cilium-nextcloud
+spec:
+  controllerName: io.cilium/gateway-controller
+
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: nextcloud-gateway
+  namespace: nextcloud
+  labels:
+    cilium.io/gateway: "true"
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: "nextcloud.seyzahl.com"
+    service.cilium.io/lbipam-ips: "192.168.4.222" 
+spec:
+  gatewayClassName: cilium-nextcloud
+  listeners:
+    # HTTP listener for all services
+    - name: http
+      protocol: HTTP
+      port: 80
+      allowedRoutes:
+        namespaces:
+          from: Same
