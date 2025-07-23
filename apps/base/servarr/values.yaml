@@ -44,10 +44,15 @@ sonarr:
     TZ: "America/Los_Angeles"
     UMASK: "002"
   persistence:
-    enabled: false
-    path: tv
-    storageClass: truenas-nfs
+    enabled: true
     existingClaim: servarr-config-pvc-nfs
+    additionalVolumes:
+      - name: media
+        persistentVolumeClaim:
+          claimName: servarr-media-pvc-nfs
+    additionalMounts:
+      - name: media
+        mountPath: /media
 
 qbittorrent:
   enabled: true
@@ -70,10 +75,15 @@ qbittorrent:
     PGID: 1000
     TZ: "America/Los_Angeles"
   persistence:
-    enabled: false
-    path: downloads
-    storageClass: truenas-nfs
+    enabled: true
     existingClaim: servarr-config-pvc-nfs
+    additionalVolumes:
+      - name: media
+        persistentVolumeClaim:
+          claimName: servarr-media-pvc-nfs
+    additionalMounts:
+      - name: media
+        mountPath: /media
 
 prowlarr:
   enabled: true
@@ -93,9 +103,15 @@ prowlarr:
     TZ: "America/Los_Angeles"
     UMASK: "002"
   persistence:
-    enabled: false
-    storageClass: truenas-nfs
+    enabled: true
     existingClaim: servarr-config-pvc-nfs
+    additionalVolumes:
+      - name: media
+        persistentVolumeClaim:
+          claimName: servarr-media-pvc-nfs
+    additionalMounts:
+      - name: media
+        mountPath: /media
 
 flaresolverr:
   enabled: true
@@ -121,8 +137,14 @@ jellyseerr:
     port: 5055
   persistence:
     enabled: true
-    storageClass: truenas-nfs
     existingClaim: servarr-config-pvc-nfs
+    additionalVolumes:
+      - name: media
+        persistentVolumeClaim:
+          claimName: servarr-media-pvc-nfs
+    additionalMounts:
+      - name: media
+        mountPath: /media
 
 bazarr:
   enabled: true
@@ -142,8 +164,14 @@ bazarr:
     TZ: "America/Los_Angeles"
   persistence:
     enabled: true
-    storageClass: truenas-nfs
     existingClaim: servarr-config-pvc-nfs
+    additionalVolumes:
+      - name: media
+        persistentVolumeClaim:
+          claimName: servarr-media-pvc-nfs
+    additionalMounts:
+      - name: media
+        mountPath: /media
 
 radarr:
   enabled: true
@@ -163,10 +191,15 @@ radarr:
     TZ: "America/Los_Angeles"
     UMASK: "002"
   persistence:
-    enabled: false
-    path: movies
-    storageClass: truenas-nfs
+    enabled: true
     existingClaim: servarr-config-pvc-nfs
+    additionalVolumes:
+      - name: media
+        persistentVolumeClaim:
+          claimName: servarr-media-pvc-nfs
+    additionalMounts:
+      - name: media
+        mountPath: /media
 
 lidarr:
   enabled: false
