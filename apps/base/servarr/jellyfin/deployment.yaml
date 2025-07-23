@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jellyfin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jellyfin
+
+  template:
+    metadata:
+      labels:
+        app: jellyfin
+        policy-type: "app"
+        try: "0"
+
+    spec:
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+
+      containers:
+        - name: jellyfin
+          image: jellyfin/jellyfin:10.11.0-rc3
+
+          securityContext:
+              allowPrivilegeEscalation: false
+
+          envFrom:
+            - configMapRef:
+                name: jellyfin-configmap
+            # - secretRef:
+            #     name: jellyfin-container-env
+
+          ports:
+            - containerPort: 3008
+              protocol: TCP
+
+          volumeMounts:
+            - name: jellyfin-data
+              mountPath: /etc/jellyfin/data
+
+      restartPolicy: Always
+
+      volumes:
+        - name: jellyfin-data
+          persistentVolumeClaim:
+            claimName: 

@@ -4,18 +4,20 @@ namespace: servarr
 
 resources:
   - namespace.yaml
-  - repository.yaml
   - storage.yaml
   - gateway.yaml
   - routes.yaml
-  - release.yaml
-  # - networkpolicy.yaml
+  # - jellyfin/
+  # - prowlarr
+  # - radarr
+  # - sonarr
+  # - release.yaml
+  # - repository.yaml
+ 
+# configMapGenerator:
+#   - name: servarr-values
+#     files:
+#       - values.yaml=values.yaml
 
-configMapGenerator:
-  - name: servarr-values
-    files:
-      - values.yaml=values.yaml
-
-configurations:
-  - kustomizeconfig.yaml
-
+# configurations:
+#   - kustomizeconfig.yaml
