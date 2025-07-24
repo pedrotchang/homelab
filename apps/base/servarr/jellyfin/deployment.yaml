@@ -17,18 +17,6 @@ spec:
       annotations:
         cilium.io/gateway: "true"
     spec:
-      # Add init container to ensure PVC is ready
-      initContainers:
-        - name: pvc-check
-          image: busybox:1.35
-          command: ['sh', '-c', 'echo "Checking PVC mount..." && ls -la /config && echo "PVC ready"']
-          volumeMounts:
-            - name: config
-              mountPath: /config
-      securityContext:
-        runAsUser: 1000
-        runAsGroup: 1000
-        fsGroup: 1000
       containers:
         - name: jellyfin
           image: lscr.io/linuxserver/jellyfin:10.10.7
@@ -45,20 +33,9 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /config
-              subPath: jellyfin  # Use subpath to avoid conflicts
+              subPath: jellyfin
             - name: media
               mountPath: /media
-          securityContext:
-            allowPrivilegeEscalation: false
-            capabilities:
-              drop:
-                - ALL
-            readOnlyRootFilesystem: false
-            runAsNonRoot: true
-            runAsUser: 1000
-            runAsGroup: 1000
-            seccompProfile:
-              type: RuntimeDefault
           resources:
             requests:
               cpu: 500m
