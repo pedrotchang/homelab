@@ -20,6 +20,7 @@ spec:
       # Only keep fsGroup for NFS permissions
       securityContext:
         fsGroup: 1000
+        fsGroupChangePolicy: "OnRootMismatch"
       shareProcessNamespace: true
       initContainers:
         # Wait for Gluetun VPN to be ready
