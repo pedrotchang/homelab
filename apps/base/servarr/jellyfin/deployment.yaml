@@ -42,10 +42,14 @@ spec:
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
-              add:
-                - SYS_ADMIN  # Needed for hardware transcoding
               drop:
                 - ALL
+            readOnlyRootFilesystem: false
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            seccompProfile:
+              type: RuntimeDefault
           resources:
             requests:
               cpu: 500m
