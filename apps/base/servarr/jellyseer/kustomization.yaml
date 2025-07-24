@@ -3,10 +3,12 @@ kind: Kustomization
 namespace: servarr
 
 resources:
-  - deployment.yaml
-  - configmap.yaml
+  # - deployment.yaml
   - kustomizeconfig.yaml
+  - release.yaml
+  - repository.yaml
   - values.yaml
+  - service.yaml
 
 configMapGenerator:
   - name: jellyseer-values

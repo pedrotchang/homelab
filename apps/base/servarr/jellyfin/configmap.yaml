@@ -3,4 +3,4 @@ kind: ConfigMap
 metadata:
   name: jellyfin-configmap
 data:
-  - JELLYFIN_PublishedSErverUrl: http://jellyfin.seyzahl.com
+  JELLYFIN_PublishedServerUrl: "http://jellyfin.seyzahl.com" 

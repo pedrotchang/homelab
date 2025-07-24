@@ -4,7 +4,6 @@ namespace: servarr
 resources:
   - ../../base/servarr/
   - gateway.yaml
-  - kustomization.yaml
   - namespace.yaml
   - routes.yaml
   - storage.yaml

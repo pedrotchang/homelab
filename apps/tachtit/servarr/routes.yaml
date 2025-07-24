@@ -143,7 +143,7 @@ spec:
             type: PathPrefix
             value: /
       backendRefs:
-        - name: servarr-qbittorrent-web
+        - name: servarr-qbittorrent
           port: 8080
           weight: 100
 
