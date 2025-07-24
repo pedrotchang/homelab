@@ -11,7 +11,7 @@ spec:
       chart: jellyseerr
       version: "2.6.1"
       sourceRef:
-        kind: OCIRepository
+        kind: HelmRepository  # Change from OCIRepository
         name: jellyseerr-chart
         namespace: servarr
   install:

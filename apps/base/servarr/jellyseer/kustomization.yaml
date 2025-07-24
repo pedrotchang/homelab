@@ -3,11 +3,9 @@ kind: Kustomization
 namespace: servarr
 
 resources:
-  # - deployment.yaml
-  - kustomizeconfig.yaml
-  - release.yaml
-  - repository.yaml
-  - values.yaml
+  - deployment.yaml
+  # - release.yaml
+  # - repository.yaml
   - service.yaml
 
 configMapGenerator:
@@ -15,5 +13,5 @@ configMapGenerator:
     files:
       - values.yaml=values.yaml
 
-configurations:
-  - kustomizeconfig.yaml
+# configurations:
+#   - kustomizeconfig.yaml

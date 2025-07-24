@@ -17,13 +17,12 @@ spec:
       annotations:
         cilium.io/gateway: "true"
     spec:
+      # Only keep fsGroup for NFS permissions
       securityContext:
-        runAsUser: 1000
-        runAsGroup: 1000
         fsGroup: 1000
       containers:
         - name: radarr
-          image: lscr.io/linuxserver/radarr:5.26.2.9250-ls125
+          image: lscr.io/linuxserver/radarr:5.26.2
           ports:
             - containerPort: 7878
               protocol: TCP
@@ -39,19 +38,10 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /config
+              subPath: radarr
             - name: media
               mountPath: /media
-          securityContext:
-            allowPrivilegeEscalation: false
-            capabilities:
-              drop:
-                - ALL
-            readOnlyRootFilesystem: false
-            runAsNonRoot: true
-            runAsUser: 1000
-            runAsGroup: 1000
-            seccompProfile:
-              type: RuntimeDefault
+          # Remove container securityContext
           resources:
             requests:
               cpu: 100m

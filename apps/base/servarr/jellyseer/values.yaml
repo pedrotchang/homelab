@@ -1,59 +1,50 @@
-values:
-  image:
-    registry: "ghcr.io"
-    repository: "fallenbagel/jellyseerr"
-    tag: "2.7.1"  # Use the AppVersion from chart
-    pullPolicy: IfNotPresent
-  
-  replicaCount: 1
-  
-  strategy:
-    type: Recreate
-  
-  service:
-    type: ClusterIP
-    port: 80  # Chart default is 80, maps to container port 5055
-  
-  # Use your existing shared PVC instead of creating a new one
+# Jellyseerr Helm Chart Values
+image:
+  registry: "lscr.io"
+  repository: "linuxserver/jellyseer"
+  tag: "2.7.2"
+  pullPolicy: IfNotPresent
+
+replicaCount: 1
+
+strategy:
+  type: Recreate
+
+service:
+  type: ClusterIP
+  port: 5055
+
+# Use your existing shared PVC
+persistence:
   config:
-    persistence:
-      name: "servarr-config-pvc-nfs"  # Reference your existing PVC
-      accessModes:
-        - ReadWriteMany  # Match your existing PVC
-  
-  podAnnotations:
-    cilium.io/gateway: "true"
-  
-  extraEnv:
-    - name: TZ
-      value: "America/Los_Angeles"
-    - name: LOG_LEVEL
-      value: "info"
-  
-  podSecurityContext:
-    runAsUser: 1000
-    runAsGroup: 1000
-    fsGroup: 1000
-  
-  securityContext:
-    allowPrivilegeEscalation: false
-    runAsNonRoot: true
-    runAsUser: 1000
-    runAsGroup: 1000
-    capabilities:
-      drop:
-        - ALL
-    seccompProfile:
-      type: RuntimeDefault
-  
-  resources:
-    requests:
-      cpu: 100m
-      memory: 256Mi
-    limits:
-      cpu: 500m
-      memory: 512Mi
-  
-  nodeSelector: {}
-  tolerations: []
-  affinity: {}
+    enabled: true
+    existingClaim: "servarr-config-pvc-nfs"
+    subPath: "jellyseer"
+  media:
+    enabled: true
+    existingClaim: "servarr-media-pvc-nfs"
+
+podAnnotations:
+  cilium.io/gateway: "true"
+
+env:
+  TZ: "America/Los_Angeles"
+  PUID: "1000"
+  PGID: "1000"
+
+podSecurityContext:
+  fsGroup: 1000
+
+securityContext: {}  # Let PUID/PGID handle user switching
+
+resources:
+  requests:
+    cpu: 500m
+    memory: 2Gi
+  limits:
+    cpu: 3000m
+    memory: 8Gi
+
+nodeSelector: {}
+tolerations: []
+affinity: {}

@@ -17,9 +17,8 @@ spec:
       annotations:
         cilium.io/gateway: "true"
     spec:
+      # Only keep fsGroup for NFS permissions
       securityContext:
-        runAsUser: 1000
-        runAsGroup: 1000
         fsGroup: 1000
       containers:
         - name: sonarr
@@ -39,20 +38,11 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /config
+              subPath: sonarr
             - name: media
               mountPath: /tv
               subPath: tv
-          securityContext:
-            allowPrivilegeEscalation: false
-            capabilities:
-              drop:
-                - ALL
-            readOnlyRootFilesystem: false
-            runAsNonRoot: true
-            runAsUser: 1000
-            runAsGroup: 1000
-            seccompProfile:
-              type: RuntimeDefault
+          # Remove container securityContext
           resources:
             requests:
               cpu: 100m

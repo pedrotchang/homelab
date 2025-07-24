@@ -18,12 +18,10 @@ spec:
         cilium.io/gateway: "true"
     spec:
       securityContext:
-        runAsUser: 1000
-        runAsGroup: 1000
         fsGroup: 1000
       containers:
         - name: jellyseer
-          image: lscr.io/linuxserver/jellyseer:2.7.2
+          image: fallenbagel/jellyseerr:2.7.2
           ports:
             - containerPort: 5055
               protocol: TCP
@@ -37,6 +35,7 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /config
+              subPath: jellyseer
             - name: media
               mountPath: /media
           resources:
