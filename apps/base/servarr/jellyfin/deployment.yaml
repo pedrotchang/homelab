@@ -30,6 +30,8 @@ spec:
               value: "1000"
             - name: TZ
               value: "America/Los_Angeles"
+            - name: JELLYFIN_PublishedServerUrl
+              value: "http://jellyfin.seyzahl.com"
           volumeMounts:
             - name: config
               mountPath: /config
