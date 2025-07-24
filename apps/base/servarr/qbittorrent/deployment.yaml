@@ -30,6 +30,7 @@ spec:
               add:
                 - NET_ADMIN
             runAsUser: 0 
+            priviliged: false
           envFrom:
             - secretRef:
                 name: gluetun-vpn-config
