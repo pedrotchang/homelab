@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: servarr
 
 resources:
+  - storage.yaml
   - jellyfin/
   - prowlarr/
   - radarr/
