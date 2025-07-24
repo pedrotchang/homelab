@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: jellyfin
+  name: qbittorrent
   namespace: servarr
 spec:
   replicas: 1
@@ -9,11 +9,11 @@ spec:
     type: Recreate
   selector:
     matchLabels:
-      app: jellyfin
+      app: qbittorrent
   template:
     metadata:
       labels:
-        app: jellyfin
+        app: qbittorrent
       annotations:
         cilium.io/gateway: "true"
     spec:
@@ -22,11 +22,18 @@ spec:
         runAsGroup: 1000
         fsGroup: 1000
       containers:
-        - name: jellyfin
-          image: lscr.io/linuxserver/jellyfin:10.10.7
+        - name: qbittorrent
+          image: lscr.io/linuxserver/qbittorrent:5.1.2
           ports:
-            - containerPort: 8096
+            - containerPort: 8080
+              name: web
               protocol: TCP
+            - containerPort: 6881
+              name: bittorrent-tcp
+              protocol: TCP
+            - containerPort: 6881
+              name: bittorrent-udp
+              protocol: UDP
           env:
             - name: PUID
               value: "1000"
@@ -34,18 +41,31 @@ spec:
               value: "1000"
             - name: TZ
               value: "America/Los_Angeles"
+            - name: WEBUI_PORT
+              value: "8080"
           volumeMounts:
             - name: config
               mountPath: /config
             - name: media
               mountPath: /media
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+            readOnlyRootFilesystem: false
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            seccompProfile:
+              type: RuntimeDefault
           resources:
             requests:
-              cpu: 500m
-              memory: 2Gi
+              cpu: 100m
+              memory: 256Mi
             limits:
-              cpu: 3000m
-              memory: 8Gi
+              cpu: 1000m
+              memory: 1Gi
       volumes:
         - name: config
           persistentVolumeClaim:
