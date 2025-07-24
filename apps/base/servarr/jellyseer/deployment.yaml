@@ -18,8 +18,6 @@ spec:
         cilium.io/gateway: "true"
     spec:
       securityContext:
-        runAsUser: 1000
-        runAsGroup: 1000
         fsGroup: 1000
       containers:
         - name: jellyseer
@@ -37,6 +35,7 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /config
+              subPath: jellyseer
             - name: media
               mountPath: /media
           resources:

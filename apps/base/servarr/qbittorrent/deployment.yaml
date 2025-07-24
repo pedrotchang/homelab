@@ -17,9 +17,8 @@ spec:
       annotations:
         cilium.io/gateway: "true"
     spec:
+      # Only keep fsGroup for NFS permissions
       securityContext:
-        runAsUser: 1000
-        runAsGroup: 1000
         fsGroup: 1000
       shareProcessNamespace: true
       initContainers:
@@ -36,9 +35,6 @@ spec:
                 sleep 5
               done
               echo "VPN is ready!"
-          securityContext:
-            runAsUser: 1000
-            runAsGroup: 1000
       containers:
         # Gluetun VPN sidecar - MUST start first
         - name: gluetun
@@ -118,6 +114,7 @@ spec:
           volumeMounts:
             - name: gluetun-data
               mountPath: /gluetun
+              subPath: gluetun
           livenessProbe:
             httpGet:
               path: /v1/wireguard/status
@@ -155,19 +152,10 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /config
+              subPath: qbittorrent
             - name: media
               mountPath: /media
-          securityContext:
-            allowPrivilegeEscalation: false
-            capabilities:
-              drop:
-                - ALL
-            readOnlyRootFilesystem: false
-            runAsNonRoot: true
-            runAsUser: 1000
-            runAsGroup: 1000
-            seccompProfile:
-              type: RuntimeDefault
+          # Remove container securityContext for LinuxServer.io image
           # qBittorrent health check - but only after VPN is ready
           livenessProbe:
             httpGet:
