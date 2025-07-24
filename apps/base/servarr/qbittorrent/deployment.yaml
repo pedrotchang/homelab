@@ -17,45 +17,22 @@ spec:
       annotations:
         cilium.io/gateway: "true"
     spec:
-      securityContext:
-        runAsUser: 1000
-        runAsGroup: 1000
-        fsGroup: 1000
-      shareProcessNamespace: true
-      initContainers:
-        # Wait for Gluetun VPN to be ready
-        - name: wait-for-vpn
-          image: busybox:1.36
-          command: 
-            - sh
-            - -c
-            - |
-              echo "Waiting for Gluetun VPN to be ready..."
-              until wget -q --spider http://localhost:8000/v1/wireguard/status 2>/dev/null; do
-                echo "VPN not ready, waiting..."
-                sleep 5
-              done
-              echo "VPN is ready!"
-          securityContext:
-            runAsUser: 1000
-            runAsGroup: 1000
       containers:
-        # Gluetun VPN sidecar - MUST start first
         - name: gluetun
           image: qmcgaw/gluetun:latest
           securityContext:
             capabilities:
               add:
                 - NET_ADMIN
-            runAsUser: 0  # Gluetun needs root for network management
+            runAsUser: 0
           env:
-            # VPN Provider Configuration
+            # Core VPN settings
             - name: VPN_SERVICE_PROVIDER
               value: "nordvpn"
             - name: VPN_TYPE
               value: "wireguard"
             
-            # WireGuard Configuration from External Secret
+            # WireGuard credentials from secret
             - name: WIREGUARD_PRIVATE_KEY
               valueFrom:
                 secretKeyRef:
@@ -67,39 +44,21 @@ spec:
                   name: gluetun-vpn-config
                   key: wireguard-address
             
-            - name: WIREGUARD_PUBLIC_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: gluetun-vpn-config
-                  key: wireguard-public-key
-            - name: SERVER_HOSTNAMES
-              value: "us5491.nordvpn.com"
-            - name: WIREGUARD_ENDPOINT_IP
-              value: "185.245.87.13"
-            - name: WIREGUARD_ENDPOINT_PORT
-              value: "8443"
-            
-            # DNS Configuration
-            - name: DNS_ADDRESS
-              value: "10.10.10.2"
-            
-            # Server Configuration (keep as fallback)
+            # Server selection - let gluetun pick automatically
+            - name: SERVER_COUNTRIES
+              value: "United States"
             - name: SERVER_CITIES
               value: "Los Angeles"
             
-            # Disable server list updater since we're using specific server
+            # Enable server list updates
             - name: UPDATER_PERIOD
-              value: "0"
+              value: "24h"
             
-            # Timezone
+            # Other settings
             - name: TZ
               value: "America/Los_Angeles"
-              
-            # Health check endpoint
             - name: HEALTH_SERVER_ADDRESS
               value: ":8000"
-              
-            # Firewall settings
             - name: FIREWALL_OUTBOUND_SUBNETS
               value: "10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
           ports:
@@ -118,6 +77,7 @@ spec:
           volumeMounts:
             - name: gluetun-data
               mountPath: /gluetun
+              subPath: gluetun
           livenessProbe:
             httpGet:
               path: /v1/wireguard/status
@@ -125,7 +85,6 @@ spec:
             initialDelaySeconds: 30
             periodSeconds: 60
             failureThreshold: 3
-            successThreshold: 1
           readinessProbe:
             httpGet:
               path: /v1/wireguard/status
@@ -140,7 +99,7 @@ spec:
               cpu: 500m
               memory: 256Mi
 
-        # qBittorrent main container - depends on Gluetun network
+        # qBittorrent main container
         - name: qbittorrent
           image: lscr.io/linuxserver/qbittorrent:5.1.2
           env:
@@ -155,25 +114,14 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /config
+              subPath: qbittorrent
             - name: media
               mountPath: /media
-          securityContext:
-            allowPrivilegeEscalation: false
-            capabilities:
-              drop:
-                - ALL
-            readOnlyRootFilesystem: false
-            runAsNonRoot: true
-            runAsUser: 1000
-            runAsGroup: 1000
-            seccompProfile:
-              type: RuntimeDefault
-          # qBittorrent health check - but only after VPN is ready
           livenessProbe:
             httpGet:
               path: /
               port: 8080
-            initialDelaySeconds: 120  # Wait longer for VPN + qBittorrent
+            initialDelaySeconds: 120
             periodSeconds: 30
             failureThreshold: 5
           readinessProbe:
@@ -200,5 +148,4 @@ spec:
         - name: gluetun-data
           persistentVolumeClaim:
             claimName: servarr-config-pvc-nfs
-      # Restart policy to ensure both containers restart together
       restartPolicy: Always
