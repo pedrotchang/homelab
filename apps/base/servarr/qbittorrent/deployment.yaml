@@ -18,9 +18,9 @@ spec:
         cilium.io/gateway: "true"
     spec:
       # Only keep fsGroup for NFS permissions
-      securityContext:
-        fsGroup: 1000
-        fsGroupChangePolicy: "OnRootMismatch"
+      # securityContext:
+      #   fsGroup: 1000
+      #   fsGroupChangePolicy: "OnRootMismatch"
       shareProcessNamespace: true
       containers:
         - name: gluetun
