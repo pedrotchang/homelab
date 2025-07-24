@@ -21,12 +21,79 @@ spec:
         runAsUser: 1000
         runAsGroup: 1000
         fsGroup: 1000
+      shareProcessNamespace: true
+      initContainers:
+        # Wait for Gluetun VPN to be ready
+        - name: wait-for-vpn
+          image: busybox:1.36
+          command: 
+            - sh
+            - -c
+            - |
+              echo "Waiting for Gluetun VPN to be ready..."
+              until wget -q --spider http://localhost:8000/v1/openvpn/status 2>/dev/null || 
+                    wget -q --spider http://localhost:8000/v1/wireguard/status 2>/dev/null; do
+                echo "VPN not ready, waiting..."
+                sleep 5
+              done
+              echo "VPN is ready!"
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
       containers:
-        - name: qbittorrent
-          image: lscr.io/linuxserver/qbittorrent:5.1.2
+        # Gluetun VPN sidecar - MUST start first
+        - name: gluetun
+          image: qmcgaw/gluetun:latest
+          securityContext:
+            capabilities:
+              add:
+                - NET_ADMIN
+            runAsUser: 0  # Gluetun needs root for network management
+          env:
+            # VPN Provider Configuration
+            - name: VPN_SERVICE_PROVIDER
+              value: "nordvpn"
+            - name: VPN_TYPE
+              value: "wireguard"
+            
+            # WireGuard Configuration from External Secret
+            - name: WIREGUARD_PRIVATE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gluetun-vpn-config
+                  key: wireguard-private-key
+            - name: WIREGUARD_ADDRESSES
+              value: "10.5.0.2/32"
+            
+            # DNS Configuration
+            - name: DNS_ADDRESS
+              value: "10.10.10.2"
+            
+            # Server Configuration
+            - name: SERVER_CITIES
+              value: "Los Angeles"
+            
+            # Server list updater
+            - name: UPDATER_PERIOD
+              value: "24h"
+            
+            # Timezone
+            - name: TZ
+              value: "America/Los_Angeles"
+              
+            # Health check endpoint
+            - name: HEALTH_SERVER_ADDRESS
+              value: ":8000"
+              
+            # Firewall settings
+            - name: FIREWALL_OUTBOUND_SUBNETS
+              value: "10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
           ports:
+            - containerPort: 8000
+              name: health
+              protocol: TCP
             - containerPort: 8080
-              name: web
+              name: qbittorrent
               protocol: TCP
             - containerPort: 6881
               name: bittorrent-tcp
@@ -34,6 +101,34 @@ spec:
             - containerPort: 6881
               name: bittorrent-udp
               protocol: UDP
+          volumeMounts:
+            - name: gluetun-data
+              mountPath: /gluetun
+          livenessProbe:
+            httpGet:
+              path: /v1/openvpn/status
+              port: 8000
+            initialDelaySeconds: 30
+            periodSeconds: 60
+            failureThreshold: 3
+            successThreshold: 1
+          readinessProbe:
+            httpGet:
+              path: /v1/openvpn/status
+              port: 8000
+            initialDelaySeconds: 15
+            periodSeconds: 30
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi
+
+        # qBittorrent main container - depends on Gluetun network
+        - name: qbittorrent
+          image: lscr.io/linuxserver/qbittorrent:5.1.2
           env:
             - name: PUID
               value: "1000"
@@ -59,6 +154,21 @@ spec:
             runAsGroup: 1000
             seccompProfile:
               type: RuntimeDefault
+          # qBittorrent health check - but only after VPN is ready
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 120  # Wait longer for VPN + qBittorrent
+            periodSeconds: 30
+            failureThreshold: 5
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 90
+            periodSeconds: 15
+            failureThreshold: 10
           resources:
             requests:
               cpu: 100m
@@ -73,3 +183,8 @@ spec:
         - name: media
           persistentVolumeClaim:
             claimName: servarr-media-pvc-nfs
+        - name: gluetun-data
+          persistentVolumeClaim:
+            claimName: servarr-config-pvc-nfs
+      # Restart policy to ensure both containers restart together
+      restartPolicy: Always

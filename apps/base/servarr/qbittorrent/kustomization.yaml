@@ -5,3 +5,4 @@ namespace: servarr
 resources:
   - deployment.yaml
   - service.yaml
+  - secrets.yaml

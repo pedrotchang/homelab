@@ -10,8 +10,6 @@ spec:
   resources:
     requests:
       storage: 4Ti
-
-
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
