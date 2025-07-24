@@ -3,11 +3,8 @@ kind: Kustomization
 namespace: servarr
 
 resources:
-  # - deployment.yaml
-  - kustomizeconfig.yaml
   - release.yaml
   - repository.yaml
-  - values.yaml
   - service.yaml
 
 configMapGenerator:
