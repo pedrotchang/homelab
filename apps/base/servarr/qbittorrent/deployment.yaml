@@ -1,83 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: servarr-qbittorrent
+  namespace: servarr
 spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: qbittorrent
+  template:
+    metadata:
+      labels:
+        app: qbittorrent
+    spec:
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: servarr-config-pvc
+        - name: media
+          persistentVolumeClaim:
+            claimName: servarr-media-pvc
       containers:
+        # Gluetun VPN container
         - name: gluetun
-          image: ghcr.io/qdm12/gluetun:v3.40.0  # Or use qmcgaw/gluetun
+          image: qmcgaw/gluetun:v3.40.0
+          env:
+            - name: VPN_SERVICE_PROVIDER
+              value: "nordvpn"
+            - name: VPN_TYPE
+              value: "openvpn"
+            - name: OPENVPN_USER
+              valueFrom:
+                secretKeyRef:
+                  name: vpn-credentials
+                  key: username
+            - name: OPENVPN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: vpn-credentials
+                  key: password
+            - name: SERVER_COUNTRIES
+              value: "United States"
           securityContext:
             capabilities:
               add:
                 - NET_ADMIN
-            runAsUser: 0
-          env:
-            # Core VPN settings
-            - name: VPN_SERVICE_PROVIDER
-              value: "nordvpn"
-            - name: VPN_TYPE
-              value: "wireguard"
-            
-            # WireGuard credentials - ONLY these two from your secret
-            - name: WIREGUARD_PRIVATE_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: gluetun-vpn-config
-                  key: wireguard-private-key  # lowercase with hyphens
-            - name: WIREGUARD_ADDRESSES
-              valueFrom:
-                secretKeyRef:
-                  name: gluetun-vpn-config
-                  key: wireguard-address      # lowercase with hyphens
-            
-            # Server selection - let gluetun pick
-            - name: SERVER_COUNTRIES
-              value: "United States"
-            # Optional: be more specific
-            # - name: SERVER_CITIES
-            #   value: "Los Angeles"
-            
-            # Enable server list updates
-            - name: UPDATER_PERIOD
-              value: "24h"
-            
-            # Other settings
-            - name: TZ
-              value: "America/Los_Angeles"
-            - name: HEALTH_SERVER_ADDRESS
-              value: ":8000"
-            
-            # Optional settings
-            # - name: FIREWALL
-            #   value: "on"
-            # - name: DOT
-            #   value: "off"
-          ports:
-            - containerPort: 8000
-              name: health
-              protocol: TCP
-            - containerPort: 8080
-              name: qbittorrent
-              protocol: TCP
-            - containerPort: 6881
-              name: bittorrent-tcp
-              protocol: TCP
-            - containerPort: 6881
-              name: bittorrent-udp
-              protocol: UDP
-          volumeMounts:
-            - name: gluetun-data
-              mountPath: /gluetun
-              subPath: gluetun
           livenessProbe:
-            httpGet:
-              path: /v1/wireguard/status
-              port: 8000
+            exec:
+              command:
+                - /gluetun-entrypoint
+                - healthcheck
             initialDelaySeconds: 30
-            periodSeconds: 60
-            failureThreshold: 3
-          readinessProbe:
-            httpGet:
-              path: /v1/wireguard/status
-              port: 8000
-            initialDelaySeconds: 15
             periodSeconds: 30
+            failureThreshold: 5
           resources:
             requests:
               cpu: 100m
@@ -98,6 +73,15 @@ spec:
               value: "America/Los_Angeles"
             - name: WEBUI_PORT
               value: "8080"
+          ports:
+            - containerPort: 8080
+              name: web
+            - containerPort: 6881
+              name: bittorrent-tcp
+              protocol: TCP
+            - containerPort: 6881
+              name: bittorrent-udp
+              protocol: UDP
           volumeMounts:
             - name: config
               mountPath: /config
