@@ -31,8 +31,7 @@ spec:
             - -c
             - |
               echo "Waiting for Gluetun VPN to be ready..."
-              until wget -q --spider http://localhost:8000/v1/openvpn/status 2>/dev/null || 
-                    wget -q --spider http://localhost:8000/v1/wireguard/status 2>/dev/null; do
+              until wget -q --spider http://localhost:8000/v1/wireguard/status 2>/dev/null; do
                 echo "VPN not ready, waiting..."
                 sleep 5
               done
@@ -63,19 +62,34 @@ spec:
                   name: gluetun-vpn-config
                   key: wireguard-private-key
             - name: WIREGUARD_ADDRESSES
-              value: "10.5.0.2/32"
+              valueFrom:
+                secretKeyRef:
+                  name: gluetun-vpn-config
+                  key: wireguard-address
+            
+            - name: WIREGUARD_PUBLIC_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gluetun-vpn-config
+                  key: wireguard-public-key
+            - name: SERVER_HOSTNAMES
+              value: "us5491.nordvpn.com"
+            - name: WIREGUARD_ENDPOINT_IP
+              value: "185.245.87.13"
+            - name: WIREGUARD_ENDPOINT_PORT
+              value: "8443"
             
             # DNS Configuration
             - name: DNS_ADDRESS
               value: "10.10.10.2"
             
-            # Server Configuration
+            # Server Configuration (keep as fallback)
             - name: SERVER_CITIES
               value: "Los Angeles"
             
-            # Server list updater
+            # Disable server list updater since we're using specific server
             - name: UPDATER_PERIOD
-              value: "24h"
+              value: "0"
             
             # Timezone
             - name: TZ
@@ -106,7 +120,7 @@ spec:
               mountPath: /gluetun
           livenessProbe:
             httpGet:
-              path: /v1/openvpn/status
+              path: /v1/wireguard/status
               port: 8000
             initialDelaySeconds: 30
             periodSeconds: 60
@@ -114,7 +128,7 @@ spec:
             successThreshold: 1
           readinessProbe:
             httpGet:
-              path: /v1/openvpn/status
+              path: /v1/wireguard/status
               port: 8000
             initialDelaySeconds: 15
             periodSeconds: 30
