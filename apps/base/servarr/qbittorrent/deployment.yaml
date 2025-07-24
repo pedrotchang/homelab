@@ -23,14 +23,16 @@ spec:
         fsGroupChangePolicy: "OnRootMismatch"
       shareProcessNamespace: true
       containers:
-        # Gluetun VPN sidecar - MUST start first
         - name: gluetun
           image: ghcr.io/qdm12/gluetun:3.40.0
           securityContext:
             capabilities:
               add:
                 - NET_ADMIN
-            runAsUser: 0  # Gluetun needs root for network management
+            runAsUser: 0 
+          envFrom:
+            - secretRef:
+                name: gluetun-vpn-config
           env:
             # VPN Provider Configuration
             - name: VPN_SERVICE_PROVIDER
@@ -38,23 +40,23 @@ spec:
             - name: VPN_TYPE
               value: "wireguard"
             
-            # WireGuard Configuration from External Secret
-            - name: WIREGUARD_PRIVATE_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: gluetun-vpn-config
-                  key: wireguard-private-key
-            - name: WIREGUARD_ADDRESSES
-              valueFrom:
-                secretKeyRef:
-                  name: gluetun-vpn-config
-                  key: wireguard-address
-            
-            - name: WIREGUARD_PUBLIC_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: gluetun-vpn-config
-                  key: wireguard-public-key
+            # # WireGuard Configuration from External Secret
+            # - name: WIREGUARD_PRIVATE_KEY
+            #   valueFrom:
+            #     secretKeyRef:
+            #       name: gluetun-vpn-config
+            #       key: wireguard-private-key
+            # - name: WIREGUARD_ADDRESSES
+            #   valueFrom:
+            #     secretKeyRef:
+            #       name: gluetun-vpn-config
+            #       key: wireguard-address
+            #
+            # - name: WIREGUARD_PUBLIC_KEY
+            #   valueFrom:
+            #     secretKeyRef:
+            #       name: gluetun-vpn-config
+            #       key: wireguard-public-key
             - name: SERVER_HOSTNAMES
               value: "us5491.nordvpn.com"
             - name: WIREGUARD_ENDPOINT_IP
