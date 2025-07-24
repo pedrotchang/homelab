@@ -17,9 +17,8 @@ spec:
       annotations:
         cilium.io/gateway: "true"
     spec:
+      # Only keep fsGroup for NFS permissions
       securityContext:
-        runAsUser: 1000
-        runAsGroup: 1000
         fsGroup: 1000
       containers:
         - name: prowlarr
@@ -39,17 +38,8 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /config
-          securityContext:
-            allowPrivilegeEscalation: false
-            capabilities:
-              drop:
-                - ALL
-            readOnlyRootFilesystem: false
-            runAsNonRoot: true
-            runAsUser: 1000
-            runAsGroup: 1000
-            seccompProfile:
-              type: RuntimeDefault
+              subPath: prowlarr
+          # Remove container securityContext
           resources:
             requests:
               cpu: 100m
