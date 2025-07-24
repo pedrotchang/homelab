@@ -1,48 +1,59 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: qbittorrent
-  namespace: servarr
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: qbittorrent
-  template:
-    metadata:
-      labels:
-        app: qbittorrent
-      annotations:
-        cilium.io/gateway: "true"
-    spec:
       containers:
-        - name: qbittorrent
-          image: lscr.io/linuxserver/qbittorrent:5.1.2
-          resources:
-            limits:
-              cpu: 1000m
-              memory: 1Gi
-            requests:
-              cpu: 100m
-              memory: 256Mi
+        - name: gluetun
+          image: ghcr.io/qdm12/gluetun:v3.40.0  # Or use qmcgaw/gluetun
+          securityContext:
+            capabilities:
+              add:
+                - NET_ADMIN
+            runAsUser: 0
           env:
-            - name: PUID
-              value: "1000"
-            - name: PGID
-              value: "1000"
+            # Core VPN settings
+            - name: VPN_SERVICE_PROVIDER
+              value: "nordvpn"
+            - name: VPN_TYPE
+              value: "wireguard"
+            
+            # WireGuard credentials - ONLY these two from your secret
+            - name: WIREGUARD_PRIVATE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gluetun-vpn-config
+                  key: wireguard-private-key  # lowercase with hyphens
+            - name: WIREGUARD_ADDRESSES
+              valueFrom:
+                secretKeyRef:
+                  name: gluetun-vpn-config
+                  key: wireguard-address      # lowercase with hyphens
+            
+            # Server selection - let gluetun pick
+            - name: SERVER_COUNTRIES
+              value: "United States"
+            # Optional: be more specific
+            # - name: SERVER_CITIES
+            #   value: "Los Angeles"
+            
+            # Enable server list updates
+            - name: UPDATER_PERIOD
+              value: "24h"
+            
+            # Other settings
             - name: TZ
               value: "America/Los_Angeles"
-            - name: WEBUI_PORT
-              value: "8080"
-          volumeMounts:
-            - name: config
-              mountPath: /config
-              subPath: qbittorrent
-            - name: media
-              mountPath: /media
+            - name: HEALTH_SERVER_ADDRESS
+              value: ":8000"
+            
+            # Optional settings
+            # - name: FIREWALL
+            #   value: "on"
+            # - name: DOT
+            #   value: "off"
           ports:
+            - containerPort: 8000
+              name: health
+              protocol: TCP
             - containerPort: 8080
-              name: web
+              name: qbittorrent
               protocol: TCP
             - containerPort: 6881
               name: bittorrent-tcp
@@ -50,61 +61,10 @@ spec:
             - containerPort: 6881
               name: bittorrent-udp
               protocol: UDP
-          livenessProbe:
-            httpGet:
-              path: /
-              port: 8080
-            initialDelaySeconds: 120
-            periodSeconds: 30
-            failureThreshold: 5
-          readinessProbe:
-            httpGet:
-              path: /
-              port: 8080
-            initialDelaySeconds: 90
-            periodSeconds: 15
-            failureThreshold: 10
-
-        - name: gluetun
-          image: qmcgaw/gluetun
-          env:
-            - name: VPN_SERVICE_PROVIDER
-              value: "nordvpn"
-            - name: VPN_TYPE
-              value: "wireguard"
-            - name: WIREGUARD_PRIVATE_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: gluetun-vpn-config
-                  key: wireguard-private-key
-            - name: WIREGUARD_ADDRESSES
-              valueFrom:
-                secretKeyRef:
-                  name: gluetun-vpn-config
-                  key: wireguard-address
-            - name: SERVER_COUNTRIES
-              value: "United States"
-            - name: SERVER_CITIES
-              value: "Los Angeles"
-            - name: UPDATER_PERIOD
-              value: "24h"
-            - name: TZ
-              value: "America/Los_Angeles"
-            - name: HEALTH_SERVER_ADDRESS
-              value: ":8000"
-            - name: FIREWALL_OUTBOUND_SUBNETS
-              value: "10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
-          securityContext:
-            capabilities:
-              add:
-                - NET_ADMIN
           volumeMounts:
-            - name: gluetun-config
+            - name: gluetun-data
               mountPath: /gluetun
-          ports:
-            - containerPort: 8000
-              name: health
-              protocol: TCP
+              subPath: gluetun
           livenessProbe:
             httpGet:
               path: /v1/wireguard/status
@@ -126,13 +86,42 @@ spec:
               cpu: 500m
               memory: 256Mi
 
-      volumes:
-        - name: config
-          persistentVolumeClaim:
-            claimName: servarr-config-pvc-nfs
-        - name: media
-          persistentVolumeClaim:
-            claimName: servarr-media-pvc-nfs
-        - name: gluetun-config
-          persistentVolumeClaim:
-            claimName: servarr-config-pvc-nfs
+        # qBittorrent main container
+        - name: qbittorrent
+          image: lscr.io/linuxserver/qbittorrent:5.1.2
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: "America/Los_Angeles"
+            - name: WEBUI_PORT
+              value: "8080"
+          volumeMounts:
+            - name: config
+              mountPath: /config
+              subPath: qbittorrent
+            - name: media
+              mountPath: /media
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 120
+            periodSeconds: 30
+            failureThreshold: 5
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 90
+            periodSeconds: 15
+            failureThreshold: 10
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 1000m
+              memory: 1Gi
