@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: jellyfin
+  name: jellyseer
   namespace: servarr
 spec:
   replicas: 1
@@ -9,11 +9,11 @@ spec:
     type: Recreate
   selector:
     matchLabels:
-      app: jellyfin
+      app: jellyseer
   template:
     metadata:
       labels:
-        app: jellyfin
+        app: jellyseer
       annotations:
         cilium.io/gateway: "true"
     spec:
@@ -22,8 +22,8 @@ spec:
         runAsGroup: 1000
         fsGroup: 1000
       containers:
-        - name: jellyfin
-          image: lscr.io/linuxserver/jellyfin:10.10.7
+        - name: jellyseer
+          image: lscr.io/linuxserver/jellyseer:2.7.2
           ports:
             - containerPort: 8096
               protocol: TCP
@@ -39,13 +39,6 @@ spec:
               mountPath: /config
             - name: media
               mountPath: /media
-          securityContext:
-            allowPrivilegeEscalation: false
-            capabilities:
-              add:
-                - SYS_ADMIN  # Needed for hardware transcoding
-              drop:
-                - ALL
           resources:
             requests:
               cpu: 500m

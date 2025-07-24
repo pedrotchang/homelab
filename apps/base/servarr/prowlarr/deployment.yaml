@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: jellyfin
+  name: prowlarr
   namespace: servarr
 spec:
   replicas: 1
@@ -9,11 +9,11 @@ spec:
     type: Recreate
   selector:
     matchLabels:
-      app: jellyfin
+      app: prowlarr
   template:
     metadata:
       labels:
-        app: jellyfin
+        app: prowlarr
       annotations:
         cilium.io/gateway: "true"
     spec:
@@ -22,10 +22,10 @@ spec:
         runAsGroup: 1000
         fsGroup: 1000
       containers:
-        - name: jellyfin
-          image: lscr.io/linuxserver/jellyfin:10.10.7
+        - name: prowlarr
+          image: lscr.io/linuxserver/prowlarr:1.37.0
           ports:
-            - containerPort: 8096
+            - containerPort: 9696
               protocol: TCP
           env:
             - name: PUID
@@ -34,29 +34,30 @@ spec:
               value: "1000"
             - name: TZ
               value: "America/Los_Angeles"
+            - name: UMASK
+              value: "002"
           volumeMounts:
             - name: config
               mountPath: /config
-            - name: media
-              mountPath: /media
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
-              add:
-                - SYS_ADMIN  # Needed for hardware transcoding
               drop:
                 - ALL
+            readOnlyRootFilesystem: false
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            seccompProfile:
+              type: RuntimeDefault
           resources:
             requests:
-              cpu: 500m
-              memory: 2Gi
+              cpu: 100m
+              memory: 256Mi
             limits:
-              cpu: 3000m
-              memory: 8Gi
+              cpu: 500m
+              memory: 512Mi
       volumes:
         - name: config
           persistentVolumeClaim:
             claimName: servarr-config-pvc-nfs
-        - name: media
-          persistentVolumeClaim:
-            claimName: servarr-media-pvc-nfs

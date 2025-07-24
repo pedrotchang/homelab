@@ -119,10 +119,9 @@ spec:
             type: PathPrefix
             value: /
       backendRefs:
-        - name: servarr-jellyseerr
-          port: 5055
+        - name: jellyseerr  # Service name matches release name
+          port: 80          # Chart's service port
           weight: 100
-
 ---
 # qBittorrent HTTPRoute (Enable external access)
 apiVersion: gateway.networking.k8s.io/v1

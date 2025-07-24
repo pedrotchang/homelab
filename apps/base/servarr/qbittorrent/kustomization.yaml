@@ -5,4 +5,4 @@ namespace: servarr
 resources:
   - deployment.yaml
   - service.yaml
-  - configmap.yaml
+  # - configmap.yaml

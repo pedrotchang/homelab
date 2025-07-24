@@ -7,17 +7,8 @@ resources:
   - storage.yaml
   - gateway.yaml
   - routes.yaml
-  # - jellyfin/
-  # - prowlarr
-  # - radarr
-  # - sonarr
-  # - release.yaml
-  # - repository.yaml
- 
-# configMapGenerator:
-#   - name: servarr-values
-#     files:
-#       - values.yaml=values.yaml
-
-# configurations:
-#   - kustomizeconfig.yaml
+  - jellyfin/
+  - prowlarr/
+  - radarr/
+  - sonarr/
+  - qbittorrent/

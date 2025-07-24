@@ -39,13 +39,6 @@ spec:
               mountPath: /config
             - name: media
               mountPath: /media
-          securityContext:
-            allowPrivilegeEscalation: false
-            capabilities:
-              add:
-                - SYS_ADMIN  # Needed for hardware transcoding
-              drop:
-                - ALL
           resources:
             requests:
               cpu: 500m
