@@ -16,10 +16,10 @@ spec:
       volumes:
         - name: config
           persistentVolumeClaim:
-            claimName: servarr-config-pvc
+            claimName: servarr-config-pvc-nfs
         - name: media
           persistentVolumeClaim:
-            claimName: servarr-media-pvc
+            claimName: servarr-media-pvc-nfs
       containers:
         # Gluetun VPN container
         - name: gluetun
