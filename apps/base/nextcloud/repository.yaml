@@ -1,8 +1,8 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
-  name: kubitodev
-  namespace: servarr
+  name: nextcloud-repo
+  namespace: nextcloud
 spec:
   interval: 24h
-  url: https://charts.kubito.dev
+  url: https://nextcloud.github.io/helm/

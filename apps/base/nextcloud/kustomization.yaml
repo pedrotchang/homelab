@@ -5,7 +5,7 @@ namespace: nextcloud
 resources:
   - namespace.yaml
   - repository.yaml
-  # - storage.yaml
+  - storage.yaml
   - gateway.yaml
   - routes.yaml
   - release.yaml
