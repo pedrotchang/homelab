@@ -1,174 +1,22 @@
----
-# Jellyfin HTTPRoute
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: jellyfin-route
+  name: nextcloud-route
   namespace: nextcloud
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: jellyfin.seyzahl.com
+    external-dns.alpha.kubernetes.io/hostname: nextcloud.seyzahl.com
 spec:
   parentRefs:
     - name: nextcloud-gateway
       sectionName: http
   hostnames:
-    - jellyfin.seyzahl.com
+    - nextcloud.seyzahl.com
   rules:
     - matches:
         - path:
             type: PathPrefix
             value: /
       backendRefs:
-        - name: nextcloud-jellyfin
-          port: 8096
-          weight: 100
-
----
-# Sonarr HTTPRoute
-apiVersion: gateway.networking.k8s.io/v1
-kind: HTTPRoute
-metadata:
-  name: sonarr-route
-  namespace: nextcloud
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: sonarr.seyzahl.com
-spec:
-  parentRefs:
-    - name: nextcloud-gateway
-      sectionName: http
-  hostnames:
-    - sonarr.seyzahl.com
-  rules:
-    - matches:
-        - path:
-            type: PathPrefix
-            value: /
-      backendRefs:
-        - name: nextcloud-sonarr
-          port: 8989
-          weight: 100
-
----
-# Radarr HTTPRoute
-apiVersion: gateway.networking.k8s.io/v1
-kind: HTTPRoute
-metadata:
-  name: radarr-route
-  namespace: nextcloud
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: radarr.seyzahl.com
-spec:
-  parentRefs:
-    - name: nextcloud-gateway
-      sectionName: http
-  hostnames:
-    - radarr.seyzahl.com
-  rules:
-    - matches:
-        - path:
-            type: PathPrefix
-            value: /
-      backendRefs:
-        - name: nextcloud-radarr
-          port: 7878
-          weight: 100
-
----
-# Prowlarr HTTPRoute
-apiVersion: gateway.networking.k8s.io/v1
-kind: HTTPRoute
-metadata:
-  name: prowlarr-route
-  namespace: nextcloud
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: prowlarr.seyzahl.com
-spec:
-  parentRefs:
-    - name: nextcloud-gateway
-      sectionName: http
-  hostnames:
-    - prowlarr.seyzahl.com
-  rules:
-    - matches:
-        - path:
-            type: PathPrefix
-            value: /
-      backendRefs:
-        - name: nextcloud-prowlarr
-          port: 9696
-          weight: 100
-
----
-# Jellyseerr HTTPRoute
-apiVersion: gateway.networking.k8s.io/v1
-kind: HTTPRoute
-metadata:
-  name: jellyseerr-route
-  namespace: nextcloud
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: jellyseerr.seyzahl.com
-spec:
-  parentRefs:
-    - name: nextcloud-gateway
-      sectionName: http
-  hostnames:
-    - jellyseerr.seyzahl.com
-  rules:
-    - matches:
-        - path:
-            type: PathPrefix
-            value: /
-      backendRefs:
-        - name: nextcloud-jellyseerr
-          port: 5055
-          weight: 100
-
----
-# qBittorrent HTTPRoute (Enable external access)
-apiVersion: gateway.networking.k8s.io/v1
-kind: HTTPRoute
-metadata:
-  name: qbittorrent-route
-  namespace: nextcloud
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: qbittorrent.seyzahl.com
-spec:
-  parentRefs:
-    - name: nextcloud-gateway
-      sectionName: http
-  hostnames:
-    - qbittorrent.seyzahl.com
-  rules:
-    - matches:
-        - path:
-            type: PathPrefix
-            value: /
-      backendRefs:
-        - name: nextcloud-qbittorrent-web
+        - name: nextcloud-nextcloud  # Note: the service name is nextcloud-nextcloud
           port: 8080
-          weight: 100
-
----
-# Bazarr HTTPRoute (if enabled)
-apiVersion: gateway.networking.k8s.io/v1
-kind: HTTPRoute
-metadata:
-  name: bazarr-route
-  namespace: nextcloud
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: bazarr.seyzahl.com
-spec:
-  parentRefs:
-    - name: nextcloud-gateway
-      sectionName: http
-  hostnames:
-    - bazarr.seyzahl.com
-  rules:
-    - matches:
-        - path:
-            type: PathPrefix
-            value: /
-      backendRefs:
-        - name: nextcloud-bazarr
-          port: 6767
           weight: 100

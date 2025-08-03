@@ -1,0 +1,207 @@
+# Nextcloud Configuration
+replicaCount: 1
+
+image:
+  repository: nextcloud
+  # Using apache flavor (default) - you can also use fpm with nginx
+  flavor: apache
+  pullPolicy: IfNotPresent
+  # tag: "" # uses appVersion from Chart.yaml by default
+
+ingress:
+  enabled: false  # Using Cilium Gateway instead
+
+nextcloud:
+  host: nextcloud.seyzahl.com
+  username: admin
+  # password: set via existingSecret
+  existingSecret:
+    enabled: true
+    secretName: nextcloud-admin-creds
+    usernameKey: username
+    passwordKey: password
+    
+  # Update strategy
+  strategy:
+    type: Recreate
+    
+  # PHP configuration for large files
+  phpConfigs:
+    uploadLimit.ini: |
+      upload_max_filesize = 16G
+      post_max_size = 16G
+      max_input_time = 3600
+      max_execution_time = 3600
+      memory_limit = 2G
+      
+  # Default configs - enable PostgreSQL config
+  defaultConfigs:
+    # Disable autoconfig since we're using existing database
+    autoconfig.php: false
+    # PostgreSQL config will be in our custom config
+    postgres.config.php: true
+    
+  # Additional Nextcloud configs
+  configs:
+    proxy.config.php: |-
+      <?php
+      $CONFIG = array (
+        'overwriteprotocol' => 'https',
+        'overwritehost' => 'nextcloud.seyzahl.com',
+        'overwrite.cli.url' => 'https://nextcloud.seyzahl.com',
+        'trusted_domains' => array(
+          0 => 'nextcloud.seyzahl.com',
+          1 => 'nextcloud',
+        ),
+        'trusted_proxies' => array(
+          0 => '10.0.0.0/8',
+          1 => '192.168.0.0/16',
+        ),
+        'forwarded_for_headers' => array('HTTP_X_FORWARDED_FOR'),
+      );
+    postgres.config.php: |-
+      <?php
+      $CONFIG = array (
+        'dbtype' => 'pgsql',
+        'dbhost' => 'nextcloud-pg.seyzahl.com:5432',
+        'dbname' => 'nextcloud',
+        'dbuser' => 'nextcloud',
+        'dbtableprefix' => 'oc_',
+      );
+    # Enable Redis for better performance
+    redis.config.php: |-
+      <?php
+      if (getenv('REDIS_HOST')) {
+        $CONFIG = array (
+          'memcache.local' => '\\OC\\Memcache\\APCu',
+          'memcache.distributed' => '\\OC\\Memcache\\Redis',
+          'memcache.locking' => '\\OC\\Memcache\\Redis',
+          'redis' => array(
+            'host' => getenv('REDIS_HOST'),
+            'password' => getenv('REDIS_HOST_PASSWORD'),
+          ),
+        );
+      }
+
+  extraEnv:
+    - name: POSTGRES_HOST
+      value: nextcloud-pg.seyzahl.com:5432
+    - name: POSTGRES_DB
+      value: nextcloud
+    - name: POSTGRES_USER
+      value: nextcloud
+    - name: POSTGRES_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: nextcloud-db-creds
+          key: password
+    - name: NEXTCLOUD_ADMIN_USER
+      valueFrom:
+        secretKeyRef:
+          name: nextcloud-admin-creds
+          key: username  
+    - name: NEXTCLOUD_ADMIN_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: nextcloud-admin-creds
+          key: password
+    - name: NEXTCLOUD_TRUSTED_DOMAINS
+      value: nextcloud.seyzahl.com
+    - name: REDIS_HOST
+      value: nextcloud-redis-master
+    - name: REDIS_HOST_PORT
+      value: "6379"
+
+## Database Configuration - Using external PostgreSQL
+internalDatabase:
+  enabled: false
+
+externalDatabase:
+  enabled: true
+  type: postgresql
+  host: nextcloud-pg.seyzahl.com:5432
+  user: nextcloud
+  password: "" # Using existingSecret instead
+  database: nextcloud
+  existingSecret:
+    enabled: true
+    secretName: nextcloud-db-creds
+    usernameKey: username
+    passwordKey: password
+
+## Persistence
+persistence:
+  enabled: true
+  existingClaim: nextcloud-pvc-nfs
+  nextcloudData:
+    enabled: false  # Using same volume for all data
+
+## Redis for caching
+redis:
+  enabled: true
+  auth:
+    enabled: false
+  master:
+    persistence:
+      enabled: false
+  replica:
+    replicaCount: 1
+    persistence:
+      enabled: false
+
+## Cronjob for background tasks
+cronjob:
+  enabled: true
+
+## Service configuration
+service:
+  type: ClusterIP
+  port: 8080
+
+## Resource limits
+resources:
+  requests:
+    cpu: 500m
+    memory: 2Gi
+  limits:
+    cpu: 4
+    memory: 8Gi
+
+## Probes
+livenessProbe:
+  enabled: true
+  initialDelaySeconds: 60
+  periodSeconds: 30
+  timeoutSeconds: 10
+  successThreshold: 1
+  failureThreshold: 3
+
+readinessProbe:
+  enabled: true
+  initialDelaySeconds: 60
+  periodSeconds: 30
+  timeoutSeconds: 10
+  successThreshold: 1
+  failureThreshold: 3
+
+startupProbe:
+  enabled: true
+  initialDelaySeconds: 30
+  periodSeconds: 10
+  timeoutSeconds: 10
+  successThreshold: 1
+  failureThreshold: 30
+
+## HPA
+hpa:
+  enabled: false  # Enable if you want autoscaling
+  cputhreshold: 60
+  minPods: 1
+  maxPods: 10
+
+## Don't use Bitnami PostgreSQL/MariaDB
+postgresql:
+  enabled: false
+  
+mariadb:
+  enabled: false
