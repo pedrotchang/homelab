@@ -1,4 +1,4 @@
-# Nextcloud Configuration
+# Nextcloud Configuration with Redis Authentication
 replicaCount: 1
 
 image:
@@ -112,7 +112,7 @@ nextcloud:
       valueFrom:
         secretKeyRef:
           name: nextcloud-redis-creds
-          key: password
+          key: redis-password
 
 ## Database Configuration - Using external PostgreSQL
 internalDatabase:
@@ -139,25 +139,35 @@ persistence:
   nextcloudData:
     enabled: false
 
-## Redis for caching - WITH authentication
+## Redis Configuration with Authentication
 redis:
   enabled: true
   architecture: standalone
   auth:
     enabled: true
     existingSecret: nextcloud-redis-creds
-    existingSecretPasswordKey: password
+    existingSecretPasswordKey: redis-password
   master:
     persistence:
       enabled: true
-      size: 1Gi
+      size: 2Gi
       storageClass: truenas-nfs
+    resources:
+      requests:
+        memory: 256Mi
+        cpu: 100m
+      limits:
+        memory: 512Mi
+        cpu: 500m
   replica:
-    replicaCount: 0  # Not needed for homelab
+    replicaCount: 0  # Standalone mode for homelab
+  metrics:
+    enabled: false  # Enable if you have Prometheus
 
 ## Cronjob for background tasks
 cronjob:
   enabled: true
+  schedule: "*/15 * * * *"  # Every 15 minutes
 
 ## Service configuration
 service:
@@ -176,7 +186,7 @@ resources:
 ## Probes
 livenessProbe:
   enabled: true
-  initialDelaySeconds: 60
+  initialDelaySeconds: 90
   periodSeconds: 30
   timeoutSeconds: 10
   successThreshold: 1
@@ -184,7 +194,7 @@ livenessProbe:
 
 readinessProbe:
   enabled: true
-  initialDelaySeconds: 60
+  initialDelaySeconds: 90
   periodSeconds: 30
   timeoutSeconds: 10
   successThreshold: 1
@@ -192,7 +202,7 @@ readinessProbe:
 
 startupProbe:
   enabled: true
-  initialDelaySeconds: 30
+  initialDelaySeconds: 60
   periodSeconds: 10
   timeoutSeconds: 10
   successThreshold: 1
