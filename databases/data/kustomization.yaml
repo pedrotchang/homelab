@@ -6,4 +6,4 @@ resources:
   - wallabag
   - commafeed
   - maybe
-  - nextcloud
+  # - nextcloud
