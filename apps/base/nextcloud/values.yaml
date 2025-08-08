@@ -3,10 +3,8 @@ replicaCount: 1
 
 image:
   repository: nextcloud
-  # Using apache flavor (default) - you can also use fpm with nginx
   flavor: apache
   pullPolicy: IfNotPresent
-  # tag: "" # uses appVersion from Chart.yaml by default
 
 ingress:
   enabled: false  # Using Cilium Gateway instead
@@ -14,14 +12,12 @@ ingress:
 nextcloud:
   host: nextcloud.seyzahl.com
   username: admin
-  # password: set via existingSecret
   existingSecret:
     enabled: true
     secretName: nextcloud-admin-creds
     usernameKey: username
     passwordKey: password
     
-  # Update strategy
   strategy:
     type: Recreate
     
@@ -36,9 +32,7 @@ nextcloud:
       
   # Default configs - disable conflicting defaults
   defaultConfigs:
-    # Disable autoconfig since we're using existing database
     autoconfig.php: false
-    # Disable defaults to use our custom configs below
     postgres.config.php: false
     redis.config.php: false
     
@@ -64,29 +58,31 @@ nextcloud:
       <?php
       $CONFIG = array (
         'dbtype' => 'pgsql',
-        'dbhost' => 'nextcloud-pg.seyzahl.com:5432',
+        'dbhost' => 'nextcloud-pg.seyzahl.com',
+        'dbport' => '5432',
         'dbname' => 'nextcloud',
         'dbuser' => 'nextcloud',
+        'dbpassword' => getenv('POSTGRES_PASSWORD'),
         'dbtableprefix' => 'oc_',
       );
-    # Enable Redis for better performance
     redis.config.php: |-
       <?php
-      if (getenv('REDIS_HOST')) {
-        $CONFIG = array (
-          'memcache.local' => '\\OC\\Memcache\\APCu',
-          'memcache.distributed' => '\\OC\\Memcache\\Redis',
-          'memcache.locking' => '\\OC\\Memcache\\Redis',
-          'redis' => array(
-            'host' => getenv('REDIS_HOST'),
-            'password' => getenv('REDIS_HOST_PASSWORD'),
-          ),
-        );
-      }
+      $CONFIG = array (
+        'memcache.local' => '\\OC\\Memcache\\APCu',
+        'memcache.distributed' => '\\OC\\Memcache\\Redis',
+        'memcache.locking' => '\\OC\\Memcache\\Redis',
+        'redis' => array(
+          'host' => getenv('REDIS_HOST'),
+          'port' => (int) getenv('REDIS_HOST_PORT'),
+          'password' => getenv('REDIS_HOST_PASSWORD'),
+          'dbindex' => 0,
+          'timeout' => 1.5,
+        ),
+      );
 
   extraEnv:
     - name: POSTGRES_HOST
-      value: nextcloud-pg.seyzahl.com:5432
+      value: nextcloud-pg.seyzahl.com
     - name: POSTGRES_DB
       value: nextcloud
     - name: POSTGRES_USER
@@ -112,6 +108,11 @@ nextcloud:
       value: nextcloud-redis-master
     - name: REDIS_HOST_PORT
       value: "6379"
+    - name: REDIS_HOST_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: nextcloud-redis-creds
+          key: password
 
 ## Database Configuration - Using external PostgreSQL
 internalDatabase:
@@ -120,9 +121,10 @@ internalDatabase:
 externalDatabase:
   enabled: true
   type: postgresql
-  host: nextcloud-pg.seyzahl.com:5432
+  host: nextcloud-pg.seyzahl.com
+  port: 5432
   user: nextcloud
-  password: "" # Using existingSecret instead
+  password: ""
   database: nextcloud
   existingSecret:
     enabled: true
@@ -135,20 +137,23 @@ persistence:
   enabled: true
   existingClaim: nextcloud-pvc-nfs
   nextcloudData:
-    enabled: false  # Using same volume for all data
+    enabled: false
 
-## Redis for caching
+## Redis for caching - WITH authentication
 redis:
   enabled: true
+  architecture: standalone
   auth:
-    enabled: false
+    enabled: true
+    existingSecret: nextcloud-redis-creds
+    existingSecretPasswordKey: password
   master:
     persistence:
-      enabled: false
+      enabled: true
+      size: 1Gi
+      storageClass: truenas-nfs
   replica:
-    replicaCount: 1
-    persistence:
-      enabled: false
+    replicaCount: 0  # Not needed for homelab
 
 ## Cronjob for background tasks
 cronjob:
@@ -195,7 +200,7 @@ startupProbe:
 
 ## HPA
 hpa:
-  enabled: false  # Enable if you want autoscaling
+  enabled: false
   cputhreshold: 60
   minPods: 1
   maxPods: 10

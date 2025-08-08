@@ -9,6 +9,7 @@ resources:
   - gateway.yaml
   - routes.yaml
   - release.yaml
+  - secrets.yaml
   # - networkpolicy.yaml
 
 configMapGenerator:
