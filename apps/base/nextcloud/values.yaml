@@ -34,12 +34,13 @@ nextcloud:
       max_execution_time = 3600
       memory_limit = 2G
       
-  # Default configs - enable PostgreSQL config
+  # Default configs - disable conflicting defaults
   defaultConfigs:
     # Disable autoconfig since we're using existing database
     autoconfig.php: false
-    # PostgreSQL config will be in our custom config
-    postgres.config.php: true
+    # Disable defaults to use our custom configs below
+    postgres.config.php: false
+    redis.config.php: false
     
   # Additional Nextcloud configs
   configs:
