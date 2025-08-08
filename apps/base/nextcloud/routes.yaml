@@ -17,6 +17,6 @@ spec:
             type: PathPrefix
             value: /
       backendRefs:
-        - name: nextcloud-nextcloud  # Note: the service name is nextcloud-nextcloud
+        - name: nextcloud
           port: 8080
           weight: 100
