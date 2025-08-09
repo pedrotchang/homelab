@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: nextcloud.seyzahl.com
+  name: nextcloud
+  namespace: nextcloud
+spec:
+  ingressClassName: cilium
+  rules:
+    - host: nextcloud.seyzahl.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: nextcloud
+                port:
+                  number: 8080
+            path: /
+            pathType: Prefix

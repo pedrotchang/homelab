@@ -6,10 +6,10 @@ resources:
   - namespace.yaml
   - repository.yaml
   - storage.yaml
-  - gateway.yaml
-  - routes.yaml
   - release.yaml
   - secrets.yaml
+  # - gateway.yaml
+  # - routes.yaml
   # - networkpolicy.yaml
 
 configMapGenerator:

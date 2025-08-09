@@ -7,7 +7,7 @@ image:
   pullPolicy: IfNotPresent
 
 ingress:
-  enabled: false  # Using Cilium Gateway instead
+  enabled: false 
 
 nextcloud:
   host: nextcloud.seyzahl.com
