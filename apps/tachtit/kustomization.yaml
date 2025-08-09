@@ -9,4 +9,4 @@ resources:
   - maybe
   # - servarr
   # - minecraft
-  # - nextcloud
+  - nextcloud
