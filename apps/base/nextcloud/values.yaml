@@ -136,8 +136,11 @@ externalDatabase:
 persistence:
   enabled: true
   existingClaim: nextcloud-pvc-nfs
+  subPath: "html"  # Nextcloud application files
   nextcloudData:
-    enabled: false
+    enabled: true
+    existingClaim: nextcloud-pvc-nfs
+    subPath: "data"  # User data files (uploads, etc.)
 
 ## Redis Configuration with Authentication
 redis:
