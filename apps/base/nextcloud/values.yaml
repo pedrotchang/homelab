@@ -142,6 +142,21 @@ persistence:
     existingClaim: nextcloud-pvc-nfs
     subPath: "data"  # User data files (uploads, etc.)
 
+## Pod security context to handle NFS permission issues
+podSecurityContext:
+  runAsUser: 33  # www-data user in Nextcloud container
+  runAsGroup: 33
+  fsGroup: 33
+  fsGroupChangePolicy: "OnRootMismatch"  # Prevents lengthy permission changes
+
+## Container security context
+securityContext:
+  runAsUser: 33
+  runAsGroup: 33
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: false
+  runAsNonRoot: true
+
 ## Redis Configuration with Authentication
 redis:
   enabled: true
