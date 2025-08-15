@@ -14,7 +14,7 @@ nextcloud:
   username: admin
   existingSecret:
     enabled: true
-    secretName: nextcloud-db-creds
+    secretName: nextcloud-admin-creds
     usernameKey: username
     passwordKey: password
     
