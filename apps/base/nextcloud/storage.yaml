@@ -5,7 +5,7 @@ metadata:
   namespace: nextcloud
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   storageClassName: truenas-nfs
   resources:
     requests:
