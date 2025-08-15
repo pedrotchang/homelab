@@ -133,18 +133,37 @@ externalDatabase:
     passwordKey: password
 
 ## Persistence
+# persistence:
+#   enabled: true
+#   existingClaim: nextcloud-pvc-nfs
+#   subPath: "html"  # Nextcloud application files
+#   nextcloudData:
+#     enabled: true
+#     existingClaim: nextcloud-pvc-nfs
+#     subPath: "data"  # User data files (uploads, etc.)
+#
+# podSecurityContext:
+#   fsGroup: 33        # www-data group (standard for Nextcloud)
+#   runAsUser: 33      # www-data user
+#   runAsGroup: 33
+#
+# securityContext:
+#   runAsUser: 33
+#   runAsGroup: 33
+#   allowPrivilegeEscalation: false
+#   readOnlyRootFilesystem: false
+#   runAsNonRoot: true
+# Temporarily disable ALL persistence to test if volumes are the issue
 persistence:
-  enabled: true
-  existingClaim: nextcloud-pvc-nfs
-  subPath: "html"  # Nextcloud application files
-  nextcloudData:
-    enabled: true
-    existingClaim: nextcloud-pvc-nfs
-    subPath: "data"  # User data files (uploads, etc.)
+  enabled: false
 
+nextcloudData:
+  enabled: false
+
+# Keep everything else the same
 podSecurityContext:
-  fsGroup: 33        # www-data group (standard for Nextcloud)
-  runAsUser: 33      # www-data user
+  fsGroup: 33
+  runAsUser: 33
   runAsGroup: 33
 
 securityContext:
