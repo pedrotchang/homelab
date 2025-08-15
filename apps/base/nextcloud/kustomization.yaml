@@ -16,6 +16,12 @@ configMapGenerator:
   - name: nextcloud-values
     files:
       - values.yaml=values.yaml
+    # Add this to force regeneration when content changes
+    options:
+      disableNameSuffixHash: false
+      # Add a label to force regeneration
+      labels:
+        config-version: "v2"  # Change this to force regeneration
 
 configurations:
   - kustomizeconfig.yaml
