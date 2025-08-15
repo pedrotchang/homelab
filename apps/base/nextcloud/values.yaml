@@ -147,7 +147,6 @@ podSecurityContext:
   runAsUser: 33  # www-data user in Nextcloud container
   runAsGroup: 33
   fsGroup: 33
-  fsGroupChangePolicy: "OnRootMismatch"  # Prevents lengthy permission changes
 
 ## Container security context
 securityContext:
