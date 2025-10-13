@@ -76,6 +76,11 @@ data:
       - PVE:
             href: https://192.168.6.42:8006/
             icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/proxmox.png
+
+    - Media:
+      - Immich:
+            href: http://192.168.5.44:2283
+            icon: immich.png 
       - JellySeerr:
             href: http://192.168.5.221:5055/
             icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/jellyseerr.png
