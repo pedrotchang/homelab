@@ -6,7 +6,7 @@ resources:
   - n8n
   - wallabag
   - commafeed
-  - maybe
+  # - maybe
   # - servarr
   # - minecraft
-  - nextcloud
+  # - nextcloud
