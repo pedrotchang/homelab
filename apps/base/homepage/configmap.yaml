@@ -69,6 +69,19 @@ data:
 
   services.yaml: |
 
+    - Proxmox:
+      - PVE-Main:
+            href: https://192.168.5.12:8006/
+            icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/proxmox.png
+      - PVE:
+            href: https://192.168.6.42:8006/
+            icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/proxmox.png
+      - JellySeerr:
+            href: http://192.168.5.221:5055/
+            icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/jellyseerr.png
+      - Jellyfin:
+            href: http://192.168.4.107:8096
+            icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/jellyfin.png
 
     - Services:
       - Linkding:
