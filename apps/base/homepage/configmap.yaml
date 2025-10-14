@@ -13,6 +13,9 @@ data:
   custom.js: ""
   bookmarks.yaml: |
     - Learn:
+        - T3-Live:
+            - abbr: T3
+              href: https://www.t3live.com/login/
         - KubeCraft:
             - abbr: KC
               href: https://www.skool.com/kubecraft
@@ -20,9 +23,6 @@ data:
         - Boot.dev:
             - abbr: BD
               href: https://www.boot.dev/tracks/backend
-        - Udemy:
-            - abbr: UD
-              href: https://www.udemy.com/home/my-courses/learning/
 
     - Create:
       - YouTube Studio:
@@ -69,13 +69,16 @@ data:
 
   services.yaml: |
 
-    - Proxmox:
+    - Infra:
       - PVE-Main:
             href: https://192.168.5.12:8006/
             icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/proxmox.png
       - PVE:
             href: https://192.168.6.42:8006/
             icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/proxmox.png
+      - Truenas:
+            href: https://192.168.7.14
+            icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/truenas-scale.png
 
     - Media:
       - Immich:
@@ -101,6 +104,9 @@ data:
       - N8N:
             href: http://n8n.seyzahl.com/
             icon: n8n.png
+      - qBittorrent:
+            href: http://192.168.5.221:8080
+            icon: qbittorrent.png
 
 
     - Admin:
