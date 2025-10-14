@@ -13,9 +13,6 @@ data:
   custom.js: ""
   bookmarks.yaml: |
     - Learn:
-        - T3-Live:
-            - abbr: T3
-              href: https://www.t3live.com/login/
         - KubeCraft:
             - abbr: KC
               href: https://www.skool.com/kubecraft
@@ -68,6 +65,13 @@ data:
               description: Grok
 
   services.yaml: |
+    - Trading:
+      - T3-Live:
+            href: https://www.t3live.com/login
+      - finviz:
+            href: https://finviz.com
+      - T3-Live:
+            href: https://portal.t3live.com
 
     - Infra:
       - PVE-Main:
