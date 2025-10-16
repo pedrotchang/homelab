@@ -86,7 +86,7 @@ data:
 
     - Media:
       - Immich:
-            href: http://192.168.5.44:2283
+            href: immich.dab-fujita.ts.net
             icon: immich.png 
       - JellySeerr:
             href: http://192.168.5.221:5055/
