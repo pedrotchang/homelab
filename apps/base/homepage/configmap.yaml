@@ -70,8 +70,8 @@ data:
             href: https://www.t3live.com/login
       - finviz:
             href: https://finviz.com
-      - T3-Live:
-            href: https://portal.t3live.com
+      - Schwab:
+            href: https://www.schwab.com/
 
     - Infra:
       - PVE-Main:
