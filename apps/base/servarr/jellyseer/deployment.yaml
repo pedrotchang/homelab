@@ -21,7 +21,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: jellyseer
-          image: fallenbagel/jellyseerr:2.7.2
+          image: fallenbagel/jellyseerr:2.7.3
           ports:
             - containerPort: 5055
               protocol: TCP
