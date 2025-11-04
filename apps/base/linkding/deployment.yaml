@@ -20,7 +20,7 @@ spec:
 
       containers:
         - name: linkding
-          image: sissbruecker/linkding:1.39.1
+          image: sissbruecker/linkding:1.44.1
 
           securityContext:
               allowPrivilegeEscalation: false
