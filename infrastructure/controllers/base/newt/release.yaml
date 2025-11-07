@@ -7,7 +7,7 @@ spec:
   interval: 30m
   chart:
     spec:
-      chart: newt
+      chart: fossorial/newt
       version: "1.5.0" # You should pin this to a specific version
       sourceRef:
         kind: HelmRepository
