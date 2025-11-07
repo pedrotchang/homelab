@@ -1,0 +1,6 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: newt
+  labels:
+    app.kubernetes.io/component: networking

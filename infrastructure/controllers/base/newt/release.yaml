@@ -1,0 +1,35 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: newt
+  namespace: newt
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: newt
+      version: "1.6.0" # You should pin this to a specific version
+      sourceRef:
+        kind: HelmRepository
+        name: fossorial
+        namespace: newt
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  valuesFrom:
+    - kind: ConfigMap
+      name: newt-values
+    # Only inject the actual secrets, not the endpoint URL
+    - targetPath: newtInstances[0].auth.keys.idKey
+      kind: Secret
+      name: newt-auth-keys
+      valuesKey: id-key
+    - targetPath: newtInstances[0].auth.keys.secretKey
+      kind: Secret
+      name: newt-auth-keys
+      valuesKey: secret-key

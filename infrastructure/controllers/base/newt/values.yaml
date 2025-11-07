@@ -1,0 +1,5 @@
+newtInstances:
+  - name: "main-tunnel"
+    auth:
+      keys:
+        endpointKey: "https://pangolin.seyzahl.com"  
