@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: newt
-      version: "1.6.0" # You should pin this to a specific version
+      version: "1.5.0" # You should pin this to a specific version
       sourceRef:
         kind: HelmRepository
         name: fossorial
@@ -24,7 +24,6 @@ spec:
   valuesFrom:
     - kind: ConfigMap
       name: newt-values
-    # Only inject the actual secrets, not the endpoint URL
     - targetPath: newtInstances[0].auth.keys.idKey
       kind: Secret
       name: newt-auth-keys
