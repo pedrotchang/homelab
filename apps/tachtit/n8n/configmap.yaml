@@ -4,10 +4,12 @@ metadata:
   name: n8n-configmap
 data:
   N8N_PORT: "3008"
-  N8N_PROTOCOL: "http"
+  N8N_HOST: "n8n.seyzahl.com"
+  N8N_PROTOCOL: "https"
+  WEBHOOK_URL: "https://n8n.seyzahl.com/"
   DB_TYPE: "postgresdb"
   DB_POSTGRESDB_HOST: "n8n-pg.seyzahl.com"
   DB_POSTGRESDB_PORT: "5432"
   DB_POSTGRESDB_DATABASE: "n8n"
-  N8N_SECURE_COOKIE: "false"
+  N8N_SECURE_COOKIE: "true"
   GENERIC_TIMEZONE: "America/Los_Angeles"

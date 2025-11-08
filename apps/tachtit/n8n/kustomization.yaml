@@ -4,5 +4,5 @@ namespace: n8n
 resources:
   - ../../base/n8n/
   # - cloudflare.yaml
-  - ingress.yaml
+  # - ingress.yaml  # Disabled - using pangolin tunnel instead
   - configmap.yaml
