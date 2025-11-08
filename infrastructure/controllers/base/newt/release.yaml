@@ -24,11 +24,3 @@ spec:
   valuesFrom:
     - kind: ConfigMap
       name: newt-values
-    - targetPath: newtInstances[0].auth.keys.idKey
-      kind: Secret
-      name: newt-auth-keys
-      valuesKey: id-key
-    - targetPath: newtInstances[0].auth.keys.secretKey
-      kind: Secret
-      name: newt-auth-keys
-      valuesKey: secret-key

@@ -1,5 +1,8 @@
 newtInstances:
   - name: "main-tunnel"
     auth:
+      existingSecretName: "newt-auth-keys"
       keys:
-        endpointKey: "https://pangolin.seyzahl.com"  
+        endpointKey: "endpoint-key"
+        idKey: "id-key"
+        secretKey: "secret-key"
