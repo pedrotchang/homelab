@@ -86,7 +86,7 @@ data:
 
     - Media:
       - Immich:
-            href: https://immich.dab-fujita.ts.net/auth/login
+            href: https://immich.seyzahl.com
             icon: immich.png 
       - JellySeerr:
             href: http://192.168.5.221:5055/
@@ -106,7 +106,7 @@ data:
             href: https://wallabag.seyzahl.com
             icon: wallabag.png
       - N8N:
-            href: http://n8n.seyzahl.com/
+            href: http://auto.seyzahl.com/
             icon: n8n.png
       - qBittorrent:
             href: http://192.168.5.221:8080
@@ -114,6 +114,12 @@ data:
 
 
     - Admin:
+      - Pangolin:
+            href: https://pangolin.seyzahl.com/
+            icon: pangolin.png
+      - AWS:
+            href: https://us-west-1.console.aws.amazon.com
+            icon: aws.png
       - Azure:
             href: https://portal.azure.com/#home
             icon: azure.png
