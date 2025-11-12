@@ -76,5 +76,5 @@ data:
 
     ingress:
     - hostname: linkding.seyzahl.com
-      service: http://linkding:3003
+      service: http://linkding.linkding.svc.cluster.local:3003
     - service: http_status:404
