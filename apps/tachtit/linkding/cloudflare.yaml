@@ -77,7 +77,4 @@ data:
     ingress:
     - hostname: linkding.seyzahl.com
       service: http://linkding:3003
-
-    - hostname: hello.example.com
-      service: hello_world
     - service: http_status:404
