@@ -20,20 +20,9 @@ data:
         - Boot.dev:
             - abbr: BD
               href: https://www.boot.dev/tracks/backend
-
-    - Create:
-      - YouTube Studio:
-            - abbr: YS
-              href: https://studio.youtube.com
-              icon: youtube.png
-      - LinkedIn:
-            - abbr: LI
-              href: https://linkedin.com
-              icon: linkedin.png
-      - Substack:
-            - abbr: ST
-              href: https://pedrotchang.substack.com
-              icon: si-substack-#FF6719
+        - Udemy:
+            - abbr: UD
+              href: https://www.udemy.com/
 
     - Developer:
         - Github:
@@ -59,31 +48,27 @@ data:
               href: https://claude.ai/new
               description: Claude
               icon: claude-ai.png
-        - Grok:
-            - abbr: GK
-              href: https://grok.com
-              description: Grok
 
   services.yaml: |
     - Personal:
-      - Immich:
-            href: https://immich.dab-fujita.ts.net
-            icon: immich.png
-      - Jellyfin:
-            href: http://192.168.4.107:8096
-            icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/jellyfin.png
-      - JellySeerr:
-            href: http://192.168.5.221:5055/
-            icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/jellyseerr.png
       - Linkding:
             href: https://linkding.seyzahl.com
             icon: linkding.png
+      - Immich:
+            href: https://immich.dab-fujita.ts.net
+            icon: immich.png
       - Commafeed:
             href: https://commafeed.seyzahl.com
             icon: commafeed.png
       - Wallabag:
             href: https://wallabag.seyzahl.com
             icon: wallabag.png
+      - Jellyfin:
+            href: http://192.168.4.107:8096
+            icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/jellyfin.png
+      - JellySeerr:
+            href: http://192.168.5.221:5055/
+            icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/jellyseerr.png
       - qBittorrent:
             href: http://192.168.5.221:8080
             icon: qbittorrent.png
