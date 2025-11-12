@@ -65,37 +65,16 @@ data:
               description: Grok
 
   services.yaml: |
-    - Trading:
-      - T3-Live:
-            href: https://www.t3live.com/login
-      - finviz:
-            href: https://finviz.com
-      - Schwab:
-            href: https://www.schwab.com/
-
-    - Infra:
-      - PVE-Main:
-            href: https://192.168.5.12:8006/
-            icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/proxmox.png
-      - PVE:
-            href: https://192.168.6.42:8006/
-            icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/proxmox.png
-      - Truenas:
-            href: https://192.168.7.14
-            icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/truenas-scale.png
-
-    - Media:
+    - Personal:
       - Immich:
-            href: https://immich.seyzahl.com
-            icon: immich.png 
-      - JellySeerr:
-            href: http://192.168.5.221:5055/
-            icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/jellyseerr.png
+            href: https://immich.dab-fujita.ts.net
+            icon: immich.png
       - Jellyfin:
             href: http://192.168.4.107:8096
             icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/jellyfin.png
-
-    - Services:
+      - JellySeerr:
+            href: http://192.168.5.221:5055/
+            icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/jellyseerr.png
       - Linkding:
             href: https://linkding.seyzahl.com
             icon: linkding.png
@@ -105,30 +84,46 @@ data:
       - Wallabag:
             href: https://wallabag.seyzahl.com
             icon: wallabag.png
-      - N8N:
-            href: http://auto.seyzahl.com/
-            icon: n8n.png
       - qBittorrent:
             href: http://192.168.5.221:8080
             icon: qbittorrent.png
 
-
-    - Admin:
+    - Homelab:
+      - PVE-Main:
+            href: https://192.168.5.12:8006/
+            icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/proxmox.png
+      - PVE:
+            href: https://192.168.6.42:8006/
+            icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/proxmox.png
+      - Truenas:
+            href: https://192.168.7.14
+            icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/truenas-scale.png
       - Pangolin:
             href: https://pangolin.seyzahl.com/
             icon: pangolin.png
-      - AWS:
-            href: https://us-west-1.console.aws.amazon.com
-            icon: aws.png
-      - Azure:
-            href: https://portal.azure.com/#home
-            icon: azure.png
       - Unifi:
             href: https://unifi.ui.com
             icon: unifi.png
       - Omni:
             href: https://pedrotchang.omni.siderolabs.io/
             icon: talos.png
+
+    - Professional:
+      - N8N:
+            href: http://auto.seyzahl.com/
+            icon: n8n.png
+      - AWS:
+            href: https://us-west-1.console.aws.amazon.com
+            icon: aws.png
+      - Azure:
+            href: https://portal.azure.com/#home
+            icon: azure.png
+      - T3-Live:
+            href: https://www.t3live.com/login
+      - finviz:
+            href: https://finviz.com
+      - Schwab:
+            href: https://www.schwab.com/
 
   widgets.yaml: |
 
