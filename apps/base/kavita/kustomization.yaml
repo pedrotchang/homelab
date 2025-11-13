@@ -6,5 +6,3 @@ resources:
   - deployment.yaml
   - service.yaml
   - storage-nfs.yaml
-  - gateway.yaml
-  - routes.yaml
