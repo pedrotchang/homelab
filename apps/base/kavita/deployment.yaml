@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kavita
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: kavita
+
+  template:
+    metadata:
+      labels:
+        app: kavita
+        policy-type: "app"
+
+    spec:
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        fsGroupChangePolicy: OnRootMismatch
+
+      containers:
+        - name: kavita
+          image: jvmilazz0/kavita:latest
+
+          securityContext:
+              allowPrivilegeEscalation: false
+
+          env:
+            - name: TZ
+              value: "America/Los_Angeles"
+
+          ports:
+            - containerPort: 5000
+              protocol: TCP
+
+          volumeMounts:
+            - name: kavita-config
+              mountPath: /kavita/config
+            - name: kavita-manga
+              mountPath: /manga
+            - name: kavita-comics
+              mountPath: /comics
+            - name: kavita-books
+              mountPath: /books
+
+      restartPolicy: Always
+
+      volumes:
+        - name: kavita-config
+          persistentVolumeClaim:
+            claimName: kavita-config-pvc-nfs
+        - name: kavita-manga
+          persistentVolumeClaim:
+            claimName: kavita-manga-pvc-nfs
+        - name: kavita-comics
+          persistentVolumeClaim:
+            claimName: kavita-comics-pvc-nfs
+        - name: kavita-books
+          persistentVolumeClaim:
+            claimName: kavita-books-pvc-nfs

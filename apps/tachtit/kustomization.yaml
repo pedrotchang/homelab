@@ -6,6 +6,7 @@ resources:
   - n8n
   - wallabag
   - commafeed
+  - kavita
   # - maybe
   # - servarr
   # - minecraft
