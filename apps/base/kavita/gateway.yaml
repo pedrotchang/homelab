@@ -17,7 +17,7 @@ metadata:
     cilium.io/gateway: "true"
   annotations:
     external-dns.alpha.kubernetes.io/hostname: "kavita.seyzahl.com"
-    service.cilium.io/lbipam-ips: "192.168.4.222"
+    service.cilium.io/lbipam-ips: "192.168.4.223"
 spec:
   gatewayClassName: cilium-kavita
   listeners:
