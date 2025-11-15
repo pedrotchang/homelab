@@ -9,7 +9,163 @@ data:
   kubernetes.yaml: |
     mode: default
   settings.yaml: ""
-  custom.css: ""
+  custom.css: |
+    /* ================================
+       custom.css - Modular & Final ⚡
+       ================================ */
+
+    /* ===== ROOT & VARIABLES ===== */
+    :root {
+      /* cores */
+      --bg-main: #1d2434c2;
+      --bg-card: #162232;
+      --bg-card-light: #1f1f2354;
+      --text-header: #fdb833;
+      --text-emerald: #b4e3f9;
+      --text-thin: #9dedf6;
+      --text-accent: #6dc3ea;
+
+      /* espaçamentos */
+      --spacing-sm: calc(var(--spacing) * 0.5);
+      --spacing-md: calc(var(--spacing) * 1);
+      --spacing-lg: calc(var(--spacing) * 1.5);
+
+      /* ícones */
+      --icon-clock: url("/icons/relogio.svg");
+    }
+
+    /* ===== THEME OVERRIDES ===== */
+    :root[data-theme="dark"][data-color="zinc"] {
+      --bg-card: #162232 !important;
+    }
+
+    /* ===== TEXT UTILITIES ===== */
+    .text-emerald-500\/80 {
+      color: color-mix(in oklab, var(--color-emerald-500) 80%, transparent);
+      font-size: 0.67rem;
+      text-transform: none;
+    }
+
+    .text-theme-500 {
+      font-size: 0.9em;
+      font-weight: 400;
+      padding-top: 1px;
+    }
+
+    .text-theme-800 {
+      display: inline-flex;
+    }
+
+    span.secondary-text.text-theme-800 {
+      color: var(--text-accent);
+      font-family: "JetBrains Mono", monospace;
+    }
+
+    .text-colored {
+      font-family: "Roboto", sans-serif;
+      letter-spacing: -0.5px;
+    }
+
+    .text-rose-300\/70 {
+      color: color-mix(in oklab, rgb(255, 87, 108)70%, transparent);
+    }
+
+    .text-emerald-300\/70 {
+      color: color-mix(in oklab, var(--color-emerald-300)70%, transparent);
+    }
+
+    .pl-0\.5 {
+      padding-left: var(--spacing-sm);
+      color: var(--text-emerald);
+      font-weight: 500;
+    }
+
+    .font-thin {
+      font-weight: 500;
+      /* sobrescrevendo o thin de propósito */
+      color: var(--text-thin);
+    }
+
+    /* ===== BACKGROUND / CARDS ===== */
+    .dark\:bg-theme-900\/20:is(.dark *) {
+      background-color: color-mix(in oklab, rgb(var(--color-900)/1) 20%, #00000014);
+    }
+
+    :is(.dark .dark\:bg-white\/5) {
+      padding: 10px;
+      border-radius: 7px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    /* ===== SERVICE CARDS ===== */
+    #revalidate {
+      display: none;
+    }
+
+    .mr-auto-custom {
+      margin-right: auto;
+    }
+
+    .service-icon--large img {
+      margin-left: 2px;
+      width: 35px;
+      height: 35px;
+    }
+
+    .docker-status {
+      display: inline-flex;
+      background: #2525289c;
+      border-radius: 0 0 10px 10px;
+    }
+
+    /* ===== SHADOWS ===== */
+    .shadow-strong {
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    /* ===== TITLES ===== */
+    .service-title-strong {
+      font-weight: bold;
+      font-size: 1.04rem;
+    }
+
+    /* ===== SPACING & LAYOUT ===== */
+    .py-1\.5 {
+      display: inline-flex;
+      margin-right: 6px;
+      padding-block: var(--spacing-lg);
+      padding-inline: var(--spacing-md);
+      border-radius: 5px;
+      background: var(--bg-card-light);
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .pr-1 {
+      padding-right: var(--spacing-md);
+      color: #c8c4c4;
+      margin-left: 2px;
+    }
+
+    div.flex.flex-row.items-center.grow.justify-end {
+      background-color: var(--bg-main);
+      padding: 0 6px;
+      border-radius: 8px;
+      font-family: "JetBrains Mono", monospace;
+      line-height: 1.4;
+    }
+
+    /* ===== ICON CLOCK (reliable) ===== */
+    div.flex.flex-row.items-center.grow.justify-end::before {
+      content: "";
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      margin-right: 5px;
+      background-image: var(--icon-clock);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
   custom.js: ""
   bookmarks.yaml: ""
 
