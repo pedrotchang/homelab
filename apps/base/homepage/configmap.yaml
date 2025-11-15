@@ -9,7 +9,7 @@ data:
   kubernetes.yaml: |
     mode: default
   settings.yaml: |
-    title: Pi - Dashboard
+    title: Seyzahl
     theme: dark
     color: slate
     target: _blank
@@ -23,7 +23,7 @@ data:
     hideErrors: true
     fullWidth: true
     fadeIn: true
-    base: https://home.yoursite.in/
+    base: https://hp.seyzahl.com
     favicon: /icons/amp.webp
     backgroundOpacity: 0.83
     background: /icons/bg2.jpg
@@ -38,11 +38,11 @@ data:
         rel: stylesheet
 
     layout:
-      - Geral:
+      - Professional:
           header: false
           style: row
           columns: 5
-      - Monitoramento:
+      - Media:
           header: false
           style: row
           columns: 3
