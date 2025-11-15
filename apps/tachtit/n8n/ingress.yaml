@@ -2,17 +2,17 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: n8n.seyzahl.com
-  name: n8n
+    external-dns.alpha.kubernetes.io/hostname: auto.seyzahl.com
+  name: auto
 spec:
   ingressClassName: cilium
   rules:
-    - host: n8n.seyzahl.com
+    - host: auto.seyzahl.com
       http:
         paths:
           - backend:
               service:
-                name: n8n
+                name: auto
                 port:
                   number: 3008
             path: /
