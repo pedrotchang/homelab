@@ -11,46 +11,10 @@ data:
   settings.yaml: ""
   custom.css: ""
   custom.js: ""
-  bookmarks.yaml: |
-    - Learn:
-        - KubeCraft:
-            - abbr: KC
-              href: https://www.skool.com/kubecraft
-              icon: kubecraft.png
-        - Boot.dev:
-            - abbr: BD
-              href: https://www.boot.dev/tracks/backend
-        - Udemy:
-            - abbr: UD
-              href: https://www.udemy.com/
-
-    - Developer:
-        - Github:
-            - abbr: GH
-              href: https://github.com/pedrotchang
-              icon: github.png
-              description: GitHub
-        - CloudFlare:
-            - abbr: CF
-              href: https://cloudflare.com/
-              icon: cloudflare.png
-              description: CloudFlare
-        - Kubernetes:
-            - abbr: KD
-              href: https://kubernetes.io/docs/home/
-              icon: kubernetes.png
-              description: Kubernetes Docs
-
-
-    - External Services:
-        - Claude:
-            - abbr: CE
-              href: https://claude.ai/new
-              description: Claude
-              icon: claude-ai.png
+  bookmarks.yaml: ""
 
   services.yaml: |
-    - Personal:
+    - Media:
       - Linkding:
             href: https://linkding.seyzahl.com
             icon: linkding.png
@@ -72,8 +36,28 @@ data:
       - qBittorrent:
             href: http://192.168.5.221:8080
             icon: qbittorrent.png
+      - Suwayomi:
+            href: https://suwayomi.seyzahl.com/library
+            icon: suwayomi.png
 
-    - Homelab:
+    - Professional:
+      - N8N:
+            href: http://auto.seyzahl.com/
+            icon: n8n.png
+      - AWS:
+            href: https://us-west-1.console.aws.amazon.com
+            icon: aws.png
+      - Azure:
+            href: https://portal.azure.com/#home
+            icon: azure.png
+      - T3-Live:
+            href: https://www.t3live.com/login
+      - finviz:
+            href: https://finviz.com
+      - Schwab:
+            href: https://www.schwab.com/
+
+    - Administration:
       - PVE-Main:
             href: https://192.168.5.12:8006/
             icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/proxmox.png
@@ -93,22 +77,32 @@ data:
             href: https://pedrotchang.omni.siderolabs.io/
             icon: talos.png
 
-    - Professional:
-      - N8N:
-            href: http://auto.seyzahl.com/
-            icon: n8n.png
-      - AWS:
-            href: https://us-west-1.console.aws.amazon.com
-            icon: aws.png
-      - Azure:
-            href: https://portal.azure.com/#home
-            icon: azure.png
-      - T3-Live:
-            href: https://www.t3live.com/login
-      - finviz:
-            href: https://finviz.com
-      - Schwab:
-            href: https://www.schwab.com/
+    - Developer:
+      - Github:
+            href: https://github.com/pedrotchang
+            icon: github.png
+            description: GitHub
+      - CloudFlare:
+            href: https://cloudflare.com/
+            icon: cloudflare.png
+            description: CloudFlare
+      - Kubernetes:
+            href: https://kubernetes.io/docs/home/
+            icon: kubernetes.png
+            description: Kubernetes Docs
+      - Claude:
+            href: https://claude.ai/new
+            description: Claude
+            icon: claude-ai.png
+
+    - Learn:
+      - KubeCraft:
+            href: https://www.skool.com/kubecraft
+            icon: kubecraft.png
+      - Boot.dev:
+            href: https://www.boot.dev/tracks/backend
+      - Udemy:
+            href: https://www.udemy.com/
 
   widgets.yaml: |
 
