@@ -14,36 +14,14 @@ data:
   bookmarks.yaml: ""
 
   services.yaml: |
-    - Media:
-      - Linkding:
-            href: https://linkding.seyzahl.com
-            icon: linkding.png
-      - Immich:
-            href: https://immich.dab-fujita.ts.net
-            icon: immich.png
-      - Commafeed:
-            href: https://commafeed.seyzahl.com
-            icon: commafeed.png
-      - Wallabag:
-            href: https://wallabag.seyzahl.com
-            icon: wallabag.png
-      - Jellyfin:
-            href: http://192.168.4.107:8096
-            icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/jellyfin.png
-      - JellySeerr:
-            href: http://192.168.5.221:5055/
-            icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/jellyseerr.png
-      - qBittorrent:
-            href: http://192.168.5.221:8080
-            icon: qbittorrent.png
-      - Suwayomi:
-            href: https://suwayomi.seyzahl.com/library
-            icon: suwayomi.png
 
     - Professional:
       - N8N:
             href: http://auto.seyzahl.com/
             icon: n8n.png
+      - Linkding:
+            href: https://linkding.seyzahl.com
+            icon: linkding.png
       - AWS:
             href: https://us-west-1.console.aws.amazon.com
             icon: aws.png
@@ -95,6 +73,17 @@ data:
             description: Claude
             icon: claude-ai.png
 
+    - Read:
+      - Commafeed:
+            href: https://commafeed.seyzahl.com
+            icon: commafeed.png
+      - Wallabag:
+            href: https://wallabag.seyzahl.com
+            icon: wallabag.png
+      - Suwayomi:
+            href: https://suwayomi.seyzahl.com/library
+            icon: suwayomi.png
+
     - Learn:
       - KubeCraft:
             href: https://www.skool.com/kubecraft
@@ -103,6 +92,21 @@ data:
             href: https://www.boot.dev/tracks/backend
       - Udemy:
             href: https://www.udemy.com/
+
+    - Media:
+      - Immich:
+            href: https://immich.dab-fujita.ts.net
+            icon: immich.png
+      - Jellyfin:
+            href: http://192.168.4.107:8096
+            icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/jellyfin.png
+      - JellySeerr:
+            href: http://192.168.5.221:5055/
+            icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/jellyseerr.png
+      - qBittorrent:
+            href: http://192.168.5.221:8080
+            icon: qbittorrent.png
+
 
   widgets.yaml: |
 
