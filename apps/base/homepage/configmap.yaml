@@ -8,7 +8,54 @@ metadata:
 data:
   kubernetes.yaml: |
     mode: default
-  settings.yaml: ""
+  settings.yaml: |
+    title: Pi - Dashboard
+    theme: dark
+    color: slate
+    target: _blank
+    cardBlur: xl
+    language: en
+    hideVersion: true
+    disableCollapse: true
+    useEqualHeights: true
+    headerStyle: boxed
+    showStats: true
+    hideErrors: true
+    fullWidth: true
+    fadeIn: true
+    base: https://home.yoursite.in/
+    favicon: /icons/amp.webp
+    backgroundOpacity: 0.83
+    background: /icons/bg2.jpg
+
+    links:
+      - name: Google Fonts (Preconnect)
+        href: https://fonts.gstatic.com
+        rel: preconnect
+
+      - name: Google Fonts
+        href: https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,700&family=Roboto+Condensed:wght@100..900&family=Roboto:wght@100;400;500;700&display=swap
+        rel: stylesheet
+
+    layout:
+      - Geral:
+          header: false
+          style: row
+          columns: 5
+      - Monitoramento:
+          header: false
+          style: row
+          columns: 3
+      - Note:
+          icon: /icons/bars.svg
+          header: true
+          style: row
+          columns: 2
+      - Links:
+          icon: /icons/link.svg
+          header: true
+          style: row
+          columns: 3
   custom.css: |
     /* ================================
        custom.css - Modular & Final ⚡
