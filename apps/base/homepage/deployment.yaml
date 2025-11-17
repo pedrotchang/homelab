@@ -35,6 +35,12 @@ spec:
             - name: http
               containerPort: 3000
               protocol: TCP
+          env:
+            - name: HOMEPAGE_VAR_OPENWEATHER_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: homepage-weather
+                  key: OPENWEATHER_API_KEY
           securityContext:
             allowPrivilegeEscalation: false
             runAsNonRoot: true

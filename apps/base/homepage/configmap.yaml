@@ -347,8 +347,8 @@ data:
         longitude: 34.059761
         latitude: -118.276802
         provider: openweathermap
-        # apiKey: ######youapikey###### # required only if not using provider, this reveals api key in requests
+        apiKey: "{{HOMEPAGE_VAR_OPENWEATHER_API_KEY}}"
         cache: 5 # Time in minutes to cache API responses, to stay within limits
-        format: 
+        format:
           maximumFractionDigits: 1
   docker.yaml: ""
