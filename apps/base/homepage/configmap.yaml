@@ -46,7 +46,7 @@ data:
           style: row
           columns: 6
       - Media:
-          header: false
+          header: true
           style: row
           columns: 4
       - Developer:
