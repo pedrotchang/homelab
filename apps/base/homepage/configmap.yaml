@@ -28,7 +28,7 @@ data:
     backgroundOpacity: 0.83
     background: /icons/bg2.jpg
 
-  layout:
+  layout: |
     - Professional:
       header: false
       style: row
