@@ -41,18 +41,18 @@ data:
           header: false
           style: row
           columns: 6
-      - Media:
-          header: false
-          style: row
-          columns: 2
       - Admin:
-          header: false
+          header: true
           style: row
-          columns: 2
-      - Developer:
-          header: false
+          columns: 4
+      - Media:
+          header: true
           style: row
           columns: 6
+      - Developer:
+          header: true
+          style: row
+          columns: 4
       - Read:
           header: true
           style: row
@@ -303,19 +303,6 @@ data:
       - Udemy:
             href: https://www.udemy.com/
 
-    - Media:
-      - Immich:
-            href: https://immich.dab-fujita.ts.net
-            icon: immich.png
-      - Jellyfin:
-            href: http://192.168.4.107:8096
-            icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/jellyfin.png
-      - JellySeerr:
-            href: http://192.168.5.221:5055/
-            icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/jellyseerr.png
-      - qBittorrent:
-            href: http://192.168.5.221:8080
-            icon: qbittorrent.png
 
 
   widgets.yaml: |
