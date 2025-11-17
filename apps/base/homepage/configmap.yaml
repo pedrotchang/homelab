@@ -341,4 +341,14 @@ data:
     - search:
         provider: google
         target: _blank
+    - openweathermap:
+        timezone: America/Los_Angeles
+        units: imperial
+        longitude: 34.059761
+        latitude: -118.276802
+        provider: openweathermap
+        # apiKey: ######youapikey###### # required only if not using provider, this reveals api key in requests
+        cache: 5 # Time in minutes to cache API responses, to stay within limits
+        format: 
+          maximumFractionDigits: 1
   docker.yaml: ""
