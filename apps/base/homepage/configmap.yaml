@@ -38,27 +38,27 @@ data:
 
     layout:
       - Professional:
-          header: false
+          header: true
           style: row
           columns: 6
       - Media:
-          header: false
+          header: true
           style: row
           columns: 4
       - Admin:
-          header: false
+          header: true
           style: row
           columns: 4
       - Developer:
-          header: false
+          header: true
           style: row
           columns: 2
       - Read:
-          header: false
+          header: true
           style: row
           columns: 4
       - Learn:
-          header: false
+          header: true
           style: row
           columns: 3
 
