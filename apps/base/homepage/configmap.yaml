@@ -9,7 +9,7 @@ data:
   kubernetes.yaml: |
     mode: default
   settings.yaml: |
-    title: Seyzahl
+    title: Seyza
     theme: dark
     color: slate
     target: _blank
@@ -28,31 +28,31 @@ data:
     backgroundOpacity: 0.83
     background: /icons/bg2.jpg
 
-  layout: |
-    - Professional:
-      header: false
-      style: row
-      columns: 6
-    - Media:
-      header: false
-      style: row
-      columns: 4
-    - Admin:
-      header: false
-      style: row
-      columns: 4
-    - Developer:
-      header: false
-      style: row
-      columns: 2
-    - Read:
-      header: false
-      style: row
-      columns: 4
-    - Learn:
-      header: false
-      style: row
-      columns: 3
+    layout:
+      - Professional:
+          header: false
+          style: row
+          columns: 6
+      - Media:
+          header: false
+          style: row
+          columns: 4
+      - Admin:
+          header: false
+          style: row
+          columns: 4
+      - Developer:
+          header: false
+          style: row
+          columns: 2
+      - Read:
+          header: false
+          style: row
+          columns: 4
+      - Learn:
+          header: false
+          style: row
+          columns: 3
 
 
   custom.css: |
