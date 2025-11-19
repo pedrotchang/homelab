@@ -26,7 +26,7 @@ data:
     base: https://hp.seyzahl.com
     favicon: /icons/amp.webp
     backgroundOpacity: 0.83
-    background: /icons/bg2.jpg
+    background: https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/1f802150-66ea-43cc-8f5b-a0ceb24350ea/dfyprwj-7968e2f6-d2b2-47e2-b280-68684e29a59c.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzFmODAyMTUwLTY2ZWEtNDNjYy04ZjViLWEwY2ViMjQzNTBlYVwvZGZ5cHJ3ai03OTY4ZTJmNi1kMmIyLTQ3ZTItYjI4MC02ODY4NGUyOWE1OWMucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.i34O5AYgJrnjWyITWeRxtstYHYHYyJFEf1oQ19R-W2I
     links:
       - name: Google Fonts (Preconnect)
         href: https://fonts.gstatic.com
