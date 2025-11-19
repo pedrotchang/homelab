@@ -25,7 +25,7 @@ data:
     fadeIn: true
     base: https://hp.seyzahl.com
     favicon: /icons/amp.webp
-    backgroundOpacity: 0.60
+    backgroundOpacity: 0.40
     backgroundBrightness: 50
     background: https://raw.githubusercontent.com/pedrotchang/homelab/main/apps/base/homepage/assets/background.png
     links:
