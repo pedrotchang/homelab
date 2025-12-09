@@ -1,18 +1,20 @@
 {
   "name": "Cluster - Data",
-  "image": "mcr.microsoft.com/devcontainers/base:debian",
+  "image": "mcr.microsoft.com/devcontainers/base:bookworm",
   "workspaceMount": "source=${localWorkspaceFolder},target=/homelab,type=bind",
   "workspaceFolder": "/homelab",
   "containerEnv": {
     "MISE_ENV": "data"
   },
   "onCreateCommand": "sudo chsh -s /usr/bin/zsh $USER",
+  "postAttachCommand": "cd /homelab",
   "settings": {
     "terminal.integrated.defaultProfile.linux": "zsh",
     "terminal.integrated.profiles.linux": {
       "zsh": {
         "path": "/usr/bin/zsh"
       }
-    }
+    },
+    "terminal.integrated.cwd": "/homelab"
   }
 }
