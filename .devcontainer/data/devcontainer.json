@@ -1,8 +1,18 @@
 {
-  "name": "Cluster - Tachtit",
-  "image": "mcr.microsoft.com/devcontainers/base:debian",
+  "name": "Cluster - Data",
+  "image": "mcr.microsoft.com/devcontainers/base:bookworm",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/homelab,type=bind",
+  "workspaceFolder": "/homelab",
   "containerEnv": {
     "MISE_ENV": "data"
   },
-  "postCreateCommand": "mise install && mise trust"
+  "onCreateCommand": "sudo chsh -s /usr/bin/zsh $USER",
+  "settings": {
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.profiles.linux": {
+      "zsh": {
+        "path": "/usr/bin/zsh"
+      }
+    }
+  }
 }
