@@ -2,6 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: n8n
+  namespace: n8n
+  labels:
+    app.kubernetes.io/component: automation
+    app.kubernetes.io/instance: n8n
+    app.kubernetes.io/name: n8n
 spec:
   replicas: 1
   strategy:
@@ -9,44 +14,77 @@ spec:
   selector:
     matchLabels:
       app: n8n
-
   template:
     metadata:
       labels:
         app: n8n
+        app.kubernetes.io/component: automation
+        app.kubernetes.io/instance: n8n
+        app.kubernetes.io/name: n8n
         policy-type: "app"
-        try: "0"
-
     spec:
       securityContext:
         runAsUser: 1000
         runAsGroup: 1000
         fsGroup: 1000
         fsGroupChangePolicy: OnRootMismatch
-
+        seccompProfile:
+          type: RuntimeDefault
+      initContainers:
+        - name: fix-permissions
+          image: busybox:1.37
+          command:
+            - sh
+            - -c
+            - chown -R 1000:1000 /home/node/.n8n
+          securityContext:
+            runAsUser: 0
+          volumeMounts:
+            - name: n8n-data
+              mountPath: /home/node/.n8n
       containers:
         - name: n8n
-          image: docker.n8n.io/n8nio/n8n:1.117.0
-
-          securityContext:
-              allowPrivilegeEscalation: false
-
+          image: docker.n8n.io/n8nio/n8n:1.123.4
           envFrom:
             - configMapRef:
                 name: n8n-configmap
             - secretRef:
                 name: n8n-container-env
-
           ports:
             - containerPort: 3008
               protocol: TCP
-
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 3008
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 3008
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+          resources:
+            limits:
+              memory: 1Gi
+            requests:
+              cpu: 100m
+              memory: 256Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+            readOnlyRootFilesystem: false
           volumeMounts:
             - name: n8n-data
-              mountPath: /etc/n8n/data
-
+              mountPath: /home/node/.n8n
       restartPolicy: Always
-
       volumes:
         - name: n8n-data
           persistentVolumeClaim:
