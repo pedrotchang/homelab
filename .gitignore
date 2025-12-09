@@ -1,4 +1,5 @@
 .envrc
+mise.toml
 kubeconfig
 age.agekey
 tls.crt
