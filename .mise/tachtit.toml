@@ -1,0 +1,5 @@
+[env]
+CLUSTER_NAME = "tachtit"
+OMNICONFIG = "{{env.HOME}}/.config/omni/tachtit/config"
+TALOSCONFIG = "{{env.HOME}}/.talos/tachtit/config"
+KUBECONFIG = "{{env.HOME}}/.kube/tachtit/config"

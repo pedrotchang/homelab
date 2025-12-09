@@ -1,0 +1,8 @@
+{
+  "name": "Cluster - Tachtit",
+  "image": "mcr.microsoft.com/devcontainers/base:debian",
+  "containerEnv": {
+    "MISE_ENV": "tachtit"
+  },
+  "postCreateCommand": "mise install && mise trust"
+}

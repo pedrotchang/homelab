@@ -1,0 +1,2 @@
+[env]
+OMNICONFIG = "{{config_root}}/omniconfig"

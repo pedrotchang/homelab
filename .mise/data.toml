@@ -1,0 +1,5 @@
+[env]
+CLUSTER_NAME = "data"
+OMNICONFIG = "{{env.HOME}}/.config/omni/data/config"
+TALOSCONFIG = "{{env.HOME}}/.talos/data/config"
+KUBECONFIG = "{{env.HOME}}/.kube/data/config"

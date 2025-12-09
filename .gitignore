@@ -1,6 +1,6 @@
-.envrc
-mise.toml
-kubeconfig
+*-kubeconfig
+*-talosconfig
+omniconfig.envrc
 age.agekey
 tls.crt
 tls.key
