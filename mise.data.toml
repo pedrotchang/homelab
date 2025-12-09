@@ -1,4 +1,4 @@
 [env]
 CLUSTER_NAME = "data"
-KUBECONFIG = "{{config_root}}/data-kubeconfig"
-TALOSCONFIG = "{{config_root}}/data-talosconfig"
+KUBECONFIG = "{{config_root}}/data-kubeconfig.yaml"
+TALOSCONFIG = "{{config_root}}/data-talosconfig.yaml"

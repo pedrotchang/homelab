@@ -1,6 +1,7 @@
-*-kubeconfig
-*-talosconfig
-omniconfig.envrc
+*-kubeconfig.yaml
+*-talosconfig.yaml
+omniconfig.yaml
+talosconfig.yaml
 age.agekey
 tls.crt
 tls.key

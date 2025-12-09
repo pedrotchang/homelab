@@ -1,2 +1,3 @@
 [env]
-OMNICONFIG = "{{config_root}}/omniconfig"
+OMNICONFIG = "{{config_root}}/omniconfig.yaml"
+TALOSCONFIG = "{{config_root}}/talosconfig.yaml"
