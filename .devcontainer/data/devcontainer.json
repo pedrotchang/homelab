@@ -6,7 +6,7 @@
   "containerEnv": {
     "MISE_ENV": "data"
   },
-  "onCreateCommand": "sudo chsh -s /usr/bin/zsh $USER && echo 'cd /homelab 2>/dev/null' >> ~/.zshrc",
+  "onCreateCommand": "sudo chsh -s /usr/bin/zsh",
   "settings": {
     "terminal.integrated.defaultProfile.linux": "zsh",
     "terminal.integrated.profiles.linux": {
