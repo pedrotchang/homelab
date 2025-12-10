@@ -107,7 +107,7 @@ spec:
 
         # qBittorrent main container
         - name: qbittorrent
-          image: lscr.io/linuxserver/qbittorrent:5.1.2
+          image: lscr.io/linuxserver/qbittorrent:5.1.4
           env:
             - name: PUID
               value: "1000"
