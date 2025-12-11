@@ -1,3 +1,10 @@
+# Single-node cluster needs replicas=1 to avoid port conflicts
+operator:
+  replicas: 1
+
+# Force MTU to 1450 to prevent siderolink's 1280 MTU from being used
+MTU: 1450
+
 ipam:
   mode: kubernetes
 
