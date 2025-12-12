@@ -8,6 +8,7 @@ resources:
   - commafeed
   - suwayomi
   - kagent
+  - kmcp
   # - maybe
   # - servarr
   # - minecraft
