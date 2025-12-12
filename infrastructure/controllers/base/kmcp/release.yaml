@@ -7,11 +7,6 @@ spec:
   interval: 30m
   dependsOn:
     - name: kmcp-crds
-  chart:
-    spec:
-      chart: kmcp
-      sourceRef:
-        kind: HelmRepository
-        name: kmcp
-        namespace: kmcp-system
-      interval: 12h
+  chartRef:
+    kind: OCIRepository
+    name: kmcp
