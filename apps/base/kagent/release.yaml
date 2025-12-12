@@ -11,7 +11,7 @@ spec:
     spec:
       chart: kagent
       sourceRef:
-        kind: OCIRepository
+        kind: HelmRepository
         name: kagent
         namespace: kagent
       interval: 12h

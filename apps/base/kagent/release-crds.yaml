@@ -9,7 +9,7 @@ spec:
     spec:
       chart: kagent-crds
       sourceRef:
-        kind: OCIRepository
+        kind: HelmRepository
         name: kagent
         namespace: kagent
       interval: 12h
