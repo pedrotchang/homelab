@@ -67,7 +67,7 @@ kubeletDir: /var/lib/kubelet
 controller:
   enabled: true
   name: csi-nfs-controller
-  replicas: 2  # High availability
+  replicas: 1  # High availability
 
   # Environment variables from secrets
   env:
