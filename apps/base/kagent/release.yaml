@@ -17,9 +17,9 @@ spec:
       interval: 12h
   valuesFrom:
     - kind: Secret
-      name: kagent-openai-api-key
+      name: kagent-anthropic-api-key
       valuesKey: apiKey
-      targetPath: providers.openAI.apiKey
+      targetPath: providers.anthropic.apiKey
   values:
     providers:
-      default: openAI
+      default: anthropic
