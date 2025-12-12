@@ -3,4 +3,3 @@ kind: Kustomization
 namespace: storage
 resources:
   - ../../base/csi-driver-nfs/
-  # - ../../base/csi-driver-iscsi/
