@@ -6,3 +6,4 @@ resources:
   - release-crds.yaml
   - release.yaml
   - secret.yaml
+  - modelconfig.yaml

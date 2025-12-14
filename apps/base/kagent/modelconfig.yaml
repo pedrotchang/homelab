@@ -1,0 +1,32 @@
+apiVersion: kagent.dev/v1alpha2
+kind: ModelConfig
+metadata:
+  name: claude-opus-4-5
+  namespace: kagent
+spec:
+  apiKeySecret: kagent-anthropic-api-key
+  apiKeySecretKey: apiKey
+  model: claude-opus-4-5-20251101
+  provider: Anthropic
+---
+apiVersion: kagent.dev/v1alpha2
+kind: ModelConfig
+metadata:
+  name: claude-sonnet-4-5
+  namespace: kagent
+spec:
+  apiKeySecret: kagent-anthropic-api-key
+  apiKeySecretKey: apiKey
+  model: claude-sonnet-4-5-20250929
+  provider: Anthropic
+---
+apiVersion: kagent.dev/v1alpha2
+kind: ModelConfig
+metadata:
+  name: claude-haiku-4-5
+  namespace: kagent
+spec:
+  apiKeySecret: kagent-anthropic-api-key
+  apiKeySecretKey: apiKey
+  model: claude-haiku-4-5-20251001
+  provider: Anthropic
