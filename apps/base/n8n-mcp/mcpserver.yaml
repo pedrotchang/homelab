@@ -1,0 +1,24 @@
+apiVersion: kagent.dev/v1alpha1
+kind: MCPServer
+metadata:
+  name: n8n-mcp
+  namespace: kmcp-system
+spec:
+  description: n8n workflow automation - create, modify, delete, and execute workflows
+  transport: stdio
+  image: ghcr.io/pedrotchang/mcp/n8n:latest
+  env:
+    - name: N8N_API_KEY
+      valueFrom:
+        secretKeyRef:
+          name: n8n-mcp-secrets
+          key: api-key
+    - name: N8N_BASE_URL
+      value: "https://auto.seyzahl.com"
+  resources:
+    requests:
+      memory: "64Mi"
+      cpu: "50m"
+    limits:
+      memory: "128Mi"
+      cpu: "100m"
