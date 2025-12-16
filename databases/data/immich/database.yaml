@@ -30,8 +30,10 @@ spec:
       secret:
         name: immich-db-creds
       postInitSQL:
-        - CREATE EXTENSION IF NOT EXISTS vchord CASCADE;
-        - CREATE EXTENSION IF NOT EXISTS earthdistance CASCADE;
+        - CREATE EXTENSION IF NOT EXISTS vector;
+        - CREATE EXTENSION IF NOT EXISTS vchord;
+        - CREATE EXTENSION IF NOT EXISTS cube;
+        - CREATE EXTENSION IF NOT EXISTS earthdistance;
 
   backup:
     barmanObjectStore:
