@@ -3,9 +3,9 @@ kind: Cluster
 metadata:
   name: immich-db-tachtit-cnpg-v0
 spec:
-  description: Postgres cluster for Immich with pgvecto.rs extension
-  # Using tensorchord image which includes pgvecto.rs for ML embeddings
-  imageName: ghcr.io/tensorchord/cloudnative-pgvecto.rs:17-v0.3.0
+  description: Postgres cluster for Immich with VectorChord extension
+  # Using tensorchord image which includes VectorChord for ML embeddings
+  imageName: ghcr.io/tensorchord/cloudnative-vectorchord:17-0.4.0
   instances: 2
 
   inheritedMetadata:
