@@ -264,7 +264,7 @@ data:
             icon: talos.png
     - Media:
       - Immich:
-            href: https://immich.dab-fujita.ts.net
+            href: https://immich.seyzahl.com
             icon: immich.png
       - Jellyfin:
             href: http://192.168.4.107:8096
