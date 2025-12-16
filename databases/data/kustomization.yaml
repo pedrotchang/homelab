@@ -5,6 +5,4 @@ resources:
   - n8n
   - wallabag
   - commafeed
-  - maybe
-  - nextcloud
   - immich
