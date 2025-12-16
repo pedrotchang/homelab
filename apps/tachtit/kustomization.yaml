@@ -7,8 +7,8 @@ resources:
   - wallabag
   - commafeed
   - suwayomi
-  - kagent
-  - n8n-mcp
+  # - kagent
+  # - n8n-mcp
   # - immich
   # - maybe
   # - servarr
