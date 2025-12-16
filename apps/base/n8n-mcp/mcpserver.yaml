@@ -6,7 +6,7 @@ metadata:
 spec:
   deployment:
     image: ghcr.io/pedrotchang/mcp/n8n:latest
-    command: ["/app/n8n-mcp"]
+    cmd: "/app/n8n-mcp"
     env:
       N8N_BASE_URL: "https://auto.seyzahl.com"
   transportType: "stdio"
