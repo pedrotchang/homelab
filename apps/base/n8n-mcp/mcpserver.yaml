@@ -1,4 +1,4 @@
-apiVersion: kagent.dev/v1alpha1
+apiVersion: mcp.kagent.dev/v1alpha1
 kind: MCPServer
 metadata:
   name: n8n-mcp
