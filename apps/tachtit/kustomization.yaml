@@ -8,7 +8,7 @@ resources:
   - commafeed
   - suwayomi
   - kagent
-  # - n8n-mcp
+  - n8n-mcp
   # - maybe
   # - servarr
   # - minecraft
