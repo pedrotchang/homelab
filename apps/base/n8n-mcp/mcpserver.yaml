@@ -9,4 +9,8 @@ spec:
     cmd: "/app/n8n-mcp"
     env:
       N8N_BASE_URL: "https://auto.seyzahl.com"
+    secretRefs:
+      - name: n8n-mcp-secrets
+        key: api-key
+        envName: N8N_API_KEY
   transportType: "stdio"
