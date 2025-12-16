@@ -2,7 +2,7 @@ apiVersion: kagent.dev/v1alpha1
 kind: MCPServer
 metadata:
   name: n8n-mcp
-  namespace: kmcp-system
+  namespace: kagent
 spec:
   deployment:
     image: ghcr.io/pedrotchang/mcp/n8n:latest

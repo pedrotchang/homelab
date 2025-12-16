@@ -9,4 +9,3 @@ resources:
   - csi-driver
   - gateway-api
   - newt
-  - kmcp
