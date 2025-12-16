@@ -75,6 +75,9 @@ spec:
               mountPath: /usr/src/app/upload
             - name: cache
               mountPath: /cache
+            - name: library
+              mountPath: /external
+              subPath: upload
       restartPolicy: Always
       volumes:
         - name: library
