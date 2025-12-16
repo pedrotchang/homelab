@@ -9,7 +9,7 @@ resources:
   - suwayomi
   - kagent
   - n8n-mcp
-  - immich
+  # - immich
   # - maybe
   # - servarr
   # - minecraft
