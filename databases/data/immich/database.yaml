@@ -21,7 +21,7 @@ spec:
 
   postgresql:
     shared_preload_libraries:
-      - vectors.so
+      - vchord.so
 
   bootstrap:
     initdb:
@@ -30,7 +30,7 @@ spec:
       secret:
         name: immich-db-creds
       postInitSQL:
-        - CREATE EXTENSION IF NOT EXISTS vectors;
+        - CREATE EXTENSION IF NOT EXISTS vchord CASCADE;
         - CREATE EXTENSION IF NOT EXISTS earthdistance CASCADE;
 
   backup:
