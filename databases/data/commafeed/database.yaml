@@ -5,7 +5,7 @@ metadata:
 spec:
   description: Postgres cluster for the commafeed application
   imageName: ghcr.io/cloudnative-pg/postgresql:17.2
-  instances: 3
+  instances: 2
 
   inheritedMetadata:
     labels:
