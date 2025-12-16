@@ -7,11 +7,5 @@ spec:
   deployment:
     image: ghcr.io/pedrotchang/mcp/n8n:latest
     env:
-      - name: N8N_API_KEY
-        valueFrom:
-          secretKeyRef:
-            name: n8n-mcp-secrets
-            key: api-key
-      - name: N8N_BASE_URL
-        value: "https://auto.seyzahl.com"
+      N8N_BASE_URL: "https://auto.seyzahl.com"
   transportType: "stdio"
