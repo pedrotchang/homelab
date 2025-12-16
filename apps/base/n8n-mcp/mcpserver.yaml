@@ -9,10 +9,12 @@ spec:
     cmd: "/app/n8n-mcp"
     env:
       N8N_BASE_URL: "https://auto.seyzahl.com"
-    secretRefs:
-      - name: n8n-mcp-secrets
+    volumes:
+      - name: secrets
+        secret:
+          secretName: n8n-mcp-secrets
     volumeMounts:
-      - name: n8n-mcp-secrets
+      - name: secrets
         mountPath: /secrets
         readOnly: true
   transportType: "stdio"
