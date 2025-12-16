@@ -11,6 +11,8 @@ spec:
       N8N_BASE_URL: "https://auto.seyzahl.com"
     secretRefs:
       - name: n8n-mcp-secrets
-        key: api-key
-        envName: N8N_API_KEY
+    volumeMounts:
+      - name: n8n-mcp-secrets
+        mountPath: /secrets
+        readOnly: true
   transportType: "stdio"
