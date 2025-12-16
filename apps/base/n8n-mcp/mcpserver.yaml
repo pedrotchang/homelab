@@ -14,11 +14,4 @@ spec:
             key: api-key
       - name: N8N_BASE_URL
         value: "https://auto.seyzahl.com"
-    resources:
-      requests:
-        memory: "64Mi"
-        cpu: "50m"
-      limits:
-        memory: "128Mi"
-        cpu: "100m"
   transportType: "stdio"
