@@ -6,7 +6,8 @@ metadata:
 spec:
   deployment:
     image: ghcr.io/pedrotchang/mcp/n8n:latest
-    cmd: "/app/n8n-mcp"
+    imagePullPolicy: Always
+    cmd: "/entrypoint.sh"
     env:
       N8N_BASE_URL: "https://auto.seyzahl.com"
     volumes:
