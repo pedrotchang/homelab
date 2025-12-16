@@ -44,7 +44,7 @@ spec:
               mountPath: /cache
       containers:
         - name: immich-ml
-          image: ghcr.io/immich-app/immich-machine-learning:v1.122.3
+          image: ghcr.io/immich-app/immich-machine-learning:v2.3.1
           envFrom:
             - configMapRef:
                 name: immich-configmap
