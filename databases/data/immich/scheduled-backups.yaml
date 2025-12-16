@@ -1,0 +1,10 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: ScheduledBackup
+metadata:
+  name: immich-db-backup
+spec:
+  schedule: "0 0 * * *"
+  backupOwnerReference: self
+  cluster:
+    name: immich-db-tachtit-cnpg-v0
+  immediate: true

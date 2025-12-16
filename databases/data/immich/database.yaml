@@ -1,0 +1,66 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: immich-db-tachtit-cnpg-v0
+spec:
+  description: Postgres cluster for Immich with pgvecto.rs extension
+  # Using tensorchord image which includes pgvecto.rs for ML embeddings
+  imageName: ghcr.io/tensorchord/cloudnative-pgvecto.rs:17-v0.4.0
+  instances: 3
+
+  inheritedMetadata:
+    labels:
+      app: immich-database
+      policy-type: "database"
+
+  monitoring:
+    enablePodMonitor: true
+
+  storage:
+    size: 10Gi
+
+  postgresql:
+    shared_preload_libraries:
+      - vectors.so
+
+  bootstrap:
+    initdb:
+      database: immich
+      owner: immich
+      secret:
+        name: immich-db-creds
+      postInitSQL:
+        - CREATE EXTENSION IF NOT EXISTS vectors;
+        - CREATE EXTENSION IF NOT EXISTS earthdistance CASCADE;
+
+  backup:
+    barmanObjectStore:
+      destinationPath: https://seyzahldata.blob.core.windows.net/immich
+      azureCredentials:
+        connectionString:
+          name: azure-creds
+          key: connection-string-2
+      wal:
+        compression: gzip
+      data:
+        compression: gzip
+    retentionPolicy: "14d"
+
+  resources:
+    requests:
+      memory: 1Gi
+
+  managed:
+    services:
+      disabledDefaultServices: ["ro", "r"]
+      additional:
+        - selectorType: rw
+          serviceTemplate:
+            metadata:
+              name: "immich-db-lb"
+              labels:
+                cilium-lb-pool: postgres-pool
+              annotations:
+                external-dns.alpha.kubernetes.io/hostname: immich-pg.seyzahl.com
+            spec:
+              type: LoadBalancer
