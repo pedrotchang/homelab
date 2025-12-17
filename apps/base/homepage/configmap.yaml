@@ -267,13 +267,13 @@ data:
             href: https://immich.seyzahl.com
             icon: immich.png
       - Jellyfin:
-            href: http://192.168.4.107:8096
+            href: http://jellyfin.seyzahl.com
             icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/jellyfin.png
       - JellySeerr:
-            href: http://192.168.5.221:5055/
+            href: http://192.168.4.208
             icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/jellyseerr.png
       - qBittorrent:
-            href: http://192.168.5.221:8080
+            href: http://qbittorrent.seyzahl.com
             icon: qbittorrent.png
 
     - Developer:
