@@ -29,7 +29,7 @@ spec:
   apiKeySecret: kagent-openai-api-key
   apiKeySecretKey: apiKey
   model: gpt-5-mini-2025-08-07
-  provider: OpenAi
+  provider: OpenAI
 ---
 apiVersion: kagent.dev/v1alpha2
 kind: ModelConfig
@@ -40,4 +40,4 @@ spec:
   apiKeySecret: kagent-openai-api-key
   apiKeySecretKey: apiKey
   model: gpt-5-nano-2025-08-07
-  provider: OpenAi
+  provider: OpenAI
