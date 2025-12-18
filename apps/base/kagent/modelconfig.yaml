@@ -1,17 +1,6 @@
 apiVersion: kagent.dev/v1alpha2
 kind: ModelConfig
 metadata:
-  name: claude-opus-4-5
-  namespace: kagent
-spec:
-  apiKeySecret: kagent-anthropic-api-key
-  apiKeySecretKey: apiKey
-  model: claude-opus-4-5-20251101
-  provider: Anthropic
----
-apiVersion: kagent.dev/v1alpha2
-kind: ModelConfig
-metadata:
   name: claude-sonnet-4-5
   namespace: kagent
 spec:
@@ -30,3 +19,25 @@ spec:
   apiKeySecretKey: apiKey
   model: claude-haiku-4-5-20251001
   provider: Anthropic
+---
+apiVersion: kagent.dev/v1alpha2
+kind: ModelConfig
+metadata:
+  name: gpt-5-mini
+  namespace: kagent
+spec:
+  apiKeySecret: kagent-openai-api-key
+  apiKeySecretKey: apiKey
+  model: gpt-5-mini-2025-08-07
+  provider: OpenAi
+---
+apiVersion: kagent.dev/v1alpha2
+kind: ModelConfig
+metadata:
+  name: gpt-5-nano
+  namespace: kagent
+spec:
+  apiKeySecret: kagent-openai-api-key
+  apiKeySecretKey: apiKey
+  model: gpt-5-nano-2025-08-07
+  provider: OpenAi
