@@ -9,5 +9,5 @@ resources:
   - suwayomi
   - immich
   - kagent
-  # - n8n-mcp
+  - n8n-mcp
   # - minecraft
