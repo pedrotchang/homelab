@@ -25,6 +25,7 @@ spec:
       valuesKey: apiKey
       targetPath: providers.openai.apiKey
   values:
+    defaultModelConfig: gpt-5-mini
     providers:
       anthropic:
         secretName: kagent-anthropic-api-key
