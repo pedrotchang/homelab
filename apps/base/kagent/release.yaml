@@ -20,6 +20,10 @@ spec:
       name: kagent-anthropic-api-key
       valuesKey: apiKey
       targetPath: providers.anthropic.apiKey
+    - kind: Secret
+      name: kagent-openai-api-key
+      valuesKey: apiKey
+      targetPath: providers.openai.apiKey
   values:
     agents:
       istio-agent:
