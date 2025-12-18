@@ -6,4 +6,4 @@ resources:
   - release-crds.yaml
   - release.yaml
   - secret.yaml
-  # - modelconfig.yaml  # Temporarily commented - uncomment after CRDs are installed
+  - modelconfig.yaml
