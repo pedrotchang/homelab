@@ -54,7 +54,7 @@ I have them in this structure:
 
 ## Next Steps
 
-- [ ] Link my PostgreSQL Database in the data cluster to my TrueNAS Scale.
+- [x] Link my PostgreSQL Database in the data cluster to my TrueNAS Scale.
 - [x] Have blob storage for my data cluster to create periodic backups.
 - [x] Add on ~~Immich~~, CommaFeed, Wallabag, to work with my data cluster, and also backup to blob storage.
 
