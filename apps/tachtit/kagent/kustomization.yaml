@@ -4,4 +4,3 @@ namespace: kagent
 resources:
   - ../../base/kagent
   - ../../base/kagent-adapter
-  - cloudflare.yaml
