@@ -10,4 +10,5 @@ resources:
   - immich
   - kagent
   - n8n-mcp
+  - blog
   # - minecraft
