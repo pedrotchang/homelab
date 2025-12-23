@@ -20,8 +20,6 @@ spec:
       labels:
         app: blog
     spec:
-      imagePullSecrets:
-      - name: ghcr-secret
       containers:
       - name: blog
         image: ghcr.io/pedrotchang/blog:v1.0.0
