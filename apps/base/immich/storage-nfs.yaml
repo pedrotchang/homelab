@@ -1,0 +1,46 @@
+# Static PV pointing to existing Immich library on TrueNAS
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: immich-library-pv
+spec:
+  capacity:
+    storage: 8Ti
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  nfs:
+    server: 192.168.7.14
+    path: /mnt/tank/photos
+  mountOptions:
+    - nfsvers=4.2
+    - hard
+    - nolock
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: immich-library-pvc-nfs
+  namespace: immich
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: ""
+  volumeName: immich-library-pv
+  resources:
+    requests:
+      storage: 8Ti
+---
+# Dynamic PVC for ML model cache
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: immich-cache-pvc-nfs
+  namespace: immich
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: truenas-nfs
+  resources:
+    requests:
+      storage: 50Gi

@@ -264,16 +264,16 @@ data:
             icon: talos.png
     - Media:
       - Immich:
-            href: https://immich.dab-fujita.ts.net
+            href: https://immich.seyzahl.com
             icon: immich.png
       - Jellyfin:
-            href: http://192.168.4.107:8096
+            href: http://jellyfin.seyzahl.com
             icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/jellyfin.png
       - JellySeerr:
-            href: http://192.168.5.221:5055/
+            href: http://192.168.4.208
             icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/jellyseerr.png
       - qBittorrent:
-            href: http://192.168.5.221:8080
+            href: http://qbittorrent.seyzahl.com
             icon: qbittorrent.png
 
     - Developer:
@@ -293,6 +293,10 @@ data:
             href: https://claude.ai/new
             description: Claude
             icon: claude-ai.png
+      - Kagent:
+            href: https://kagent.seyzahl.com
+            description: AI Agent Platform (Open WebUI + Kagent)
+            icon: https://avatars.githubusercontent.com/u/192341726?s=200&v=4
 
     - Read:
       - Linkding:

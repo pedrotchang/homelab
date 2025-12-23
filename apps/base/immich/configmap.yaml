@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: immich-configmap
+  namespace: immich
+data:
+  # Database configuration
+  DB_HOSTNAME: "immich-pg.seyzahl.com"
+  DB_PORT: "5432"
+  DB_DATABASE_NAME: "immich"
+
+  # Redis configuration
+  REDIS_HOSTNAME: "immich-redis"
+  REDIS_PORT: "6379"
+
+  # Immich configuration
+  IMMICH_MACHINE_LEARNING_URL: "http://immich-ml:3003"
+  UPLOAD_LOCATION: "/usr/src/app/upload"
+
+  # Logging
+  LOG_LEVEL: "log"

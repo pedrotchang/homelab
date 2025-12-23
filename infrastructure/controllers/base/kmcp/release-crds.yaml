@@ -1,0 +1,13 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: kmcp-crds
+spec:
+  interval: 30m
+  chartRef:
+    kind: OCIRepository
+    name: kmcp-crds
+  install:
+    crds: CreateReplace
+  upgrade:
+    crds: CreateReplace

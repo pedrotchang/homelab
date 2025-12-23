@@ -1,0 +1,68 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: immich-db-tachtit-cnpg-v0
+spec:
+  description: Postgres cluster for Immich with VectorChord extension
+  # Using tensorchord image which includes VectorChord for ML embeddings
+  imageName: ghcr.io/tensorchord/cloudnative-vectorchord:17-0.4.0
+  instances: 2
+
+  inheritedMetadata:
+    labels:
+      app: immich-database
+      policy-type: "database"
+
+  monitoring:
+    enablePodMonitor: true
+
+  storage:
+    size: 10Gi
+
+  postgresql:
+    shared_preload_libraries:
+      - vchord.so
+
+  bootstrap:
+    initdb:
+      database: immich
+      owner: immich
+      secret:
+        name: immich-db-creds
+      postInitSQL:
+        - CREATE EXTENSION IF NOT EXISTS vector;
+        - CREATE EXTENSION IF NOT EXISTS vchord;
+        - CREATE EXTENSION IF NOT EXISTS cube;
+        - CREATE EXTENSION IF NOT EXISTS earthdistance;
+
+  backup:
+    barmanObjectStore:
+      destinationPath: https://seyzahldata.blob.core.windows.net/immich
+      azureCredentials:
+        connectionString:
+          name: azure-creds
+          key: connection-string-2
+      wal:
+        compression: gzip
+      data:
+        compression: gzip
+    retentionPolicy: "14d"
+
+  resources:
+    requests:
+      memory: 1Gi
+
+  managed:
+    services:
+      disabledDefaultServices: ["ro", "r"]
+      additional:
+        - selectorType: rw
+          serviceTemplate:
+            metadata:
+              name: "immich-db-lb"
+              labels:
+                cilium-lb-pool: postgres-pool
+              annotations:
+                external-dns.alpha.kubernetes.io/hostname: immich-pg.seyzahl.com
+            spec:
+              type: LoadBalancer

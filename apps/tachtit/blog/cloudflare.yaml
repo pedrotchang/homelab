@@ -1,0 +1,84 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloudflared
+  namespace: blog
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: cloudflared
+  template:
+    metadata:
+      labels:
+        app: cloudflared
+    spec:
+      containers:
+      - name: cloudflared
+        image: cloudflare/cloudflared:latest
+        args:
+          - tunnel
+          - --config
+          - /etc/cloudflared/config/config.yaml
+          - run
+        livenessProbe:
+          httpGet:
+            path: /ready
+            port: 2000
+          failureThreshold: 1
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        volumeMounts:
+          - name: config
+            mountPath: /etc/cloudflared/config
+            readOnly: true
+          - name: creds
+            mountPath: /etc/cloudflared/creds
+            readOnly: true
+      volumes:
+        - name: config
+          configMap:
+            name: cloudflared
+            items:
+              - key: config.yaml
+                path: config.yaml
+        - name: creds
+          secret:
+            secretName: cloudflared-tunnel
+---
+# Cloudflare tunnel configuration for public blog access
+# No Zero Trust / Access policies needed - publicly accessible by default
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cloudflared
+  namespace: blog
+data:
+  config.yaml: |
+    tunnel: blog
+    credentials-file: /etc/cloudflared/creds/credentials.json
+    metrics: 0.0.0.0:2000
+    no-autoupdate: true
+    ingress:
+    - hostname: pedrotchang.dev
+      service: http://blog.blog.svc.cluster.local:80
+    - hostname: www.pedrotchang.dev
+      service: http://blog.blog.svc.cluster.local:80
+    - service: http_status:404
+---
+apiVersion: external-secrets.io/v1
+kind: ExternalSecret
+metadata:
+  name: cloudflared-tunnel
+  namespace: blog
+spec:
+  secretStoreRef:
+    name: azure-kv-store
+    kind: ClusterSecretStore
+  target:
+    name: cloudflared-tunnel
+  data:
+    - secretKey: credentials.json
+      remoteRef:
+        key: blog-cloudflare-tunnel-credentials

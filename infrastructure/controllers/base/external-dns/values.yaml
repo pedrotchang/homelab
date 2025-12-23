@@ -6,11 +6,6 @@ policy: upsert-only
 sources:
   - service
   - ingress
-  - gateway-httproute
-  - gateway-grpcroute
-  - gateway-tlsroute
-  - gateway-tcproute
-  - gateway-udproute
 
 env:
   - name: CF_API_TOKEN

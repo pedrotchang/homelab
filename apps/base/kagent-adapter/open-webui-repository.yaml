@@ -1,0 +1,9 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: open-webui
+  namespace: kagent
+spec:
+  type: oci
+  interval: 24h
+  url: oci://ghcr.io/open-webui/helm-charts

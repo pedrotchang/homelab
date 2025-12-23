@@ -4,7 +4,7 @@
 
 ## Introduction
 
-Here you will find all tthe documentation of my homelab.
+Here you will find all the documentation of my homelab.
 
 This repository is where I do all my testing, tinkering, and all-in-all a space for me to play, and work! It does have a serious note as well, since I will be working with my own personal data and require me to think about the whole process of deployment and maintanence!
 
@@ -44,6 +44,7 @@ I have them in this structure:
 
 ### End User Applications
 
+#### Productivity & Knowledge Management
 | Icon | Name | Description |
 |------|------|-------------|
 | <img src="https://avatars.githubusercontent.com/u/122929872?s=48&v=4" width="30" alt="Homepage logo"> | [Homepage](https://gethomepage.dev/) | A self-hosted dashboard that allows you to organize your web services and bookmarks in a clean, customizable interface. |
@@ -52,9 +53,32 @@ I have them in this structure:
 | <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/n8n.png" width="30" alt="n8n logo"> | [n8n](https://n8n.io/) | A self-hosted workflow automation tool that connects apps and services with a visual node-based editor. |
 | <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/commafeed.png" width="30" alt="CommaFeed logo"> | [CommaFeed](https://www.commafeed.com/) | A self-hosted RSS reader inspired by Google Reader with a clean, responsive interface. |
 
+#### Media & Content
+| Icon | Name | Description |
+|------|------|-------------|
+| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/immich.png" width="30" alt="Immich logo"> | [Immich](https://immich.app/) | A high-performance self-hosted photo and video backup solution with features like automatic backup, timeline view, and ML-powered search. |
+| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/audiobookshelf.png" width="30" alt="Audiobookshelf logo"> | [Audiobookshelf](https://www.audiobookshelf.org/) | A self-hosted audiobook and podcast server with mobile apps, progress tracking, and streaming capabilities. |
+| <img src="https://raw.githubusercontent.com/Suwayomi/Suwayomi-Server/refs/heads/master/server/src/main/resources/icon/faviconlogo.png" width="30" alt="Suwayomi logo"> | [Suwayomi](https://github.com/Suwayomi/Suwayomi-Server) | A free and open-source manga reader server that provides a web interface for reading manga from various sources. |
+
+#### Development & AI
+| Icon | Name | Description |
+|------|------|-------------|
+| <img src="https://avatars.githubusercontent.com/u/192341726?s=200&v=4" width="30" alt="Kagent logo"> | [Kagent](https://kagent.seyzahl.com) | A Kubernetes-native AI agent platform for deploying and managing LLM-powered agents with Model Context Protocol (MCP) support. Accessible via Open WebUI for a better chat experience. |
+
+#### Finance & Lifestyle
+| Icon | Name | Description |
+|------|------|-------------|
+| <img src="https://avatars.githubusercontent.com/u/128426176?s=200&v=4" width="30" alt="Maybe logo"> | [Maybe](https://maybe.co/) | An open-source personal finance and wealth management app for tracking net worth, budgets, and financial goals. |
+
+#### Other
+| Icon | Name | Description |
+|------|------|-------------|
+| <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/2d/Plains_grass_block.png" width="30" alt="Minecraft logo"> | Minecraft | A Minecraft server for building and exploring with friends. |
+| 📝 | Personal Blog | A custom blog deployment for sharing thoughts and technical writing. |
+
 ## Next Steps
 
-- [ ] Link my PostgreSQL Database in the data cluster to my TrueNAS Scale.
+- [x] Link my PostgreSQL Database in the data cluster to my TrueNAS Scale.
 - [x] Have blob storage for my data cluster to create periodic backups.
 - [x] Add on ~~Immich~~, CommaFeed, Wallabag, to work with my data cluster, and also backup to blob storage.
 

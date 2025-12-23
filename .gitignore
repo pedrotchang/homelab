@@ -1,3 +1,4 @@
+homelab-private/
 *-kubeconfig.yaml
 *-talosconfig.yaml
 omniconfig.yaml
@@ -14,3 +15,4 @@ linkding-container-env-secret.yaml
 age.agekey
 bootstrap
 credentials.json
+CLAUDE.md

@@ -1,0 +1,21 @@
+apiVersion: kagent.dev/v1alpha1
+kind: MCPServer
+metadata:
+  name: n8n-mcp
+  namespace: kagent
+spec:
+  deployment:
+    image: ghcr.io/pedrotchang/mcp/n8n:latest
+    imagePullPolicy: Always
+    cmd: "/entrypoint.sh"
+    env:
+      N8N_BASE_URL: "https://auto.seyzahl.com"
+    volumes:
+      - name: secrets
+        secret:
+          secretName: n8n-mcp-secrets
+    volumeMounts:
+      - name: secrets
+        mountPath: /secrets
+        readOnly: true
+  transportType: "stdio"

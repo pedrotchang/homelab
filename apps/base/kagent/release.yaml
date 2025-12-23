@@ -1,0 +1,38 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: kagent
+  namespace: kagent
+spec:
+  interval: 30m
+  dependsOn:
+    - name: kagent-crds
+  chart:
+    spec:
+      chart: kagent
+      sourceRef:
+        kind: HelmRepository
+        name: kagent
+        namespace: kagent
+      interval: 12h
+  valuesFrom:
+    - kind: Secret
+      name: kagent-anthropic-api-key
+      valuesKey: apiKey
+      targetPath: providers.anthropic.apiKey
+    - kind: Secret
+      name: kagent-openai-api-key
+      valuesKey: apiKey
+      targetPath: providers.openai.apiKey
+  values:
+    defaultModelConfig: gpt-5-mini
+    providers:
+      anthropic:
+        secretName: kagent-anthropic-api-key
+      openai:
+        secretName: kagent-openai-api-key
+    agents:
+      istio-agent:
+        enabled: false
+      argo-rollouts-agent:
+        enabled: false

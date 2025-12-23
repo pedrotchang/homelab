@@ -4,11 +4,13 @@ metadata:
   name: traefik
   namespace: traefik
 spec:
+  dependsOn:
+    - name: traefik-crds
   interval: 30m
   chart:
     spec:
       chart: traefik
-      version: "34.3.0"
+      version: "34.5.0"
       sourceRef:
         kind: HelmRepository
         name: traefik
