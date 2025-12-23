@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kagent-adapter
+  namespace: kagent
+  labels:
+    app: kagent-adapter
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: kagent-adapter
+  template:
+    metadata:
+      labels:
+        app: kagent-adapter
+    spec:
+      serviceAccountName: kagent-adapter
+      containers:
+      - name: adapter
+        image: ghcr.io/pedrotchang/kagent-adapter:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        env:
+        - name: KAGENT_CONTROLLER_URL
+          value: "http://kagent-controller.kagent.svc.cluster.local:8083"
+        - name: KAGENT_NAMESPACE
+          value: "kagent"
+        - name: PORT
+          value: "8080"
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "50m"
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: http
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          timeoutSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: http
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          timeoutSeconds: 3

@@ -63,7 +63,7 @@ I have them in this structure:
 #### Development & AI
 | Icon | Name | Description |
 |------|------|-------------|
-| <img src="https://avatars.githubusercontent.com/u/192341726?s=200&v=4" width="30" alt="Kagent logo"> | [Kagent](https://kagent.seyzahl.com) | A Kubernetes-native AI agent platform for deploying and managing LLM-powered agents with Model Context Protocol (MCP) support. |
+| <img src="https://avatars.githubusercontent.com/u/192341726?s=200&v=4" width="30" alt="Kagent logo"> | [Kagent](https://kagent.seyzahl.com) | A Kubernetes-native AI agent platform for deploying and managing LLM-powered agents with Model Context Protocol (MCP) support. Accessible via Open WebUI for a better chat experience. |
 
 #### Finance & Lifestyle
 | Icon | Name | Description |
