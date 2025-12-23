@@ -34,8 +34,6 @@ spec:
         value: "false"
       - name: WEBUI_NAME
         value: "Kagent AI"
-      - name: WEBUI_AUTH
-        value: "false"
 
     # Service configuration
     service:
