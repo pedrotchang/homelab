@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: blog
-        image: ghcr.io/pedrotchang/blog:v1.0.0
+        image: ghcr.io/pedrotchang/blog:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 80
