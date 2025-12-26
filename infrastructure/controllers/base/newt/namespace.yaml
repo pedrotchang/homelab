@@ -3,7 +3,7 @@ kind: Namespace
 metadata:
   name: newt
   labels:
-    app.kubernetes.io/component: networking
+    app.kubernetes.io/component: monitoring
     pod-security.kubernetes.io/enforce: privileged
     pod-security.kubernetes.io/audit: privileged
     pod-security.kubernetes.io/warn: privileged

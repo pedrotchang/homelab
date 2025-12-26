@@ -4,9 +4,10 @@ metadata:
   name: immich-server
   namespace: immich
   labels:
+    app: immich-server
     app.kubernetes.io/component: server
     app.kubernetes.io/instance: immich
-    app.kubernetes.io/name: immich
+    app.kubernetes.io/name: immich-server
 spec:
   replicas: 1
   strategy:
@@ -20,7 +21,7 @@ spec:
         app: immich-server
         app.kubernetes.io/component: server
         app.kubernetes.io/instance: immich
-        app.kubernetes.io/name: immich
+        app.kubernetes.io/name: immich-server
         policy-type: "app"
     spec:
       securityContext:

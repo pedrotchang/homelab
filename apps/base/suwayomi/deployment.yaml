@@ -2,6 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: suwayomi
+  labels:
+    app: suwayomi
+    app.kubernetes.io/name: suwayomi
+    app.kubernetes.io/instance: suwayomi
+    app.kubernetes.io/component: web
 spec:
   replicas: 1
   strategy:
@@ -14,6 +19,9 @@ spec:
     metadata:
       labels:
         app: suwayomi
+        app.kubernetes.io/name: suwayomi
+        app.kubernetes.io/instance: suwayomi
+        app.kubernetes.io/component: web
         policy-type: "app"
 
     spec:

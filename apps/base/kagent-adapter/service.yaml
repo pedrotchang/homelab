@@ -3,6 +3,11 @@ kind: Service
 metadata:
   name: kagent-adapter
   namespace: kagent
+  labels:
+    app: kagent-adapter
+    app.kubernetes.io/name: kagent-adapter
+    app.kubernetes.io/instance: kagent-adapter
+    app.kubernetes.io/component: adapter
 spec:
   selector:
     app: kagent-adapter

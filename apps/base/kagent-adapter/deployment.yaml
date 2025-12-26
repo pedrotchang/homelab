@@ -5,6 +5,9 @@ metadata:
   namespace: kagent
   labels:
     app: kagent-adapter
+    app.kubernetes.io/name: kagent-adapter
+    app.kubernetes.io/instance: kagent-adapter
+    app.kubernetes.io/component: adapter
 spec:
   replicas: 1
   strategy:
@@ -19,6 +22,9 @@ spec:
     metadata:
       labels:
         app: kagent-adapter
+        app.kubernetes.io/name: kagent-adapter
+        app.kubernetes.io/instance: kagent-adapter
+        app.kubernetes.io/component: adapter
     spec:
       serviceAccountName: kagent-adapter
       containers:

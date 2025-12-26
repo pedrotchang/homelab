@@ -4,6 +4,7 @@ metadata:
   name: immich-ml
   namespace: immich
   labels:
+    app: immich-ml
     app.kubernetes.io/component: machine-learning
     app.kubernetes.io/instance: immich
     app.kubernetes.io/name: immich-ml

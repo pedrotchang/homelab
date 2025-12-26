@@ -3,6 +3,11 @@ kind: Service
 metadata:
   name: immich-server
   namespace: immich
+  labels:
+    app: immich-server
+    app.kubernetes.io/name: immich-server
+    app.kubernetes.io/instance: immich
+    app.kubernetes.io/component: server
 spec:
   selector:
     app: immich-server
@@ -17,6 +22,11 @@ kind: Service
 metadata:
   name: immich-ml
   namespace: immich
+  labels:
+    app: immich-ml
+    app.kubernetes.io/name: immich-ml
+    app.kubernetes.io/instance: immich
+    app.kubernetes.io/component: machine-learning
 spec:
   selector:
     app: immich-ml

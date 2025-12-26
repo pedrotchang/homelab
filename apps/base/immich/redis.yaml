@@ -4,6 +4,7 @@ metadata:
   name: immich-redis
   namespace: immich
   labels:
+    app: immich-redis
     app.kubernetes.io/component: cache
     app.kubernetes.io/instance: immich
     app.kubernetes.io/name: immich-redis
@@ -68,6 +69,11 @@ kind: Service
 metadata:
   name: immich-redis
   namespace: immich
+  labels:
+    app: immich-redis
+    app.kubernetes.io/name: immich-redis
+    app.kubernetes.io/instance: immich
+    app.kubernetes.io/component: cache
 spec:
   selector:
     app: immich-redis

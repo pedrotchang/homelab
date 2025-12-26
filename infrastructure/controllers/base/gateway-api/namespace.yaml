@@ -4,4 +4,4 @@ metadata:
   name: gateway-system
   labels:
     app.kubernetes.io/name: gateway-api
-    app.kubernetes.io/component: gateway-controller
+    app.kubernetes.io/component: monitoring

@@ -2,6 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: audiobookshelf
+  labels:
+    app: audiobookshelf
+    app.kubernetes.io/name: audiobookshelf
+    app.kubernetes.io/instance: audiobookshelf
+    app.kubernetes.io/component: media-server
 spec:
   replicas: 1
   selector:
@@ -11,6 +16,9 @@ spec:
     metadata:
       labels:
         app: audiobookshelf
+        app.kubernetes.io/name: audiobookshelf
+        app.kubernetes.io/instance: audiobookshelf
+        app.kubernetes.io/component: media-server
     spec:
       securityContext:
         runAsUser: 1000 # found from www-data:

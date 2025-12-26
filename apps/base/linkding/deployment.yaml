@@ -2,6 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: linkding
+  labels:
+    app: linkding
+    app.kubernetes.io/name: linkding
+    app.kubernetes.io/instance: linkding
+    app.kubernetes.io/component: web
 spec:
   replicas: 1
   selector:
@@ -11,6 +16,9 @@ spec:
     metadata:
       labels:
         app: linkding
+        app.kubernetes.io/name: linkding
+        app.kubernetes.io/instance: linkding
+        app.kubernetes.io/component: web
         policy-type: "app"
     spec:
       securityContext:

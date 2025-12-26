@@ -2,6 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: minecraft
+  labels:
+    app: minecraft
+    app.kubernetes.io/name: minecraft
+    app.kubernetes.io/instance: minecraft
+    app.kubernetes.io/component: game-server
 spec:
   replicas: 1
   selector:
@@ -11,6 +16,9 @@ spec:
     metadata:
       labels:
         app: minecraft
+        app.kubernetes.io/name: minecraft
+        app.kubernetes.io/instance: minecraft
+        app.kubernetes.io/component: game-server
         policy-type: "server"
     spec:
       containers:

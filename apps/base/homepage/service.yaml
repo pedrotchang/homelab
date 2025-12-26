@@ -3,7 +3,10 @@ kind: Service
 metadata:
   name: homepage
   labels:
+    app: homepage
     app.kubernetes.io/name: homepage
+    app.kubernetes.io/instance: homepage
+    app.kubernetes.io/component: dashboard
   annotations:
 spec:
   type: ClusterIP
@@ -13,4 +16,4 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app.kubernetes.io/name: homepage
+    app: homepage

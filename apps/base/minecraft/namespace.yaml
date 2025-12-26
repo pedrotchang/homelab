@@ -3,4 +3,4 @@ kind: Namespace
 metadata:
   name: minecraft
   labels:
-    app.kubernetes.io/component: server
+    app.kubernetes.io/component: monitoring

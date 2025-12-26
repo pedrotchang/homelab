@@ -4,6 +4,9 @@ metadata:
   name: minecraft
   labels:
     app: minecraft
+    app.kubernetes.io/name: minecraft
+    app.kubernetes.io/instance: minecraft
+    app.kubernetes.io/component: game-server
     cilium-lb-pool: apps-pool
 spec:
   selector:

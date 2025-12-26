@@ -3,5 +3,5 @@ kind: Namespace
 metadata:
   name: storage
   labels:
-    app.kubernetes.io/component: storage
+    app.kubernetes.io/component: monitoring
     pod-security.kubernetes.io/enforce: privileged

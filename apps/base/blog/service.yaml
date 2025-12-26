@@ -5,6 +5,9 @@ metadata:
   namespace: blog
   labels:
     app: blog
+    app.kubernetes.io/name: blog
+    app.kubernetes.io/instance: blog
+    app.kubernetes.io/component: web
 spec:
   selector:
     app: blog

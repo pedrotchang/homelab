@@ -2,6 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: commafeed
+  labels:
+    app: commafeed
+    app.kubernetes.io/name: commafeed
+    app.kubernetes.io/instance: commafeed
+    app.kubernetes.io/component: web
 spec:
   replicas: 1
   selector:
@@ -12,6 +17,9 @@ spec:
     metadata:
       labels:
         app: commafeed
+        app.kubernetes.io/name: commafeed
+        app.kubernetes.io/instance: commafeed
+        app.kubernetes.io/component: web
         try: "0"
         policy-type: "app"
 

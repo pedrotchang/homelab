@@ -5,6 +5,9 @@ metadata:
   namespace: default
   labels:
     app.kubernetes.io/name: homepage
+    app.kubernetes.io/instance: homepage
+    app.kubernetes.io/component: dashboard
+    app: homepage
     try: "1"
 spec:
   revisionHistoryLimit: 3
@@ -13,11 +16,14 @@ spec:
     type: RollingUpdate
   selector:
     matchLabels:
-      app.kubernetes.io/name: homepage
+      app: homepage
   template:
     metadata:
       labels:
+        app: homepage
         app.kubernetes.io/name: homepage
+        app.kubernetes.io/instance: homepage
+        app.kubernetes.io/component: dashboard
     spec:
       serviceAccountName: homepage
       automountServiceAccountToken: true
