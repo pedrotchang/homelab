@@ -1,11 +1,12 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: minecraft-data-pvc
-  namespace: minecraft 
+  name: minecraft-data-pvc-nfs
+  namespace: minecraft
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
+  storageClassName: truenas-nfs
   resources:
     requests:
       storage: 30Gi

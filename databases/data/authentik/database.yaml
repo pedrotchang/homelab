@@ -1,0 +1,45 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: authentik-db-tachtit-cnpg-v0
+spec:
+  description: Postgres cluster for the authentik application
+  imageName: ghcr.io/cloudnative-pg/postgresql:17.2
+  instances: 3
+
+  inheritedMetadata:
+    labels:
+      app: authentik-database
+      policy-type: "database"
+
+  monitoring:
+    enablePodMonitor: true
+
+  bootstrap:
+    initdb:
+      database: authentik
+      owner: authentik
+      secret:
+        name: authentik-db-creds
+
+  resources:
+    requests:
+      memory: 256Mi
+  storage:
+    size: 2Gi
+
+  managed:
+    services:
+      ## disable the default services
+      disabledDefaultServices: ["ro", "r"]
+      additional:
+        - selectorType: rw
+          serviceTemplate:
+            metadata:
+              name: "authentik-db-lb"
+              labels:
+                cilium-lb-pool: postgres-pool
+              annotations:
+                external-dns.alpha.kubernetes.io/hostname: authentik-pg.seyzahl.com
+            spec:
+              type: LoadBalancer

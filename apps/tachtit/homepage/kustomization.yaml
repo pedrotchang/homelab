@@ -3,3 +3,4 @@ kind: Kustomization
 namespace: homepage
 resources:
   - ../../base/homepage
+  - httproute-local.yaml

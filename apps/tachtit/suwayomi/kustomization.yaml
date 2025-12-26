@@ -3,3 +3,4 @@ kind: Kustomization
 namespace: suwayomi
 resources:
   - ../../base/suwayomi/
+  - httproute-local.yaml

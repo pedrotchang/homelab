@@ -7,3 +7,6 @@ resources:
   - ingress-l2policy.yaml
   - apps-gateway-l2policy.yaml
   - apps-gateway-pool.yaml
+  - gateway-pool.yaml
+  - gatewayclass.yaml
+  - gateway.yaml

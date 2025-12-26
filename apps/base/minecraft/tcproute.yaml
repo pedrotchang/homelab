@@ -1,0 +1,14 @@
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TCPRoute
+metadata:
+  name: minecraft
+  namespace: minecraft
+spec:
+  parentRefs:
+    - name: cilium-gateway
+      namespace: default
+      sectionName: minecraft
+  rules:
+    - backendRefs:
+        - name: minecraft
+          port: 25565

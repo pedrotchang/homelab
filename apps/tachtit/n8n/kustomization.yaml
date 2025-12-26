@@ -6,3 +6,4 @@ resources:
   # - cloudflare.yaml
   # - ingress.yaml  # Disabled - using pangolin tunnel instead
   - configmap.yaml
+  - httproute-local.yaml

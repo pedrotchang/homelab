@@ -7,11 +7,10 @@ metadata:
     app.kubernetes.io/name: minecraft
     app.kubernetes.io/instance: minecraft
     app.kubernetes.io/component: game-server
-    cilium-lb-pool: apps-pool
 spec:
   selector:
     app: minecraft
-  type: LoadBalancer
+  type: ClusterIP
   ports:
     - port: 25565
       protocol: TCP
