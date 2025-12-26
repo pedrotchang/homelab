@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: homepage
-  namespace: default
+  namespace: homepage
   labels:
     app.kubernetes.io/name: homepage
     app.kubernetes.io/instance: homepage
@@ -16,7 +16,7 @@ spec:
     type: RollingUpdate
   selector:
     matchLabels:
-      app: homepage
+      app.kubernetes.io/name: homepage
   template:
     metadata:
       labels:
