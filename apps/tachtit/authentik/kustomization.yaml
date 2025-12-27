@@ -4,3 +4,4 @@ namespace: authentik
 resources:
   - ../../base/authentik/
   - httproute.yaml
+  - cloudflare.yaml
