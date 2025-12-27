@@ -5,6 +5,7 @@ metadata:
   namespace: kube-system
 spec:
   serviceSelector:
-    matchLabels:
-      cilium.io/gateway: "true"
+    matchExpressions:
+      - key: io.cilium.gateway/owning-gateway
+        operator: Exists
   loadBalancerIPs: true

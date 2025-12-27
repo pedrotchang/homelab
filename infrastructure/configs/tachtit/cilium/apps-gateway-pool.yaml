@@ -8,6 +8,7 @@ spec:
     - start: "192.168.4.221"
       stop: "192.168.4.240"
   serviceSelector:
-    matchLabels:
-      cilium.io/gateway: "true"
+    matchExpressions:
+      - key: io.cilium.gateway/owning-gateway
+        operator: Exists
 
