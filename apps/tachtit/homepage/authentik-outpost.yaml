@@ -101,6 +101,10 @@ metadata:
 spec:
   selector:
     app: authentik-outpost-homepage
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 10800
   ports:
     - name: http
       port: 9000
