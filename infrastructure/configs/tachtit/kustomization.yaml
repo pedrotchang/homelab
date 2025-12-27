@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - cilium
   - external-secrets
+  - cert-manager
