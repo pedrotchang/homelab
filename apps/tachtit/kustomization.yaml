@@ -11,5 +11,5 @@ resources:
   - kagent
   - n8n-mcp
   - blog
-  # - authentik  # Disabled until database is ready
+  - authentik
   # - minecraft
