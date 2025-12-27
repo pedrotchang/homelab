@@ -52,6 +52,9 @@ spec:
                 secretKeyRef:
                   name: homepage-outpost-token
                   key: token
+          volumeMounts:
+            - name: sessions
+              mountPath: /dev/shm
           ports:
             - name: http
               containerPort: 9000
@@ -80,6 +83,10 @@ spec:
             requests:
               cpu: 50m
               memory: 128Mi
+      volumes:
+        - name: sessions
+          emptyDir:
+            medium: Memory
 ---
 apiVersion: v1
 kind: Service
