@@ -8,5 +8,6 @@ resources:
   - renovate
   - csi-driver
   - gateway-api
+  - cert-manager
   - newt
   - kmcp
