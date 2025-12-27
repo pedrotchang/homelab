@@ -4,3 +4,6 @@ namespace: suwayomi
 resources:
   - ../../base/suwayomi/
   - httproute-local.yaml
+  - httproute.yaml
+  - authentik-outpost.yaml
+  - cloudflare.yaml

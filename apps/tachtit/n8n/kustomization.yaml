@@ -3,7 +3,8 @@ kind: Kustomization
 namespace: n8n
 resources:
   - ../../base/n8n/
-  # - cloudflare.yaml
-  # - ingress.yaml  # Disabled - using pangolin tunnel instead
-  - configmap.yaml
   - httproute-local.yaml
+  - httproute.yaml
+  - authentik-outpost.yaml
+  - cloudflare.yaml
+  - configmap.yaml

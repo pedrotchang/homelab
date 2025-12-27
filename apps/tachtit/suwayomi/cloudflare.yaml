@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cloudflared-n8n
-  namespace: n8n
+  name: cloudflared-suwayomi
+  namespace: suwayomi
 spec:
   selector:
     matchLabels:
-      app: cloudflared-n8n
+      app: cloudflared-suwayomi
   replicas: 2
   template:
     metadata:
       labels:
-        app: cloudflared-n8n
+        app: cloudflared-suwayomi
         policy-type: "app"
     spec:
       containers:
@@ -45,10 +45,10 @@ spec:
       volumes:
         - name: creds
           secret:
-            secretName: cloudflare-tunnel-n8n
+            secretName: cloudflare-tunnel-suwayomi
         - name: config
           configMap:
-            name: cloudflared-n8n
+            name: cloudflared-suwayomi
             items:
               - key: config.yaml
                 path: config.yaml
@@ -56,11 +56,11 @@ spec:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: cloudflared-n8n
-  namespace: n8n
+  name: cloudflared-suwayomi
+  namespace: suwayomi
 data:
   config.yaml: |
-    tunnel: n8n
+    tunnel: suwayomi
     credentials-file: /etc/cloudflared/creds/credentials.json
 
     metrics: 0.0.0.0:2000
@@ -68,16 +68,16 @@ data:
     no-autoupdate: true
 
     ingress:
-    - hostname: auto.seyzahl.com
-      service: http://authentik-outpost-n8n:9000
+    - hostname: suwayomi.seyzahl.com
+      service: http://authentik-outpost-suwayomi:9000
 
     - service: http_status:404
 ---
 apiVersion: external-secrets.io/v1
 kind: ExternalSecret
 metadata:
-  name: cloudflare-tunnel-n8n
-  namespace: n8n
+  name: cloudflare-tunnel-suwayomi
+  namespace: suwayomi
 spec:
   refreshInterval: 1h
   secretStoreRef:
@@ -86,4 +86,4 @@ spec:
   data:
     - secretKey: credentials.json
       remoteRef:
-        key: n8n-cloudflare-tunnel
+        key: suwayomi-cloudflare-tunnel
