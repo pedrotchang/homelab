@@ -44,9 +44,9 @@ spec:
           image: ghcr.io/goauthentik/proxy:2025.10.3
           env:
             - name: AUTHENTIK_HOST
-              value: http://authentik.authentik.svc.cluster.local:9000
+              value: https://auth.seyzahl.com
             - name: AUTHENTIK_INSECURE
-              value: "true"
+              value: "false"
             - name: AUTHENTIK_TOKEN
               valueFrom:
                 secretKeyRef:
