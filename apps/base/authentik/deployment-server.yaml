@@ -41,7 +41,7 @@ spec:
                 name: authentik-env
           env:
             - name: AUTHENTIK_POSTGRESQL__HOST
-              value: authentik-db-lb.authentik.svc.cluster.local
+              value: authentik-pg.seyzahl.com
             - name: AUTHENTIK_POSTGRESQL__NAME
               value: authentik
             - name: AUTHENTIK_ERROR_REPORTING__ENABLED
