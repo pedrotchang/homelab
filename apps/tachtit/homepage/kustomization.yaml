@@ -4,3 +4,5 @@ namespace: homepage
 resources:
   - ../../base/homepage
   - httproute-local.yaml
+  - httproute.yaml
+  - authentik-outpost.yaml
