@@ -77,4 +77,4 @@ spec:
   data:
     - secretKey: credentials.json
       remoteRef:
-        key: kagent-cloudflare-tunnel-credentials
+        key: kagent-cloudflared-tunnel
