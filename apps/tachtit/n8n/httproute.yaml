@@ -15,6 +15,16 @@ spec:
     - matches:
         - path:
             type: PathPrefix
+            value: /webhook/
+        - path:
+            type: PathPrefix
+            value: /webhook-test/
+      backendRefs:
+        - name: n8n
+          port: 3008
+    - matches:
+        - path:
+            type: PathPrefix
             value: /outpost.goauthentik.io/
       backendRefs:
         - name: authentik-outpost-n8n
