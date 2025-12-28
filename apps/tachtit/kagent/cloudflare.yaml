@@ -45,7 +45,7 @@ spec:
                 path: config.yaml
         - name: creds
           secret:
-            secretName: cloudflared-tunnel
+            secretName: kagent-cloudflared-tunnel
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -66,14 +66,14 @@ data:
 apiVersion: external-secrets.io/v1
 kind: ExternalSecret
 metadata:
-  name: cloudflared-tunnel
+  name: kagent-cloudflared-tunnel
   namespace: kagent
 spec:
   secretStoreRef:
     name: azure-kv-store
     kind: ClusterSecretStore
   target:
-    name: cloudflared-tunnel
+    name: kagent-cloudflared-tunnel
   data:
     - secretKey: credentials.json
       remoteRef:
