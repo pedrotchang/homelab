@@ -26,7 +26,7 @@ metadata:
     app.kubernetes.io/instance: n8n
     app.kubernetes.io/component: proxy
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: authentik-outpost-n8n
