@@ -7,7 +7,7 @@ spec:
   interval: 5m
   sourceRef:
     kind: GitRepository
-    name: flux-system
+    name: flux-system-push
   git:
     checkout:
       ref:
