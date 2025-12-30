@@ -4,3 +4,4 @@ resources:
   - cilium
   - external-secrets
   - cert-manager
+  - image-automation
