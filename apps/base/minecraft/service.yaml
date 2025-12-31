@@ -12,5 +12,9 @@ spec:
     app: minecraft
   type: ClusterIP
   ports:
-    - port: 25565
+    - name: minecraft
+      port: 25565
+      protocol: TCP
+    - name: web
+      port: 8123
       protocol: TCP

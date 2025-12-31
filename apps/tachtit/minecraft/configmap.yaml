@@ -15,3 +15,4 @@ data:
   OPS: |
     a_seyza
   MAX_PLAYERS: "5"
+  ENABLE_RCON: "true"
