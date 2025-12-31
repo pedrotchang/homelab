@@ -58,7 +58,6 @@ I have them in this structure:
 |------|------|-------------|
 | <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/immich.png" width="30" alt="Immich logo"> | [Immich](https://immich.app/) | A high-performance self-hosted photo and video backup solution with features like automatic backup, timeline view, and ML-powered search. |
 | <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/audiobookshelf.png" width="30" alt="Audiobookshelf logo"> | [Audiobookshelf](https://www.audiobookshelf.org/) | A self-hosted audiobook and podcast server with mobile apps, progress tracking, and streaming capabilities. |
-| <img src="https://raw.githubusercontent.com/Suwayomi/Suwayomi-Server/refs/heads/master/server/src/main/resources/icon/faviconlogo.png" width="30" alt="Suwayomi logo"> | [Suwayomi](https://github.com/Suwayomi/Suwayomi-Server) | A free and open-source manga reader server that provides a web interface for reading manga from various sources. |
 
 #### Development & AI
 | Icon | Name | Description |
