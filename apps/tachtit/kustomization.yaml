@@ -6,7 +6,6 @@ resources:
   - n8n
   - wallabag
   - commafeed
-  - suwayomi
   - immich
   - blog
   - authentik
