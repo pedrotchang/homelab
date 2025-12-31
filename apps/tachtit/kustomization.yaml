@@ -8,8 +8,8 @@ resources:
   - commafeed
   - suwayomi
   - immich
-  - kagent
-  - n8n-mcp
   - blog
   - authentik
   # - minecraft
+  # - kagent
+  # - n8n-mcp
