@@ -37,7 +37,7 @@ spec:
         kind: ConfigMap
         metadata:
           name: homepage
-          namespace: default
+          namespace: homepage
         data:
           services.yaml: |
 
@@ -138,4 +138,4 @@ spec:
       target:
         kind: ConfigMap
         name: homepage
-        namespace: default
+        namespace: homepage
