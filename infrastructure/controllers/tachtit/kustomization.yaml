@@ -9,5 +9,5 @@ resources:
   - csi-driver
   - gateway-api
   - cert-manager
-  - newt
+  # - newt
   - kmcp
