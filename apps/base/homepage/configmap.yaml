@@ -262,19 +262,6 @@ data:
       - Omni:
             href: https://pedrotchang.omni.siderolabs.io/
             icon: talos.png
-    - Media:
-      - Immich:
-            href: https://immich.seyzahl.com
-            icon: immich.png
-      - Jellyfin:
-            href: http://jellyfin.seyzahl.com
-            icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/jellyfin.png
-      - JellySeerr:
-            href: http://192.168.4.208
-            icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/jellyseerr.png
-      - qBittorrent:
-            href: http://qbittorrent.seyzahl.com
-            icon: qbittorrent.png
 
     - Developer:
       - Github:
