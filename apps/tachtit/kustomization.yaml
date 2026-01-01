@@ -9,6 +9,6 @@ resources:
   - immich
   - blog
   - authentik
-  # - minecraft
+  - minecraft
   # - kagent
   # - n8n-mcp
