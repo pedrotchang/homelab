@@ -10,4 +10,4 @@ resources:
   - gateway-api
   - cert-manager
   # - newt
-  - kmcp
+  # - kmcp
