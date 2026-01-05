@@ -10,5 +10,6 @@ resources:
   - blog
   - authentik
   - minecraft
+  - pgadmin
   # - kagent
   # - n8n-mcp

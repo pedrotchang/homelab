@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pgadmin
+  labels:
+    app: pgadmin
+    app.kubernetes.io/name: pgadmin
+    app.kubernetes.io/instance: pgadmin
+    app.kubernetes.io/component: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pgadmin
+  template:
+    metadata:
+      labels:
+        app: pgadmin
+        app.kubernetes.io/name: pgadmin
+        app.kubernetes.io/instance: pgadmin
+        app.kubernetes.io/component: web
+        policy-type: "app"
+    spec:
+      securityContext:
+        fsGroup: 5050
+        runAsUser: 5050
+        runAsNonRoot: true
+
+      containers:
+        - name: pgadmin
+          image: dpage/pgadmin4:latest
+
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+
+          envFrom:
+            - configMapRef:
+                name: pgadmin-configmap
+            - secretRef:
+                name: pgadmin-container-env
+
+          ports:
+            - containerPort: 80
+              protocol: TCP
+
+          volumeMounts:
+            - name: pgadmin-data
+              mountPath: /var/lib/pgadmin
+
+          resources:
+            requests:
+              memory: 256Mi
+
+      restartPolicy: Always
+
+      volumes:
+        - name: pgadmin-data
+          persistentVolumeClaim:
+            claimName: pgadmin-data-pvc

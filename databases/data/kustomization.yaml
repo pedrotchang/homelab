@@ -7,3 +7,4 @@ resources:
   - commafeed
   - immich
   - authentik
+  - pgadmin
