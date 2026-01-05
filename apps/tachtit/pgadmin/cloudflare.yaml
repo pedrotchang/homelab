@@ -70,7 +70,7 @@ data:
     no-autoupdate: true
 
     ingress:
-    - hostname: pga.seyzahl.com
+    - hostname: pgadmin.seyzahl.com
       service: http://pgadmin.pgadmin.svc.cluster.local:80
 
     - service: http_status:404
