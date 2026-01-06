@@ -40,8 +40,12 @@ spec:
           env:
             - name: TRANSFORMERS_CACHE
               value: /cache
+            - name: HF_HOME
+              value: /cache
             - name: MPLCONFIGDIR
               value: /cache/matplotlib
+            - name: HOME
+              value: /tmp
           ports:
             - name: http
               containerPort: 3003
