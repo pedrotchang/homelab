@@ -47,6 +47,14 @@ spec:
           volumeMounts:
             - name: pgadmin-data
               mountPath: /var/lib/pgadmin
+            - name: servers-config
+              mountPath: /pgadmin4/servers.json
+              subPath: servers.json
+              readOnly: true
+            - name: pgpass
+              mountPath: /pgadmin4/pgpass
+              subPath: pgpass
+              readOnly: true
 
           resources:
             requests:
@@ -58,3 +66,10 @@ spec:
         - name: pgadmin-data
           persistentVolumeClaim:
             claimName: pgadmin-data-pvc
+        - name: servers-config
+          configMap:
+            name: pgadmin-servers
+        - name: pgpass
+          secret:
+            secretName: pgadmin-pgpass
+            defaultMode: 0600

@@ -5,3 +5,5 @@ resources:
   - ../../base/pgadmin
   - cloudflare.yaml
   - configmap.yaml
+  - servers-config.yaml
+  - pgpass-secret.yaml
