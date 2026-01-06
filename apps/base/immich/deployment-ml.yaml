@@ -37,6 +37,11 @@ spec:
           envFrom:
             - configMapRef:
                 name: immich-configmap
+          env:
+            - name: TRANSFORMERS_CACHE
+              value: /cache
+            - name: MPLCONFIGDIR
+              value: /cache/matplotlib
           ports:
             - name: http
               containerPort: 3003
