@@ -9,7 +9,7 @@ resources:
   - immich
   - blog
   - authentik
-  - minecraft
   - pgadmin
+  # - minecraft
   # - kagent
   # - n8n-mcp
