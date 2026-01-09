@@ -61,16 +61,11 @@ I have them in this structure:
 | <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/immich.png" width="30" alt="Immich logo"> | [Immich](https://immich.app/) | A high-performance self-hosted photo and video backup solution with features like automatic backup, timeline view, and ML-powered search. |
 | <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/audiobookshelf.png" width="30" alt="Audiobookshelf logo"> | [Audiobookshelf](https://www.audiobookshelf.org/) | A self-hosted audiobook and podcast server with mobile apps, progress tracking, and streaming capabilities. |
 
-#### Finance & Lifestyle
-| Icon | Name | Description |
-|------|------|-------------|
-| <img src="https://avatars.githubusercontent.com/u/128426176?s=200&v=4" width="30" alt="Maybe logo"> | [Maybe](https://maybe.co/) | An open-source personal finance and wealth management app for tracking net worth, budgets, and financial goals. |
-
 #### Lifestyle or Personal
 | Icon | Name | Description |
 |------|------|-------------|
 | <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/minecraft.png" width="30" alt="Minecraft logo"> | Minecraft | A Minecraft server for building and exploring with friends. |
-| 📝 | Personal Blog | A custom blog deployment for sharing thoughts and technical writing. |
+| 📝 | [Pedro T. Chang](https://pedrotchang.dev) | A custom blog deployment for sharing thoughts and technical writing. |
 
 ## Next Steps
 

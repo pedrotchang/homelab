@@ -21,6 +21,13 @@ spec:
         app.kubernetes.io/component: game-server
         policy-type: "server"
     spec:
+      initContainers:
+        - name: remove-incompatible-mods
+          image: busybox:latest
+          command: ['sh', '-c', 'rm -f /data/mods/colorwheel*.jar']
+          volumeMounts:
+          - name: minecraft-data
+            mountPath: /data
       containers:
         - name: minecraft
           image: itzg/minecraft-server:2025.4.0
