@@ -69,7 +69,7 @@ I have them in this structure:
 #### Lifestyle or Personal
 | Icon | Name | Description |
 |------|------|-------------|
-| <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/2d/Plains_grass_block.png" width="30" alt="Minecraft logo"> | Minecraft | A Minecraft server for building and exploring with friends. |
+| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/minecraft.png" width="30" alt="Minecraft logo"> | Minecraft | A Minecraft server for building and exploring with friends. |
 | 📝 | Personal Blog | A custom blog deployment for sharing thoughts and technical writing. |
 
 ## Next Steps
