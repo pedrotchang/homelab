@@ -65,7 +65,7 @@ I have them in this structure:
 | Icon | Name | Description |
 |------|------|-------------|
 | <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/minecraft.png" width="30" alt="Minecraft logo"> | Minecraft | A Minecraft server for building and exploring with friends. |
-| 📝 | [Pedro T. Chang](https://pedrotchang.dev) | A Hugo-built blog for sharing thoughts and technical writing. |
+| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/hugo.png" width="30" alt="Hugo logo"> | [Pedro T. Chang](https://pedrotchang.dev) | A Hugo-built blog for sharing thoughts and technical writing. |
 
 ## Next Steps
 
