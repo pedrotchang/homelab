@@ -41,6 +41,8 @@ I have them in this structure:
 | <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/grafana.png" width="30" alt="Grafana logo"> | [Grafana](https://grafana.com/) | A multi-platform analytics and visualization web application for monitoring data. |
 | <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/prometheus.png" width="30" alt="Prometheus logo"> | [Prometheus](https://prometheus.io/) | An open-source monitoring and alerting toolkit for containers and microservices. |
 | <img src="https://avatars.githubusercontent.com/ml/287?s=82&v=4" width="30" alt="Renovate logo"> | [Renovate](https://www.mend.io/renovate/) | An automated dependency update tool that creates and maintains pull requests for your dependencies. |
+| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/authentik.png" width="30" alt="Authentik logo"> | [Authentik](https://goauthentik.io/) | An open-source identity and access management platform providing authentication, authorization, and single sign-on (SSO) capabilities. |
+| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/pgadmin.png" width="30" alt="pgAdmin logo"> | [pgAdmin](https://www.pgadmin.org/) | A web-based administration and development platform for PostgreSQL databases. |
 
 ### End User Applications
 
@@ -59,17 +61,12 @@ I have them in this structure:
 | <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/immich.png" width="30" alt="Immich logo"> | [Immich](https://immich.app/) | A high-performance self-hosted photo and video backup solution with features like automatic backup, timeline view, and ML-powered search. |
 | <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/audiobookshelf.png" width="30" alt="Audiobookshelf logo"> | [Audiobookshelf](https://www.audiobookshelf.org/) | A self-hosted audiobook and podcast server with mobile apps, progress tracking, and streaming capabilities. |
 
-#### Development & AI
-| Icon | Name | Description |
-|------|------|-------------|
-| <img src="https://avatars.githubusercontent.com/u/192341726?s=200&v=4" width="30" alt="Kagent logo"> | [Kagent](https://kagent.seyzahl.com) | A Kubernetes-native AI agent platform for deploying and managing LLM-powered agents with Model Context Protocol (MCP) support. Accessible via Open WebUI for a better chat experience. |
-
 #### Finance & Lifestyle
 | Icon | Name | Description |
 |------|------|-------------|
 | <img src="https://avatars.githubusercontent.com/u/128426176?s=200&v=4" width="30" alt="Maybe logo"> | [Maybe](https://maybe.co/) | An open-source personal finance and wealth management app for tracking net worth, budgets, and financial goals. |
 
-#### Other
+#### Lifestyle or Personal
 | Icon | Name | Description |
 |------|------|-------------|
 | <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/2d/Plains_grass_block.png" width="30" alt="Minecraft logo"> | Minecraft | A Minecraft server for building and exploring with friends. |
