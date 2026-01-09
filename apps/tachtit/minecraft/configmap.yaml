@@ -4,9 +4,8 @@ metadata:
   name: minecraft-configmap
 data:
   EULA: "TRUE"
-  TYPE: "CURSEFORGE"
+  MOD_PLATFORM: "AUTO_CURSEFORGE"
   CF_SLUG: "all-the-mods-10"
-  CF_FILENAME_MATCHER: "Server"
   MEMORY: "4G"
   CF_OVERRIDES_EXCLUSIONS: |
     shaderpacks/**
