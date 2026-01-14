@@ -20,10 +20,11 @@ This repository is where I do all my testing, tinkering, and all-in-all a space 
 
 I like to start off talking about hardware first. It's I think a great base line to understand what I was working with.
 
-I have currently 3 old hardware:\
+I have currently 4 machines:\
 HP EliteDesk 800 G2 i5-6500T/16GB/256SSD\
 HP EliteDesk 800 G2 i5-6500T/16GB/256SSD\
-HP Laptop (atm do not know the model) 8GB/256SSD
+HP Laptop 8GB/256SSD\
+ThinkPad P14s Gen 2 32GB/512SSD
 
 I love [Talos Linux](https://www.talos.dev/). It has production grade security out of the box, is lightweight, and has robust features. At first, I used straight baremetal. But after sometime (a week...), I realized that [Omni](https://www.siderolabs.com/platform/saas-for-kubernetes/) was the way to go.
 
@@ -33,8 +34,8 @@ I have them in this structure:
 
 | Cluster | Usage | Hardware |
 | --------------- | --------------- | --------------- |
-| Data | PostgreSQL Database | HP Laptop |
-| Tachtit | Apps | HP 800 G2 x 2 |
+| Data | PostgreSQL Database | HP 800 G2 (16GB) + HP Laptop (8GB) |
+| App | Apps | HP 800 G2 (16GB) + ThinkPad P14s Gen 2 (32GB) |
 
 ## Apps
 
