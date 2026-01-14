@@ -8,6 +8,14 @@ Here you will find all the documentation of my homelab.
 
 This repository is where I do all my testing, tinkering, and all-in-all a space for me to play, and work! It does have a serious note as well, since I will be working with my own personal data and require me to think about the whole process of deployment and maintanence!
 
+## Architecture
+
+![Homelab Architecture](homelab-architecture.png)
+
+### GitOps Workflow
+
+![GitOps Workflow](gitops-workflow.png)
+
 ## Hardware & Cluster Provisioning
 
 I like to start off talking about hardware first. It's I think a great base line to understand what I was working with.
