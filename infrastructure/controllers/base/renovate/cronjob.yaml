@@ -44,6 +44,7 @@ spec:
               image: renovate/renovate:latest
               args:
                 - pedrotchang/homelab
+                - pedrotchang/homelab-private
 
               envFrom:
                 - secretRef:
