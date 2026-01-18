@@ -30,7 +30,7 @@ spec:
             mountPath: /data
       containers:
         - name: minecraft
-          image: itzg/minecraft-server:2025.4.0
+          image: itzg/minecraft-server:2025.12.1
 
           resources:
             requests:
