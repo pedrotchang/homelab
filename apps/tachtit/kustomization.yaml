@@ -8,6 +8,7 @@ resources:
   - commafeed
   - immich
   - blog
+  - garden
   - authentik
   - pgadmin
   # - minecraft
