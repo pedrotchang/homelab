@@ -77,4 +77,4 @@ spec:
   data:
     - secretKey: credentials.json
       remoteRef:
-        key: garden-cloudflare-tunnel-credentials
+        key: garden-cloudflare-tunnel
