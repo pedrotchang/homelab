@@ -41,11 +41,11 @@ data:
       - Professional:
           header: false
           style: row
-          columns: 6
+          columns: 4
       - Admin:
           header: false
           style: row
-          columns: 6
+          columns: 4
       - Media:
           header: true
           style: row
@@ -236,20 +236,11 @@ data:
       - Azure:
             href: https://portal.azure.com/#home
             icon: azure.png
-      - T3-Live:
-            href: https://www.t3live.com/login
-      - finviz:
-            href: https://finviz.com
-      - Schwab:
-            href: https://www.schwab.com/
+      - Blog:
+            href: https://pedrotchang.dev
+            icon: ghost.png
 
     - Admin:
-      - PVE-Main:
-            href: https://192.168.5.12:8006/
-            icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/proxmox.png
-      - PVE:
-            href: https://192.168.6.42:8006/
-            icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/proxmox.png
       - Truenas:
             href: https://192.168.7.14
             icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/truenas-scale.png
