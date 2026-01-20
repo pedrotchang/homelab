@@ -1,8 +1,5 @@
-[env]
-OMNICONFIG = "{{config_root}}/omniconfig.yaml"
-TALOSCONFIG = "{{config_root}}/talosconfig.yaml"
-
 [tools]
+kubie = "latest"
 k9s = "latest"
 kubelogin = "latest"
 talosctl = "latest"
