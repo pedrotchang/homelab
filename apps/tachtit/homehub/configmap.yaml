@@ -28,7 +28,7 @@ data:
       recipes: true
       expiry_tracker: true
       url_shortener: true
-      expense_tracker: true
+      expense_tracker: false
 
     family_members:
       - Pedro
