@@ -15,15 +15,15 @@ data:
     password: ""
     admin_name: "Pedro"
 
-    features:
+    feature_toggles:
       shopping_list: true
       media_downloader: true
       pdf_compressor: true
       qr_generator: true
       notes: true
       shared_cloud: true
-      who_is_home: false
-      personal_status: false
+      who_is_home: true
+      personal_status: true
       chores: true
       recipes: true
       expiry_tracker: true
