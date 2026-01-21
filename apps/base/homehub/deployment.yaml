@@ -36,6 +36,10 @@ spec:
               protocol: TCP
 
           volumeMounts:
+            - name: homehub-config
+              mountPath: /app/config.yml
+              subPath: config.yml
+              readOnly: true
             - name: homehub-data
               mountPath: /app/data
             - name: homehub-uploads
@@ -48,6 +52,9 @@ spec:
       restartPolicy: Always
 
       volumes:
+        - name: homehub-config
+          configMap:
+            name: homehub-config
         - name: homehub-data
           persistentVolumeClaim:
             claimName: homehub-data-pvc

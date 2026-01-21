@@ -4,3 +4,45 @@ metadata:
   name: homehub-configmap
 data:
   FLASK_ENV: "production"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: homehub-config
+data:
+  config.yml: |
+    instance_name: "HomeHub"
+    password: ""
+    admin_name: "Pedro"
+
+    features:
+      shopping_list: true
+      media_downloader: true
+      pdf_compressor: true
+      qr_generator: true
+      notes: true
+      shared_cloud: true
+      who_is_home: false
+      personal_status: false
+      chores: true
+      recipes: true
+      expiry_tracker: true
+      url_shortener: true
+      expense_tracker: true
+
+    family_members:
+      - Pedro
+
+    reminders:
+      time_format: "12h"
+      calendar_start_day: "sunday"
+      categories:
+        - label: "General"
+          color: "#3B82F6"
+        - label: "Work"
+          color: "#EF4444"
+        - label: "Personal"
+          color: "#10B981"
+
+    weather:
+      enabled: false
