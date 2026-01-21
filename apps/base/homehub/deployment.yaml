@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: homehub
+  labels:
+    app: homehub
+    app.kubernetes.io/name: homehub
+    app.kubernetes.io/instance: homehub
+    app.kubernetes.io/component: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: homehub
+  template:
+    metadata:
+      labels:
+        app: homehub
+        app.kubernetes.io/name: homehub
+        app.kubernetes.io/instance: homehub
+        app.kubernetes.io/component: web
+        policy-type: "app"
+    spec:
+      containers:
+        - name: homehub
+          image: ghcr.io/surajverma/homehub:latest
+
+          envFrom:
+            - configMapRef:
+                name: homehub-configmap
+            - secretRef:
+                name: homehub-container-env
+
+          ports:
+            - containerPort: 5000
+              protocol: TCP
+
+          volumeMounts:
+            - name: homehub-data
+              mountPath: /app/data
+            - name: homehub-uploads
+              mountPath: /app/uploads
+            - name: homehub-media
+              mountPath: /app/media
+            - name: homehub-pdfs
+              mountPath: /app/pdfs
+
+      restartPolicy: Always
+
+      volumes:
+        - name: homehub-data
+          persistentVolumeClaim:
+            claimName: homehub-data-pvc
+        - name: homehub-uploads
+          persistentVolumeClaim:
+            claimName: homehub-uploads-pvc
+        - name: homehub-media
+          persistentVolumeClaim:
+            claimName: homehub-media-pvc
+        - name: homehub-pdfs
+          persistentVolumeClaim:
+            claimName: homehub-pdfs-pvc

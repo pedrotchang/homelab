@@ -11,6 +11,7 @@ resources:
   - garden
   - authentik
   - pgadmin
+  - homehub
   # - minecraft
   # - kagent
   # - n8n-mcp
