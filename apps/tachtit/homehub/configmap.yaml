@@ -13,7 +13,6 @@ data:
   config.yml: |
     instance_name: "HomeHub"
     password: ""
-    admin_name: ""
 
     feature_toggles:
       shopping_list: true
