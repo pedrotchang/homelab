@@ -32,6 +32,7 @@ data:
 
     family_members:
       - Pedro
+      - Hanna
 
     reminders:
       time_format: "12h"
