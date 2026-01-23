@@ -11,6 +11,7 @@ resources:
   - linkding
   - n8n
   - ollama
+  - pai-memory
   - pgadmin
   - wallabag
   # - minecraft

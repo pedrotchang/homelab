@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pai-memory
+  labels:
+    app: pai-memory
+    app.kubernetes.io/name: pai-memory
+    app.kubernetes.io/instance: pai-memory
+    app.kubernetes.io/component: mcp-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pai-memory
+  template:
+    metadata:
+      labels:
+        app: pai-memory
+        app.kubernetes.io/name: pai-memory
+        app.kubernetes.io/instance: pai-memory
+        app.kubernetes.io/component: mcp-server
+        policy-type: "app"
+    spec:
+      containers:
+        - name: pai-memory
+          image: ghcr.io/pedrotchang/pai-memory-mcp:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: pai-memory-config
+            - secretRef:
+                name: pai-memory-secrets
+          resources:
+            requests:
+              memory: 256Mi
+              cpu: 100m
+            limits:
+              memory: 512Mi
+              cpu: 500m
+          livenessProbe:
+            httpGet:
+              path: /sse
+              port: 3000
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /sse
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 10
+      restartPolicy: Always
