@@ -1,17 +1,18 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
+  - authentik
+  - blog
+  - commafeed
+  - garden
+  - homehub
   - homepage
+  - immich
   - linkding
   - n8n
-  - wallabag
-  - commafeed
-  - immich
-  - blog
-  - garden
-  - authentik
+  - ollama
   - pgadmin
-  - homehub
+  - wallabag
   # - minecraft
   # - kagent
   # - n8n-mcp
