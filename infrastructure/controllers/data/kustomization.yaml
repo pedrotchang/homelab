@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - cilium
   - cloudnativepg
+  - csi-driver
   - external-dns
   - external-secrets
   - local-path
