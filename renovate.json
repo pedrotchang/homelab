@@ -3,19 +3,24 @@
   "extends": [
     "config:recommended"
   ],
-  "schedule": ["after 3am and before 4am on wednesday"],
-  "enabledManagers": ["flux", "kubernetes"],
+  "schedule": [
+    "after 3am and before 4am on wednesday"
+  ],
+  "enabledManagers": [
+    "flux",
+    "kubernetes"
+  ],
   "flux": {
-    "fileMatch": [
-      "(^|/)infrastructure/.+\\.ya?ml$",
-      "(^|/)clusters/.+\\.ya?ml$"
+    "managerFilePatterns": [
+      "/(^|/)infrastructure/.+\\.ya?ml$/",
+      "/(^|/)clusters/.+\\.ya?ml$/"
     ]
   },
   "kubernetes": {
-    "fileMatch": [
-      "(^|/)infrastructure/.+\\.ya?ml$",
-      "(^|/)clusters/.+\\.ya?ml$",
-      "(^|/)apps/.+\\.ya?ml$"
+    "managerFilePatterns": [
+      "/(^|/)infrastructure/.+\\.ya?ml$/",
+      "/(^|/)clusters/.+\\.ya?ml$/",
+      "/(^|/)apps/.+\\.ya?ml$/"
     ]
   }
 }
