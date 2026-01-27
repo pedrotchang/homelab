@@ -107,9 +107,6 @@ spec:
 
       restartPolicy: Always
 
-      nodeSelector:
-        kubernetes.io/hostname: talos-l3c-4yq
-
       volumes:
         - name: forgejo-config
           persistentVolumeClaim:
