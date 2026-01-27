@@ -35,10 +35,11 @@ spec:
             - |
               if [ ! -f /data/.runner ]; then
                 echo "Registering runner..."
-                forgejo-runner create-runner-file \
+                forgejo-runner register --no-interactive \
                   --instance http://forgejo.forgejo.svc.cluster.local:3000 \
-                  --secret "${RUNNER_SECRET}" \
-                  --name "jotunheim-runner"
+                  --token "${RUNNER_SECRET}" \
+                  --name "jotunheim-runner" \
+                  --labels "docker:docker://node:20-bookworm,ubuntu-latest:docker://node:20-bookworm,ubuntu-22.04:docker://node:20-bookworm"
                 mv .runner /data/.runner
               else
                 echo "Runner already registered"
