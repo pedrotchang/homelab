@@ -6,9 +6,3 @@ resources:
   - secrets.yaml
   - release.yaml
   - networkpolicy.yaml
-configMapGenerator:
-  - name: csi-driver-iscsi-values
-    files:
-      - values.yaml
-generatorOptions:
-  disableNameSuffixHash: true

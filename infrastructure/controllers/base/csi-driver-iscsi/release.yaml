@@ -14,9 +14,62 @@ spec:
         kind: HelmRepository
         name: democratic-csi
         namespace: storage
-  valuesFrom:
-    - kind: ConfigMap
-      name: csi-driver-iscsi-values
+  values:
+    csiDriver:
+      name: "org.democratic-csi.iscsi"
+      attachRequired: true
+      storageCapacity: true
+      fsGroupPolicy: "File"
+    controller:
+      enabled: true
+      strategy: deployment
+      replicas: 1
+      driver:
+        image: docker.io/democraticcsi/democratic-csi:v1.9.3
+        logLevel: debug
+      tolerations:
+        - key: node-role.kubernetes.io/control-plane
+          operator: Exists
+          effect: NoSchedule
+      priorityClassName: system-cluster-critical
+    node:
+      enabled: true
+      hostPID: true
+      driver:
+        image: docker.io/democraticcsi/democratic-csi:v1.9.3
+        logLevel: debug
+        extraEnv:
+          - name: ISCSIADM_HOST_STRATEGY
+            value: nsenter
+          - name: ISCSIADM_HOST_PATH
+            value: /usr/local/sbin/iscsiadm
+        iscsiDirHostPath: /var/iscsi
+        iscsiDirHostPathType: ""
+      tolerations:
+        - operator: "Exists"
+      priorityClassName: system-node-critical
+    storageClasses:
+      - name: truenas-iscsi
+        defaultClass: false
+        reclaimPolicy: Delete
+        volumeBindingMode: Immediate
+        allowVolumeExpansion: true
+        parameters:
+          fsType: ext4
+    volumeSnapshotClasses:
+      - name: truenas-iscsi-snapclass
+        deletionPolicy: Delete
+        parameters:
+          detachedSnapshots: "true"
+    driver:
+      existingConfigSecret: truenas-iscsi-driver-config
+      config:
+        driver: freenas-api-iscsi
+        httpConnection:
+          protocol: http
+          host: 192.168.7.14
+        iscsi:
+          targetPortal: "192.168.7.14:3260"
   install:
     createNamespace: false
     remediation:
