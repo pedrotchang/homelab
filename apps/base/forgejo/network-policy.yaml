@@ -13,6 +13,13 @@ spec:
     - fromEndpoints:
         - matchLabels:
             io.kubernetes.pod.namespace: monitoring
+    - fromEndpoints:
+        - matchLabels:
+            io.kubernetes.pod.namespace: forgejo-runner
+      toPorts:
+        - ports:
+            - port: "3000"
+              protocol: TCP
     - fromEntities:
         - ingress
     - fromEntities:
