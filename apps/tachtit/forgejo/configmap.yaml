@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: forgejo-configmap
+data:
+  # Server settings
+  FORGEJO__server__DOMAIN: forgejo.seyzahl.com
+  FORGEJO__server__ROOT_URL: https://forgejo.seyzahl.com/
+  FORGEJO__server__HTTP_PORT: "3000"
+  FORGEJO__server__APP_DATA_PATH: /data/app
+  FORGEJO__server__SSH_DOMAIN: git.seyzahl.com
+  FORGEJO__server__SSH_PORT: "2222"
+  FORGEJO__server__SSH_LISTEN_PORT: "2222"
+  FORGEJO__server__PER_WRITE_TIMEOUT: "-1"
+  FORGEJO__server__PER_WRITE_PER_KB_TIMEOUT: "-1"
+
+  # Database settings
+  FORGEJO__database__DB_TYPE: postgres
+  FORGEJO__database__HOST: forgejo-pg.seyzahl.com:5432
+  FORGEJO__database__NAME: forgejo
+  FORGEJO__database__SSL_MODE: disable
+
+  # Security settings
+  FORGEJO__security__INSTALL_LOCK: "true"
+
+  # Actions settings
+  FORGEJO__actions__ENABLED: "true"
+  FORGEJO__actions__DEFAULT_ACTIONS_URL: https://data.forgejo.org
+
+  # Storage paths
+  FORGEJO__repository__ROOT: /data/git
+  FORGEJO__attachment__PATH: /data/app/attachments
+  FORGEJO__lfs__PATH: /data/lfs
+  FORGEJO__log__ROOT_PATH: /data/app/log
+  FORGEJO__picture__AVATAR_UPLOAD_PATH: /data/app/avatars
+  FORGEJO__picture__REPOSITORY_AVATAR_UPLOAD_PATH: /data/app/repo-avatars
+  FORGEJO__session__PROVIDER_CONFIG: /data/app/sessions

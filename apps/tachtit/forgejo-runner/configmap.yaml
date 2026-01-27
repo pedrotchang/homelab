@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: forgejo-runner-config
+data:
+  config.yaml: |
+    log:
+      level: info
+
+    runner:
+      file: .runner
+      capacity: 1
+      timeout: 3h
+      insecure: false
+      fetch_timeout: 5s
+      fetch_interval: 2s
+      envs:
+        DOCKER_HOST: tcp://localhost:2375
+      labels:
+        - "docker:docker://ghcr.io/catthehacker/ubuntu:act-22.04"
+        - "ubuntu-latest:docker://ghcr.io/catthehacker/ubuntu:act-22.04"
+        - "hugo:docker://floryn90/hugo:0.145.0-ext-alpine"
+
+    cache:
+      enabled: true
+      dir: /data/cache
+
+    container:
+      network: host
+      privileged: false
+      options:
+      valid_volumes: []
+      docker_host: tcp://localhost:2375

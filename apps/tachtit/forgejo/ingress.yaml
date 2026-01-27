@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: forgejo
+  namespace: forgejo
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+    external-dns.alpha.kubernetes.io/hostname: forgejo.seyzahl.com
+spec:
+  ingressClassName: cilium
+  tls:
+    - hosts:
+        - forgejo.seyzahl.com
+      secretName: forgejo-tls
+  rules:
+    - host: forgejo.seyzahl.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: forgejo
+                port:
+                  number: 3000

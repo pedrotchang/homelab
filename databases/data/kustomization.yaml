@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - authentik
   - commafeed
+  - forgejo
   - immich
   - linkding
   - n8n

@@ -1,0 +1,105 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: forgejo-runner
+  labels:
+    app: forgejo-runner
+    app.kubernetes.io/name: forgejo-runner
+    app.kubernetes.io/instance: forgejo-runner
+    app.kubernetes.io/component: runner
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: forgejo-runner
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: forgejo-runner
+        app.kubernetes.io/name: forgejo-runner
+        app.kubernetes.io/instance: forgejo-runner
+        app.kubernetes.io/component: runner
+        policy-type: app
+    spec:
+      securityContext:
+        fsGroup: 1000
+
+      initContainers:
+        - name: register-runner
+          image: data.forgejo.org/forgejo/runner:6.4.0
+          command:
+            - sh
+            - -c
+            - |
+              if [ ! -f /data/.runner ]; then
+                echo "Registering runner..."
+                forgejo-runner create-runner-file \
+                  --instance https://forgejo.seyzahl.com \
+                  --secret "${RUNNER_SECRET}" \
+                  --name "jotunheim-runner"
+                mv .runner /data/.runner
+              else
+                echo "Runner already registered"
+              fi
+          env:
+            - name: RUNNER_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: forgejo-runner-secret
+                  key: RUNNER_SECRET
+          volumeMounts:
+            - name: runner-data
+              mountPath: /data
+
+      containers:
+        - name: docker
+          image: docker:29-dind
+          args:
+            - --tls=false
+          env:
+            - name: DOCKER_TLS_CERTDIR
+              value: ""
+          ports:
+            - containerPort: 2375
+              protocol: TCP
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: docker-storage
+              mountPath: /var/lib/docker
+
+        - name: runner
+          image: data.forgejo.org/forgejo/runner:6.4.0
+          command:
+            - sh
+            - -c
+            - |
+              echo "Waiting for Docker daemon..."
+              while ! wget -q -O- http://localhost:2375/version >/dev/null 2>&1; do
+                sleep 1
+              done
+              echo "Docker is ready!"
+              cp /data/.runner .runner
+              forgejo-runner daemon --config /config/config.yaml
+          env:
+            - name: DOCKER_HOST
+              value: tcp://localhost:2375
+          volumeMounts:
+            - name: runner-data
+              mountPath: /data
+            - name: config
+              mountPath: /config
+
+      restartPolicy: Always
+
+      volumes:
+        - name: runner-data
+          emptyDir: {}
+        - name: docker-storage
+          persistentVolumeClaim:
+            claimName: forgejo-runner-docker-cache
+        - name: config
+          configMap:
+            name: forgejo-runner-config
