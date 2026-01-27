@@ -27,6 +27,13 @@ spec:
               - matchPattern: "*"
     - toEndpoints:
         - {}
+    - toEndpoints:
+        - matchLabels:
+            io.kubernetes.pod.namespace: forgejo
+      toPorts:
+        - ports:
+            - port: "3000"
+              protocol: TCP
     - toEntities:
         - world
       toPorts:
