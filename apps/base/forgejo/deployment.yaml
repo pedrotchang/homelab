@@ -113,6 +113,6 @@ spec:
             claimName: forgejo-config
         - name: forgejo-data
           nfs:
-            server: 192.168.120.186
-            path: /volume1/data/git
+            server: 192.168.7.14
+            path: /mnt/tank/git
             readOnly: false
