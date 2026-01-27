@@ -13,24 +13,5 @@ spec:
   ingress:
     - {}
   egress:
-    - to:
-        - ipBlock:
-            cidr: 192.168.7.14/32
-      ports:
-        - protocol: TCP
-          port: 80
-        - protocol: TCP
-          port: 3260
-    - to:
-        - namespaceSelector:
-            matchLabels:
-              kubernetes.io/metadata.name: kube-system
-      ports:
-        - protocol: TCP
-          port: 443
-    - to: []
-      ports:
-        - protocol: UDP
-          port: 53
-        - protocol: TCP
-          port: 53
+    # Allow all egress - CSI drivers need full API access
+    - {}
