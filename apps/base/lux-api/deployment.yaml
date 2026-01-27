@@ -1,0 +1,102 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lux-api
+  labels:
+    app: lux-api
+    app.kubernetes.io/name: lux-api
+    app.kubernetes.io/instance: lux-api
+    app.kubernetes.io/component: ai
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lux-api
+  template:
+    metadata:
+      labels:
+        app: lux-api
+        app.kubernetes.io/name: lux-api
+        app.kubernetes.io/instance: lux-api
+        app.kubernetes.io/component: ai
+        policy-type: "app"
+    spec:
+      securityContext:
+        fsGroup: 1000
+
+      initContainers:
+        # Clone .claude repo for skills, settings, memory
+        - name: clone-claude-config
+          image: alpine/git:latest
+          command:
+            - /bin/sh
+            - -c
+            - |
+              if [ ! -d "/claude-config/.git" ]; then
+                git clone https://github.com/pedrotchang/.claude.git /claude-config
+              else
+                cd /claude-config && git pull
+              fi
+          volumeMounts:
+            - name: claude-config
+              mountPath: /claude-config
+
+      containers:
+        - name: lux-api
+          image: ghcr.io/pedrotchang/lux-api:latest
+          imagePullPolicy: Always
+
+          securityContext:
+            allowPrivilegeEscalation: false
+
+          envFrom:
+            - configMapRef:
+                name: lux-api-configmap
+
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+
+          volumeMounts:
+            # OAuth credentials
+            - name: oauth-credentials
+              mountPath: /home/node/.claude/.credentials.json
+              subPath: credentials.json
+              readOnly: true
+            # .claude config (skills, settings, memory)
+            - name: claude-config
+              mountPath: /home/node/.claude
+              readOnly: false
+
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            timeoutSeconds: 10
+
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 10
+
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "250m"
+            limits:
+              memory: "2Gi"
+              cpu: "2000m"
+
+      restartPolicy: Always
+
+      volumes:
+        - name: oauth-credentials
+          secret:
+            secretName: lux-api-oauth-credentials
+        - name: claude-config
+          persistentVolumeClaim:
+            claimName: lux-api-claude-config

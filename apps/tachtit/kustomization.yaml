@@ -10,6 +10,7 @@ resources:
   - homepage
   - immich
   - linkding
+  - lux-api
   - n8n
   # - ollama
   # - pai-memory

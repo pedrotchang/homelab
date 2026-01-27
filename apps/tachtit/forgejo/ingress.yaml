@@ -5,15 +5,15 @@ metadata:
   namespace: forgejo
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-production
-    external-dns.alpha.kubernetes.io/hostname: forgejo.seyzahl.com
+    external-dns.alpha.kubernetes.io/hostname: forgejo.local.seyzahl.com
 spec:
   ingressClassName: cilium
   tls:
     - hosts:
-        - forgejo.seyzahl.com
+        - forgejo.local.seyzahl.com
       secretName: forgejo-tls
   rules:
-    - host: forgejo.seyzahl.com
+    - host: forgejo.local.seyzahl.com
       http:
         paths:
           - path: /
