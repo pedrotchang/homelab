@@ -5,4 +5,3 @@ resources:
   - ../../base/forgejo
   - configmap.yaml
   - cloudflare.yaml
-  - httproute-local.yaml
