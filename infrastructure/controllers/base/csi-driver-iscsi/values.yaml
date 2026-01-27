@@ -51,4 +51,3 @@ volumeSnapshotClasses:
 
 driver:
   existingConfigSecret: truenas-iscsi-driver-config
-  config: {}
