@@ -51,3 +51,11 @@ volumeSnapshotClasses:
 
 driver:
   existingConfigSecret: truenas-iscsi-driver-config
+  # Minimal stub required for template validation (actual config from secret)
+  config:
+    driver: freenas-api-iscsi
+    httpConnection:
+      protocol: http
+      host: 192.168.7.14
+    iscsi:
+      targetPortal: "192.168.7.14:3260"
