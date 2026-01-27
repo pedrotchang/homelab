@@ -34,21 +34,25 @@ spec:
                 secretKeyRef:
                   name: lux-api-github-pat
                   key: token
+            - name: GIT_TERMINAL_PROMPT
+              value: "0"
           command:
             - /bin/sh
             - -c
             - |
+              set -e
               REPO_URL="https://${GITHUB_PAT}@github.com/pedrotchang/.claude.git"
               if [ -d "/claude-config/.git" ]; then
                 echo "Git repo exists, updating remote and pulling..."
                 cd /claude-config
                 git remote set-url origin "$REPO_URL"
-                git pull
+                git -c credential.helper= pull
               else
                 echo "No git repo found, cleaning and cloning..."
                 rm -rf /claude-config/* /claude-config/.[!.]* 2>/dev/null || true
                 git clone "$REPO_URL" /claude-config
               fi
+              echo "Git sync complete"
           volumeMounts:
             - name: claude-config
               mountPath: /claude-config
