@@ -24,6 +24,9 @@ spec:
       securityContext:
         fsGroup: 1000
 
+      imagePullSecrets:
+        - name: ghcr-pull-secret
+
       initContainers:
         # Clone .claude repo for skills, settings, memory
         - name: clone-claude-config
