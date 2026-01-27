@@ -36,7 +36,7 @@ spec:
               if [ ! -f /data/.runner ]; then
                 echo "Registering runner..."
                 forgejo-runner create-runner-file \
-                  --instance https://forgejo.seyzahl.com \
+                  --instance http://forgejo.forgejo.svc.cluster.local:3000 \
                   --secret "${RUNNER_SECRET}" \
                   --name "jotunheim-runner"
                 mv .runner /data/.runner
