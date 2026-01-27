@@ -3,8 +3,10 @@ kind: ScheduledBackup
 metadata:
   name: immich-db-backup
 spec:
-  schedule: "0 0 * * *"
+  # CNPG uses 6-field cron: second minute hour day month weekday
+  # 0 0 3 * * * = daily at 03:00:00 UTC
+  schedule: "0 0 3 * * *"
   backupOwnerReference: self
   cluster:
     name: immich-db-tachtit-cnpg-v0
-  immediate: true
+  immediate: false

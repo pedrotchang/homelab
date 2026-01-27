@@ -22,5 +22,13 @@
       "/(^|/)clusters/.+\\.ya?ml$/",
       "/(^|/)apps/.+\\.ya?ml$/"
     ]
-  }
+  },
+  "packageRules": [
+    {
+      "description": "Immich images - group server and ML together",
+      "matchPackagePatterns": ["^ghcr.io/immich-app/"],
+      "groupName": "immich",
+      "versioning": "semver-coerced"
+    }
+  ]
 }
