@@ -9,8 +9,8 @@ resources:
   - immich
   - linkding
   - n8n
-  - ollama
-  - pai-memory
+  # - ollama
+  # - pai-memory
   - pgadmin
   - wallabag
   # - minecraft
