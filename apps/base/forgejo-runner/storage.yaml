@@ -6,7 +6,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: synology-iscsi
+  storageClassName: truenas-nfs
   resources:
     requests:
       storage: 50Gi
