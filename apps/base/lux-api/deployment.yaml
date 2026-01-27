@@ -32,10 +32,13 @@ spec:
             - /bin/sh
             - -c
             - |
-              if [ ! -d "/claude-config/.git" ]; then
-                git clone https://github.com/pedrotchang/.claude.git /claude-config
-              else
+              if [ -d "/claude-config/.git" ]; then
+                echo "Git repo exists, pulling latest..."
                 cd /claude-config && git pull
+              else
+                echo "No git repo found, cleaning and cloning..."
+                rm -rf /claude-config/* /claude-config/.[!.]* 2>/dev/null || true
+                git clone https://github.com/pedrotchang/.claude.git /claude-config
               fi
           volumeMounts:
             - name: claude-config
