@@ -17,10 +17,6 @@ spec:
   valuesFrom:
     - kind: ConfigMap
       name: csi-driver-iscsi-values
-    - kind: Secret
-      name: truenas-iscsi-driver-config
-      valuesKey: driver-config.yaml
-      targetPath: driver.config
   install:
     createNamespace: false
     remediation:

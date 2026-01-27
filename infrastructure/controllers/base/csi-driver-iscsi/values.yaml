@@ -50,4 +50,5 @@ volumeSnapshotClasses:
       detachedSnapshots: "true"
 
 driver:
+  existingConfigSecret: truenas-iscsi-driver-config
   config: {}
