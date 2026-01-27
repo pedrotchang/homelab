@@ -1,0 +1,21 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: forgejo-local
+  namespace: forgejo
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: forgejo.local.seyzahl.com
+spec:
+  parentRefs:
+    - name: cilium-gateway
+      namespace: default
+  hostnames:
+    - forgejo.local.seyzahl.com
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: forgejo
+          port: 3000
