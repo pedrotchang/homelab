@@ -21,7 +21,7 @@ data:
   FORGEJO__database__SSL_MODE: disable
 
   # Security settings
-  FORGEJO__security__INSTALL_LOCK: "true"
+  FORGEJO__security__INSTALL_LOCK: "false"
 
   # Actions settings
   FORGEJO__actions__ENABLED: "true"
