@@ -26,9 +26,11 @@
   "packageRules": [
     {
       "description": "Immich images - group server and ML together",
-      "matchPackagePatterns": ["^ghcr.io/immich-app/"],
       "groupName": "immich",
-      "versioning": "semver-coerced"
+      "versioning": "semver-coerced",
+      "matchPackageNames": [
+        "/^ghcr.io/immich-app//"
+      ]
     }
   ]
 }
