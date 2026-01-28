@@ -63,6 +63,9 @@ spec:
                 echo "Copying credentials to config..."
                 cp /secrets/credentials.json /claude-config/.credentials.json
               fi
+              # Fix ownership for node user (uid 1000)
+              echo "Fixing ownership for node user..."
+              chown -R 1000:1000 /claude-config
               echo "Git sync complete"
           volumeMounts:
             - name: claude-config
