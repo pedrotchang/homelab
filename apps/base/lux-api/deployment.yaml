@@ -55,10 +55,20 @@ spec:
                 rm -rf /claude-config/* /claude-config/.[!.]* 2>/dev/null || true
                 git clone "$REPO_URL" /claude-config
               fi
+              # Remove .git to avoid PAI issues
+              echo "Removing .git directory..."
+              rm -rf /claude-config/.git
+              # Copy credentials from secret to writable location
+              if [ -f "/secrets/credentials.json" ]; then
+                echo "Copying credentials to config..."
+                cp /secrets/credentials.json /claude-config/.credentials.json
+              fi
               echo "Git sync complete"
           volumeMounts:
             - name: claude-config
               mountPath: /claude-config
+            - name: oauth-credentials
+              mountPath: /secrets
 
       containers:
         - name: lux-api
@@ -77,12 +87,8 @@ spec:
               protocol: TCP
 
           volumeMounts:
-            # OAuth credentials
-            - name: oauth-credentials
-              mountPath: /home/node/.claude/.credentials.json
-              subPath: credentials.json
-              readOnly: true
-            # .claude config (skills, settings, memory)
+            # .claude config (skills, settings, memory, credentials)
+            # Credentials copied from secret by init container for token refresh
             - name: claude-config
               mountPath: /home/node/.claude
               readOnly: false
