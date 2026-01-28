@@ -1,0 +1,8 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: paperless-ngx
+resources:
+  - configmap.yaml
+  - configmap-gpt.yaml
+  - cloudflare.yaml
+  - ../../base/paperless-ngx/

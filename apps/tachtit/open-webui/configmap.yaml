@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: open-webui-configmap
+data:
+  OLLAMA_BASE_URL: "http://ollama.ollama.svc.cluster.local:11434"
+  WEBUI_AUTH: "true"
+  ENABLE_SIGNUP: "false"
+  DEFAULT_MODELS: "llama3.2:3b"

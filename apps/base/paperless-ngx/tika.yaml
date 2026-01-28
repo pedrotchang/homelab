@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: paperless-tika
+  labels:
+    app: paperless-tika
+    policy-type: "app"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: paperless-tika
+  template:
+    metadata:
+      labels:
+        app: paperless-tika
+        policy-type: "app"
+    spec:
+      containers:
+        - name: tika
+          image: apache/tika:latest
+          ports:
+            - containerPort: 9998
+          securityContext:
+            allowPrivilegeEscalation: false
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "100m"
+            limits:
+              memory: "1Gi"
+              cpu: "500m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: paperless-tika
+  labels:
+    app: paperless-tika
+spec:
+  type: ClusterIP
+  ports:
+    - port: 9998
+      targetPort: 9998
+  selector:
+    app: paperless-tika

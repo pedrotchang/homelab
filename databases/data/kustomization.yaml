@@ -8,5 +8,6 @@ resources:
   - linkding
   - n8n
   - pai
+  - paperless-ngx
   - pgadmin
   - wallabag

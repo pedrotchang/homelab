@@ -13,7 +13,9 @@ resources:
   - lux-api
   - n8n
   - ollama
+  - open-webui
   # - pai-memory
+  - paperless-ngx
   - pgadmin
   - wallabag
   # - minecraft

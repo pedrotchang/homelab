@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: paperless-gpt
+  labels:
+    app: paperless-gpt
+    policy-type: "app"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: paperless-gpt
+  template:
+    metadata:
+      labels:
+        app: paperless-gpt
+        policy-type: "app"
+    spec:
+      containers:
+        - name: paperless-gpt
+          image: ghcr.io/icereed/paperless-gpt:latest
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: paperless-gpt-configmap
+            - secretRef:
+                name: paperless-gpt-env
+          volumeMounts:
+            - name: prompts
+              mountPath: /app/prompts
+          securityContext:
+            allowPrivilegeEscalation: false
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 30
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "100m"
+            limits:
+              memory: "1Gi"
+              cpu: "500m"
+      volumes:
+        - name: prompts
+          persistentVolumeClaim:
+            claimName: paperless-gpt-prompts-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: paperless-gpt
+  labels:
+    app: paperless-gpt
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: paperless-gpt
