@@ -12,7 +12,7 @@ resources:
   - linkding
   - lux-api
   - n8n
-  # - ollama
+  - ollama
   # - pai-memory
   - pgadmin
   - wallabag
