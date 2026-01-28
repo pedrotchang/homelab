@@ -39,9 +39,10 @@ spec:
     # Allow to other pods in cluster
     - toEndpoints:
         - {}
-    # Only allow HTTPS to specific domains (Anthropic API + GitHub)
+    # Only allow HTTPS to specific domains (Anthropic API + OAuth + GitHub)
     - toFQDNs:
         - matchName: "api.anthropic.com"
+        - matchName: "console.anthropic.com"
         - matchName: "github.com"
         - matchName: "api.github.com"
         - matchName: "raw.githubusercontent.com"
