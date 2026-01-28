@@ -24,7 +24,7 @@ spec:
             - port: "8080"
               protocol: TCP
   egress:
-    # DNS resolution
+    # DNS resolution - only for allowed domains
     - toEndpoints:
         - matchLabels:
             io.kubernetes.pod.namespace: kube-system
@@ -35,17 +35,20 @@ spec:
               protocol: UDP
           rules:
             dns:
-              - matchPattern: "*"
+              - matchName: "api.anthropic.com"
+              - matchName: "github.com"
+              - matchName: "api.github.com"
+              - matchName: "raw.githubusercontent.com"
     # Allow to other pods in cluster
     - toEndpoints:
         - {}
-    # Allow HTTPS to internet (api.anthropic.com, github.com, etc.)
-    - toEntities:
-        - world
+    # Only allow HTTPS to specific domains (Anthropic API + GitHub)
+    - toFQDNs:
+        - matchName: "api.anthropic.com"
+        - matchName: "github.com"
+        - matchName: "api.github.com"
+        - matchName: "raw.githubusercontent.com"
       toPorts:
         - ports:
             - port: "443"
-              protocol: TCP
-        - ports:
-            - port: "80"
               protocol: TCP
