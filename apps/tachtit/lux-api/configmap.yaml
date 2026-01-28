@@ -8,5 +8,7 @@ data:
   NODE_ENV: "production"
   # Claude Code configuration
   CLAUDE_CONFIG_DIR: "/home/node/.claude"
-  # Request timeout (5 minutes for long-running prompts)
-  REQUEST_TIMEOUT_MS: "300000"
+  # PAI hooks directory (used by settings.json hooks)
+  PAI_DIR: "/home/node/.claude"
+  # Request timeout (10 minutes for long-running prompts)
+  REQUEST_TIMEOUT_MS: "600000"
