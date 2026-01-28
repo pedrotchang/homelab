@@ -1,0 +1,51 @@
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: lux-api-app
+  namespace: lux-api
+spec:
+  endpointSelector:
+    matchLabels:
+      policy-type: app
+  ingress:
+    # Allow from within cluster
+    - fromEndpoints:
+        - {}
+    # Allow from monitoring namespace
+    - fromEndpoints:
+        - matchLabels:
+            io.kubernetes.pod.namespace: monitoring
+    # Allow from n8n namespace (for workflow calls)
+    - fromEndpoints:
+        - matchLabels:
+            io.kubernetes.pod.namespace: n8n
+      toPorts:
+        - ports:
+            - port: "8080"
+              protocol: TCP
+  egress:
+    # DNS resolution
+    - toEndpoints:
+        - matchLabels:
+            io.kubernetes.pod.namespace: kube-system
+            k8s-app: kube-dns
+      toPorts:
+        - ports:
+            - port: "53"
+              protocol: UDP
+          rules:
+            dns:
+              - matchPattern: "*"
+    # Allow to other pods in cluster
+    - toEndpoints:
+        - {}
+    # Allow HTTPS to internet (api.anthropic.com, github.com, etc.)
+    - toEntities:
+        - world
+      toPorts:
+        - ports:
+            - port: "443"
+              protocol: TCP
+        - ports:
+            - port: "80"
+              protocol: TCP
