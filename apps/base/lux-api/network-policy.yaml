@@ -24,7 +24,7 @@ spec:
             - port: "8080"
               protocol: TCP
   egress:
-    # DNS resolution - only for allowed domains
+    # DNS resolution - allow all DNS queries (egress still restricted to FQDNs)
     - toEndpoints:
         - matchLabels:
             io.kubernetes.pod.namespace: kube-system
@@ -35,10 +35,7 @@ spec:
               protocol: UDP
           rules:
             dns:
-              - matchName: "api.anthropic.com"
-              - matchName: "github.com"
-              - matchName: "api.github.com"
-              - matchName: "raw.githubusercontent.com"
+              - matchPattern: "*"
     # Allow to other pods in cluster
     - toEndpoints:
         - {}
