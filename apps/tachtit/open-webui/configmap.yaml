@@ -5,5 +5,5 @@ metadata:
 data:
   OLLAMA_BASE_URL: "http://ollama.ollama.svc.cluster.local:11434"
   WEBUI_AUTH: "true"
-  ENABLE_SIGNUP: "false"
+  ENABLE_SIGNUP: "true"
   DEFAULT_MODELS: "llama3.2:3b"
