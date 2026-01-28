@@ -5,4 +5,5 @@ resources:
   - configmap.yaml
   - configmap-gpt.yaml
   - cloudflare.yaml
+  - httproute-gpt.yaml
   - ../../base/paperless-ngx/
