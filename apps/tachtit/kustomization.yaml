@@ -10,7 +10,7 @@ resources:
   - homepage
   - immich
   - linkding
-  - lux-api
+  # - lux-api
   - n8n
   - ollama
   - open-webui
