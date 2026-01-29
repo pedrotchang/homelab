@@ -6,6 +6,9 @@ metadata:
 spec:
   imageRepositoryRef:
     name: blog
+  filterTags:
+    # Match 7-character git SHA tags (hex only)
+    pattern: '^[a-f0-9]{7}$'
   policy:
-    semver:
-      range: '>=0.0.0'
+    alphabetical:
+      order: desc
