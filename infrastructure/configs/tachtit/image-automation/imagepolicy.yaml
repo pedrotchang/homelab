@@ -7,8 +7,9 @@ spec:
   imageRepositoryRef:
     name: blog
   filterTags:
-    # Match 7-character git SHA tags (hex only)
-    pattern: '^[a-f0-9]{7}$'
+    # Match build-YYYYMMDDHHMMSS format
+    pattern: '^build-(?P<ts>[0-9]+)$'
+    extract: '$ts'
   policy:
-    alphabetical:
-      order: desc
+    numerical:
+      order: asc
