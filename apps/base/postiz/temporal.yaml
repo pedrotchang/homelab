@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postiz-temporal
+  namespace: postiz
+  labels:
+    app: postiz-temporal
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postiz-temporal
+  template:
+    metadata:
+      labels:
+        app: postiz-temporal
+    spec:
+      containers:
+        - name: temporal
+          image: temporalio/auto-setup:1.24
+          ports:
+            - containerPort: 7233
+              protocol: TCP
+          env:
+            - name: DB
+              value: "postgres12"
+            - name: POSTGRES_SEEDS
+              value: "postiz-pg.seyzahl.com"
+            - name: DB_PORT
+              value: "5432"
+            - name: DBNAME
+              value: "temporal"
+            - name: VISIBILITY_DBNAME
+              value: "temporal_visibility"
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postiz-helm-secrets
+                  key: TEMPORAL_DB_USER
+            - name: POSTGRES_PWD
+              valueFrom:
+                secretKeyRef:
+                  name: postiz-helm-secrets
+                  key: TEMPORAL_DB_PASSWORD
+            - name: SKIP_DB_CREATE
+              value: "true"
+            - name: SKIP_DEFAULT_NAMESPACE_CREATION
+              value: "false"
+          resources:
+            limits:
+              memory: 512Mi
+            requests:
+              cpu: 100m
+              memory: 256Mi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postiz-temporal
+  namespace: postiz
+  labels:
+    app: postiz-temporal
+spec:
+  selector:
+    app: postiz-temporal
+  type: ClusterIP
+  ports:
+    - port: 7233
+      targetPort: 7233
+      protocol: TCP

@@ -8,3 +8,4 @@ resources:
   - secrets.yaml
   - storage.yaml
   - redis.yaml
+  - temporal.yaml

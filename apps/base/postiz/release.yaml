@@ -55,6 +55,7 @@ spec:
       FRONTEND_URL: "https://postiz.seyzahl.com"
       NEXT_PUBLIC_BACKEND_URL: "https://postiz.seyzahl.com/api"
       BACKEND_INTERNAL_URL: "http://localhost:3000"
+      TEMPORAL_ADDRESS: "postiz-temporal:7233"
       STORAGE_PROVIDER: "local"
       UPLOAD_DIRECTORY: "/uploads"
       NEXT_PUBLIC_UPLOAD_STATIC_DIRECTORY: ""
