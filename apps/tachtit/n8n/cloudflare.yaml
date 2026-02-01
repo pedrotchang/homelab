@@ -68,6 +68,20 @@ data:
     no-autoupdate: true
 
     ingress:
+    # API and webhook traffic bypasses Authentik for lower latency
+    - hostname: auto.seyzahl.com
+      path: /api/*
+      service: http://n8n:3008
+    - hostname: auto.seyzahl.com
+      path: /webhook/*
+      service: http://n8n:3008
+    - hostname: auto.seyzahl.com
+      path: /webhook-test/*
+      service: http://n8n:3008
+    - hostname: auto.seyzahl.com
+      path: /healthz
+      service: http://n8n:3008
+    # UI/login routes through Authentik SSO
     - hostname: auto.seyzahl.com
       service: http://authentik-outpost-n8n:9000
 
