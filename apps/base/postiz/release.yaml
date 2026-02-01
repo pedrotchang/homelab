@@ -1,0 +1,87 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: postiz
+  namespace: postiz
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: postiz-app
+      sourceRef:
+        kind: HelmRepository
+        name: postiz
+        namespace: postiz
+      interval: 12h
+  valuesFrom:
+    - kind: Secret
+      name: postiz-helm-secrets
+      valuesKey: DATABASE_URL
+      targetPath: secrets.DATABASE_URL
+    - kind: Secret
+      name: postiz-helm-secrets
+      valuesKey: JWT_SECRET
+      targetPath: secrets.JWT_SECRET
+  values:
+    replicaCount: 1
+
+    image:
+      repository: ghcr.io/gitroomhq/postiz-app
+      pullPolicy: IfNotPresent
+      tag: "latest"
+
+    service:
+      type: ClusterIP
+      port: 4200
+
+    resources:
+      limits:
+        memory: 2Gi
+      requests:
+        cpu: 250m
+        memory: 512Mi
+
+    # Use external PostgreSQL (CloudnativePG on data cluster)
+    postgresql:
+      enabled: false
+
+    # Use built-in Redis from chart
+    redis:
+      enabled: true
+      auth:
+        password: postiz-redis-internal
+      master:
+        service:
+          ports:
+            redis: 6379
+
+    # Environment variables
+    env:
+      MAIN_URL: "https://postiz.seyzahl.com"
+      FRONTEND_URL: "https://postiz.seyzahl.com"
+      NEXT_PUBLIC_BACKEND_URL: "https://postiz.seyzahl.com/api"
+      BACKEND_INTERNAL_URL: "http://localhost:3000"
+      STORAGE_PROVIDER: "local"
+      UPLOAD_DIRECTORY: "/uploads"
+      NEXT_PUBLIC_UPLOAD_STATIC_DIRECTORY: ""
+      NX_ADD_PLUGINS: "false"
+      IS_GENERAL: "true"
+
+    # Secrets are injected via valuesFrom above
+    secrets:
+      REDIS_URL: "redis://:postiz-redis-internal@postiz-redis-master:6379"
+
+    extraVolumes:
+      - name: uploads
+        persistentVolumeClaim:
+          claimName: postiz-uploads
+
+    extraVolumeMounts:
+      - name: uploads
+        mountPath: /uploads
+
+  install:
+    createNamespace: false
+  upgrade:
+    remediation:
+      retries: 3

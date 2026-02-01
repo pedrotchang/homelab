@@ -4,4 +4,3 @@ namespace: postiz
 resources:
   - ../../base/postiz
   - cloudflare.yaml
-  - configmap.yaml

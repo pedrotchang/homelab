@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: postiz
 resources:
   - namespace.yaml
-  - deployment.yaml
+  - repository.yaml
+  - release.yaml
   - secrets.yaml
-  - service.yaml
   - storage.yaml
