@@ -43,20 +43,20 @@ spec:
           livenessProbe:
             httpGet:
               path: /
-              port: 4007
-            initialDelaySeconds: 60
+              port: 4200
+            initialDelaySeconds: 180
             periodSeconds: 30
             timeoutSeconds: 10
-            failureThreshold: 3
+            failureThreshold: 5
 
           readinessProbe:
             httpGet:
               path: /
-              port: 4007
-            initialDelaySeconds: 30
-            periodSeconds: 10
-            timeoutSeconds: 5
-            failureThreshold: 3
+              port: 4200
+            initialDelaySeconds: 120
+            periodSeconds: 15
+            timeoutSeconds: 10
+            failureThreshold: 10
 
           resources:
             limits:
