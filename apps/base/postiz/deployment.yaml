@@ -147,6 +147,8 @@ spec:
               value: "postgres12"
             - name: POSTGRES_SEEDS
               value: "postiz-pg.seyzahl.com"
+            - name: DB_PORT
+              value: "5432"
             - name: DBNAME
               value: "temporal"
             - name: VISIBILITY_DBNAME
@@ -161,6 +163,8 @@ spec:
                 secretKeyRef:
                   name: postiz-container-env
                   key: TEMPORAL_DB_PASSWORD
+            - name: SKIP_DB_CREATE
+              value: "true"
             - name: SKIP_DEFAULT_NAMESPACE_CREATION
               value: "false"
           resources:
