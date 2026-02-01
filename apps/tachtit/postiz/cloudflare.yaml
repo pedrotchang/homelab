@@ -71,6 +71,6 @@ data:
 
     ingress:
     - hostname: postiz.seyzahl.com
-      service: http://postiz.postiz.svc.cluster.local:4007
+      service: http://postiz.postiz.svc.cluster.local:4200
 
     - service: http_status:404

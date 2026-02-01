@@ -12,8 +12,8 @@ spec:
     app: postiz
   type: ClusterIP
   ports:
-    - port: 4007
-      targetPort: 4007
+    - port: 4200
+      targetPort: 4200
       protocol: TCP
 ---
 apiVersion: v1

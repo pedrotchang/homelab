@@ -37,7 +37,7 @@ spec:
                 name: postiz-container-env
 
           ports:
-            - containerPort: 4007
+            - containerPort: 4200
               protocol: TCP
 
           livenessProbe:
