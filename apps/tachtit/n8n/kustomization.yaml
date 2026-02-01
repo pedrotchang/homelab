@@ -5,6 +5,5 @@ resources:
   - ../../base/n8n/
   - httproute-local.yaml
   - httproute.yaml
-  - authentik-outpost.yaml
   - cloudflare.yaml
   - configmap.yaml
