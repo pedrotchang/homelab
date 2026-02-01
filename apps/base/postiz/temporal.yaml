@@ -53,7 +53,7 @@ spec:
             - name: ES_PORT
               value: "9200"
             - name: ES_VERSION
-              value: "v8"
+              value: "v7"
             - name: ES_SCHEME
               value: "http"
           resources:
