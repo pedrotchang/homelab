@@ -17,6 +17,7 @@ resources:
   # - pai-memory
   - paperless-ngx
   - pgadmin
+  - postiz
   - wallabag
   # - minecraft
   # - kagent

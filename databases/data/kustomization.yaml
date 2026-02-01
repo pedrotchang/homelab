@@ -10,4 +10,5 @@ resources:
   - pai
   - paperless-ngx
   - pgadmin
+  - postiz
   - wallabag

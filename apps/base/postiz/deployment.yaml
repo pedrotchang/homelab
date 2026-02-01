@@ -1,0 +1,156 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postiz
+  labels:
+    app: postiz
+    app.kubernetes.io/name: postiz
+    app.kubernetes.io/instance: postiz
+    app.kubernetes.io/component: web
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: postiz
+  template:
+    metadata:
+      labels:
+        app: postiz
+        app.kubernetes.io/name: postiz
+        app.kubernetes.io/instance: postiz
+        app.kubernetes.io/component: web
+        policy-type: "app"
+    spec:
+      securityContext:
+        fsGroup: 1000
+
+      containers:
+        - name: postiz
+          image: ghcr.io/gitroomhq/postiz-app:latest
+
+          envFrom:
+            - configMapRef:
+                name: postiz-configmap
+            - secretRef:
+                name: postiz-container-env
+
+          ports:
+            - containerPort: 4007
+              protocol: TCP
+
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 4007
+            initialDelaySeconds: 60
+            periodSeconds: 30
+            timeoutSeconds: 10
+            failureThreshold: 3
+
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 4007
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+
+          resources:
+            limits:
+              memory: 2Gi
+            requests:
+              cpu: 200m
+              memory: 512Mi
+
+          volumeMounts:
+            - name: postiz-uploads
+              mountPath: /uploads
+
+      restartPolicy: Always
+
+      volumes:
+        - name: postiz-uploads
+          persistentVolumeClaim:
+            claimName: postiz-uploads-pvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postiz-redis
+  labels:
+    app: postiz-redis
+    app.kubernetes.io/name: postiz
+    app.kubernetes.io/instance: postiz
+    app.kubernetes.io/component: cache
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postiz-redis
+  template:
+    metadata:
+      labels:
+        app: postiz-redis
+        app.kubernetes.io/name: postiz
+        app.kubernetes.io/instance: postiz
+        app.kubernetes.io/component: cache
+        policy-type: "app"
+    spec:
+      containers:
+        - name: redis
+          image: redis:7-alpine
+          ports:
+            - containerPort: 6379
+              protocol: TCP
+          resources:
+            limits:
+              memory: 256Mi
+            requests:
+              cpu: 50m
+              memory: 64Mi
+      restartPolicy: Always
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postiz-temporal
+  labels:
+    app: postiz-temporal
+    app.kubernetes.io/name: postiz
+    app.kubernetes.io/instance: postiz
+    app.kubernetes.io/component: worker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postiz-temporal
+  template:
+    metadata:
+      labels:
+        app: postiz-temporal
+        app.kubernetes.io/name: postiz
+        app.kubernetes.io/instance: postiz
+        app.kubernetes.io/component: worker
+        policy-type: "app"
+    spec:
+      containers:
+        - name: temporal
+          image: temporalio/auto-setup:1.24
+          ports:
+            - containerPort: 7233
+              protocol: TCP
+          env:
+            - name: DB
+              value: "sqlite"
+            - name: SKIP_DEFAULT_NAMESPACE_CREATION
+              value: "false"
+          resources:
+            limits:
+              memory: 512Mi
+            requests:
+              cpu: 100m
+              memory: 256Mi
+      restartPolicy: Always
