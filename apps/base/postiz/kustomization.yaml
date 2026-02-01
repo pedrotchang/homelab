@@ -11,3 +11,4 @@ resources:
   - elasticsearch.yaml
   - temporal.yaml
   - backend-service.yaml
+  - api-proxy.yaml
