@@ -62,6 +62,7 @@ spec:
       NEXT_PUBLIC_UPLOAD_STATIC_DIRECTORY: ""
       NX_ADD_PLUGINS: "false"
       IS_GENERAL: "true"
+      DISABLE_REGISTRATION: "true"
 
     # Secrets are injected via valuesFrom above
     secrets:
