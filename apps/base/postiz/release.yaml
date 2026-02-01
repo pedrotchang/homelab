@@ -45,21 +45,9 @@ spec:
     postgresql:
       enabled: false
 
-    # Use built-in Redis from chart
+    # Disable chart's Redis - use our own simple Redis deployment
     redis:
-      enabled: true
-      image:
-        registry: docker.io
-        repository: bitnami/redis
-        tag: 7.4.2-debian-12-r0
-      auth:
-        password: postiz-redis-internal
-      master:
-        service:
-          ports:
-            redis: 6379
-      replica:
-        replicaCount: 0
+      enabled: false
 
     # Environment variables
     env:
@@ -75,7 +63,7 @@ spec:
 
     # Secrets are injected via valuesFrom above
     secrets:
-      REDIS_URL: "redis://:postiz-redis-internal@postiz-redis-master:6379"
+      REDIS_URL: "redis://postiz-redis:6379"
 
     extraVolumes:
       - name: uploads

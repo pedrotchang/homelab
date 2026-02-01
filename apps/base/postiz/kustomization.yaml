@@ -7,3 +7,4 @@ resources:
   - release.yaml
   - secrets.yaml
   - storage.yaml
+  - redis.yaml
