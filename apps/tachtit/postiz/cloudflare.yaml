@@ -70,9 +70,8 @@ data:
     no-autoupdate: true
 
     ingress:
-    # Route /api/* to backend on port 3000
-    - hostname: postiz.seyzahl.com
-      path: /api/*
+    # API subdomain routes directly to backend on port 3000
+    - hostname: api.postiz.seyzahl.com
       service: http://postiz-backend.postiz.svc.cluster.local:3000
     # All other paths to frontend on port 4200
     - hostname: postiz.seyzahl.com

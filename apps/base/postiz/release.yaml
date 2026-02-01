@@ -54,7 +54,7 @@ spec:
     env:
       MAIN_URL: "https://postiz.seyzahl.com"
       FRONTEND_URL: "https://postiz.seyzahl.com"
-      NEXT_PUBLIC_BACKEND_URL: "https://postiz.seyzahl.com/api"
+      NEXT_PUBLIC_BACKEND_URL: "https://api.postiz.seyzahl.com"
       BACKEND_INTERNAL_URL: "http://localhost:3000"
       TEMPORAL_ADDRESS: "postiz-temporal:7233"
       STORAGE_PROVIDER: "local"
