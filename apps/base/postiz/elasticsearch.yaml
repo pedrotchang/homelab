@@ -1,0 +1,86 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postiz-elasticsearch
+  namespace: postiz
+  labels:
+    app: postiz-elasticsearch
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postiz-elasticsearch
+  template:
+    metadata:
+      labels:
+        app: postiz-elasticsearch
+    spec:
+      securityContext:
+        fsGroup: 1000
+      initContainers:
+        - name: fix-permissions
+          image: busybox:1.36
+          command: ["sh", "-c", "chown -R 1000:1000 /usr/share/elasticsearch/data"]
+          securityContext:
+            runAsUser: 0
+          volumeMounts:
+            - name: data
+              mountPath: /usr/share/elasticsearch/data
+      containers:
+        - name: elasticsearch
+          image: docker.elastic.co/elasticsearch/elasticsearch:8.11.0
+          ports:
+            - containerPort: 9200
+              protocol: TCP
+          env:
+            - name: discovery.type
+              value: "single-node"
+            - name: xpack.security.enabled
+              value: "false"
+            - name: xpack.security.enrollment.enabled
+              value: "false"
+            - name: ES_JAVA_OPTS
+              value: "-Xms512m -Xmx512m"
+          resources:
+            limits:
+              memory: 1Gi
+            requests:
+              cpu: 200m
+              memory: 512Mi
+          volumeMounts:
+            - name: data
+              mountPath: /usr/share/elasticsearch/data
+      restartPolicy: Always
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: postiz-elasticsearch-data
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postiz-elasticsearch
+  namespace: postiz
+  labels:
+    app: postiz-elasticsearch
+spec:
+  selector:
+    app: postiz-elasticsearch
+  type: ClusterIP
+  ports:
+    - port: 9200
+      targetPort: 9200
+      protocol: TCP
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postiz-elasticsearch-data
+  namespace: postiz
+spec:
+  storageClassName: truenas-iscsi
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi

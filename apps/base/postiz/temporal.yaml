@@ -22,6 +22,7 @@ spec:
             - containerPort: 7233
               protocol: TCP
           env:
+            # Main database (PostgreSQL)
             - name: DB
               value: "postgres12"
             - name: POSTGRES_SEEDS
@@ -30,8 +31,6 @@ spec:
               value: "5432"
             - name: DBNAME
               value: "temporal"
-            - name: VISIBILITY_DBNAME
-              value: "temporal_visibility"
             - name: POSTGRES_USER
               valueFrom:
                 secretKeyRef:
@@ -46,6 +45,17 @@ spec:
               value: "true"
             - name: SKIP_DEFAULT_NAMESPACE_CREATION
               value: "false"
+            # Visibility store (Elasticsearch - unlimited search attributes)
+            - name: ENABLE_ES
+              value: "true"
+            - name: ES_SEEDS
+              value: "postiz-elasticsearch"
+            - name: ES_PORT
+              value: "9200"
+            - name: ES_VERSION
+              value: "v8"
+            - name: ES_SCHEME
+              value: "http"
           resources:
             limits:
               memory: 512Mi

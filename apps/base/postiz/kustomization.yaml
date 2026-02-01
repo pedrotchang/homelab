@@ -8,4 +8,5 @@ resources:
   - secrets.yaml
   - storage.yaml
   - redis.yaml
+  - elasticsearch.yaml
   - temporal.yaml
