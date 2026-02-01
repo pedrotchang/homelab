@@ -37,8 +37,6 @@ spec:
               value: "single-node"
             - name: xpack.security.enabled
               value: "false"
-            - name: xpack.security.enrollment.enabled
-              value: "false"
             - name: ES_JAVA_OPTS
               value: "-Xms512m -Xmx512m"
           resources:
