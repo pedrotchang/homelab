@@ -33,6 +33,7 @@ spec:
     service:
       type: ClusterIP
       port: 4200
+      targetPort: 4200
 
     resources:
       limits:
