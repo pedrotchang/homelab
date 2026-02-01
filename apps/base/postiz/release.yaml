@@ -48,12 +48,18 @@ spec:
     # Use built-in Redis from chart
     redis:
       enabled: true
+      image:
+        registry: docker.io
+        repository: bitnami/redis
+        tag: 7.4.2-debian-12-r0
       auth:
         password: postiz-redis-internal
       master:
         service:
           ports:
             redis: 6379
+      replica:
+        replicaCount: 0
 
     # Environment variables
     env:
