@@ -36,10 +36,10 @@ spec:
 
     resources:
       limits:
-        memory: 2Gi
+        memory: 4Gi
       requests:
-        cpu: 250m
-        memory: 512Mi
+        cpu: 500m
+        memory: 1Gi
 
     # Use external PostgreSQL (CloudnativePG on data cluster)
     postgresql:

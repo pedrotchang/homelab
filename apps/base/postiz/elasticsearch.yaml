@@ -28,7 +28,7 @@ spec:
               mountPath: /usr/share/elasticsearch/data
       containers:
         - name: elasticsearch
-          image: docker.elastic.co/elasticsearch/elasticsearch:7.17.18
+          image: docker.elastic.co/elasticsearch/elasticsearch:8.17.0
           ports:
             - containerPort: 9200
               protocol: TCP
@@ -36,6 +36,8 @@ spec:
             - name: discovery.type
               value: "single-node"
             - name: xpack.security.enabled
+              value: "false"
+            - name: xpack.security.enrollment.enabled
               value: "false"
             - name: ES_JAVA_OPTS
               value: "-Xms512m -Xmx512m"
