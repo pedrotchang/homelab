@@ -70,6 +70,10 @@ data:
     no-autoupdate: true
 
     ingress:
+    # Route /mcp/* directly to backend for MCP server
+    - hostname: postiz.seyzahl.com
+      path: /mcp/*
+      service: http://postiz-backend.postiz.svc.cluster.local:3000
     # Route /api/* to nginx proxy that strips /api prefix
     - hostname: postiz.seyzahl.com
       path: /api/*
