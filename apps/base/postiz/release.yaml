@@ -22,6 +22,31 @@ spec:
       name: postiz-helm-secrets
       valuesKey: JWT_SECRET
       targetPath: secrets.JWT_SECRET
+    # OAuth credentials
+    - kind: Secret
+      name: postiz-helm-secrets
+      valuesKey: X_API_KEY
+      targetPath: env.X_API_KEY
+    - kind: Secret
+      name: postiz-helm-secrets
+      valuesKey: X_API_SECRET
+      targetPath: env.X_API_SECRET
+    - kind: Secret
+      name: postiz-helm-secrets
+      valuesKey: LINKEDIN_CLIENT_ID
+      targetPath: env.LINKEDIN_CLIENT_ID
+    - kind: Secret
+      name: postiz-helm-secrets
+      valuesKey: LINKEDIN_CLIENT_SECRET
+      targetPath: env.LINKEDIN_CLIENT_SECRET
+    - kind: Secret
+      name: postiz-helm-secrets
+      valuesKey: YOUTUBE_CLIENT_ID
+      targetPath: env.YOUTUBE_CLIENT_ID
+    - kind: Secret
+      name: postiz-helm-secrets
+      valuesKey: YOUTUBE_CLIENT_SECRET
+      targetPath: env.YOUTUBE_CLIENT_SECRET
   values:
     replicaCount: 1
 
@@ -62,7 +87,7 @@ spec:
       NEXT_PUBLIC_UPLOAD_STATIC_DIRECTORY: ""
       NX_ADD_PLUGINS: "false"
       IS_GENERAL: "true"
-      DISABLE_REGISTRATION: "false"
+      DISABLE_REGISTRATION: "true"
 
     # Secrets are injected via valuesFrom above
     secrets:
