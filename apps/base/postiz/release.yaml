@@ -22,31 +22,31 @@ spec:
       name: postiz-helm-secrets
       valuesKey: JWT_SECRET
       targetPath: secrets.JWT_SECRET
-    # OAuth credentials
+    # OAuth credentials (must be in secrets.* to go to app-secrets, not env.* which gets overridden)
     - kind: Secret
       name: postiz-helm-secrets
       valuesKey: X_API_KEY
-      targetPath: env.X_API_KEY
+      targetPath: secrets.X_API_KEY
     - kind: Secret
       name: postiz-helm-secrets
       valuesKey: X_API_SECRET
-      targetPath: env.X_API_SECRET
+      targetPath: secrets.X_API_SECRET
     - kind: Secret
       name: postiz-helm-secrets
       valuesKey: LINKEDIN_CLIENT_ID
-      targetPath: env.LINKEDIN_CLIENT_ID
+      targetPath: secrets.LINKEDIN_CLIENT_ID
     - kind: Secret
       name: postiz-helm-secrets
       valuesKey: LINKEDIN_CLIENT_SECRET
-      targetPath: env.LINKEDIN_CLIENT_SECRET
+      targetPath: secrets.LINKEDIN_CLIENT_SECRET
     - kind: Secret
       name: postiz-helm-secrets
       valuesKey: YOUTUBE_CLIENT_ID
-      targetPath: env.YOUTUBE_CLIENT_ID
+      targetPath: secrets.YOUTUBE_CLIENT_ID
     - kind: Secret
       name: postiz-helm-secrets
       valuesKey: YOUTUBE_CLIENT_SECRET
-      targetPath: env.YOUTUBE_CLIENT_SECRET
+      targetPath: secrets.YOUTUBE_CLIENT_SECRET
   values:
     replicaCount: 1
 
