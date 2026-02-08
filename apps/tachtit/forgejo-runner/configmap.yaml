@@ -17,10 +17,10 @@ data:
       envs:
         DOCKER_HOST: tcp://localhost:2375
       labels:
-        # node:20-bookworm (~300MB) instead of catthehacker/ubuntu:act-22.04 (~1.5GB)
-        # Use act-22.04 only if you need apt packages like build-essential, python, etc.
-        - "docker:docker://node:20-bookworm"
-        - "ubuntu-latest:docker://node:20-bookworm"
+        # act-22.04 (~1.5GB) includes Docker CLI and full toolchain
+        # With overlay2 + local-path storage, image is cached after first pull
+        - "docker:docker://ghcr.io/catthehacker/ubuntu:act-22.04"
+        - "ubuntu-latest:docker://ghcr.io/catthehacker/ubuntu:act-22.04"
         - "hugo:docker://floryn90/hugo:0.145.0-ext-alpine"
 
     cache:

@@ -40,7 +40,7 @@ spec:
                   --instance http://forgejo.forgejo.svc.cluster.local:3000 \
                   --token "${RUNNER_SECRET}" \
                   --name "tachtit-runner" \
-                  --labels "docker:docker://node:20-bookworm,ubuntu-latest:docker://node:20-bookworm,ubuntu-22.04:docker://node:20-bookworm"
+                  --labels "docker:docker://ghcr.io/catthehacker/ubuntu:act-22.04,ubuntu-latest:docker://ghcr.io/catthehacker/ubuntu:act-22.04,ubuntu-22.04:docker://ghcr.io/catthehacker/ubuntu:act-22.04"
                 mv .runner /data/.runner
               else
                 echo "Runner already registered"
