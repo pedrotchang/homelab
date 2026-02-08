@@ -19,7 +19,7 @@ resources:
   - pgadmin
   - postiz
   - wallabag
-  - workspace-mcp
+  # - workspace-mcp  # Running locally via stdio instead
   # - minecraft
   # - kagent
   # - n8n-mcp
