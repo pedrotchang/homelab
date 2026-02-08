@@ -59,6 +59,7 @@ spec:
           image: docker:29-dind
           args:
             - --tls=false
+            - --storage-driver=vfs
           env:
             - name: DOCKER_TLS_CERTDIR
               value: ""
