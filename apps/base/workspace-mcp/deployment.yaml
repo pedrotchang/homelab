@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: workspace-mcp
+  labels:
+    app: workspace-mcp
+    app.kubernetes.io/name: workspace-mcp
+    app.kubernetes.io/instance: workspace-mcp
+    app.kubernetes.io/component: server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: workspace-mcp
+  template:
+    metadata:
+      labels:
+        app: workspace-mcp
+        app.kubernetes.io/name: workspace-mcp
+        app.kubernetes.io/instance: workspace-mcp
+        app.kubernetes.io/component: server
+        policy-type: "app"
+    spec:
+      securityContext:
+        fsGroup: 1000
+
+      imagePullSecrets:
+        - name: forgejo-registry
+
+      containers:
+        - name: workspace-mcp
+          image: forgejo.seyzahl.com/seyza/google_workspace_mcp:latest
+
+          envFrom:
+            - configMapRef:
+                name: workspace-mcp-configmap
+            - secretRef:
+                name: workspace-mcp-container-env
+
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+
+          volumeMounts:
+            - name: workspace-mcp-data
+              mountPath: /app/data
+
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+
+      restartPolicy: Always
+
+      volumes:
+        - name: workspace-mcp-data
+          persistentVolumeClaim:
+            claimName: workspace-mcp-data-pvc

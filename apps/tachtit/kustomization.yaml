@@ -19,6 +19,7 @@ resources:
   - pgadmin
   - postiz
   - wallabag
+  - workspace-mcp
   # - minecraft
   # - kagent
   # - n8n-mcp

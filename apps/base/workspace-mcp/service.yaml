@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: workspace-mcp
+  labels:
+    app: workspace-mcp
+    app.kubernetes.io/name: workspace-mcp
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+      name: http
+  selector:
+    app: workspace-mcp
