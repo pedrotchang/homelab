@@ -60,7 +60,8 @@ spec:
           image: docker:29-dind
           args:
             - --tls=false
-            - --storage-driver=vfs
+            # overlay2 is the default - no need to specify vfs
+            # overlay2 requires local storage (not NFS) for proper layer caching
           env:
             - name: DOCKER_TLS_CERTDIR
               value: ""
