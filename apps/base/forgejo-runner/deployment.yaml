@@ -25,6 +25,7 @@ spec:
     spec:
       securityContext:
         fsGroup: 1000
+        fsGroupChangePolicy: OnRootMismatch
 
       initContainers:
         - name: register-runner
