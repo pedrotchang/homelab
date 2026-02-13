@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: paperless-gpt
-          image: ghcr.io/icereed/paperless-gpt:latest
+          image: ghcr.io/icereed/paperless-gpt:v0.24.0
           ports:
             - containerPort: 8080
           envFrom:

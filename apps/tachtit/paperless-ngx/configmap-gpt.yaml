@@ -16,4 +16,4 @@ data:
   # Features
   AUTO_GENERATE_TITLE: "true"
   AUTO_GENERATE_TAGS: "true"
-  LOG_LEVEL: "info"
+  LOG_LEVEL: "debug"
