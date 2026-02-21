@@ -60,11 +60,11 @@ spec:
             timeoutSeconds: 5
             failureThreshold: 3
           resources:
-            limits:
-              memory: 4Gi
             requests:
-              cpu: 200m
-              memory: 512Mi
+              cpu: 1000m
+              memory: 4Gi
+            limits:
+              memory: 12Gi
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
