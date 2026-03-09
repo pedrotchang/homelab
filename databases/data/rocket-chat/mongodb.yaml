@@ -27,7 +27,7 @@ spec:
 
       containers:
         - name: mongodb
-          image: bitnami/mongodb:7.0
+          image: bitnamilegacy/mongodb:7.0.9
           securityContext:
             runAsUser: 1001
             allowPrivilegeEscalation: false
