@@ -7,8 +7,5 @@ resources:
   - immich
   - linkding
   - n8n
-  - pai
-  - paperless-ngx
   - pgadmin
-  - postiz
   - wallabag

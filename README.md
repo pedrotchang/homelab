@@ -68,12 +68,10 @@ I have them in this structure:
 | Icon | Name | Description |
 |------|------|-------------|
 | <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/immich.png" width="30" alt="Immich logo"> | [Immich](https://immich.app/) | A high-performance self-hosted photo and video backup solution with features like automatic backup, timeline view, and ML-powered search. |
-| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/audiobookshelf.png" width="30" alt="Audiobookshelf logo"> | [Audiobookshelf](https://www.audiobookshelf.org/) | A self-hosted audiobook and podcast server with mobile apps, progress tracking, and streaming capabilities. |
 
 #### Lifestyle or Personal
 | Icon | Name | Description |
 |------|------|-------------|
-| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/minecraft.png" width="30" alt="Minecraft logo"> | Minecraft | A Minecraft server for building and exploring with friends. |
 | <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/hugo.png" width="30" alt="Hugo logo"> | [Pedro T. Chang](https://pedrotchang.dev) | A Hugo-built blog for sharing thoughts and technical writing. |
 
 ## Next Steps

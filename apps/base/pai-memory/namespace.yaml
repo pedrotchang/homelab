@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: pai-memory
-  labels:
-    app.kubernetes.io/name: pai-memory
