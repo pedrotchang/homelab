@@ -1,0 +1,84 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rocket-chat
+  labels:
+    app: rocket-chat
+    app.kubernetes.io/name: rocket-chat
+    app.kubernetes.io/instance: rocket-chat
+    app.kubernetes.io/component: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rocket-chat
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: rocket-chat
+        app.kubernetes.io/name: rocket-chat
+        app.kubernetes.io/instance: rocket-chat
+        app.kubernetes.io/component: web
+        policy-type: "app"
+    spec:
+      securityContext:
+        runAsUser: 999
+        fsGroup: 999
+
+      containers:
+        - name: rocket-chat
+          image: registry.rocket.chat/rocketchat/rocket.chat:8.2.0
+
+          securityContext:
+            allowPrivilegeEscalation: false
+
+          envFrom:
+            - configMapRef:
+                name: rocket-chat-configmap
+            - secretRef:
+                name: rocket-chat-container-env
+
+          ports:
+            - containerPort: 3000
+              protocol: TCP
+
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 60
+            periodSeconds: 15
+            timeoutSeconds: 5
+            failureThreshold: 3
+
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 15
+            timeoutSeconds: 5
+            failureThreshold: 3
+
+          volumeMounts:
+            - name: rocket-chat-uploads
+              mountPath: /app/uploads
+
+          resources:
+            requests:
+              memory: 512Mi
+              cpu: 300m
+            limits:
+              memory: 1Gi
+
+      restartPolicy: Always
+
+      volumes:
+        - name: rocket-chat-uploads
+          persistentVolumeClaim:
+            claimName: rocket-chat-uploads-pvc

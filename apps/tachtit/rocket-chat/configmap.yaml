@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rocket-chat-configmap
+data:
+  ROOT_URL: "https://rocket-chat.seyzahl.com"
+  PORT: "3000"
+  DEPLOY_PLATFORM: "homelab"
