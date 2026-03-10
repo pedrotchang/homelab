@@ -6,3 +6,4 @@ data:
   ROOT_URL: "https://rocket-chat.seyzahl.com"
   PORT: "3000"
   DEPLOY_PLATFORM: "homelab"
+  NODE_OPTIONS: "--max-old-space-size=768"

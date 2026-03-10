@@ -71,10 +71,10 @@ spec:
 
           resources:
             requests:
-              memory: 512Mi
+              memory: 768Mi
               cpu: 300m
             limits:
-              memory: 1Gi
+              memory: 1.5Gi
 
       restartPolicy: Always
 
