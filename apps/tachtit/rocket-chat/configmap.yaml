@@ -7,3 +7,4 @@ data:
   PORT: "3000"
   DEPLOY_PLATFORM: "homelab"
   NODE_OPTIONS: "--max-old-space-size=768"
+  OVERWRITE_SETTING_Accounts_RegistrationForm: "Disabled"
