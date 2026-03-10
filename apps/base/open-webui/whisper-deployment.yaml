@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: whisper
+  labels:
+    app: whisper
+    policy-type: "app"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: whisper
+  template:
+    metadata:
+      labels:
+        app: whisper
+        policy-type: "app"
+    spec:
+      tolerations:
+        - key: ai-workload
+          operator: Equal
+          value: dedicated
+          effect: NoSchedule
+      nodeSelector:
+        kubernetes.io/hostname: talos-874-xz1
+      containers:
+        - name: whisper
+          image: onerahmet/openai-whisper-asr-webservice:latest
+          env:
+            - name: ASR_MODEL
+              value: base
+          ports:
+            - containerPort: 9000
+              name: http
+          volumeMounts:
+            - name: cache
+              mountPath: /root/.cache
+          resources:
+            requests:
+              memory: "1Gi"
+              cpu: "500m"
+            limits:
+              memory: "4Gi"
+              cpu: "2000m"
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 9000
+            initialDelaySeconds: 60
+            periodSeconds: 30
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 9000
+            initialDelaySeconds: 30
+            periodSeconds: 10
+      volumes:
+        - name: cache
+          persistentVolumeClaim:
+            claimName: whisper-cache-pvc
