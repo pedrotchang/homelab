@@ -1,6 +1,6 @@
 apiVersion: v1
 data:
-    ClientID: ENC[AES256_GCM,data:MQO1I55Dot7YNRWOJy6UMuN7jtC6sgzToTRdeGFBpTgvsy+8JKsz/vyJgkljJXN8,iv:er551Kxqxlb8DwVSSkqAAiKtIibo6hfGobDyh9Rwbv4=,tag:f33QESMYI4JZRLyEhDd5ZA==,type:str]
+    ClientID: ENC[AES256_GCM,data:ChbGjUQYGdag2F8kfnAV0g7osnsBKXDztPqtvdPnavKJd/Y3FSLlPJlLZ9l0++8k,iv:2ZBSC0PR4wRF12ulyxd3UwTcPZXWM8YWMIK4CBO1lZU=,tag:qNXaOwWQjcq4kXyobwnOMw==,type:str]
     ClientSecret: ENC[AES256_GCM,data:065Q4GVkbQ7MOqnSld+tP56iU8sPWsuiWdOzZRIFVb3HMQJzrPNeqj8J5cx3DtFPzUb9K4cV6P0=,iv:s7GJ0Zxqiq7LERK2PupiE83K/jl2AlWSsSUi2QFGEw0=,tag:wWniyf/EUceiicecj1SUUA==,type:str]
 kind: Secret
 metadata:
@@ -17,7 +17,7 @@ sops:
             SXlTWVd3b0tpNnJQa0tHTnU3SHZxUmMKFr7NVmtQWkICfBIMGnd3w2M/LlKvwZMI
             DP4jaOS0KN6DqyOt4TgQelPOrlConYtm/G62m2Rj70ODHPTLBJnbZA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2026-03-14T08:00:02Z"
-    mac: ENC[AES256_GCM,data:4IZeL0b98b0lfXXxNnhqa7yBG08gI3RdeIvyJAOGwoRAm4z1Lmcg6rhNbNM3xMmrJ+tDvRasfFHiOxAgybHaDFl5T/7natkKupZsbIPRCDaiEzP7rBSZ3ftxJi72w5CQqJfMSNbZSQWLdWQcxo/sXvXyQH0voIWfYbZnwWVpKbw=,iv:fpUKk0T3ERxIMhcG3zh+SGgiIsMs+D1bCm2NSx5eBFM=,tag:qgYGIhYVcYe4OCX3EkCBOw==,type:str]
+    lastmodified: "2026-03-14T08:04:28Z"
+    mac: ENC[AES256_GCM,data:DULYuFHw7XgTWF7BWNYUGggFLBHPSHL1UNQINCBDBcAcfQBj7hsMRMCDXRPrBdqmem91/hKqxkuIkR/JePm3lZ0VtVEFQcQBbNn9b7HobrFuMep9Ah2pOIi/BYNFeUYfIbDEm8Fe6mfT6LTvgnSjDi/3uOyfmo2aR1tVJOeai+E=,iv:PymZTHVrQGovhYACEb2r9fu4W0xnWdtprlkRym1xRa4=,tag:BgOXhzTvef+neZRyvyG+XA==,type:str]
     encrypted_regex: ^(data|stringData)$
     version: 3.12.1
