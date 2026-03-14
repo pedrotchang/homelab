@@ -1,0 +1,75 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: nextcloud
+  namespace: nextcloud
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: nextcloud
+      version: "*"
+      sourceRef:
+        kind: HelmRepository
+        name: nextcloud
+  values:
+    image:
+      repository: nextcloud
+      tag: stable
+
+    nextcloud:
+      host: nextcloud.seyzahl.com
+      existingSecret:
+        enabled: true
+        secretName: nextcloud-admin-creds
+        usernameKey: username
+        passwordKey: password
+      phpConfigs:
+        uploadLimit.ini: |
+          upload_max_filesize = 16G
+          post_max_size = 16G
+          max_input_time = 3600
+          max_execution_time = 3600
+      configs:
+        proxy.config.php: |-
+          <?php
+          $CONFIG = array (
+            'trusted_proxies' => ['10.0.0.0/8'],
+            'overwriteprotocol' => 'https',
+          );
+
+    internalDatabase:
+      enabled: false
+
+    externalDatabase:
+      enabled: true
+      type: postgresql
+      host: nextcloud-pg.seyzahl.com
+      database: nextcloud
+      existingSecret:
+        enabled: true
+        secretName: nextcloud-db-env
+        usernameKey: DB_USERNAME
+        passwordKey: DB_PASSWORD
+
+    redis:
+      enabled: true
+      auth:
+        enabled: false
+      architecture: standalone
+
+    persistence:
+      enabled: true
+      storageClass: truenas-nfs
+      size: 100Gi
+
+    cronjob:
+      enabled: true
+
+    resources:
+      requests:
+        cpu: 250m
+        memory: 512Mi
+      limits:
+        cpu: 2000m
+        memory: 2Gi

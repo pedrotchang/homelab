@@ -7,6 +7,6 @@ resources:
   - immich
   - linkding
   - n8n
+  - nextcloud
   - pgadmin
-  - rocket-chat
   - wallabag

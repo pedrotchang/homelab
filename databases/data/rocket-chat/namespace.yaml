@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: rocket-chat
-  labels:
-    app.kubernetes.io/component: monitoring
