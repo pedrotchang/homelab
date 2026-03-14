@@ -60,8 +60,12 @@ spec:
 
     persistence:
       enabled: true
-      storageClass: truenas-nfs
-      size: 100Gi
+      storageClass: local-path
+      size: 20Gi
+      nextcloudData:
+        enabled: true
+        storageClass: truenas-nfs
+        size: 100Gi
 
     cronjob:
       enabled: true
