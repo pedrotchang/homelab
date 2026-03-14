@@ -1,7 +1,7 @@
 apiVersion: v1
 data:
-    ClientID: ENC[AES256_GCM,data:Yo1lJSP13fvRNfzFx0X1Ik0b47kPeV7RBx0r0HsK1jll0DcWUoP5ow==,iv:UoXS7xaJCc7ELR4RhHLNZBx6OCNP3tzbm4BYTPzQbOA=,tag:DX3W192NQeLKScm3jwhEtg==,type:str]
-    ClientSecret: ENC[AES256_GCM,data:/Pj3shbvEwQ4wwmxaGoHy6NVwkmSQ0vC5MZ70XpzM17m5hEq,iv:tfFCpEItQ7ui9TaZc6PgSx+jqeV42o1ONSFjp1ek/eo=,tag:2s/IQvFfpQEda5Ij/oZWHg==,type:str]
+    ClientID: ENC[AES256_GCM,data:spGYUKZ4Y22OIKsxM4IOBSMySADgjuX1YFscGySqsL4CWWPAKxJemLaZn4sJylfw/dAegTCpZOI=,iv:W7gKG61Ol68O0SFG9fod7Q2VCDHvXXUIIW7DlCsrI6w=,tag:3bIY9UfEJwTJsT2GOgLu2w==,type:str]
+    ClientSecret: ENC[AES256_GCM,data:D/6am58zFpCcSHG3KVDqvwpJcqpnjoTrAhriMCc1Tsuab8+Fy3gR/Gi7oQ381rVL,iv:1qxjwtwKc7rcPgMksVCcOPTKTRgR/A6gHKvHYJomxhs=,tag:8GGchICbnTA3EuJGgORoqQ==,type:str]
 kind: Secret
 metadata:
     name: azure-creds
@@ -17,7 +17,7 @@ sops:
             SXlTWVd3b0tpNnJQa0tHTnU3SHZxUmMKFr7NVmtQWkICfBIMGnd3w2M/LlKvwZMI
             DP4jaOS0KN6DqyOt4TgQelPOrlConYtm/G62m2Rj70ODHPTLBJnbZA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2026-03-14T07:46:11Z"
-    mac: ENC[AES256_GCM,data:5XrxuoeXNuU4Z6QUS6yPXgjJyEzgSHv2FIm4rY+pyd3sH2d1tSo70UkMcc8/nE4ORj0abNCRW1BmoCxFiuXfsuLrrtUMclbEdF7cWb+nECXU1LDaQHPpt+f//jL38nrA6bPn0iq//BZzDt2hKKhhgNZ8k41ZWcvBETvQmKrh20k=,iv:y54YjPwHqtvnU/mjn4A7S0CFMQEr7tYqGWQklzTKGO0=,tag:pIzQK8lQlJSs1j7/RQ7z5Q==,type:str]
+    lastmodified: "2026-03-14T07:54:57Z"
+    mac: ENC[AES256_GCM,data:INkzZNDxzLqHkoB1NR4Ms6+YhmQAylwgm+97I13yHrlSkQzuIxAll4/bOIuY1QVktktA6wX3pKv2b0Fjc44kYYPWgE4+F5rj67sb1+Rgjx42B3x6UZgpJu2DofWrmulW/S0xwxhirU+slpqEiBfIoHbPvbWdUtEHzgD2Hhvf76g=,iv:CNrr9fdA2r1pkGaSbaacLfsDnrr/SpVMa6R73IVxAZA=,tag:IaTUn/SkhY5273kbHD7/4A==,type:str]
     encrypted_regex: ^(data|stringData)$
     version: 3.12.1
