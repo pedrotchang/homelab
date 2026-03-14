@@ -46,7 +46,7 @@ spec:
         compression: gzip
       data:
         compression: gzip
-    retentionPolicy: "14d"
+    retentionPolicy: "10d"
 
   resources:
     requests:
