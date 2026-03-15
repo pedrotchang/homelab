@@ -15,4 +15,5 @@ data:
   N8N_VERSION_NOTIFICATIONS_ENABLED: "false"
   WEBHOOK_URL: "https://auto.seyzahl.com/"
   N8N_SECURE_COOKIE: "true"
+  N8N_PAYLOAD_SIZE_MAX: "150"
   GENERIC_TIMEZONE: "America/Los_Angeles"
