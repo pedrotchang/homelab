@@ -40,7 +40,11 @@ spec:
           command:
             - sh
             - -c
-            - chown -R 1000:1000 /home/node/.n8n
+            - |
+              chown 1000:1000 /home/node/.n8n
+              for d in config custom nodes packages; do
+                [ -d "/home/node/.n8n/$d" ] && chown -R 1000:1000 "/home/node/.n8n/$d"
+              done
           securityContext:
             runAsUser: 0
           volumeMounts:
@@ -87,21 +91,21 @@ spec:
             httpGet:
               path: /healthz
               port: 3008
-            initialDelaySeconds: 30
+            initialDelaySeconds: 60
             periodSeconds: 30
             timeoutSeconds: 5
-            failureThreshold: 3
+            failureThreshold: 5
           readinessProbe:
             httpGet:
               path: /healthz
               port: 3008
-            initialDelaySeconds: 10
+            initialDelaySeconds: 30
             periodSeconds: 10
             timeoutSeconds: 5
-            failureThreshold: 3
+            failureThreshold: 5
           resources:
             limits:
-              memory: 2Gi
+              memory: 4Gi
             requests:
               cpu: 200m
               memory: 512Mi
