@@ -47,7 +47,7 @@ spec:
             - name: n8n-data
               mountPath: /home/node/.n8n
         - name: install-ffmpeg
-          image: mwader/static-ffmpeg:7.1
+          image: mwader/static-ffmpeg:8.0.1
           command:
             - sh
             - -c
