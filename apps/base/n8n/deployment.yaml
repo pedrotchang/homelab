@@ -47,22 +47,29 @@ spec:
             - name: n8n-data
               mountPath: /home/node/.n8n
         - name: install-ffmpeg
-          image: alpine:3.21
+          image: node:20-bookworm-slim
           command:
             - sh
             - -c
             - |
-              apk add --no-cache ffmpeg
-              cp /usr/bin/ffmpeg /home/node/.n8n/ffmpeg
-              chmod +x /home/node/.n8n/ffmpeg
+              mkdir -p /home/node/.n8n/bin
+              if [ ! -f /home/node/.n8n/bin/ffmpeg ]; then
+                npm install --prefix /tmp/ffmpeg-pkg ffmpeg-static
+                cp /tmp/ffmpeg-pkg/node_modules/ffmpeg-static/ffmpeg /home/node/.n8n/bin/ffmpeg
+                chmod +x /home/node/.n8n/bin/ffmpeg
+              fi
           securityContext:
-            runAsUser: 0
+            runAsUser: 1000
+            runAsGroup: 1000
           volumeMounts:
             - name: n8n-data
               mountPath: /home/node/.n8n
       containers:
         - name: n8n
           image: docker.n8n.io/n8nio/n8n:2.4.8
+          env:
+            - name: PATH
+              value: "/home/node/.n8n/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
           envFrom:
             - configMapRef:
                 name: n8n-configmap
