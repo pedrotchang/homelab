@@ -46,6 +46,23 @@ spec:
           volumeMounts:
             - name: n8n-data
               mountPath: /home/node/.n8n
+        - name: install-ffmpeg
+          image: node:20-alpine
+          command:
+            - sh
+            - -c
+            - |
+              mkdir -p /home/node/.n8n/nodes
+              cd /home/node/.n8n/nodes
+              if [ ! -f node_modules/ffmpeg-static/ffmpeg ]; then
+                npm install ffmpeg-static --no-save
+              fi
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+          volumeMounts:
+            - name: n8n-data
+              mountPath: /home/node/.n8n
       containers:
         - name: n8n
           image: docker.n8n.io/n8nio/n8n:2.4.8
