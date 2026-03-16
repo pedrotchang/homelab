@@ -16,5 +16,5 @@ data:
   WEBHOOK_URL: "https://auto.seyzahl.com/"
   N8N_SECURE_COOKIE: "true"
   N8N_PAYLOAD_SIZE_MAX: "150"
-  FFMPEG_PATH: "/home/node/.n8n/nodes/node_modules/ffmpeg-static/ffmpeg"
+  FFMPEG_PATH: "/home/node/.n8n/ffmpeg"
   GENERIC_TIMEZONE: "America/Los_Angeles"
