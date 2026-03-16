@@ -18,3 +18,4 @@ data:
   N8N_PAYLOAD_SIZE_MAX: "150"
   GENERIC_TIMEZONE: "America/Los_Angeles"
   NODE_FUNCTION_ALLOW_BUILTIN: "child_process,fs,os,path"
+  N8N_RUNNERS_ENABLED: "false"
