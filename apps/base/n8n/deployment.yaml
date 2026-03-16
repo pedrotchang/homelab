@@ -53,19 +53,17 @@ spec:
             - -c
             - |
               mkdir -p /home/node/.n8n/bin
-              if [ ! -f /home/node/.n8n/bin/ffmpeg ]; then
-                ARCH=$(uname -m)
-                case "$ARCH" in
-                  aarch64) ARCH_NAME="arm64" ;;
-                  *) ARCH_NAME="amd64" ;;
-                esac
-                wget -q "https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-${ARCH_NAME}-static.tar.xz" -O /tmp/ffmpeg.tar.xz
-                tar xf /tmp/ffmpeg.tar.xz -C /tmp
-                DIR=$(find /tmp -maxdepth 1 -name 'ffmpeg-*-static' -type d | head -1)
-                cp "$DIR/ffmpeg" /home/node/.n8n/bin/ffmpeg
-                cp "$DIR/ffprobe" /home/node/.n8n/bin/ffprobe
-                chmod +x /home/node/.n8n/bin/ffmpeg /home/node/.n8n/bin/ffprobe
-              fi
+              ARCH=$(uname -m)
+              case "$ARCH" in
+                aarch64) ARCH_NAME="arm64" ;;
+                *) ARCH_NAME="amd64" ;;
+              esac
+              wget -q "https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-${ARCH_NAME}-static.tar.xz" -O /tmp/ffmpeg.tar.xz
+              tar xf /tmp/ffmpeg.tar.xz -C /tmp
+              DIR=$(find /tmp -maxdepth 1 -name 'ffmpeg-*-static' -type d | head -1)
+              cp "$DIR/ffmpeg" /home/node/.n8n/bin/ffmpeg
+              cp "$DIR/ffprobe" /home/node/.n8n/bin/ffprobe
+              chmod +x /home/node/.n8n/bin/ffmpeg /home/node/.n8n/bin/ffprobe
           securityContext:
             runAsUser: 0
           volumeMounts:
