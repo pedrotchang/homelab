@@ -40,11 +40,7 @@ spec:
           command:
             - sh
             - -c
-            - |
-              chown 1000:1000 /home/node/.n8n
-              for d in config custom nodes packages; do
-                [ -d "/home/node/.n8n/$d" ] && chown -R 1000:1000 "/home/node/.n8n/$d"
-              done
+            - chown -R 1000:1000 /home/node/.n8n
           securityContext:
             runAsUser: 0
           volumeMounts:
