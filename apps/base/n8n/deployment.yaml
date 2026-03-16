@@ -47,19 +47,17 @@ spec:
             - name: n8n-data
               mountPath: /home/node/.n8n
         - name: install-ffmpeg
-          image: node:20-bookworm-slim
+          image: mwader/static-ffmpeg:7.1
           command:
             - sh
             - -c
             - |
               mkdir -p /home/node/.n8n/bin
-              npm install --prefix /tmp/ffmpeg-pkg ffmpeg-static ffprobe-static
-              cp /tmp/ffmpeg-pkg/node_modules/ffmpeg-static/ffmpeg /home/node/.n8n/bin/ffmpeg
-              cp $(find /tmp/ffmpeg-pkg/node_modules/ffprobe-static -name 'ffprobe' -type f | head -1) /home/node/.n8n/bin/ffprobe
+              cp /ffmpeg /home/node/.n8n/bin/ffmpeg
+              cp /ffprobe /home/node/.n8n/bin/ffprobe
               chmod +x /home/node/.n8n/bin/ffmpeg /home/node/.n8n/bin/ffprobe
           securityContext:
-            runAsUser: 1000
-            runAsGroup: 1000
+            runAsUser: 0
           volumeMounts:
             - name: n8n-data
               mountPath: /home/node/.n8n
